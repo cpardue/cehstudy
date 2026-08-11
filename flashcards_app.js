@@ -11,7 +11,6 @@
     let activeCards = [];
     let shuffledPool = [];
     let currentIdx = 0;
-    let revealed = false;
     let cycleCount = 0;
 
     // Initialize default toggles (all ON)
@@ -27,8 +26,8 @@
     const menuList = document.getElementById('menuList');
     const fcCard = document.getElementById('fcCard');
     const placeholderCard = document.getElementById('placeholderCard');
-    const fcQuestion = document.getElementById('fcQuestion');
-    const fcAnswer = document.getElementById('fcAnswer');
+    const fcTitle = document.getElementById('fcTitle');
+    const fcInfo = document.getElementById('fcInfo');
     const fcHint = document.getElementById('fcHint');
     const fcCounter = document.getElementById('fcCounter');
     const prevBtn = document.getElementById('prevBtn');
@@ -135,9 +134,8 @@
 
         if (!hasCards) {
             placeholderCard.classList.remove('hidden');
-            fcQuestion.classList.add('hidden');
-            fcAnswer.classList.add('hidden');
-            fcAnswer.classList.remove('revealed');
+            fcTitle.classList.add('hidden');
+            fcInfo.classList.add('hidden');
             fcHint.textContent = activeCards.length === 0 
                 ? 'Click a module toggle to begin' 
                 : 'All selected cards shown! Reshuffling...';
@@ -149,18 +147,16 @@
 
         placeholderCard.classList.add('hidden');
         const card = shuffledPool[currentIdx];
-        fcQuestion.textContent = card.q;
-        fcQuestion.classList.remove('hidden');
+        fcTitle.textContent = card.q;
+        fcTitle.classList.remove('hidden');
         
-        fcAnswer.innerHTML = card.a;
-        fcAnswer.classList.remove('hidden');
-        fcAnswer.classList.add('revealed');
-        revealed = true;
+        fcInfo.innerHTML = card.a;
+        fcInfo.classList.remove('hidden');
 
         fcCounter.textContent = (currentIdx + 1) + ' of ' + shuffledPool.length + ' (cycle ' + (cycleCount + 1) + ')';
         fcCounter.classList.remove('hidden');
         
-        fcHint.textContent = 'Click card to hide answer';
+        fcHint.textContent = 'Use arrow buttons or swipe to navigate between cards';
         
         prevBtn.disabled = currentIdx === 0;
         nextBtn.disabled = false;
@@ -169,24 +165,6 @@
         localStorage.setItem('ceh_reviewed', reviewedCount.toString());
         if (globalReviewed) globalReviewed.textContent = reviewedCount;
     }
-
-    // --- Navigation ---
-    window.revealCard = function() {
-        if (shuffledPool.length === 0) return;
-        
-        if (revealed) {
-            fcAnswer.classList.remove('revealed');
-            fcAnswer.classList.add('hidden');
-            revealed = false;
-            fcHint.textContent = 'Click card to reveal answer';
-        } else {
-            fcAnswer.classList.remove('hidden');
-            fcAnswer.classList.add('revealed');
-            revealed = true;
-            fcHint.textContent = 'Click to hide answer';
-            markReviewed();
-        }
-    };
 
     function markReviewed() {
         reviewedCount++;
@@ -197,16 +175,11 @@
     window.nextCard = function() {
         if (currentIdx < shuffledPool.length - 1) {
             currentIdx++;
-            // Reset reveal state before updating display
-            revealed = false;
-            fcAnswer.classList.remove('revealed');
             updateDisplay();
         } else {
             rebuildPool();
             currentIdx = 0;
             cycleCount++;
-            revealed = false;
-            fcAnswer.classList.remove('revealed');
             updateDisplay();
         }
     };
@@ -214,26 +187,19 @@
     window.prevCard = function() {
         if (currentIdx > 0) {
             currentIdx--;
-            // Reset reveal state before updating display
-            revealed = false;
-            fcAnswer.classList.remove('revealed');
             updateDisplay();
         }
     };
 
     // --- Keyboard Navigation ---
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowRight' || e.key === ' ') {
+        if (e.key === 'ArrowRight') {
             e.preventDefault();
             window.nextCard();
         }
         if (e.key === 'ArrowLeft') {
             e.preventDefault();
             window.prevCard();
-        }
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            revealCard();
         }
     });
 
