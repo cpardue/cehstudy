@@ -14,9 +14,9 @@
     let revealed = false;
     let cycleCount = 0;
 
-    // Initialize default toggles (all off)
+    // Initialize default toggles (all ON)
     CEH_DATA.modules.forEach(m => {
-        if (!(m.id in toggles)) toggles[m.id] = false;
+        if (!(m.id in toggles)) toggles[m.id] = true;
     });
 
     // --- DOM Elements ---
@@ -197,11 +197,16 @@
     window.nextCard = function() {
         if (currentIdx < shuffledPool.length - 1) {
             currentIdx++;
+            // Reset reveal state before updating display
+            revealed = false;
+            fcAnswer.classList.remove('revealed');
             updateDisplay();
         } else {
             rebuildPool();
             currentIdx = 0;
             cycleCount++;
+            revealed = false;
+            fcAnswer.classList.remove('revealed');
             updateDisplay();
         }
     };
@@ -209,6 +214,9 @@
     window.prevCard = function() {
         if (currentIdx > 0) {
             currentIdx--;
+            // Reset reveal state before updating display
+            revealed = false;
+            fcAnswer.classList.remove('revealed');
             updateDisplay();
         }
     };
