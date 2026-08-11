@@ -45,8 +45,8 @@
         .fc-card{background:var(--bg2);border:2px solid var(--border);border-radius:16px;padding:60px 50px;text-align:center;min-height:300px;max-width:700px;width:100%;cursor:pointer;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;justify-content:center;align-items:center;margin:0 40px}
         .fc-card:hover{border-color:var(--accent);box-shadow:0 0 30px rgba(88,166,255,.1)}
         .fc-question{font-size:1.5rem;font-weight:600;color:var(--text);margin-bottom:24px;line-height:1.5}
-        .fc-answer{font-size:1.2rem;color:var(--green);opacity:0;transition:opacity .3s;padding:20px;background:var(--bg);border-radius:12px;width:100%;max-height:400px;overflow-y:auto}
-        .fc-answer.revealed{opacity:1}
+        .fc-answer{font-size:1.2rem;color:var(--green);opacity:0;transition:opacity .3s;padding:20px;background:var(--bg);border-radius:12px;width:100%;max-height:400px;overflow-y:auto;pointer-events:none}
+        .fc-answer.revealed{opacity:1;pointer-events:auto}
         .fc-hint{color:var(--text2);font-size:.85rem;margin-top:16px;text-align:center}
         .fc-counter{color:var(--text2);font-size:.9rem;margin-top:12px;text-align:center}
         .placeholder-card{text-align:center;padding:40px}
