@@ -34,7 +34,33 @@ const CEH_DATA = {
     ]},
     { id:3, title:"Scanning Networks", slug:"module3", sections:[
       { title:"Network Scanning Concepts", content:"<p>Network scanning discovers live hosts, open ports, and services on a target network.</p>", cards:[
-        {q:"What is the difference between scanning and footprinting?",a:"Footprinting gathers general information. Scanning actively probes the target's network to discover live hosts, open ports, and services."}
+        {q:"What is the difference between scanning and footprinting?",a:"Footprinting gathers general information. Scanning actively probes the target's network to discover live hosts, open ports, and services."},
+        {q:"What is directory transversal?",a:"Finding a directory listing and gaining access to a parent or root file for access to other files."},
+        {q:"What is incremental substitution?",a:"Replacing numbers in a URL to access other files."},
+        {q:"What is vulnerability scanning?",a:"The automated process of proactively identifying vulnerabilities of computing systems present in a network."},
+        {q:"What is network scanning?",a:"A procedure for identifying active hosts on a network."},
+        {q:"What is port scanning?",a:"A series of messages sent by someone attempting to break into a computer to learn about the computer's network services."},
+        {q:"What is a TCP SYN scan?",a:"<code>-sS</code> — Half-open scan, sends SYN packets and analyzes responses without completing the TCP handshake."},
+        {q:"What is a TCP connect() scan?",a:"<code>-sT</code> — Completes the full TCP three-way handshake."},
+        {q:"What is a FIN scan?",a:"<code>-sF</code> — Sends a FIN packet; non-listening ports respond with RST."},
+        {q:"What is a Xmas Tree scan?",a:"<code>-sX</code> — Sets FIN, PSH, and URG flags like a Christmas tree."},
+        {q:"What is a Ping scan?",a:"<code>-sP</code> — ICMP ping sweep to discover live hosts."},
+        {q:"What is a Version Detection scan?",a:"<code>-sV</code> — Probes open ports to determine service/version info."},
+        {q:"What is a UDP scan?",a:"<code>-sU</code> — Scans for open UDP ports."},
+        {q:"What is an IP Protocol scan?",a:"<code>-sO</code> — Detects which IP protocols (TCP, UDP, ICMP, etc.) are supported."},
+        {q:"What is an ACK scan?",a:"<code>-sA</code> — Determines if a firewall is stateful or stateless."},
+        {q:"What is a Window scan?",a:"<code>-sW</code> — Uses the TCP window value in RST packets to determine port status."},
+        {q:"What is an FTP Bounce attack?",a:"<code>-b</code> — Uses a proxy FTP server to scan a target through the relay."},
+        {q:"What is a List scan?",a:"<code>-sL</code> — Simple DNS resolution list, does not send any packets to the target."},
+        {q:"What is an Idlescan?",a:"<code>-sI</code> — Zombie-based stealthy port scan."},
+        {q:"How do you disable ping in nmap?",a:"<code>-P0</code> (or <code>-Pn</code> in newer versions) — skips host discovery."},
+        {q:"What is a TCP Ping?",a:"<code>-PT</code> — Uses TCP SYN/ACK to specific ports for host discovery."},
+        {q:"What is a SYN Ping?",a:"<code>-PS</code> — Sends TCP SYN packets for host discovery."},
+        {q:"What are the ICMP ping types in nmap?",a:"<code>-PI</code> — ICMP ping. <code>-PP</code> ICMP Timestamp. <code>-PM</code> ICMP Netmask. <code>-PB</code> combines all ICMP pings."},
+        {q:"How do you specify output formats in nmap?",a:"<code>-oN</code> Normal, <code>-oX</code> XML, <code>-oG</code> Grepable, <code>-oA</code> All outputs."},
+        {q:"What are the nmap timing options?",a:"<code>-T0</code> Paranoid (300s wait), <code>-T1</code> Sneaky (15s wait), <code>-T2</code> Polite (0.4s wait), <code>-T3</code> Normal, <code>-T4</code> Aggressive (300s timeout, 1.25s/probe), <code>-T5</code> Insane (75s timeout, 0.3s/probe)."},
+        {q:"How do you specify ports in nmap?",a:"<code>-p &lt;port ranges&gt;</code> — e.g., <code>-p 1-1000</code> or <code>-p 22,80,443</code>."},
+        {q:"How do you perform OS fingerprinting with randomization in nmap?",a:"<code>nmap --randomize_hosts -O</code> — Randomizes host order and attempts OS detection."}
       ]}
     ]},
     { id:4, title:"Enumeration", slug:"module4", sections:[
