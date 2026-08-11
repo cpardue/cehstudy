@@ -3,38 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 2: Footprinting &amp; Reconnaissance - CEH v13 Study Notes &amp; Flashcards</title>
-    <meta name="description" content="CEH v13 Module 2 study notes: footprinting, footprinting techniques, information gathering, passive vs active reconnaissance, OSINT tools.">
-    <meta name="keywords" content="CEH module 2, footprinting, reconnaissance, OSINT, passive reconnaissance, active reconnaissance, CEH v13 study notes">
-    <meta name="author" content="Chris Pardue"><meta name="robots" content="index, follow">
+    <title>Module 2: Footprinting & Reconnaissance - CEH v13 Study Notes</title>
+    <meta name="description" content="CEH v13 Module 2 study notes: footprinting, OSINT, passive vs active reconnaissance.">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/module2.html">
-    <meta property="og:title" content="CEH v13 Module 2: Footprinting & Reconnaissance"><meta property="og:description" content="Study notes and flashcards for CEH v13 Module 2 covering footprinting techniques."><meta property="og:type" content="article"><meta property="og:url" content="https://cehstudy.com/module2.html">
-    <meta name="twitter:card" content="summary">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOccupationalModule","name":"Footprinting and Reconnaissance","description":"CEH v13 Module 2 covering footprinting techniques, OSINT, passive and active reconnaissance.","educationalCredentialAwarded":"Certified Ethical Hacker (CEH)","partOf":"Certified Ethical Hacker v13","about":{"@type":"Thing","name":"Footprinting and Reconnaissance"},"mainEntity":{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is footprinting?","acceptedAnswer":{"@type":"Answer","text":"The process of gathering information about a remote organization on external systems and networks before the actual hacking."}},{"@type":"Question","name":"What is OSINT?","acceptedAnswer":{"@type":"Answer","text":"Open Source Intelligence - collecting data from publicly available sources."}}]}}</script>
-    <style>*{margin:0;padding:0;box-sizing:border-box}:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d;--green:#3fb950;--orange:#d29922;--red:#f85149}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}.container{max-width:1200px;margin:0 auto;padding:0 20px}header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 0;position:sticky;top:0;z-index:100}.header-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}.back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}.back-link:hover{text-decoration:underline}.progress-box{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text2)}.reviewed-count{color:var(--green);font-weight:600}.main-layout{display:grid;grid-template-columns:1fr 300px;gap:30px;padding:30px 0}@media(max-width:900px){.main-layout{grid-template-columns:1fr}.sidebar{order:-1}}.sidebar{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px;position:sticky;top:80px;max-height:calc(100vh - 100px);overflow-y:auto}.sidebar h3{font-size:.95rem;color:var(--accent);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;font-weight:600}.toggle-list{list-style:none}.toggle-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:.85rem}.toggle-item:last-child{border-bottom:none}.toggle-item.active-module{color:var(--accent);font-weight:600}.toggle-switch{position:relative;width:36px;height:20px;flex-shrink:0;margin-left:8px}.toggle-switch input{opacity:0;width:0;height:0}.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:var(--bg3);border-radius:20px;transition:.2s}.toggle-slider:before{content:"";position:absolute;height:14px;width:14px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.2s}.toggle-switch input:checked+.toggle-slider{background:var(--accent)}.toggle-switch input:checked+.toggle-slider:before{transform:translateX(16px)}.notes-section{padding:30px 0;border-bottom:1px solid var(--border)}.module-title{font-size:2rem;font-weight:700;margin-bottom:8px}.module-desc{color:var(--text2);margin-bottom:24px}.section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}.section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}.section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}.section-block p{color:var(--text2);margin-bottom:12px}.section-block ul,.section-block ol{color:var(--text2);margin:0 0 12px 24px}.section-block li{margin-bottom:6px}.section-block strong{color:var(--text)}.flashcard-section{padding:30px 0}.fc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}.fc-header h2{font-size:1.5rem;font-weight:600}.fc-stats{color:var(--text2);font-size:.9rem}.fc-controls{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}.fc-btn{background:var(--bg3);color:var(--text);border:1px solid var(--border);padding:8px 16px;border-radius:6px;cursor:pointer;font-size:.9rem;transition:all .15s}.fc-btn:hover:not(:disabled){background:var(--accent2);border-color:var(--accent)}.fc-btn:disabled{opacity:.4;cursor:not-allowed}.fc-btn.primary{background:var(--accent2);border-color:var(--accent)}.fc-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:40px 30px;text-align:center;min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;transition:border-color .2s;margin-bottom:20px}.fc-card:hover{border-color:var(--accent)}.fc-question{font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:20px}.fc-answer{font-size:1.1rem;color:var(--green);opacity:0;transition:opacity .3s;padding:16px;background:var(--bg);border-radius:8px;width:100%}.fc-answer.revealed{opacity:1}.fc-hint{color:var(--text2);font-size:.8rem;margin-top:12px}.module-nav{display:flex;justify-content:space-between;padding:30px 0;border-top:1px solid var(--border)}.nav-link{color:var(--accent);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:6px}.nav-link:hover{text-decoration:underline}footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}footer a{color:var(--accent);text-decoration:none}.hidden{display:none}</style>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+        .container{max-width:900px;margin:0 auto;padding:0 20px}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
+        .header-inner{display:flex;justify-content:space-between;align-items:center}
+        .back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}
+        .back-link:hover{text-decoration:underline}
+        .study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px;transition:all .15s}
+        .study-btn:hover{background:var(--accent2);border-color:var(--accent)}
+        main{padding:30px 0}
+        .module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}
+        .section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}
+        .section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+        .section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}
+        .section-block p{color:var(--text2);margin-bottom:12px}
+        .section-block ul,.section-block ol{color:var(--text2);margin:0 0 12px 24px}
+        .section-block li{margin-bottom:6px}
+        .section-block strong{color:var(--text)}
+        footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}
+        footer a{color:var(--accent);text-decoration:none}
+    </style>
 </head>
 <body>
-    <header><div class="container"><div class="header-inner"><a href="index.html" class="back-link">&#8592; CEH Study Notes</a><div class="progress-box">Cards Reviewed: <span class="reviewed-count" id="globalReviewed">0</span></div></div></div></header>
-    <div class="container"><div class="main-layout">
+    <header><div class="container"><div class="header-inner">
+        <a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a>
+        <a href="index.html" class="study-btn">&#127891; Study Flashcards</a>
+    </div></div></header>
+    <div class="container">
         <main>
-            <article class="notes-section">
-                <h1 class="module-title">Module 2: Footprinting &amp; Reconnaissance</h1>
-                <p class="module-desc">Footprinting and reconnaissance is the process of gathering as much information as possible about an organization before initiating cyber attacks.</p>
-                <section class="section-block"><h3>Section 1: Footprinting Fundamentals</h3><h4>What is Footprinting?</h4><p>The process of collecting information about a remote organization on external systems and networks before the actual hacking begins. Also known as <strong>information gathering</strong>.</p><h4>Purpose</h4><ul><li>Discover potential attack vectors</li><li>Identify security weaknesses</li><li>Understand the target's infrastructure</li></ul></section>
-                <section class="section-block"><h3>Section 2: Passive vs Active Reconnaissance</h3><h4>Passive Reconnaissance</h4><p>Gathering information without directly interacting with the target system. <strong>Harder to detect.</strong></p><ul><li>Searching public databases and websites</li><li>Using Google for OSINT</li><li>Checking DNS records publicly</li><li>Social media research</li></ul><h4>Active Reconnaissance</h4><p>Interacting directly with the target system. <strong>Easier to detect.</strong></p><ul><li>Ping sweeps and port scanning</li><li>Network mapping</li><li>Whois lookups against the target</li><li>Vulnerability scanning</li></ul></section>
-                <section class="section-block"><h3>Section 3: OSINT Tools &amp; Sources</h3><h4>OSINT (Open Source Intelligence)</h4><p>Intelligence gathered from publicly available sources that can be used to identify potential targets and attack vectors.</p><h4>OSINT Sources</h4><ul><li>Search engines (Google, Bing, DuckDuckGo)</li><li>Social media platforms</li><li>Public registries (domain WHOIS)</li><li>Government databases</li><li>Company websites and press releases</li><li>Job postings (reveal technology stack)</li></ul><h4>OSINT Tools</h4><ul><li><strong>Google Dorking:</strong> Advanced Google search operators</li><li><strong>TheHarvester:</strong> Emails, subdomains, hosts</li><li><strong>Shodan:</strong> Internet-connected device search</li><li><strong>Censys:</strong> Search engine for internet-hosted objects</li><li><strong>Maltego:</strong> Data mining and graph visualization</li></ul></section>
-                <section class="section-block"><h3>Section 4: DNS Reconnaissance</h3><h4>DNS Record Types</h4><ul><li><strong>A:</strong> IPv4 address</li><li><strong>AAAA:</strong> IPv6 address</li><li><strong>MX:</strong> Mail exchange server</li><li><strong>NS:</strong> Name server</li><li><strong>CNAME:</strong> Canonical name (alias)</li><li><strong>TXT:</strong> Text records (SPF, DKIM)</li><li><strong>SOA:</strong> Start of authority</li><li><strong>CAA:</strong> Certificate Authority Authorization</li></ul><h4>DNS Enumeration Techniques</h4><ul><li>DNS zone transfer (AXFR)</li><li>Reverse DNS lookups</li><li>Finding subdomains</li></ul></section>
-            </article>
-            <section class="flashcard-section" id="flashcards">
-                <div class="fc-header"><h2>Flashcards</h2><div class="fc-stats"><span id="fcCount">0</span> active cards</div></div>
-                <div class="fc-controls"><button class="fc-btn primary" id="prevBtn" onclick="prevCard()" disabled>&#8592; Previous</button><span id="cardPos">0 of 0</span><button class="fc-btn primary" id="nextBtn" onclick="nextCard()">Next &#8594;</button></div>
-                <div class="fc-card" id="fcCard" onclick="revealCard()"><div class="fc-question" id="fcQuestion">Loading...</div><div class="fc-answer hidden" id="fcAnswer"></div><div class="fc-hint" id="fcHint">Click card to reveal answer</div></div>
+            <h1 class="module-title">Module 2: Footprinting &amp; Reconnaissance</h1>
+            
+            <section class="section-block"><h3>Section 1: Footprinting Concepts</h3>
+                <p>Footprinting and reconnaissance is the process of gathering as much information as possible about an organization before initiating cyber attacks.</p>
+                <h4>What is Footprinting?</h4>
+                <p>The process of collecting information about a remote organization on external systems and networks before the actual hacking begins. Also known as <strong>information gathering</strong>.</p>
+                <h4>Purpose</h4>
+                <ul><li>Discover potential attack vectors</li><li>Identify security weaknesses</li><li>Understand the target's infrastructure</li></ul>
             </section>
-            <nav class="module-nav"><a href="module1.html" class="nav-link">&#8592; Module 1: Introduction to Ethical Hacking</a><a href="module3.html" class="nav-link">Module 3: Scanning Networks &#8594;</a></nav>
+
+            <section class="section-block"><h3>Section 2: Passive vs Active Reconnaissance</h3>
+                <p><strong>Passive:</strong> Gathering information without directly interacting with the target system (harder to detect).</p>
+                <p><strong>Active:</strong> Interacting directly with the target system (easier to detect).</p>
+            </section>
+
+            <section class="section-block"><h3>Section 3: OSINT Tools &amp; Sources</h3>
+                <ul><li><strong>Google Dorking:</strong> Advanced Google search operators</li><li><strong>TheHarvester:</strong> Emails, subdomains, hosts</li><li><strong>Shodan:</strong> Internet-connected device search</li><li><strong>Censys:</strong> Search engine for internet-hosted objects</li><li><strong>Maltego:</strong> Data mining and graph visualization</li></ul>
+                <h4>DNS Record Types</h4>
+                <ul><li><strong>A:</strong> IPv4 address | <strong>AAAA:</strong> IPv6 address</li><li><strong>MX:</strong> Mail exchange | <strong>NS:</strong> Name server</li><li><strong>CNAME:</strong> Canonical name (alias)</li><li><strong>TXT:</strong> Text records (SPF, DKIM)</li></ul>
+            </section>
         </main>
-        <aside class="sidebar"><h3>Modules</h3><ul class="toggle-list" id="toggleList"></ul></aside>
-    </div></div>
+    </div>
     <footer><div class="container"><p>Built for the CEH community. Study smart, pass your exam.</p><p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p></div></footer>
-    <script src="data.js"></script><script>var MODULE_INDEX = 1;</script><script src="template.js"></script>
 </body>
 </html>
