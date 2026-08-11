@@ -48,6 +48,10 @@
     menuClose.addEventListener('click', closeMenu);
     menuOverlay.addEventListener('click', closeMenu);
 
+    // --- Wire up chevron buttons ---
+    prevBtn.addEventListener('click', function() { window.prevCard(); this.blur(); });
+    nextBtn.addEventListener('click', function() { window.nextCard(); this.blur(); });
+
     // --- Render Module Toggle List ---
     function renderModuleList() {
         menuList.innerHTML = '';
