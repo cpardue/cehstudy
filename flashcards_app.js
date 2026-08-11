@@ -6,16 +6,16 @@
     if (typeof CEH_DATA === 'undefined') return;
 
     // --- State ---
-    let toggles = JSON.parse(localStorage.getItem('ceh_toggles') || '{}');
+    let toggles = {};
     let reviewedCount = parseInt(localStorage.getItem('ceh_reviewed') || '0');
     let activeCards = [];
     let shuffledPool = [];
     let currentIdx = 0;
     let cycleCount = 0;
 
-    // Initialize default toggles (all ON)
+    // Initialize default toggles (all ON by default)
     CEH_DATA.modules.forEach(m => {
-        if (!(m.id in toggles)) toggles[m.id] = true;
+        toggles[m.id] = true;
     });
 
     // --- DOM Elements ---
@@ -26,6 +26,7 @@
     const menuList = document.getElementById('menuList');
     const fcCard = document.getElementById('fcCard');
     const placeholderCard = document.getElementById('placeholderCard');
+    const fcModuleLabel = document.getElementById('fcModuleLabel');
     const fcTitle = document.getElementById('fcTitle');
     const fcInfo = document.getElementById('fcInfo');
     const fcHint = document.getElementById('fcHint');
@@ -58,22 +59,22 @@
         CEH_DATA.modules.forEach(m => {
             const li = document.createElement('li');
             li.className = 'menu-item';
-            
+
             const label = document.createElement('span');
             label.className = 'menu-item-label';
             label.textContent = m.id + '. ' + m.title;
-            
+
             const toggleWrap = document.createElement('label');
             toggleWrap.className = 'toggle-switch';
-            
+
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.checked = toggles[m.id] || false;
             checkbox.dataset.id = m.id;
-            
+
             const slider = document.createElement('span');
             slider.className = 'toggle-slider';
-            
+
             toggleWrap.appendChild(checkbox);
             toggleWrap.appendChild(slider);
             li.appendChild(label);
@@ -108,7 +109,7 @@
         CEH_DATA.modules.forEach(function(m) {
             if (toggles[m.id]) {
                 const cards = getModuleCards(m);
-                cards.forEach(c => { c.moduleId = m.id; });
+                cards.forEach(c => { c.moduleId = m.id; c.moduleTitle = m.title; });
                 all = all.concat(cards);
             }
         });
@@ -138,10 +139,11 @@
 
         if (!hasCards) {
             placeholderCard.classList.remove('hidden');
+            fcModuleLabel.classList.add('hidden');
             fcTitle.classList.add('hidden');
             fcInfo.classList.add('hidden');
-            fcHint.textContent = activeCards.length === 0 
-                ? 'Click a module toggle to begin' 
+            fcHint.textContent = activeCards.length === 0
+                ? 'Click a module toggle to begin'
                 : 'All selected cards shown! Reshuffling...';
             fcCounter.classList.add('hidden');
             prevBtn.disabled = true;
@@ -151,17 +153,25 @@
 
         placeholderCard.classList.add('hidden');
         const card = shuffledPool[currentIdx];
+
+        // Show module label
+        if (fcModuleLabel) {
+            fcModuleLabel.textContent = 'Module ' + card.moduleId + ': ' + card.moduleTitle;
+            fcModuleLabel.classList.remove('hidden');
+        }
+
+        // Show question (title) and answer
         fcTitle.textContent = card.q;
         fcTitle.classList.remove('hidden');
-        
+
         fcInfo.innerHTML = card.a;
         fcInfo.classList.remove('hidden');
 
         fcCounter.textContent = (currentIdx + 1) + ' of ' + shuffledPool.length + ' (cycle ' + (cycleCount + 1) + ')';
         fcCounter.classList.remove('hidden');
-        
+
         fcHint.textContent = 'Use arrow buttons or swipe to navigate between cards';
-        
+
         prevBtn.disabled = currentIdx === 0;
         nextBtn.disabled = false;
 
@@ -210,11 +220,11 @@
     // --- Swipe Support for Mobile ---
     let touchStartX = 0;
     let touchEndX = 0;
-    
+
     fcCard.addEventListener('touchstart', function(e) {
         touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
-    
+
     fcCard.addEventListener('touchend', function(e) {
         touchEndX = e.changedTouches[0].screenX;
         const diff = touchStartX - touchEndX;
@@ -231,7 +241,7 @@
     renderModuleList();
     rebuildPool();
     updateDisplay();
-    
+
     if (globalReviewed) globalReviewed.textContent = reviewedCount;
 
 })();
