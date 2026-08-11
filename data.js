@@ -107,8 +107,6 @@ const CEH_DATA = {
         {q:"What is Maltego?",a:"Proprietary OSINT tool that provides graphical links for investigative tasks — visualizing relationships between data."},
         {q:"What is Recon-ng?",a:"Open-source CLI framework for open-source web-based reconnaissance."},
         {q:"What is FOCA?",a:"Tool to find metadata and hidden information in documents (PDF, DOC) — identifies which team created them and which servers/clients were used."},
-        {q:"What is Recon-ng (The Recon-ng Framework)?",a:"Open-source CLI tool for open source web-based reconnaissance."},
-        {q:"What is Recon-ng?",a:"Open-source CLI framework for open-source web-based reconnaissance."},
         {q:"What is DMITRY?",a:"DeepMagic Information Gathering Tool — performs WHOIS lookup, Netcraft info retrieval, subdomain/email search, TCP scanning, and banner grabbing."}
       ]},
       { title:"Online Intelligence Services", content:"<h4>Search Engines & Services</h4>", cards:[
@@ -155,8 +153,53 @@ const CEH_DATA = {
       ]}
     ]},
     { id:4, title:"Enumeration", slug:"module4", sections:[
-      { title:"Enumeration Concepts", content:"<p>Enumeration extracts user names, host names, and service information from a system.</p>", cards:[
-        {q:"What is enumeration?",a:"Extracting user accounts, passwords, SMB info, SNMP data, and directory service information from a target system."}
+      { title:"Enumeration Overview", content:"<h4>Enumeration Concepts</h4><p>Actively engaging a system to query it for information — routing tables, users, groups, machine names, network resources — to discover and exploit vulnerabilities.</p>", cards:[
+        {q:"What is enumeration?",a:"Extracting user accounts, passwords, SMB info, SNMP data, and directory service information from a target system."},
+        {q:"What is the difference between footprinting and enumeration?",a:"Footprinting gathers general info passively. Enumeration actively probes the target to extract specific data like usernames, groups, shares, and services."},
+        {q:"What are common ports and services enumerated?",a:"Port 25 (SMTP), 53 (DNS), 135 (RPC), 137 (NetBIOS), 139 (SMB), 161/162 (SNMP), 389 (LDAP), 445 (SMB/TCP), 514 (Syslog), 1433 (MSSQL), 3268 (Global Catalog)."}
+      ]},
+      { title:"Windows Enumeration", content:"<h4>Windows Enumeration Techniques</h4>", cards:[
+        {q:"How do you enumerate all shares in Windows?",a:"<code>net share</code> or <code>net view \\serverName /all</code>."},
+        {q:"What is a null session in Windows enumeration?",a:"An anonymous connection that allows enumeration of machine configuration. E.g., <code>net use \\target\\ipc$ \"\" /user: \"\"</code>."},
+        {q:"How do you enumerate Windows user accounts?",a:"Use email patterns (e.g., tom.john@smith.com → tom.john), try default passwords, or use tools like dumpusers, GetAcct, DumpSec, Hyena."}
+      ]},
+      { title:"Security Identifier (SID)", content:"<h4>Windows SID Format</h4>", cards:[
+        {q:"What is a Security Identifier (SID)?",a:"A unique value assigned by Windows to each security principal (user, group, computer). Format: <code>S-<revision>-<authority>-<subauthorities>-<RID></code>."},
+        {q:"What does the SID <code>S-1-5-21-...-500</code> mean?",a:"S = Security, 1 = revision, 5 = SECURITY_NT_AUTHORITY, 21 = local significance, ... = authority values, 500 = Administrator account."},
+        {q:"What are common Windows RID values?",a:"500 = Administrator, 501 = Guest, 502 = Printer Operator, 512 = Domain Admins, 513 = Domain Users."},
+        {q:"What tools are used for Windows SID enumeration?",a:"<code>user2sid</code>, <code>sid2user</code>, dumpusers, GetAcct, DumpSec, Hyena, PsGetSid."}
+      ]},
+      { title:"NetBIOS Enumeration", content:"<h4>NetBIOS Concepts</h4>", cards:[
+        {q:"What is NetBIOS?",a:"Network Basic Input/Output System — a naming system for Windows machines that allows file/printer sharing using SMB protocol. Easily exploitable, often one of the first scans."},
+        {q:"What information can NetBIOS enumeration reveal?",a:"System name, username, domain, printers, and available shares."},
+        {q:"How do you enumerate NetBIOS names?",a:"<code>nbtstat -a &lt;IP or hostname&gt;</code> shows NetBIOS names. <code>net view &lt;IP&gt;</code> prints available shares."},
+        {q:"What is smb-nat?",a:"NetBIOS Auditing Tool — brute forces usernames and passwords for administrative shares: <code>nbt -o output -u userlist -p passwordlist &lt;ip/range&gt;</code>."}
+      ]},
+      { title:"SNMP Enumeration", content:"<h4>SNMP Concepts</h4>", cards:[
+        {q:"What is SNMP?",a:"Simple Network Management Protocol — used for monitoring and remotely modifying network equipment settings. Uses community strings for authentication."},
+        {q:"What are SNMP community strings?",a:"Read community string = read-only access. Read/write (private) = full configuration access. SNMPv3 encrypts them."},
+        {q:"What is an SNMP manager and agent?",a:"Agent embedded in network devices sends data to manager via port 162. Data messages are called traps."},
+        {q:"What is an Object Identifier (OID)?",a:"A unique identifier for any monitored device. E.g., <code>1.3.6.1.2.1.2.2.1.8</code>."},
+        {q:"What is a Management Information Base (MIB)?",a:"A text file that translates numerical OIDs to word-based names (e.g., <code>SYNOLOGY-SYSTEM-MIB::temperature.0</code>)."},
+        {q:"How do you perform SNMP enumeration?",a:"<code>snmpwalk -c public -v1 &lt;IP&gt;</code> enumerates ports. <code>snmp-check &lt;IP&gt; -v 2c</code> gives routing tables, storage, users."},
+        {q:"What are the SNMP version security differences?",a:"v1/v2: no encryption, only community string (insecure). v3: username + password + encryption."}
+      ]},
+      { title:"LDAP Enumeration", content:"<h4>LDAP Concepts</h4>", cards:[
+        {q:"What is LDAP?",a:"Lightweight Directory Access Protocol — used by on-premises Active Directory. Hierarchical structure: domain > child-domains > OUs > users/groups/computers."},
+        {q:"What information can LDAP enumeration reveal?",a:"Usernames, addresses, servers, and other sensitive info that can be used for brute force or social engineering attacks."},
+        {q:"How do you protect against LDAP enumeration?",a:"Use LDAPS (LDAP over SSL/TLS) or LDAP over STARTTLS, use NTLM/Basic authentication, select usernames different from email addresses."}
+      ]},
+      { title:"NTP Enumeration", content:"<h4>NTP Concepts</h4>", cards:[
+        {q:"What is NTP enumeration?",a:"Querying NTP (Network Time Protocol, UDP 123) for lists of connected hosts, client IPs, system names, operating systems, and internal IP addresses."},
+        {q:"What tools are used for NTP enumeration?",a:"<code>ntptrace</code>, <code>ntpdc</code>, <code>ntpq</code>, nmap, Wireshark, NTPQuery."}
+      ]},
+      { title:"SMTP Enumeration", content:"<h4>SMTP Concepts</h4>", cards:[
+        {q:"What is SMTP enumeration?",a:"Using SMTP (port 25) to validate email addresses — checking if they exist. Secure variants: SMTPS (port 587, TLS), STARTTLS (port 465)."},
+        {q:"What SMTP commands are used for enumeration?",a:"<code>VRFY</code> validates email addresses. <code>EXPN</code> reveals mailing list members. <code>RCPT TO</code> defines recipients."},
+        {q:"What tool is commonly used for SMTP user enumeration?",a:"<code>smtp-user-enum</code> — inspects responses to VRFY, EXPN, and RCPT TO commands. E.g., <code>smtp-user-enum -M &lt;method&gt; -U &lt;userlist&gt; -t &lt;server&gt;</code>."}
+      ]},
+      { title:"Active Directory Brute Force", content:"<h4>AD Enumeration</h4>", cards:[
+        {q:"How do you brute force Active Directory?",a:"1) Find admin user with SID 500: <code>Get-ADUser -Filter * | where {$_.SID -like \"*-500\"}</code>. 2) Brute-force credentials with <code>net use \\computername password /u:user@domain</code>."}
       ]}
     ]},
     { id:5, title:"Vulnerability Analysis", slug:"module5", sections:[
