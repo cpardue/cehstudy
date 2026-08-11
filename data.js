@@ -76,12 +76,51 @@ const CEH_DATA = {
       ]}
     ]},
     { id:2, title:"Footprinting & Reconnaissance", slug:"module2", sections:[
-      { title:"Footprinting Concepts", content:"<p>Footprinting is the process of gathering information about a target organization before launching an attack.</p>", cards:[
+      { title:"Footprinting Overview", content:"<h4>Footprinting Concepts</h4><p>Also known as fingerprinting or reconnaissance. Gathering information about a target system — software, network protocols, operating systems, hardware devices — to find a way to break in.</p>", cards:[
         {q:"What is footprinting?",a:"The process of gathering information about a target organization before launching an attack. It is the first phase of ethical hacking."},
-        {q:"What is the difference between active and passive footprinting?",a:"Passive footprinting gathers info without directly interacting with the target. Active footprinting involves direct interaction."}
+        {q:"What is the difference between passive and active footprinting?",a:"Passive footprinting involves no direct contact with the target (e.g., news, WHOIS databases, social media). Active footprinting involves direct interaction (e.g., nmap scanning, port scanning, DNS queries)."},
+        {q:"What is OSINT?",a:"Open-source intelligence — collection and analysis of information from public/open sources. Unrelated to open-source software."},
+        {q:"What is competitive intelligence in footprinting?",a:"Assessment of strengths and weaknesses of current and potential competitors using tools like Alexa traffic stats, SEC filings, and financial databases."},
+        {q:"What are the four types of footprinting information gathered?",a:"Network info (domains, IPs, DNS), System info (OS, servers, users), Organization info (employees, phone numbers, locations)."},
+        {q:"What are the objectives of footprinting?",a:"Learn security posture, identify focus areas, find vulnerabilities, and map the network."}
       ]},
-      { title:"Search Engine Footprinting", content:"<p>Google dorks are advanced search operators used to find specific information exposed on the web.</p>", cards:[
-        {q:"What are Google Dorks?",a:"Advanced Google search operators: site:, filetype:, inurl:, intitle:, intext:"}
+      { title:"WHOIS & DNS Interrogation", content:"<h4>WHOIS Protocol</h4><p>Query protocol on port 43 for retrieving information about assigned Internet resources.</p>", cards:[
+        {q:"What is WHOIS?",a:"A protocol (port 43) used to retrieve information about domain registration, including owner details, registrar, IP ranges, and dates."},
+        {q:"What is the difference between thick and thin WHOIS?",a:"Thick WHOIS: full registrar info for a set of data. Thin WHOIS: limited info only."},
+        {q:"What is a WHOIS guard?",a:"A proxy between domain owners and WHOIS accessers. Emails are usually still redirected, allowing phishing attempts to identify the real owner."},
+        {q:"What are Regional Internet Registries (RIRs)?",a:"Organizations that manage WHOIS databases by region: ARIN (Americas), AFRINIC (Africa), APNIC (Asia-Pacific), RIPE (Europe), LACNIC (Latin America/Caribbean)."},
+        {q:"What is DNS interrogation?",a:"Collecting information about DNS zone data — server types, locations, key hosts. E.g., <code>host -t a target.com</code>."},
+        {q:"What is a reverse DNS lookup?",a:"Using an IP address to find its domain name. Multiple IPs can map to the same domain or multiple domains to the same IP."},
+        {q:"What are MX records?",a:"Mail exchange records that expose which email service a target uses. Preference numbers determine priority — smallest number = highest priority."}
+      ]},
+      { title:"Search Engine Footprinting", content:"<h4>Google Hacking</h4><p>Using advanced search operators (dorks) to find exposed information.</p>", cards:[
+        {q:"What are Google Dorks?",a:"Advanced Google search operators: site:, filetype:, inurl:, intitle:, intext:, cache:"},
+        {q:"What does the <code>site:</code> dork do?",a:"Limits results to a specified domain. E.g., <code>site:example.com</code>."},
+        {q:"What does the <code>filetype:</code> dork do?",a:"Returns only results of a given file type. E.g., <code>filetype:pdf</code>."},
+        {q:"What does the <code>inurl:</code> dork do?",a:"Returns only pages with the query in its URL."},
+        {q:"What does the <code>intitle:</code> dork do?",a:"Returns only pages with the query in its title."},
+        {q:"What does the <code>cache:</code> dork do?",a:"Shows cached versions of a queried page."},
+        {q:"What are Google logical operators?",a:"<code>OR</code>/<code>|</code> — X or Y. <code>AND</code> — both terms. <code>-</code> — exclude term. <code>*</code> — wildcard. <code>()</code> — group terms."},
+        {q:"What is metagoofil?",a:"Open-source tool that extracts metadata from public documents (PDF, DOC, XLS) found via Google using <code>site:</code> and <code>filetype:</code> dorks."}
+      ]},
+      { title:"Footprinting Tools", content:"<h4>Reconnaissance Tools</h4>", cards:[
+        {q:"What is Maltego?",a:"Proprietary OSINT tool that provides graphical links for investigative tasks — visualizing relationships between data."},
+        {q:"What is Recon-ng?",a:"Open-source CLI framework for open-source web-based reconnaissance."},
+        {q:"What is FOCA?",a:"Tool to find metadata and hidden information in documents (PDF, DOC) — identifies which team created them and which servers/clients were used."},
+        {q:"What is Recon-ng (The Recon-ng Framework)?",a:"Open-source CLI tool for open source web-based reconnaissance."},
+        {q:"What is Recon-ng?",a:"Open-source CLI framework for open-source web-based reconnaissance."},
+        {q:"What is DMITRY?",a:"DeepMagic Information Gathering Tool — performs WHOIS lookup, Netcraft info retrieval, subdomain/email search, TCP scanning, and banner grabbing."}
+      ]},
+      { title:"Online Intelligence Services", content:"<h4>Search Engines & Services</h4>", cards:[
+        {q:"What is Shodan?",a:"Search engine that finds specific types of IoT devices connected to the internet (webcams, routers, servers) with filtering by open ports."},
+        {q:"What is Censys?",a:"Internet asset discovery platform — scans for unknown internet resources and provides details about discovered assets."},
+        {q:"What is Netcraft?",a:"DNS search service that reports HTML5/Flash usage, X-Frame-Options headers, and other web server details."},
+        {q:"What is CrimeFlare?",a:"Helps find real IP addresses behind a CDN (e.g., CloudFlare) by looking at past DNS records."},
+        {q:"What are IoT search engines used for in footprinting?",a:"Finding manufacturer details, geographical location, IP address, hostname, and open ports of IoT devices. Examples: Shodan, Censys, Thingful."}
+      ]},
+      { title:"Footprinting Countermeasures", content:"<h4>Defensive Strategies</h4>", cards:[
+        {q:"What are common footprinting countermeasures?",a:"Enforce security policies, educate employees, encrypt sensitive info, disable unnecessary protocols, properly configure services, limit public information release, use Whois Guard, restrict site caching via robots.txt."},
+        {q:"How does robots.txt help against footprinting?",a:"It informs search engine crawlers what pages should NOT be indexed. E.g., <code>User-agent: * Disallow: /</code> blocks all indexing."}
       ]}
     ]},
     { id:3, title:"Scanning Networks", slug:"module3", sections:[
