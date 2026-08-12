@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEH v13 Practice Questions — Free Study Questions | CEHStudy</title>
+  <meta name="description" content="Free CEH v13 practice questions covering footprinting, scanning, exploitation, and more. Original study questions to complement your CEH exam preparation.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/ceh-practice-questions/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "CEH v13 Practice Questions — Free Study Questions",
+    "description": "Original practice questions for CEH v13 exam preparation, organized by topic and module.",
+    "author": {
+      "@type": "Organization",
+      "name": "CEHStudy"
+    },
+    "datePublished": "2026-08-12",
+    "dateModified": "2026-08-12",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/ceh-practice-questions/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CEHStudy",
+    "url": "/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Practice Questions",
+        "item": "/ceh-practice-questions/"
+      }
+    ]
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      line-height: 1.7;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { color: #79b8ff; text-decoration: underline; }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+    header {
+      background: #161b22;
+      border-bottom: 1px solid #30363d;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.3em; font-weight: bold; color: #f0f6fc; }
+    .logo a { color: #f0f6fc; text-decoration: none; }
+    nav a { color: #8b949e; margin-left: 20px; font-size: 0.95em; }
+    nav a:hover { color: #58a6ff; }
+    h1 { color: #f0f6fc; margin: 30px 0 15px; font-size: 2em; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+    h2 { color: #f0f6fc; margin: 35px 0 15px; font-size: 1.5em; }
+    h3 { color: #c9d1d9; margin: 25px 0 10px; font-size: 1.2em; }
+    p { margin-bottom: 15px; }
+    ul, ol { margin: 10px 0 20px 30px; }
+    li { margin-bottom: 8px; }
+    .breadcrumb { color: #8b949e; font-size: 0.9em; margin-bottom: 15px; }
+    .breadcrumb a { color: #8b949e; }
+    .disclaimer-box {
+      background: #2a1f0d;
+      border-left: 4px solid #d29922;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .disclaimer-box strong { color: #f0883e; }
+    .question-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .question-card h3 { color: #58a6ff; margin-top: 0; font-size: 1.05em; }
+    .options { margin: 12px 0; }
+    .options label { display: block; padding: 8px 12px; margin: 4px 0; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .options label:hover { background: #1c2333; }
+    .options input[type="radio"] { margin-right: 10px; }
+    .explanation {
+      background: #1a2332;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 12px;
+      display: none;
+    }
+    .explanation.show { display: block; }
+    .explanation strong { color: #3fb950; }
+    .btn {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.95em;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn-primary { background: #238636; color: #fff; }
+    .btn-primary:hover { background: #2ea043; color: #fff; }
+    .btn-secondary { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; }
+    .btn-secondary:hover { background: #30363d; }
+    .category-header {
+      background: #161b22;
+      padding: 12px 20px;
+      border-left: 4px solid #58a6ff;
+      margin: 30px 0 15px;
+      border-radius: 0 8px 8px 0;
+    }
+    .category-header h2 { margin: 0; color: #f0f6fc; font-size: 1.3em; }
+    .progress-bar {
+      background: #21262d;
+      border-radius: 10px;
+      height: 8px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, #238636, #2ea043);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s;
+      border-radius: 10px;
+    }
+    .score-display {
+      text-align: center;
+      font-size: 1.2em;
+      padding: 15px;
+      color: #f0f6fc;
+      display: none;
+    }
+    footer {
+      background: #161b22;
+      border-top: 1px solid #30363d;
+      padding: 30px 0;
+      margin-top: 50px;
+      text-align: center;
+      color: #8b949e;
+      font-size: 0.9em;
+    }
+    footer a { color: #8b949e; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 15px; }
+    @media (max-width: 600px) {
+      .header-inner { flex-direction: column; gap: 10px; }
+      nav a { margin-left: 10px; font-size: 0.85em; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo"><a href="/">CEHStudy</a></div>
+    <nav>
+      <a href="/ceh-v13/">Modules</a>
+      <a href="/ceh-v13-study-guide/">Study Guide</a>
+      <a href="/ceh-practice-questions/">Practice Questions</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="breadcrumb"><a href="/">Home</a> &raquo; Practice Questions</p>
+
+  <h1>CEH v13 Practice Questions — Free Study Questions</h1>
+
+  <div class="disclaimer-box">
+    <strong>⚠️ Important Disclaimer:</strong> These practice questions are <strong>original study material</strong> created by CEHStudy for educational purposes. They are NOT EC-Council exam questions and do NOT replicate the actual exam. Any resemblance to real exam questions is coincidental. CEHStudy is not affiliated with or endorsed by EC-Council.
+  </div>
+
+  <p>Test your knowledge with these original practice questions organized by CEH v13 domain. Each question includes a detailed explanation to reinforce your understanding.</p>
+
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <p style="text-align:center; color:#8b949e; font-size:0.9em;" id="progressText">0 of 15 questions answered</p>
+
+  <!-- Category 1: Footprinting -->
+  <div class="category-header"><h2>Footprinting and Reconnaissance</h2></div>
+
+  <div class="question-card" data-correct="b">
+    <h3>Question 1: Which of the following is the MOST passive method of gathering information about a target organization?</h3>
+    <div class="options">
+      <label><input type="radio" name="q1" value="a"> A) Running Nmap against the target's IP range</label>
+      <label><input type="radio" name="q1" value="b"> B) Searching the organization's public website and social media</label>
+      <label><input type="radio" name="q1" value="c"> C) Sending phishing emails to employees</label>
+      <label><input type="radio" name="q1" value="d"> D) Conducting a ping sweep of the network</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: B</strong> — Searching public websites and social media is purely passive because no direct interaction with the target's systems occurs. Options A, C, and D all involve active engagement with the target's infrastructure or personnel.</div>
+  </div>
+
+  <div class="question-card" data-correct="c">
+    <h3>Question 2: Which command would you use to query a domain's DNS records using the DIG tool?</h3>
+    <div class="options">
+      <label><input type="radio" name="q2" value="a"> A) dig -type=any target.com</label>
+      <label><input type="radio" name="q2" value="b"> B) nslookup target.com</label>
+      <label><input type="radio" name="q2" value="c"> C) dig target.com MX</label>
+      <label><input type="radio" name="q2" value="d"> D) whois target.com</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: C</strong> — The DIG command with "target.com MX" queries Mail Exchange records for the domain. Option A uses incorrect syntax (should be "dig target.com any"), B is NSLOOKUP not DIG, and D queries WHOIS database not DNS records.</div>
+  </div>
+
+  <div class="question-card" data-correct="a">
+    <h3>Question 3: What type of footprinting tool harvests email addresses, subdomains, and IP addresses from over 200 free sources including search engines, web caches, and databases?</h3>
+    <div class="options">
+      <label><input type="radio" name="q3" value="a"> A) TheHarvester</label>
+      <label><input type="radio" name="q3" value="b"> B) Maltego</label>
+      <label><input type="radio" name="q3" value="c"> C) Shodan</label>
+      <label><input type="radio" name="q3" value="d"> D) Google Hacking Database</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: A</strong> — TheHarvester specifically aggregates data from 200+ free sources including search engines, SSL certificates, virtual hosts, and web crawlers. Maltego uses visual link analysis, Shodan is an IoT search engine, and GHDB searches Google's index.</div>
+  </div>
+
+  <!-- Category 2: Scanning -->
+  <div class="category-header"><h2>Scanning Vulnerabilities</h2></div>
+
+  <div class="question-card" data-correct="b">
+    <h3>Question 4: In a TCP SYN stealth scan (-sS in Nmap), what does the target port send back in response to a SYN packet from the scanner?</h3>
+    <div class="options">
+      <label><input type="radio" name="q4" value="a"> A) ACK</label>
+      <label><input type="radio" name="q4" value="b"> B) SYN-ACK (if open) or RST (if closed)</label>
+      <label><input type="radio" name="q4" value="c"> C) FIN</label>
+      <label><input type="radio" name="q4" value="d"> D) RST-ACK</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: B</strong> — In a SYN scan, an open port responds with SYN-ACK (the scanner then sends RST to tear down the connection), while a closed port responds with RST. This is why it's called "stealth" — the full TCP handshake is never completed.</div>
+  </div>
+
+  <div class="question-card" data-correct="d">
+    <h3>Question 5: Which Nmap scan type sends FIN packets without any flags set to detect how a target port responds?</h3>
+    <div class="options">
+      <label><input type="radio" name="q5" value="a"> A) -sU (UDP scan)</label>
+      <label><input type="radio" name="q5" value="b"> B) -sA (ACK scan)</label>
+      <label><input type="radio" name="q5" value="c"> C) -sY (SCANSNAK scan)</label>
+      <label><input type="radio" name="q5" value="d"> D) -sF (FIN scan)</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: D</strong> — The FIN scan (-sF) sends TCP packets with only the FIN flag set. According to RFC 793, closed ports should respond with RST, while open ports ignore the packet (no response). This can bypass some firewall rules.</div>
+  </div>
+
+  <div class="question-card" data-correct="c">
+    <h3>Question 6: What does an Nmap OS detection (-O) flag primarily analyze to identify the target operating system?</h3>
+    <div class="options">
+      <label><input type="radio" name="q6" value="a"> A) Open port numbers and service versions</label>
+      <label><input type="radio" name="q6" value="b"> B) Response time and packet loss rates</label>
+      <label><input type="radio" name="q6" value="c"> C) TCP/IP stack fingerprinting (ICMP responses, TCP ISN, window size)</label>
+      <label><input type="radio" name="q6" value="d"> D) Banner grabbing of running services</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: C</strong> — OS detection works by analyzing TCP/IP stack fingerprinting characteristics including ICMP response types, TCP Initial Sequence Number (ISN) generation, TCP window size, and other low-level protocol behaviors unique to each OS.</div>
+  </div>
+
+  <!-- Category 3: System Hacking -->
+  <div class="category-header"><h2>System Hacking</h2></div>
+
+  <div class="question-card" data-correct="b">
+    <h3>Question 7: Which technique involves adding malicious code to a legitimate program or system binary to maintain persistent access?</h3>
+    <div class="options">
+      <label><input type="radio" name="q7" value="a"> A) Rootkit installation</label>
+      <label><input type="radio" name="q7" value="b"> B) Binary patching</label>
+      <label><input type="radio" name="q7" value="c"> C) Password spraying</label>
+      <label><input type="radio" name="q7" value="d"> D) DNS tunneling</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: B</strong> — Binary patching modifies the code of legitimate binaries to include backdoors. Rootkits hide the existence of malicious processes, password spraying is a credential attack, and DNS tunneling is a data exfiltration method.</div>
+  </div>
+
+  <div class="question-card" data-correct="a">
+    <h3>Question 8: What is the PRIMARY purpose of a rootkit on a compromised system?</h3>
+    <div class="options">
+      <label><input type="radio" name="q8" value="a"> A) To hide the presence of other malware or unauthorized access</label>
+      <label><input type="radio" name="q8" value="b"> B) To encrypt files and demand ransom payment</label>
+      <label><input type="radio" name="q8" value="c"> C) To send spam emails from the compromised machine</label>
+      <label><input type="radio" name="q8" value="d"> D) To slow down system performance as a denial of service</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: A</strong> — Rootkits are specifically designed to conceal the presence of malware, backdoors, and unauthorized processes by hooking system calls and hiding files/processes/network connections from standard detection tools.</div>
+  </div>
+
+  <div class="question-card" data-correct="c">
+    <h3>Question 9: Which password attack tries common passwords against a single user account before moving to the next user?</h3>
+    <div class="options">
+      <label><input type="radio" name="q9" value="a"> A) Brute force attack</label>
+      <label><input type="radio" name="q9" value="b"> B) Dictionary attack</label>
+      <label><input type="radio" name="q9" value="c"> C) Password spraying</label>
+      <label><input type="radio" name="q9" value="d"> D) Rainbow table attack</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: C</strong> — Password spraying uses a single common password (like "Password123!") against many user accounts. This avoids account lockouts that would occur with a dictionary attack against a single account.</div>
+  </div>
+
+  <!-- Category 4: Malware -->
+  <div class="category-header"><h2>Malware</h2></div>
+
+  <div class="question-card" data-correct="b">
+    <h3>Question 10: What type of malware encrypts the victim's files and demands payment for the decryption key?</h3>
+    <div class="options">
+      <label><input type="radio" name="q10" value="a"> A) Spyware</label>
+      <label><input type="radio" name="q10" value="b"> B) Ransomware</label>
+      <label><input type="radio" name="q10" value="c"> C) Worm</label>
+      <label><input type="radio" name="q10" value="d"> D) Logic bomb</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: B</strong> — Ransomware encrypts files on the victim's system and demands payment (often in cryptocurrency) for the decryption key. Popular variants include LockBit, REvil, and BlackCat.</div>
+  </div>
+
+  <div class="question-card" data-correct="d">
+    <h3>Question 11: Which malware analysis technique involves running the malicious program in an isolated environment while observing its behavior?</h3>
+    <div class="options">
+      <label><input type="radio" name="q11" value="a"> A) Static analysis</label>
+      <label><input type="radio" name="q11" value="b"> B) Signature-based detection</label>
+      <label><input type="radio" name="q11" value="c"> C) Hash matching</label>
+      <label><input type="radio" name="q11" value="d"> D) Dynamic analysis</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: D</strong> — Dynamic analysis runs malware in a sandboxed/isolated environment to observe its actual behavior (file changes, network connections, registry modifications). Static analysis examines code without executing it.</div>
+  </div>
+
+  <!-- Category 5: Social Engineering -->
+  <div class="category-header"><h2>Social Engineering</h2></div>
+
+  <div class="question-card" data-correct="a">
+    <h3>Question 12: An attacker calls an employee pretending to be from IT support, asking for their password to "verify their identity." What type of social engineering attack is this?</h3>
+    <div class="options">
+      <label><input type="radio" name="q12" value="a"> A) Vishing (voice phishing)</label>
+      <label><input type="radio" name="q12" value="b"> B) Phishing</label>
+      <label><input type="radio" name="q12" value="c"> C) Smishing</label>
+      <label><input type="radio" name="q12" value="d"> D) Tailgating</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: A</strong> — Vishing is voice-based phishing conducted over the phone. Regular phishing uses email, smishing uses SMS/text messages, and tailgating is a physical security attack where someone follows an authorized person into a restricted area.</div>
+  </div>
+
+  <div class="question-card" data-correct="c">
+    <h3>Question 13: What is the term for a pretext where an attacker creates a fabricated scenario to manipulate a target into divulging information?</h3>
+    <div class="options">
+      <label><input type="radio" name="q13" value="a"> A) Baiting</label>
+      <label><input type="radio" name="q13" value="b"> B) Quid pro quo</label>
+      <label><input type="radio" name="q13" value="c"> C) Pretexting</label>
+      <label><input type="radio" name="q13" value="d"> D) Pharming</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: C</strong> — Pretexting involves creating an elaborate false story/scenario (e.g., pretending to be from HR, IT, or a vendor). Baiting offers something tempting (free USB drive), quid pro quo offers a service in exchange for info, and pharming redirects DNS to malicious sites.</div>
+  </div>
+
+  <!-- Category 6: Web Application Attacks -->
+  <div class="category-header"><h2>Web Application Attacks</h2></div>
+
+  <div class="question-card" data-correct="b">
+    <h3>Question 14: Which SQL injection technique determines if a vulnerability exists by sending a TRUE or FALSE condition and observing different responses?</h3>
+    <div class="options">
+      <label><input type="radio" name="q14" value="a"> A) Union-based injection</label>
+      <label><input type="radio" name="q14" value="b"> B) Boolean-based blind injection</label>
+      <label><input type="radio" name="q14" value="c"> C) Time-based blind injection</label>
+      <label><input type="radio" name="q14" value="d"> D) Error-based injection</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: B</strong> — Boolean-based blind SQL injection sends TRUE/FALSE conditions (e.g., "OR 1=1") and infers data from differences in page responses. Time-based uses delays (SLEEP()), union-based combines results with UNION SELECT, and error-based forces database errors to reveal data.</div>
+  </div>
+
+  <div class="question-card" data-correct="a">
+    <h3>Question 15: What type of XSS attack stores the malicious script on the target server's database and executes it when other users view the affected page?</h3>
+    <div class="options">
+      <label><input type="radio" name="q15" value="a"> A) Stored (Persistent) XSS</label>
+      <label><input type="radio" name="q15" value="b"> B) Reflected (Non-persistent) XSS</label>
+      <label><input type="radio" name="q15" value="c"> C) DOM-based XSS</label>
+      <label><input type="radio" name="q15" value="d"> D) Server-side XSS</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong>Answer: A</strong> — Stored XSS persists on the server (e.g., in a comment field or user profile) and affects all visitors. Reflected XSS requires the victim to click a malicious link. DOM-based XSS manipulates the browser-side JavaScript without server interaction.</div>
+  </div>
+
+  <div class="score-display" id="scoreDisplay"></div>
+
+  <div style="text-align:center; margin:30px 0;">
+    <button class="btn btn-primary" onclick="showScore()" style="font-size:1.1em; padding:12px 30px;">Show My Score</button>
+  </div>
+
+  <h2>How to Use These Practice Questions</h2>
+
+  <ol>
+    <li><strong>Read each question carefully</strong> — CEH exams test your ability to analyze scenarios, not just recall facts</li>
+    <li><strong>Select your answer</strong> — Click a radio button for the option you believe is correct</li>
+    <li><strong>Check your answer</strong> — Click "Check Answer" to see the correct answer and detailed explanation</li>
+    <li><strong>Study the explanations</strong> — Understanding WHY an answer is correct is more important than getting the right answer</li>
+    <li><strong>Track your score</strong> — Click "Show My Score" at the bottom to see your overall performance</li>
+  </ol>
+
+  <div style="background:#1a2332; border-left:4px solid #58a6ff; padding:15px 20px; margin:25px 0; border-radius:0 8px 8px 0;">
+    <h3 style="color:#58a6ff; margin-top:0;">📌 Study Tip</h3>
+    <p>After completing these questions, review the relevant flashcard modules for any topics where you struggled. Our flashcards cover all 19 CEH v13 modules in detail.</p>
+    <p style="margin-bottom:0;"><a href="/?module=1"><strong>Start studying with flashcards →</strong></a></p>
+  </div>
+
+  <h2>More Practice Resources</h2>
+
+  <ul>
+    <li><strong>Flashcard Modules:</strong> <a href="/ceh-v13/">Browse all 19 CEH v13 flashcard modules →</a></li>
+    <li><strong>Study Guide:</strong> <a href="/ceh-v13-study-guide/">Complete CEH v13 study guide with exam overview and schedule →</a></li>
+    <li><strong>Glossary:</strong> <a href="/glossary/">CEH cybersecurity glossary with key terms and definitions →</a></li>
+  </ul>
+
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="/">Flashcards</a>
+      <a href="/ceh-v13/">CEH v13 Modules</a>
+      <a href="/ceh-v13-study-guide/">Study Guide</a>
+      <a href="/ceh-practice-questions/">Practice Questions</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <a href="/disclaimer/">Disclaimer</a>
+    </div>
+    <p>CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
+  </div>
+</footer>
+
+<script>
+function checkAnswer(btn) {
+  const card = btn.closest('.question-card');
+  const selected = card.querySelector('input[type="radio"]:checked');
+  if (!selected) { alert('Please select an answer first.'); return; }
+  const correct = card.getAttribute('data-correct');
+  const explanation = card.querySelector('.explanation');
+  if (selected.value === correct) {
+    explanation.innerHTML = '<strong>✅ Correct!</strong> ' + explanation.textContent.replace(/^Answer: ./, '');
+  } else {
+    explanation.innerHTML = '<strong>❌ Incorrect.</strong> The correct answer is <strong>' + correct.toUpperCase() + '.</strong> ' + explanation.textContent.match(/\b— (.+)$/m)?.[1] || '';
+  }
+  explanation.classList.add('show');
+  btn.style.display = 'none';
+  updateProgress();
+}
+
+function showScore() {
+  const cards = document.querySelectorAll('.question-card');
+  let answered = 0, correct = 0;
+  cards.forEach(card => {
+    const selected = card.querySelector('input[type="radio"]:checked');
+    if (selected) {
+      answered++;
+      if (selected.value === card.getAttribute('data-correct')) correct++;
+    }
+  });
+  const display = document.getElementById('scoreDisplay');
+  display.style.display = 'block';
+  display.innerHTML = '<strong>Your Score: ' + correct + '/' + answered + '</strong> (' + (answered > 0 ? Math.round(correct/answered*100) : 0) + '%)';
+  display.scrollIntoView({ behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const cards = document.querySelectorAll('.question-card');
+  let answered = 0;
+  cards.forEach(card => { if (card.querySelector('input[type="radio"]:checked')) answered++; });
+  const pct = Math.round(answered/cards.length*100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = answered + ' of ' + cards.length + ' questions answered';
+}
+</script>
+
+</body>
+</html>
