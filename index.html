@@ -3,10 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Study Flashcards - Free Interactive Practice Tests</title>
-    <meta name="description" content="Interactive flashcard study tool for Certified Ethical Hacker v13 exam. Toggle modules, shuffle cards, track progress.">
+    <title>CEH v13 Study Flashcards — Free CEH Exam Prep | CEHStudy</title>
+    <meta name="description" content="Study for the CEH v13 exam with free interactive flashcards covering Certified Ethical Hacker topics and exam concepts. All 20 modules, anytime, anywhere.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CEHStudy",
+        "url": "https://cehstudy.com/",
+        "description": "Free CEH v13 study flashcards and exam preparation resources.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://cehstudy.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Study Flashcards — Free Interactive Practice Tests",
+        "description": "Interactive flashcard study tool for Certified Ethical Hacker v13 exam. Toggle modules, shuffle cards, track progress.",
+        "url": "https://cehstudy.com/",
+        "about": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Certified Ethical Hacker (CEH) v13"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is CEHStudy free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. CEHStudy is completely free, anytime, anywhere. No signup required."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is CEH / CEH v13?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH (Certified Ethical Hacker) v13 is the latest version of EC-Council's Certified Ethical Hacker certification, covering ethical hacking techniques across 20 domains including footprinting, scanning, vulnerability analysis, system hacking, and cloud security."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are these official EC-Council materials?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. CEHStudy is an independent study resource and is not affiliated with, endorsed by, or sponsored by EC-Council."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are these real CEH exam questions?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. These are original study flashcards created to help you prepare for the CEH v13 exam. They cover the same topics and concepts but are not actual exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How should I study for CEH?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use these flashcards to review key concepts across all 20 CEH v13 modules. Start with modules you're less familiar with, use the shuffle feature for randomized review, and revisit cards until you can answer confidently."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many CEH modules are there?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 covers 20 modules including Introduction to Ethical Hacking, Footprinting & Reconnaissance, Scanning Networks, Enumeration, Vulnerability Analysis, System Hacking, Malware Threats, Sniffing, Social Engineering, Denial-of-Service, Session Hijacking, and more."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use these flashcards on mobile?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. CEHStudy is fully responsive and works on desktop, tablet, and mobile devices. Swipe to navigate cards on touch devices."
+                }
+            }
+        ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -137,6 +231,114 @@
             z-index:500;
             width:0%
         }
+
+        /* SEO Content Sections */
+        .seo-content{
+            max-width:800px;
+            margin:0 auto;
+            padding:40px 20px;
+        }
+        .seo-content h1{
+            font-size:1.6rem;
+            font-weight:700;
+            color:var(--text);
+            margin-bottom:16px;
+            text-align:center;
+        }
+        .seo-content h2{
+            font-size:1.25rem;
+            font-weight:600;
+            color:var(--accent);
+            margin-top:36px;
+            margin-bottom:12px;
+        }
+        .seo-content p{
+            color:var(--text);
+            margin-bottom:14px;
+            font-size:0.92rem;
+        }
+        .seo-content ul{
+            list-style:none;
+            padding-left:0;
+            margin-bottom:14px;
+        }
+        .seo-content ul li{
+            padding:6px 0 6px 20px;
+            position:relative;
+            font-size:0.92rem;
+        }
+        .seo-content ul li::before{
+            content:"\u25b8";
+            position:absolute;
+            left:0;
+            color:var(--accent);
+        }
+        .seo-content a{
+            color:var(--accent);
+            text-decoration:none;
+        }
+        .seo-content a:hover{
+            text-decoration:underline;
+        }
+        .module-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+            gap:10px;
+            margin:16px 0;
+        }
+        .module-link{
+            display:block;
+            padding:10px 14px;
+            background:var(--bg2);
+            border:1px solid var(--border);
+            border-radius:6px;
+            color:var(--text);
+            font-size:0.85rem;
+            text-decoration:none;
+            transition:border-color .15s,background .15s;
+        }
+        .module-link:hover{
+            border-color:var(--accent);
+            background:var(--bg3);
+            text-decoration:none;
+        }
+        .disclaimer-box{
+            background:var(--bg2);
+            border:1px solid var(--border);
+            border-radius:6px;
+            padding:16px 20px;
+            margin:20px 0;
+            font-size:0.85rem;
+            color:var(--text2);
+        }
+
+        /* Footer Nav */
+        .site-footer{
+            border-top:1px solid var(--border);
+            padding:24px 20px;
+            text-align:center;
+        }
+        .footer-nav{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:8px 20px;
+            margin-bottom:12px;
+        }
+        .footer-nav a{
+            color:var(--text2);
+            text-decoration:none;
+            font-size:0.82rem;
+        }
+        .footer-nav a:hover{
+            color:var(--accent);
+            text-decoration:underline;
+        }
+        .footer-copy{
+            color:var(--text2);
+            font-size:0.78rem;
+        }
+
         @media(max-width:600px){
             .fc-card{padding:30px 24px;margin:0 50px;min-height:220px}
             .fc-title{font-size:1.15rem}
@@ -147,22 +349,30 @@
                 font-size:1.6rem
             }
             .header-row{gap:12px}
+            .seo-content{padding:24px 16px}
+            .module-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
     <header><div class="container"><div class="header-inner">
         <div class="header-row">
             <button class="select-modules-btn" id="hamburgerBtn" aria-label="Open menu">Select Modules</button>
-            <a href="index.html" class="logo">CEH Study Flashcards</a>
+            <a href="/" class="logo">CEHStudy</a>
         </div>
     </div></div></header>
+
+    <!-- Module Selection Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <nav class="slide-menu" id="slideMenu">
         <div class="menu-header"><h3>Select Modules</h3><button class="menu-close" id="menuClose" aria-label="Close menu">&times;</button></div>
         <ul class="menu-list" id="menuList"></ul>
     </nav>
+
+    <!-- Flashcard App -->
     <div class="flashcard-area">
         <div class="reviewed-badge"><span class="reviewed-label" id="reviewedLabel">Reviewed</span>: <span class="reviewed-count" id="globalReviewed">0</span><span id="flameEmoji">&#128293;</span></div>
         <div class="chevron-nav">
@@ -184,10 +394,82 @@
         <div class="fc-hint" id="fcHint">Toggle on modules to begin</div>
         <div class="fc-counter hidden" id="fcCounter"></div>
     </div>
-    <footer><div class="container">
-        <p>ALWAYS FREE, ANYTIME, ANYWHERE. Pass the CEH ANSI then brag about it on r/CEH!</p>
-        <p style="margin-top:4px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
-    </div></footer>
+
+    <!-- SEO Content Section -->
+    <section class="seo-content" aria-label="About CEHStudy">
+        <h1>CEH v13 Study Flashcards</h1>
+        <p>Free interactive flashcards to help you prepare for the Certified Ethical Hacker v13 exam. Study key concepts, terminology, and techniques across all 20 CEH modules.</p>
+
+        <h2>Free CEH v13 Flashcards</h2>
+        <p>CEHStudy provides interactive flashcards organized by exam module. Select the modules you want to review and work through randomized cards with no repeats. The app tracks your progress and reshuffles when you complete a set so you can keep practicing.</p>
+
+        <h2>CEH v13 Exam Topics Covered</h2>
+        <div class="module-grid">
+            <a href="/ceh-v13/module-01/" class="module-link">Module 1: Introduction to Ethical Hacking</a>
+            <a href="/ceh-v13/module-02/" class="module-link">Module 2: Footprinting & Reconnaissance</a>
+            <a href="/ceh-v13/module-03/" class="module-link">Module 3: Scanning Networks</a>
+            <a href="/ceh-v13/module-04/" class="module-link">Module 4: Enumeration</a>
+            <a href="/ceh-v13/module-05/" class="module-link">Module 5: Vulnerability Analysis</a>
+            <a href="/ceh-v13/module-06/" class="module-link">Module 6: System Hacking</a>
+            <a href="/ceh-v13/module-07/" class="module-link">Module 7: Malware Threats</a>
+            <a href="/ceh-v13/module-08/" class="module-link">Module 8: Sniffing</a>
+            <a href="/ceh-v13/module-09/" class="module-link">Module 9: Social Engineering</a>
+            <a href="/ceh-v13/module-10/" class="module-link">Module 10: Denial-of-Service</a>
+            <a href="/ceh-v13/module-11/" class="module-link">Module 11: Session Hijacking</a>
+            <a href="/ceh-v13/module-12/" class="module-link">Module 12: Evading IDS, Firewalls & Honeypots</a>
+            <a href="/ceh-v13/module-13/" class="module-link">Module 13: Hacking Web Servers</a>
+            <a href="/ceh-v13/module-14/" class="module-link">Module 14: Hacking Web Applications</a>
+            <a href="/ceh-v13/module-15/" class="module-link">Module 15: SQL Injection</a>
+            <a href="/ceh-v13/module-16/" class="module-link">Module 16: Hacking Wireless Networks</a>
+            <a href="/ceh-v13/module-17/" class="module-link">Module 17: Hacking Mobile Platforms</a>
+            <a href="/ceh-v13/module-18/" class="module-link">Module 18: IoT & OT Hacking</a>
+            <a href="/ceh-v13/module-19/" class="module-link">Module 19: Cloud Computing</a>
+            <a href="/ceh-v13/module-20/" class="module-link">Module 20: Cryptography</a>
+        </div>
+
+        <h2>How to Study for the CEH Exam</h2>
+        <ul>
+            <li>Start by reviewing all 20 modules to identify your weak areas</li>
+            <li>Toggle only the modules you need to study, then shuffle and practice</li>
+            <li>Use arrow keys on desktop or swipe on mobile for quick navigation</li>
+            <li>Revisit modules until you can answer every card confidently</li>
+            <li>The app reshuffles automatically so you never see the same order twice</li>
+            <li>Combine flashcard review with hands-on labs and official study materials</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <ul>
+            <li><strong>Is CEHStudy free?</strong> &mdash; Yes. Completely free, anytime, anywhere. No signup required.</li>
+            <li><strong>What is CEH / CEH v13?</strong> &mdash; Certified Ethical Hacker v13 is EC-Council's latest certification covering 20 domains of ethical hacking.</li>
+            <li><strong>Are these official EC-Council materials?</strong> &mdash; No. CEHStudy is an independent resource not affiliated with EC-Council.</li>
+            <li><strong>Are these real CEH exam questions?</strong> &mdash; No. These are original study flashcards covering the same topics and concepts.</li>
+            <li><strong>How should I study for CEH?</strong> &mdash; Use these flashcards across all modules, revisit weak areas, and supplement with hands-on practice.</li>
+            <li><strong>How many CEH modules are there?</strong> &mdash; CEH v13 covers 20 modules from Introduction to Ethical Hacking through Cryptography.</li>
+            <li><strong>Can I use these flashcards on mobile?</strong> &mdash; Yes. The site is fully responsive with swipe navigation on touch devices.</li>
+        </ul>
+
+        <div class="disclaimer-box">
+            <strong>EC-Council Disclaimer:</strong> CEHStudy is an independent study resource and is not affiliated with, endorsed by, or sponsored by EC-Council. CEH is a trademark of EC-Council. All exam content on this site is original material created for educational purposes only.
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Flashcard App Scripts -->
     <script src="data.js"></script>
     <script src="flashcards_app.js"></script>
 </body>
