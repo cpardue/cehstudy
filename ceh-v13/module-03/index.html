@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 3: Scanning Networks — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 3 flashcards: nmap scanning techniques (SYN, connect, FIN, Xmas), port scanning, vulnerability scanning, banner grabbing, and IDS evasion. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-03/">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 3: Scanning Networks — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 3 covering network scanning, nmap techniques, port scanning, vulnerability scanning, and IDS evasion.",
+        "url": "https://cehstudy.com/ceh-v13/module-03/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 3: Scanning Networks", "item": "https://cehstudy.com/ceh-v13/module-03/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "Scanning Networks",
+            "termCode": "CEH-M03",
+            "description": "Network scanning techniques including TCP SYN, connect, FIN, Xmas scans, nmap options, vulnerability scanning, banner grabbing, and IDS/firewall evasion."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#151515;--bg2:#1e1e1e;--bg3:#2c2c2c;--text:#d1d0c5;--text2:#646669;--accent:#39ff88;--border:#2c2c2c}
+        body{font-family:'JetBrains Mono','Fira Code',Consolas,monospace;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
+        header a{color:var(--accent);text-decoration:none;font-size:.9rem}
+        header a:hover{text-decoration:underline}
+        .container{max-width:800px;margin:0 auto;padding:30px 20px;flex:1}
+        h1{font-size:1.5rem;color:var(--accent);margin-bottom:16px}
+        h2{font-size:1.2rem;color:var(--accent);margin-top:32px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+        p{margin-bottom:14px;font-size:.92rem}
+        ul{list-style:none;padding-left:0;margin-bottom:14px}
+        ul li{padding:5px 0 5px 18px;position:relative;font-size:.92rem}
+        ul li::before{content:"\u25b8";position:absolute;left:0;color:var(--accent)}
+        .breadcrumb{font-size:.82rem;color:var(--text2);margin-bottom:20px}
+        .breadcrumb a{color:var(--text2);text-decoration:none}
+        .breadcrumb a:hover{color:var(--accent)}
+        .flashcard-link{display:inline-block;background:var(--accent);color:var(--bg);padding:10px 24px;border-radius:6px;text-decoration:none;font-weight:600;margin:16px 0;font-size:.9rem}
+        .flashcard-link:hover{opacity:.85;text-decoration:none}
+        .term-box{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 18px;margin:10px 0}
+        .term-box strong{color:var(--accent)}
+        code{background:var(--bg3);padding:2px 6px;border-radius:3px;font-size:.85rem}
+        footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.78rem;color:var(--text2)}
+        footer a{color:var(--accent);text-decoration:none}
+        @media(max-width:600px){h1{font-size:1.25rem}}
+    </style>
+</head>
+<body>
+    <header><div class="container" style="padding:0"><a href="/">\u2190 Back to CEHStudy</a></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 3: Scanning Networks</nav>
+
+        <h1>CEH v13 Module 3: Scanning Networks</h1>
+        <p>This module covers active network scanning techniques used to discover live hosts, open ports, and services on a target network. You will learn nmap scan types, port scanning methods, vulnerability scanning, banner grabbing, and techniques for bypassing IDS and firewalls.</p>
+
+        <a href="/module3.html" class="flashcard-link">\ud83d\udcda Launch Flashcards \u2014 Module 3</a>
+
+        <h2>Key Topics Covered</h2>
+        <ul>
+            <li>Scanning vs footprinting: active vs passive information gathering</li>
+            <li>Vulnerability scanning and network discovery procedures</li>
+            <li>TCP scan types: SYN (-sS), connect (-sT), FIN (-sF), Xmas (-sX), NULL scans</li>
+            <li>Discovery scans: Ping sweep (-sP), TCP ping (-PT), SYN ping (-PS)</li>
+            <li>Specialized scans: Version detection (-sV), UDP (-sU), ACK (-sA), Window, Idle (-sI)</li>
+            <li>nmap timing options: -T0 through -T5</li>
+            <li>nmap output formats: Normal, XML, Grepable, All (-oA)</li>
+            <li>Banner grabbing and TCP/IP fundamentals</li>
+            <li>Bypassing IDS and firewalls during scanning</li>
+        </ul>
+
+        <h2>Important Terms &amp; Concepts</h2>
+        <div class="term-box"><strong>TCP SYN scan (-sS):</strong> Half-open scan \u2014 sends SYN packets and analyzes responses without completing the TCP handshake. Most common stealth scan.</div>
+        <div class="term-box"><strong>TCP connect() scan (-sT):</strong> Completes the full TCP three-way handshake. More reliable but easier to detect than SYN scan.</div>
+        <div class="term-box"><strong>FIN scan (-sF):</strong> Sends a FIN packet \u2014 non-listening ports respond with RST. Can bypass some firewalls.</div>
+        <div class="term-box"><strong>Xmas Tree scan (-sX):</strong> Sets FIN, PSH, and URG flags like a Christmas tree. Named for the combination of flags set.</div>
+        <div class="term-box"><strong>Ping scan (-sP):</strong> ICMP ping sweep to discover live hosts on a network range.</div>
+        <div class="term-box"><strong>Version detection (-sV):</strong> Probes open ports to determine service and version information beyond just port status.</div>
+        <div class="term-box"><strong>Idlescan (-sI):</strong> Zombie-based stealthy port scan that uses a third-party system to avoid sending packets from your own IP.</div>
+        <div class="term-box"><strong>FTP Bounce attack (-b):</strong> Uses a proxy FTP server to scan a target through the relay, hiding the true source.</div>
+
+        <h2>nmap Timing Options</h2>
+        <ul>
+            <li><code>-T0</code> Paranoid (300s wait) \u2014 IDS evasion</li>
+            <li><code>-T1</code> Sneaky (15s wait) \u2014 slow and stealthy</li>
+            <li><code>-T2</code> Polite (0.4s wait) \u2014 reduces network congestion</li>
+            <li><code>-T3</code> Normal \u2014 default timing</li>
+            <li><code>-T4</code> Aggressive (300s timeout, 1.25s per probe)</li>
+            <li><code>-T5</code> Insane (75s timeout, 0.3s per probe) \u2014 fastest</li>
+        </ul>
+
+        <h2>How to Study This Module</h2>
+        <ul>
+            <li>Memorize each nmap scan type flag and its mechanism (-sS, -sT, -sF, -sX, etc.)</li>
+            <li>Understand when to use each scan type (stealth vs reliability)</li>
+            <li>Know the timing options and their trade-offs between speed and stealth</li>
+            <li>Practice with nmap in a lab environment if possible</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <p><strong>Which nmap scan is most commonly used?</strong><br>SYN scan (-sS) is the most popular because it is fast, widely available (requires root), and stealthy since it does not complete the TCP handshake.</p>
+        <p><strong>What is the difference between a vulnerability assessment and port scanning?</strong><br>Port scanning identifies open ports and services. Vulnerability assessment goes further by identifying known CVEs and weaknesses in those services.</p>
+
+        <h2>Related Modules</h2>
+        <ul>
+            <li><a href="/ceh-v13/module-02/" style="color:var(--accent)">Module 2: Footprinting &amp; Reconnaissance</a> \u2014 passive info gathering precedes active scanning</li>
+            <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> \u2014 enumeration follows scanning to extract specific data</li>
+        </ul>
+    </div>
+
+    <footer><a href="/">CEHStudy</a> &middot; Free CEH v13 Study Flashcards &middot; Not affiliated with EC-Council</footer>
+</body>
+</html>
