@@ -34,6 +34,7 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const globalReviewed = document.getElementById('globalReviewed');
+    const flameEmoji = document.getElementById('flameEmoji');
     const progressBar = document.getElementById('progressBar');
 
     // --- Hamburger Menu ---
@@ -134,6 +135,18 @@
         cycleCount = 0;
     }
 
+    // Trigger flame emoji + green flash on Reviewed counter
+    function triggerFlameMilestone() {
+        if (flameEmoji && reviewedCount % 5 === 0) {
+            flameEmoji.classList.add('fire-active');
+            if (globalReviewed) globalReviewed.classList.add('fire-active');
+            setTimeout(() => {
+                flameEmoji.classList.remove('fire-active');
+                if (globalReviewed) globalReviewed.classList.remove('fire-active');
+            }, 600);
+        }
+    }
+
     // --- Update Display ---
     function updateDisplay(animate) {
         const hasCards = shuffledPool.length > 0 && currentIdx < shuffledPool.length;
@@ -191,6 +204,7 @@
         reviewedCount++;
         localStorage.setItem('ceh_reviewed', reviewedCount.toString());
         if (globalReviewed) globalReviewed.textContent = reviewedCount;
+        triggerFlameMilestone();
         updateProgress();
     }
 
@@ -205,6 +219,7 @@
         reviewedCount++;
         localStorage.setItem('ceh_reviewed', reviewedCount.toString());
         if (globalReviewed) globalReviewed.textContent = reviewedCount;
+        triggerFlameMilestone();
     }
 
     window.nextCard = function() {
