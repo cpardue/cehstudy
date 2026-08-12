@@ -51,10 +51,14 @@
         .toggle-switch input:checked+.toggle-slider:before{transform:translateX(18px)}
         .flashcard-area{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;position:relative;min-height:calc(100vh - 56px)}
         .reviewed-badge{color:var(--text2);font-size:.82rem;margin-bottom:14px;text-align:center;display:flex;align-items:center;justify-content:center;gap:4px}
+        .reviewed-label{color:var(--text2);font-weight:600;transition:color .15s ease}
+        .reviewed-label.fire-active{color:var(--accent) !important}
+        @keyframes green-flash{0%{opacity:1;color:var(--accent)}50%{opacity:.8;color:#7fff00}100%{opacity:1;color:var(--accent)}}
+        .reviewed-label.fire-active{animation:green-flash .6s ease}
         .reviewed-count{color:var(--text2);font-weight:600;transition:color .15s ease}
         .reviewed-count.fire-active{color:var(--accent) !important}
-        @keyframes green-flash{0%{opacity:1;color:var(--accent)}50%{opacity:.8;color:#7fff00}100%{opacity:1;color:var(--accent)}}
-        .reviewed-count.fire-active{animation:green-flash .6s ease}
+        @keyframes green-flash-num{0%{opacity:1;color:var(--accent)}50%{opacity:.8;color:#7fff00}100%{opacity:1;color:var(--accent)}}
+        .reviewed-count.fire-active{animation:green-flash-num .6s ease}
         #flameEmoji{font-size:1rem;opacity:0;transition:opacity .2s ease;display:inline-block;transform:scale(0.8)}
         #flameEmoji.fire-active{opacity:1;animation:flame-pop .5s ease}
         @keyframes flame-pop{0%{transform:scale(0.4)}40%{transform:scale(1.3)}70%{transform:scale(.95)}100%{transform:scale(1)}}
@@ -160,7 +164,7 @@
         <ul class="menu-list" id="menuList"></ul>
     </nav>
     <div class="flashcard-area">
-        <div class="reviewed-badge">Reviewed: <span class="reviewed-count" id="globalReviewed">0</span><span id="flameEmoji">&#128293;</span></div>
+        <div class="reviewed-badge"><span class="reviewed-label" id="reviewedLabel">Reviewed</span>: <span class="reviewed-count" id="globalReviewed">0</span><span id="flameEmoji">&#128293;</span></div>
         <div class="chevron-nav">
             <button class="chevron-btn" id="prevBtn" aria-label="Previous card">&#8249;</button>
             <div class="fc-card" id="fcCard">
