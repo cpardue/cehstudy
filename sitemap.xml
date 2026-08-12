@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Homepage -->
   <url>
     <loc>https://cehstudy.com/</loc>
     <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- CEH v13 Modules Index -->
   <url>
     <loc>https://cehstudy.com/ceh-v13/</loc>
     <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Module Pages -->
   <url>
     <loc>https://cehstudy.com/ceh-v13/module-01/</loc>
     <lastmod>2026-08-12</lastmod>
@@ -131,8 +126,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Support Pages -->
   <url>
     <loc>https://cehstudy.com/about/</loc>
     <lastmod>2026-08-12</lastmod>
@@ -163,16 +156,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- Study Guide -->
   <url>
     <loc>https://cehstudy.com/ceh-v13-study-guide/</loc>
     <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Practice Questions -->
   <url>
     <loc>https://cehstudy.com/ceh-practice-questions/</loc>
     <lastmod>2026-08-12</lastmod>
