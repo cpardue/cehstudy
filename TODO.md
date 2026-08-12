@@ -7,9 +7,9 @@
 - [x] Module 4: Hacking System Services
 - [x] Module 5: Hacking Web Applications
 - [x] Module 6: System Hacking (expanded with all sections)
+- [x] Module 7: Denial of Service (expanded with all sections)
 
 ## Pending
-- [ ] Module 7: Denial of Service
 - [ ] Module 8: Sniffing Network Traffic
 - [ ] Module 9: Social Engineering
 - [ ] Module 10: Evading IDS, Honeypots, and Firewalls
