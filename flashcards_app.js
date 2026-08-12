@@ -33,6 +33,7 @@
     const fcCounter = document.getElementById('fcCounter');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const reviewedLabel = document.getElementById('reviewedLabel');
     const globalReviewed = document.getElementById('globalReviewed');
     const flameEmoji = document.getElementById('flameEmoji');
     const progressBar = document.getElementById('progressBar');
@@ -135,14 +136,16 @@
         cycleCount = 0;
     }
 
-    // Trigger flame emoji + green flash on Reviewed counter
+    // Trigger flame emoji + green flash on Reviewed counter at every 5th increment
     function triggerFlameMilestone() {
         if (flameEmoji && reviewedCount % 5 === 0) {
             flameEmoji.classList.add('fire-active');
             if (globalReviewed) globalReviewed.classList.add('fire-active');
+            if (reviewedLabel) reviewedLabel.classList.add('fire-active');
             setTimeout(() => {
                 flameEmoji.classList.remove('fire-active');
                 if (globalReviewed) globalReviewed.classList.remove('fire-active');
+                if (reviewedLabel) reviewedLabel.classList.remove('fire-active');
             }, 600);
         }
     }
