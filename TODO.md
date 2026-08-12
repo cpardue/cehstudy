@@ -8,10 +8,10 @@
 - [x] Module 5: Hacking Web Applications
 - [x] Module 6: System Hacking (expanded with all sections)
 - [x] Module 7: Denial of Service (expanded with all sections)
+- [x] Module 8: Sniffing Network Traffic (expanded with all sections)
+- [x] Module 9: Social Engineering (expanded with all sections)
 
 ## Pending
-- [ ] Module 8: Sniffing Network Traffic
-- [ ] Module 9: Social Engineering
 - [ ] Module 10: Evading IDS, Honeypots, and Firewalls
 - [ ] Module 11: Session Hijacking
 - [ ] Module 12: Virus and Trojan Attacks
