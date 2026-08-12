@@ -34,6 +34,7 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const globalReviewed = document.getElementById('globalReviewed');
+    const progressBar = document.getElementById('progressBar');
 
     // --- Hamburger Menu ---
     function openMenu() {
@@ -134,7 +135,7 @@
     }
 
     // --- Update Display ---
-    function updateDisplay() {
+    function updateDisplay(animate) {
         const hasCards = shuffledPool.length > 0 && currentIdx < shuffledPool.length;
 
         if (!hasCards) {
@@ -148,29 +149,41 @@
             fcCounter.classList.add('hidden');
             prevBtn.disabled = true;
             nextBtn.disabled = true;
+            updateProgress();
             return;
+        }
+
+        // Card animation: add enter class, then remove on next frame
+        if (animate) {
+            fcCard.classList.add('card-enter');
         }
 
         placeholderCard.classList.add('hidden');
         const card = shuffledPool[currentIdx];
 
-        // Show module label
-        if (fcModuleLabel) {
-            fcModuleLabel.textContent = 'Module ' + card.moduleId + ': ' + card.moduleTitle;
-            fcModuleLabel.classList.remove('hidden');
-        }
+        // Update content while card-enter is active
+        requestAnimationFrame(function() {
+            // Show module label
+            if (fcModuleLabel) {
+                fcModuleLabel.textContent = 'Module ' + card.moduleId + ': ' + card.moduleTitle;
+                fcModuleLabel.classList.remove('hidden');
+            }
 
-        // Show question (title) and answer
-        fcTitle.textContent = card.q;
-        fcTitle.classList.remove('hidden');
+            // Show question (title) and answer
+            fcTitle.textContent = card.q;
+            fcTitle.classList.remove('hidden');
 
-        fcInfo.innerHTML = card.a;
-        fcInfo.classList.remove('hidden');
+            fcInfo.innerHTML = card.a;
+            fcInfo.classList.remove('hidden');
 
-        fcCounter.textContent = (currentIdx + 1) + ' of ' + shuffledPool.length + ' (cycle ' + (cycleCount + 1) + ')';
-        fcCounter.classList.remove('hidden');
+            fcCounter.textContent = (currentIdx + 1) + ' of ' + shuffledPool.length + ' (cycle ' + (cycleCount + 1) + ')';
+            fcCounter.classList.remove('hidden');
 
-        fcHint.textContent = 'Use arrow buttons or swipe to navigate between cards';
+            fcHint.textContent = 'Use arrow buttons or swipe to navigate between cards';
+
+            // Remove card-enter class to trigger fade-in
+            fcCard.classList.remove('card-enter');
+        });
 
         prevBtn.disabled = currentIdx === 0;
         nextBtn.disabled = false;
@@ -178,6 +191,14 @@
         reviewedCount++;
         localStorage.setItem('ceh_reviewed', reviewedCount.toString());
         if (globalReviewed) globalReviewed.textContent = reviewedCount;
+        updateProgress();
+    }
+
+    function updateProgress() {
+        if (progressBar && shuffledPool.length > 0) {
+            const totalSeen = currentIdx + 1;
+            progressBar.style.width = (totalSeen / shuffledPool.length * 100) + '%';
+        }
     }
 
     function markReviewed() {
@@ -189,19 +210,19 @@
     window.nextCard = function() {
         if (currentIdx < shuffledPool.length - 1) {
             currentIdx++;
-            updateDisplay();
+            updateDisplay(true);
         } else {
             rebuildPool();
             currentIdx = 0;
             cycleCount++;
-            updateDisplay();
+            updateDisplay(true);
         }
     };
 
     window.prevCard = function() {
         if (currentIdx > 0) {
             currentIdx--;
-            updateDisplay();
+            updateDisplay(true);
         }
     };
 
@@ -240,7 +261,7 @@
     // --- Initialize ---
     renderModuleList();
     rebuildPool();
-    updateDisplay();
+    updateDisplay(false);
 
     if (globalReviewed) globalReviewed.textContent = reviewedCount;
 
