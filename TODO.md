@@ -11,9 +11,9 @@
 - [x] Module 8: Sniffing Network Traffic (expanded with all sections)
 - [x] Module 9: Social Engineering (expanded with all sections)
 - [x] Module 10: Evading IDS, Honeypots, and Firewalls (expanded with all sections)
+- [x] Module 11: Session Hijacking (expanded with all sections)
 
 ## Pending
-- [ ] Module 11: Session Hijacking
 - [ ] Module 12: Virus and Trojan Attacks
 - [ ] Module 13: Hacking Mobile Platforms
 - [ ] Module 14: Wireless Network Attacks
