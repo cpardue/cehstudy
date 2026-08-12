@@ -1,10 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Module 5: Vulnerability Analysis - CEH v13 Study Notes</title><meta name="robots" content="index, follow"><link rel="canonical" href="https://cehstudy.com/module5.html">
-<style>*{margin:0;padding:0;box-sizing:border-box}:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}.container{max-width:900px;margin:0 auto;padding:0 20px}header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}.header-inner{display:flex;justify-content:space-between;align-items:center}.back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}.back-link:hover{text-decoration:underline}.study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px}.study-btn:hover{background:var(--accent2);border-color:var(--accent)}main{padding:30px 0}.module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}.section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}.section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}.section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}.section-block p,.section-block ul,.section-block ol{color:var(--text2);margin-bottom:12px}.section-block li{margin-bottom:6px}.section-block strong{color:var(--text)}footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}footer a{color:var(--accent);text-decoration:none}</style></head>
-<body><header><div class="container"><div class="header-inner"><a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a><a href="index.html" class="study-btn">&#127891; Study Flashcards</a></div></div></header>
-<div class="container"><main><h1 class="module-title">Module 5: Vulnerability Analysis</h1>
-<section class="section-block"><h3>Section 1: Vulnerability Assessment</h3><p>Vulnerability assessment is the process of identifying, quantifying, and prioritizing vulnerabilities in a system.</p><h4>Steps</h4><ol><li><strong>Scoping:</strong> Define what to scan and when</li><li><strong>Discovery:</strong> Identify assets and endpoints</li><li><strong>Classification:</strong> Categorize vulnerabilities by severity</li><li><strong>Prioritization:</strong> Rank by risk level</li></ol><h4>Tools</h4><ul><li><strong>Nessus:</strong> Commercial vulnerability scanner</li><li><strong>OpenVAS:</strong> Open-source vulnerability scanner</li><li><strong>Nmap:</strong> Network discovery and port scanning</li><li><strong>Qualys:</strong> Cloud-based vulnerability management</li></ul></section>
-</main></div>
-<footer><div class="container"><p>Built for the CEH community. Study smart, pass your exam.</p><p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p></div></footer>
-</body></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Vulnerability Analysis - CEH v13 Study Notes</title>
+    <meta name="description" content="CEH v13 Module 5 study notes: vulnerability analysis, Shellshock, Heartbleed, POODLE, FREAK, DROWN, automated penetration testing tools, Nmap, Nessus, Metasploit.">
+    <meta name="keywords" content="CEH module 5, vulnerability analysis, Shellshock, Heartbleed, POODLE, Metasploit, Nessus, Nmap, CEH v13 study notes">
+    <meta name="author" content="Chris Pardue">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/module5.html">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+        .container{max-width:900px;margin:0 auto;padding:0 20px}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
+        .header-inner{display:flex;justify-content:space-between;align-items:center}
+        .back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}
+        .back-link:hover{text-decoration:underline}
+        .study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px;transition:all .15s}
+        .study-btn:hover{background:var(--accent2);border-color:var(--accent)}
+        main{padding:30px 0}
+        .module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}
+        .section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}
+        .section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+        .section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}
+        .section-block p{color:var(--text2);margin-bottom:12px}
+        .section-block ul,.section-block ol{color:var(--text2);margin:0 0 12px 24px}
+        .section-block li{margin-bottom:6px}
+        .section-block strong{color:var(--text)}
+        .section-block code{background:var(--bg3);padding:2px 6px;border-radius:3px;font-size:.9em}
+        .section-block pre{background:var(--bg3);padding:12px;border-radius:6px;overflow-x:auto;margin:12px 0}
+        .section-block pre code{background:none;padding:0}
+        .section-block blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:12px 0;color:var(--text2);font-style:italic}
+        footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}
+        footer a{color:var(--accent);text-decoration:none}
+    </style>
+</head>
+<body>
+    <header><div class="container"><div class="header-inner">
+        <a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a>
+        <a href="index.html" class="study-btn">&#127891; Study Flashcards</a>
+    </div></div></header>
+    <div class="container">
+        <main>
+            <h1 class="module-title">Module 5: Vulnerability Analysis</h1>
+
+            <section class="section-block"><h3>Section 1: Vulnerability Research &amp; Scanning Types</h3>
+                <p><strong>Vulnerability research</strong> helps identify vulnerabilities which could compromise the system.</p>
+                <h4>Scanning Types</h4>
+                <ul>
+                    <li><strong>Active scanning:</strong> Interacting directly with the target network to discover vulnerabilities</li>
+                    <li><strong>Passive scanning:</strong> Discovering vulnerabilities without direct interaction with the target network</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 2: Vulnerability Categories</h3>
+                <ul>
+                    <li>Misconfiguration, Default installations, Buffer overflows</li>
+                    <li>Unpatched servers, Design flaws, Operating system flaws</li>
+                    <li>Application flaws, Open services, Default passwords</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 3: Vulnerability Assessment Types</h3>
+                <ul>
+                    <li><strong>Active assessment:</strong> Through network scanners</li>
+                    <li><strong>Passive assessment:</strong> By sniffing the traffic</li>
+                    <li><strong>External assessment:</strong> Vulnerabilities accessible outside the organization</li>
+                    <li><strong>Internal assessment:</strong> Vulnerabilities present internally</li>
+                    <li><strong>Host-Based assessment:</strong> Examining configuration of a specific server</li>
+                    <li><strong>Network assessment:</strong> Identifies potential attacks on the network</li>
+                    <li><strong>Application assessment:</strong> Examines configuration of web infrastructure</li>
+                    <li><strong>Wireless network assessment:</strong> Vulnerabilities in organization's wireless network</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 4: Vulnerability Management</h3>
+                <p>Evaluation and control of risks and vulnerabilities in the system.</p>
+                <h4>Phases</h4>
+                <ol>
+                    <li><strong>Pre-assessment phase:</strong> Creating baseline &mdash; identifying critical assets and prioritizing them</li>
+                    <li><strong>Assessment phase:</strong> Vulnerability assessment &mdash; identifying known vulnerabilities</li>
+                    <li><strong>Post-assessment phase:</strong>
+                        <ul>
+                            <li><strong>Risk assessment:</strong> Assessing vulnerability and risk levels for identified assets</li>
+                            <li><strong>Remediation:</strong> Mitigating and reducing severity of identified vulnerabilities</li>
+                            <li><strong>Verification:</strong> Ensuring all phases completed successfully</li>
+                            <li><strong>Monitoring:</strong> Identifying new threats and vulnerabilities</li>
+                        </ul>
+                    </li>
+                </ol>
+                <h4>Vulnerability Assessment Solution Types</h4>
+                <ul>
+                    <li><strong>Product-based:</strong> Installed in the internal network</li>
+                    <li><strong>Service-based:</strong> Offered by third parties</li>
+                    <li><strong>Tree-based assessment:</strong> Different strategies selected for each machine</li>
+                    <li><strong>Inference-based assessment:</strong> Find protocols &rarr; Scan services &rarr; Select vulnerabilities &rarr; Execute tests</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 5: Vulnerability Scoring Systems</h3>
+                <h4>CVE &mdash; Common Vulnerabilities and Exposures</h4>
+                <p>A list of common identifiers for publicly known cybersecurity vulnerabilities maintained by <a href="https://cve.mitre.org" target="_blank">mitre.org</a>.</p>
+                <p>Example: <code>CVE-2020-0023</code> &mdash; disclosure of user contacts over Bluetooth due to missing permission check on Android.</p>
+                <h4>CVSS &mdash; Common Vulnerability Scoring System</h4>
+                <p>A free and open industry standard for assessing the severity of computer system security vulnerabilities. Helps assess and prioritize vulnerability management processes. Assigns severity scores to vulnerabilities. <a href="https://www.first.org/cvss/calculator/3.1" target="_blank">Score calculator</a> depends on metrics that include ease and impact of exploit.</p>
+                <h4>NVD &mdash; National Vulnerability Database</h4>
+                <p>U.S. government repository of standards-based vulnerability management data at <a href="https://nvd.nist.gov" target="_blank">nvd.nist.gov</a>. Includes databases of security checklist references, security-related software flaws, misconfigurations, product names, and impact metrics.</p>
+            </section>
+
+            <section class="section-block"><h3>Section 6: Vulnerability Assessment Report</h3>
+                <p>A written report created after an assessment is performed. Classified into <strong>security vulnerability report</strong> and <strong>security vulnerability summary</strong>.</p>
+                <ul>
+                    <li>Details of what has been done and discovered during the assessment</li>
+                    <li>Helps organizations resolve security issues if they exist</li>
+                    <li>Typically contain information about the scan, target, and results</li>
+                </ul>
+                <h4>Vulnerability Scanner Operation (3 Steps)</h4>
+                <ol>
+                    <li>Locate the live hosts in the network</li>
+                    <li>Enumerate open ports and services</li>
+                    <li>Test the found services for known vulnerabilities by analyzing responses</li>
+                </ol>
+            </section>
+
+            <section class="section-block"><h3>Section 7: Shellshock Vulnerability</h3>
+                <h4>What is Shellshock?</h4>
+                <p>Also known as <strong>bashdoor</strong> or <strong>bash bug</strong>. A privilege escalation vulnerability enabling arbitrary command execution. Caused by family of security bugs in the Unix Bash shell.</p>
+                <h4>Related CVE Entries</h4>
+                <ul>
+                    <li><code>CVE-2014-6271</code>, <code>CVE-2014-6277</code></li>
+                    <li><code>CVE-2014-6278</code>, <code>CVE-2014-7169</code></li>
+                    <li><code>CVE-2014-7186</code>, <code>CVE-2014-7187</code></li>
+                </ul>
+                <h4>How It Works</h4>
+                <p>Achieved by manipulating the environment variable list and then causing Bash to run. Upon startup, Bash parser executes scripts saved as environment variables.</p>
+                <pre><code>$ env x='() { :;}; echo vulnerable' bash -c "echo this is a test"</code></pre>
+                <p>Prints first <code>vulnerable</code> then <code>this is a test</code>.</p>
+                <h4>Exploitation via CGI</h4>
+                <p>To exploit, there needs to be a way to talk to Bash. Often exploits websites using CGI (Common Gateway Interface). In Apache, this is done using <code>mod_cgi</code> &mdash; a way to let Apache execute script files and send output to the client. Apache passes information to CGI scripts using environment variables.</p>
+                <blockquote>"Shellshock makes Heartbleed look insignificant." &mdash; ZDNet</blockquote>
+                <h4>Impact</h4>
+                <p>Thousands of attacks were reported when the bug was revealed, including botnets against the United States Department of Defense.</p>
+                <h4>Detecting Shellshock with Nmap</h4>
+                <pre><code>nmap -sV -p 80 --script http-shellshock --script-args uri=/cgi-bin/blabla.sh,cmd=ls 192.168.122.17</code></pre>
+                <ul>
+                    <li><code>-sV</code>: Detect services and versions</li>
+                    <li><code>-p</code>: Port 80 (or <code>-p-</code> for entire port range)</li>
+                    <li><code>--script</code>: Test different scripts/vulnerabilities from Nmap scripts page</li>
+                    <li><code>--script-args</code>: Optional &mdash; uri and cmd arguments</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 8: SSL/TLS Vulnerabilities</h3>
+                <h4>Heartbleed</h4>
+                <p>Bug in <a href="https://www.openssl.org" target="_blank">OpenSSL</a>, a widely used implementation of TLS. Introduced and patched in April 2014. Results from improper input validation (no boundary check) in TLS heartbeat extension, causing the server to send more data in memory than allowed &mdash; classified as <strong>buffer over-read</strong>.</p>
+                <h4>Heartbleed Attack Flow</h4>
+                <ul>
+                    <li><strong>Normal:</strong> Client: "Send me 4 letter word: bird" &rarr; Server: "bird"</li>
+                    <li><strong>Malicious:</strong> Client: "Send me 500 letter word: bird" &rarr; Server: "bird. Server master key is... User Carol wants to change password..."</li>
+                </ul>
+                <p>Millions of webpages were affected. Known impacts include stealing of millions of patient records and account hijacking with CEO impersonation.</p>
+                <h4>Detecting Heartbleed</h4>
+                <pre><code>nmap -p 443 --script ssl-heartbleed &lt;target&gt;</code></pre>
+                <p>Will return "State: NOT VULNERABLE" if not vulnerable. Also exploitable via Metasploit module <code>openssl_heartbleed</code>.</p>
+
+                <h4>POODLE &mdash; Padding Oracle On Downgraded Legacy Encryption</h4>
+                <p>Forcing a degradation to a vulnerable SSL/TLS version. TLS handshakes are walked down the connection until a usable/vulnerable one is found &mdash; exploits backwards compatibility. A man-in-the-middle exploit affecting both SSL and TLS.</p>
+                <ul>
+                    <li><strong>POODLE attack against SSL:</strong> Takes advantage of clients' fallback to SSL 3.0. Attackers make 256 SSL 3.0 requests on average to reveal a single byte.</li>
+                    <li><strong>POODLE attack against TLS:</strong> Caused by some implementations not following TLS specifications. Exploits CBC encryption mode in TLS 1.0&ndash;1.2 protocols.</li>
+                </ul>
+
+                <h4>FREAK &mdash; Factoring RSA Export Keys</h4>
+                <p>A man-in-the-middle attack forcing downgrade of RSA key to a weaker length, enabling successful brute-force attacks. Exploits cryptographic weakness in the SSL/TLS protocols.</p>
+
+                <h4>SSL/TLS Renegotiation Vulnerability</h4>
+                <p>Leads to plaintext injection attacks against SSL 3.0 and all current versions of TLS. Discovered by Marsh Ray and Steve Dispensa (November 2009). Turkish grad student Anil Kurmus exploited it to steal Twitter login credentials (November 2009).</p>
+                <h4>Mitigation</h4>
+                <p>Proposed standard <a href="https://tools.ietf.org/html/rfc5746" target="_blank">RFC 5746</a> verifies previous renegotiation handshakes between client and server.</p>
+                <h4>Testing</h4>
+                <pre><code>openssl s_client -connect &lt;website&gt;:443</code></pre>
+                <p>Then type <code>R</code> for renegotiate and press ENTER.</p>
+
+                <h4>DROWN &mdash; Decrypting RSA with Obsolete and Weakened eNcryption</h4>
+                <p>Exploits modern SSL/TLS suites by exploiting their obsolete SSLv2 protocol support. The only viable countermeasure is to disable SSLv2 on all servers.</p>
+            </section>
+
+            <section class="section-block"><h3>Section 9: Automated Penetration Testing Tools</h3>
+                <h4>Tool Overview</h4>
+                <ul>
+                    <li><strong>CANVAS</strong> (proprietary) &mdash; Exploit gallery and development framework</li>
+                    <li><strong>Core Impact</strong> (proprietary) &mdash; All-inclusive automated testing framework</li>
+                    <li><strong>Nmap</strong> with custom scripts &mdash; For footprinting, scanning, vulnerability analysis, and DoS attacks</li>
+                </ul>
+                <h4>Automated vs Manual Penetration Testing</h4>
+                <h4>Automated Testing Advantages</h4>
+                <ul>
+                    <li>Helps initial analysis to understand where potential vulnerabilities exist</li>
+                    <li>Enables testers to build efficient exploit strategies</li>
+                    <li>Same pen test multiple times from different entry points</li>
+                    <li>Reduces costs</li>
+                </ul>
+                <h4>Automated Testing Disadvantages</h4>
+                <ul>
+                    <li>Can miss unforeseen instances</li>
+                    <li>Usually works from "inside" of the network</li>
+                    <li>Fails to work in complex scenarios</li>
+                    <li>Usually does not exploit vulnerabilities</li>
+                    <li>Not as creative as humans in social engineering</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 10: Vulnerability Scanning Tools</h3>
+                <h4>Nmap</h4>
+                <p>Nmap has scripting functionality written in LUA. You can scan multiple servers for multiple ports for multiple vulnerabilities.</p>
+                <ul>
+                    <li><code>-A</code>: Enables OS detection, version detection, script scanning and traceroute</li>
+                    <li>Can be used for footprinting, scanning, vulnerability analysis</li>
+                </ul>
+
+                <h4>Nessus</h4>
+                <p>Proprietary port and vulnerability scanner. Scans include misconfigurations, default passwords (has Hydra built-in), DoS vulnerabilities. Can be used for compliance auditing like PCI DSS audit scans.</p>
+
+                <h4>Burp Suite</h4>
+                <p>Proxy tool to scan web vulnerabilities. Allows manual testers to intercept all requests and responses between the browser and the target application. Allows viewing, editing or dropping individual messages.</p>
+
+                <h4>Nikto</h4>
+                <p>Open source web server vulnerability scanner. Majorly looks for outdated software, dangerous files/CGI etc.</p>
+                <pre><code>nikto -host cloudarchitecture.io</code></pre>
+                <p>Many modern scanners including Nessus and OpenVAS use Nikto for their analysis.</p>
+
+                <h4>Microsoft Baseline Security Analyzer (MBSA)</h4>
+                <p>Identifies missing security updates and common security misconfigurations. Assesses Windows and its software (Internet Explorer, IIS web server, Microsoft SQL Server, office macro settings). <em>Deprecated.</em></p>
+
+                <h4>OpenVAS</h4>
+                <p>Open-source software framework of several services and tools offering vulnerability scanning and vulnerability management.</p>
+            </section>
+
+            <section class="section-block"><h3>Section 11: Metasploit Framework</h3>
+                <h4>What is Metasploit?</h4>
+                <p>A framework for building and performing exploit attacks against targets. Modular architecture allowing code re-use instead of copying or re-implementing on a per-exploit basis. <a href="https://github.com/rapid7/metasploit-framework" target="_blank">Source code</a> | <a href="https://www.metasploit.com" target="_blank">Website</a></p>
+                <h4>Free Version Features</h4>
+                <ul>
+                    <li>Developing and executing exploit code against remote target machines</li>
+                    <li>Database of vulnerabilities and platform to execute different exploits</li>
+                    <li>Fuzzing tools to discover vulnerabilities</li>
+                    <li>Automated exploitation of known vulnerabilities (weak passwords for Telnet, SSH, HTTP)</li>
+                    <li>Manual exploitation and brute forcing</li>
+                    <li>Zenmap (Nmap GUI)</li>
+                </ul>
+                <h4>Paid (Pro) Version Features</h4>
+                <ul>
+                    <li>Web application testing (OWASP Top 10)</li>
+                    <li>Dynamic payloads for anti-virus evasion</li>
+                    <li>Has web interface</li>
+                </ul>
+                <p><em>Free alternative: <a href="http://www.fastandeasyhacking.com" target="_blank">Armitage</a> &mdash; open-source GUI.</em></p>
+
+                <h4>Meterpreter</h4>
+                <p>Payload that provides control over an exploited target system. Runs as a DLL loaded inside any process on a target machine. Resides entirely in memory and writes nothing to disk.</p>
+
+                <h4>msfvenom</h4>
+                <p>Generates stand-alone payload. Combines payload generation and encoding to avoid antivirus detection.</p>
+                <pre><code>msfvenom -a x86 --platform Windows -p windows/shell/bind_tcp -e x86/shikata_ga_nai -b '\x00' -f python</code></pre>
+                <ul>
+                    <li><code>-p &lt;payload-name&gt;</code>: e.g., <code>windows/meterpreter/bind_tcp</code></li>
+                    <li><code>-f &lt;format&gt;</code>: e.g., <code>exe</code> or <code>raw</code> (shellcode)</li>
+                    <li><code>-b</code> or <code>-e</code>: Encoding options</li>
+                    <li><code>-i &lt;number&gt;</code>: Number of encoding iterations for more stealth</li>
+                </ul>
+
+                <h4>msfconsole &mdash; All-in-One Console</h4>
+                <p>The most feature-rich and stable MSF interface. Example workflow:</p>
+                <ol>
+                    <li>Run <code>msfconsole</code></li>
+                    <li>Search for a service: <code>search unrealirc</code></li>
+                    <li>Use exploit: <code>use exploit/unix/irc/unreal_ircd_3281_backdoor</code></li>
+                    <li>Show and set payload: <code>show payloads</code>, <code>set PAYLOAD &lt;name&gt;</code></li>
+                    <li>Set required options: <code>show options</code>, <code>set &lt;option-name&gt; &lt;value&gt;</code></li>
+                    <li>Run exploit: <code>exploit</code> &mdash; hopefully you end up in a terminal session as root!</li>
+                </ol>
+                <p><em>Note: Disclosure date is not the same as when vulnerability was found &mdash; it can be before but not published.</em></p>
+            </section>
+        </main>
+    </div>
+    <footer><div class="container">
+        <p>Built for the CEH community. Study smart, pass your exam.</p>
+        <p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </div></footer>
+</body>
+</html>
