@@ -1,9 +1,326 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Module 7: Malware Threats - CEH v13 Study Notes</title><meta name="robots" content="index,follow"><link rel="canonical" href="https://cehstudy.com/module7.html">
-<style>*{margin:0;padding:0;box-sizing:border-box}:root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}.container{max-width:900px;margin:0 auto;padding:0 20px}header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}.header-inner{display:flex;justify-content:space-between;align-items:center}.back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}.back-link:hover{text-decoration:underline}.study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px}.study-btn:hover{background:var(--accent2);border-color:var(--accent)}main{padding:30px 0}.module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}.section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}.section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}.section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}.section-block p,.section-block ul{color:var(--text2);margin-bottom:12px}.section-block li{margin-bottom:6px}.section-block strong{color:var(--text)}footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}footer a{color:var(--accent);text-decoration:none}</style></head>
-<body><header><div class="container"><div class="header-inner"><a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a><a href="index.html" class="study-btn">&#127891; Study Flashcards</a></div></div></header>
-<div class="container"><main><h1 class="module-title">Module 7: Malware Threats</h1>
-<section class="section-block"><h3>Section 1: Malware Concepts</h3><p>Malware is software that is intentionally designed to cause disruption to a computer or server.</p><h4>Main Types</h4><ul><li><strong>Viruses:</strong> Self-replicating programs that attach to files</li><li><strong>Worms:</strong> Standalone malware that spreads across networks</li><li><strong>Trojans:</strong> Malware disguised as legitimate software</li><li><strong>Ransomware:</strong> Encrypts files and demands payment</li><li><strong>Spyware:</strong> Secretly monitors user activity</li><li><strong>Rootkits:</strong> Provides privileged access while hiding presence</li><li><strong>Fileless Malware:</strong> Operates in memory without writing to disk</li><li><strong>APTs:</strong> Advanced Persistent Threats - long-term targeted attacks</li></ul></section>
-</main></div>
-<footer><div class="container"><p>Built for the CEH community. Study smart, pass your exam.</p><p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p></div></footer>
-</body></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7: Denial of Service - CEH v13 Study Notes</title>
+    <meta name="description" content="CEH v13 Module 7 study notes: denial of service attacks, DoS, DDoS, SYN flood, application layer attacks, mitigation techniques.">
+    <meta name="keywords" content="CEH module 7, denial of service, DoS, DDoS, SYN flood, application layer attacks, mitigation, CEH v13 study notes">
+    <meta name="author" content="Chris Pardue">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/module7.html">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+        .container{max-width:900px;margin:0 auto;padding:0 20px}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
+        .header-inner{display:flex;justify-content:space-between;align-items:center}
+        .back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}
+        .back-link:hover{text-decoration:underline}
+        .study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px;transition:all .15s}
+        .study-btn:hover{background:var(--accent2);border-color:var(--accent)}
+        main{padding:30px 0}
+        .module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}
+        .section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}
+        .section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+        .section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}
+        .section-block p{color:var(--text2);margin-bottom:12px}
+        .section-block ul,.section-block ol{color:var(--text2);margin:0 0 12px 24px}
+        .section-block li{margin-bottom:6px}
+        .section-block strong{color:var(--text)}
+        .section-block code{background:var(--bg3);padding:2px 6px;border-radius:3px;font-size:.9em}
+        .section-block pre{background:var(--bg3);padding:12px;border-radius:6px;overflow-x:auto;margin:12px 0}
+        .section-block pre code{background:none;padding:0}
+        .section-block blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:12px 0;color:var(--text2);font-style:italic}
+        footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}
+        footer a{color:var(--accent);text-decoration:none}
+    </style>
+</head>
+<body>
+    <header><div class="container"><div class="header-inner">
+        <a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a>
+        <a href="index.html" class="study-btn">&#127891; Study Flashcards</a>
+    </div></div></header>
+    <div class="container">
+        <main>
+            <h1 class="module-title">Module 7: Denial of Service</h1>
+
+            <section class="section-block"><h3>Section 1: DoS Fundamentals</h3>
+                <p><strong>Denial of Service (DoS)</strong> = an attack that prevents legitimate users from accessing a service or system. The goal is to make the machine/resource unavailable to its intended users.</p>
+                <h4>Types of DoS Attacks</h4>
+                <ul>
+                    <li><strong>Traditional DoS:</strong> Single source attacks (ping flood, smurf, SYN flood, Teardrop, etc.)</li>
+                    <li><strong>Distributed DoS (DDoS):</strong> Multiple sources attack simultaneously using a botnet</li>
+                </ul>
+
+                <h4>DoS Attack Categories</h4>
+                <ul>
+                    <li><strong>Volume-based:</strong> Measures bandwidth (bps) — e.g., UDP floods, ICMP floods, amplification attacks</li>
+                    <li><strong>Protocol-based:</strong> Consumes server resources (connection state tables) — e.g., SYN floods, Ping of Death, Slowloris</li>
+                    <li><strong>Application Layer:</strong> Targets specific application vulnerabilities — e.g., HTTP flood, SQL injection leading to crash</li>
+                </ul>
+
+                <h4>DoS Attack Goals</h4>
+                <ol>
+                    <li><strong>Kill the machine:</strong> Crash the system completely</li>
+                    <li><strong>Bog down resources:</strong> Consume all available resources (bandwidth, CPU, memory)</li>
+                    <li><strong>Exploit programming errors:</strong> Trigger bugs that cause the application to crash</li>
+                </ol>
+
+                <h4>DoS Attack Vectors</h4>
+                <ul>
+                    <li>Network-based: Target network infrastructure (routers, firewalls, load balancers)</li>
+                    <li>Application-based: Target web applications (HTTP flood, SQL injection)</li>
+                    <li>Botnet-based: Use compromised machines (zombies) to launch DDoS</li>
+                </ul>
+
+                <h4>DoS Attack Tools</h4>
+                <ul>
+                    <li><strong>Trinoo:</strong> Distributed DoS tool using a master/slave architecture. Master sends commands to agents (daemons).</li>
+                    <li><strong>Multipinger:</strong> Sends ICMP echo requests to multiple hosts simultaneously.</li>
+                    <li><strong>WinNuke:</strong> Sends out-of-band (OOB) data to Windows systems triggering blue screen of death.</li>
+                    <li><strong>Bo:</strong> Distributed attack tool using master/slave architecture. Uses UDP port 27665 by default.</li>
+                    <li><strong>LophtCrack:</strong> Can perform DoS against Windows domain controllers.</li>
+                    <li><strong>XDAT (XOIC DOS Attack Tool):</strong> Sends multiple TCP RST packets to crash target.</li>
+                    <li><strong>TFN / TFN2K / DDOS:</strong> Trojan Distributed Denial of Service tools. Support multiple attack types including ICMP flood, UDP flood, SYN flood, etc.</li>
+                    <li><strong>Smurf Attack Tool:</strong> Sends ICMP echo requests to broadcast address with spoofed source IP.</li>
+                    <li><strong>Ncrack:</strong> Network cracker that can be used for DoS against authentication services.</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 2: Common DoS Attack Techniques</h3>
+                <h4>Ping of Death</h4>
+                <p>Sends an oversized ICMP packet (&gt;65,535 bytes). When the target reassembles the fragmented packet, it exceeds the maximum IP packet size, causing system crash or reboot.</p>
+                <h4>Mitigation</h4>
+                <ul>
+                    <li>Fragment inspection: Check fragment sizes before reassembly</li>
+                    <li>ICMP rate limiting</li>
+                    <li>Block oversized packets at the firewall</li>
+                </ul>
+
+                <h4>SYN Flood</h4>
+                <p>Exploits the TCP three-way handshake. Attacker sends many SYN requests but never completes the handshake with ACK. Server's connection table fills up, preventing legitimate connections.</p>
+                <h4>SYN Flood Flow</h4>
+                <ol>
+                    <li>Attacker sends SYN to server</li>
+                    <li>Server responds with SYN-ACK</li>
+                    <li>Attacker never sends ACK (or uses spoofed IP)</li>
+                    <li>Server waits for timeout, filling connection table</li>
+                </ol>
+                <h4>Mitigation</h4>
+                <ul>
+                    <li><strong>SYN cookies:</strong> Server encodes state in ACK sequence number instead of allocating resources</li>
+                    <li><strong>Connection rate limiting:</strong> Limit SYN requests per second from single IP</li>
+                    <li><strong>Increase backlog queue:</strong> Increase max pending connections</li>
+                    <li><strong>Decrease timeout:</strong> Reduce time to wait for ACK</li>
+                </ul>
+
+                <h4>Teardrop Attack</h4>
+                <p>Sends malformed IP fragments with overlapping offset values. When the target tries to reassemble, it crashes due to the error.</p>
+
+                <h4>Smurf Attack</h4>
+                <p>Attacker sends ICMP echo requests (pings) to a broadcast address with a <strong>spoofed source IP</strong> (the victim). All hosts on the network reply to the victim, overwhelming it.</p>
+                <h4>Requirements</h4>
+                <ul>
+                    <li>IP address of the victim</li>
+                    <li>ICMP protocol</li>
+                    <li>Broadcast address of the network</li>
+                </ul>
+                <h4>Mitigation</h4>
+                <ul>
+                    <li>Disable IP broadcast forwarding on routers</li>
+                    <li>Block incoming traffic with broadcast source addresses</li>
+                    <li>Implement ingress filtering (BCP 38)</li>
+                </ul>
+
+                <h4>Land Attack</h4>
+                <p>Sends a SYN packet where the source IP and destination IP are both set to the target's IP address. Can cause the system to loop or crash.</p>
+
+                <h4>Christmas Tree Attack (Xmas Tree)</h4>
+                <p>Sends a TCP packet with all flag bits set (URG, ACK, PSH, RST, SYN, FIN). Named after a Christmas tree because all lights are on. Different OS handle this differently — some may crash.</p>
+
+                <h4>Jolt2 Attack</h4>
+                <p>Exploits the UDP-based Jarvis protocol. Sends specially crafted JOLT packets to exploit vulnerabilities in TCP/IP stacks of various operating systems.</p>
+
+                <h4>Buffer Overflow DoS</h4>
+                <p>Sends more data to a buffer than it can hold, causing overflow into adjacent memory spaces. Can crash services like FTP, SMTP, HTTP servers.</p>
+
+                <h4>Slowloris</h4>
+                <p>Opens multiple connections to a web server and keeps them open by sending partial HTTP requests with slow intervals. The server's connection pool fills up, denying service to legitimate users.</p>
+                <h4>Mitigation</h4>
+                <ul>
+                    <li>Set strict timeout limits for incomplete requests</li>
+                    <li>Limit max connections per IP address</li>
+                    <li>Use reverse proxies (e.g., Nginx, Cloudflare)</li>
+                </ul>
+
+                <h4>HTTP Flood</h4>
+                <p>Sends massive HTTP GET/POST requests to overwhelm a web server. Difficult to distinguish from legitimate traffic.</p>
+                <h4>Mitigation</h4>
+                <ul>
+                    <li>Web Application Firewall (WAF)</li>
+                    <li>Rate limiting per IP/user</li>
+                    <li>CAPTCHA challenges</li>
+                    <li>CDN-based protection (Cloudflare, Akamai)</li>
+                </ul>
+
+                <h4>NTP Amplification Attack</h4>
+                <p>Type of DDoS amplification attack. Attacker sends NTP requests with spoofed source IP to NTP servers configured in "monlist" mode. Servers respond with much larger responses to the victim.</p>
+                <h4>Mitigation</h4>
+                <ul>
+                    <li>Disable NTP monlist command (version 2)</li>
+                    <li>Rate-limit NTP responses</li>
+                    <li>Implement ingress/egress filtering</li>
+                </ul>
+
+                <h4>DNS Amplification Attack</h4>
+                <p>Similar to NTP amplification. Attacker sends DNS queries with spoofed source IP to open DNS resolvers. Response is much larger than the query.</p>
+                <h4>Mitigation</h4>
+                <ul>
+                    <li>Disable open DNS recursion</li>
+                    <li>Implement response rate limiting (RRL)</li>
+                    <li>Block traffic with spoofed source addresses</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 3: Botnet-Based DDoS</h3>
+                <p><strong>Botnet</strong> = network of compromised computers (bots/zombies) controlled by an attacker (botmaster). Used to launch large-scale DDoS attacks.</p>
+                <h4>Botnet Architecture</h4>
+                <ul>
+                    <li><strong>C&amp;C (Command and Control):</strong> Centralized server sends commands to bots</li>
+                    <li><strong>P2P (Peer-to-Peer):</strong> Decentralized — bots communicate with each other</li>
+                    <li><strong>Hybrid:</strong> Combination of centralized and decentralized approaches</li>
+                </ul>
+
+                <h4>Botnet Lifecycle</h4>
+                <ol>
+                    <li><strong>Infection:</strong> Bots are infected via malware, exploits, phishing</li>
+                    <li><strong>C&amp;C Establishment:</strong> Bot connects to command and control server</li>
+                    <li><strong>Attack Execution:</strong> Botmaster sends commands to launch DDoS</li>
+                    <li><strong>Cleanup:</strong> Bot removes traces or waits for next command</li>
+                </ol>
+
+                <h4>Botnet Detection Methods</h4>
+                <ul>
+                    <li><strong>Traffic analysis:</strong> Detect unusual traffic patterns (sudden spikes)</li>
+                    <li><strong>Behavioral analysis:</strong> Monitor for unusual bot behavior</li>
+                    <li><strong>Domain Generation Algorithms (DGA):</strong> Detect domains generated by malware for C&amp;C</li>
+                    <li><strong>Blacklisting:</strong> Block known botnet IPs/domains</li>
+                </ul>
+
+                <h4>Botnet Mitigation</h4>
+                <ul>
+                    <li>ISP-level filtering and blackholing</li>
+                    <li>Sinkholing: Redirect C&amp;C traffic to controlled servers</li>
+                    <li>Take down botnet infrastructure (law enforcement)</li>
+                    <li>Use DDoS protection services (Cloudflare, Akamai, AWS Shield)</li>
+                </ul>
+
+                <h4>Notable Botnets</h4>
+                <ul>
+                    <li><strong>Mirai:</strong> IoT botnet that infected cameras, routers. Launched massive DDoS against Krebs on Security and Dyn DNS (2016).</li>
+                    <li><strong>Emotet:</strong> Banking trojan turned botnet infrastructure</li>
+                    <li><strong>Zeus (Zbot):</strong> Banking trojan with botnet capabilities</li>
+                    <li><strong>Srizbi:</strong> Email-focused botnet for spam distribution</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 4: DoS Countermeasures</h3>
+                <h4>Network-Level Defenses</h4>
+                <ul>
+                    <li><strong>Ingress/Egress Filtering (BCP 38/84):</strong> Block packets with spoofed source addresses</li>
+                    <li><strong>Rate Limiting:</strong> Limit number of requests from single source</li>
+                    <li><strong>Blackholing (uRPF):</strong> Drop all traffic to/from attacked IP</li>
+                    <li><strong>ICMP Rate Limiting:</strong> Restrict ICMP packet rate</li>
+                    <li><strong>SYN Cookies:</strong> Protect against SYN flood attacks</li>
+                    <li><strong>Load Balancing:</strong> Distribute traffic across multiple servers</li>
+                </ul>
+
+                <h4>Host-Level Defenses</h4>
+                <ul>
+                    <li>Apply OS patches and updates</li>
+                    <li>Configure firewall rules to block suspicious traffic</li>
+                    <li>Disable unused services and ports</li>
+                    <li>Implement intrusion detection/prevention systems (IDS/IPS)</li>
+                    <li>Monitor system resources for anomalies</li>
+                </ul>
+
+                <h4>Application-Level Defenses</h4>
+                <ul>
+                    <li>Web Application Firewall (WAF)</li>
+                    <li>Input validation and sanitization</li>
+                    <li>Rate limiting per user/session</li>
+                    <li>CAPTCHA for suspicious requests</li>
+                    <li>Content Delivery Network (CDN) distribution</li>
+                </ul>
+
+                <h4>Cloud-Based DDoS Protection</h4>
+                <ul>
+                    <li><strong>AWS Shield:</strong> Managed DDoS protection for AWS resources</li>
+                    <li><strong>Cloudflare:</strong> CDN-based DDoS mitigation with global network</li>
+                    <li><strong>Akamai:</strong> Enterprise-grade DDoS protection services</li>
+                    <li><strong>Azure DDoS Protection:</strong> Microsoft's cloud-based protection</li>
+                </ul>
+
+                <h4>Incident Response for DoS</h4>
+                <ol>
+                    <li><strong>Identify:</strong> Confirm DoS attack and determine type</li>
+                    <li><strong>Contain:</strong> Implement immediate mitigation (blackholing, rate limiting)</li>
+                    <li><strong>Eradicate:</strong> Block attack sources, apply patches</li>
+                    <li><strong>Recover:</strong> Restore normal operations</li>
+                    <li><strong>Lessons Learned:</strong> Document and improve defenses</li>
+                </ol>
+
+                <h4>DoS Testing Tools</h4>
+                <ul>
+                    <li><strong>LOIC (Low Orbit Ion Cannon):</strong> Open-source DoS tool</li>
+                    <li><strong>HOIC (High Orbit Ion Cannon):</strong> Enhanced version of LOIC with multiple attack presets</li>
+                    <li><strong>SlowHTTPTest:</strong> Tests resilience against application-layer DoS (Slowloris, Slow POST)</li>
+                    <li><strong>GoldenEye:</strong> Python-based DoS tool targeting HTTP layer</li>
+                    <li><strong>AB (Apache Bench):</strong> Can be used for load testing/DoS simulation</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 5: DoS Attack Scenarios and Case Studies</h3>
+                <h4>2016 Dyn Attacks (Mirai Botnet)</h4>
+                <p>The Mirai botnet launched one of the largest DDoS attacks in history against Dyn, a major DNS provider. This affected Twitter, Reddit, Netflix, GitHub, and many other sites.</p>
+                <ul>
+                    <li><strong>Attack vector:</strong> IoT devices (cameras, DVRs, routers)</li>
+                    <li><strong>Peak traffic:</strong> ~1.2 Tbps</li>
+                    <li><strong>Impact:</strong> Major internet outage across the US and Europe</li>
+                    <li><strong>Source code leaked:</strong> Led to multiple Mirai variants</li>
+                </ul>
+
+                <h4>2018 GitHub Attack</h4>
+                <ul>
+                    <li><strong>Peak traffic:</strong> 1.35 Tbps</li>
+                    <li><strong>Attack type:</strong> NTP amplification</li>
+                    <li><strong>Duration:</strong> 20 minutes</li>
+                </ul>
+
+                <h4>2016 Krebs on Security Attack</h4>
+                <ul>
+                    <li><strong>Peak traffic:</strong> 620 Gbps</li>
+                    <li><strong>Attack type:</strong> Mirai botnet DDoS</li>
+                    <li><strong>Target:</strong> Security journalist Brian Krebs' blog</li>
+                </ul>
+
+                <h4>APAC Gaming Industry Attack (2023)</h4>
+                <ul>
+                    <li><strong>Peak traffic:</strong> 856 Gbps</li>
+                    <li><strong>Attack type:</strong> UDP flood</li>
+                    <li><strong>Target:</strong> Asian Pacific gaming industry</li>
+                </ul>
+
+                <h4>DoS for Distraction</h4>
+                <p>DoS attacks can be used as a smokescreen to distract security teams while a more damaging attack occurs (e.g., data exfiltration, system compromise).</p>
+            </section>
+        </main>
+    </div>
+    <footer><div class="container">
+        <p>Built for the CEH community. Study smart, pass your exam.</p>
+        <p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </div></footer>
+</body>
+</html>
