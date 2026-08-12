@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 12: Virus and Trojan Attacks - CEH v13 Study Notes</title>
+    <meta name="description" content="CEH v13 Module 12 study notes: viruses, trojans, malware types, infection techniques, detection, countermeasures.">
+    <meta name="keywords" content="CEH module 12, virus attacks, trojan attacks, malware, ransomware, rootkit, keylogger, CEH v13 study notes">
+    <meta name="author" content="Chris Pardue">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/module12.html">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+        .container{max-width:900px;margin:0 auto;padding:0 20px}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
+        .header-inner{display:flex;justify-content:space-between;align-items:center}
+        .back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}
+        .back-link:hover{text-decoration:underline}
+        .study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px;transition:all .15s}
+        .study-btn:hover{background:var(--accent2);border-color:var(--accent)}
+        main{padding:30px 0}
+        .module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}
+        .section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}
+        .section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+        .section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}
+        .section-block p{color:var(--text2);margin-bottom:12px}
+        .section-block ul,.section-block ol{color:var(--text2);margin:0 0 12px 24px}
+        .section-block li{margin-bottom:6px}
+        .section-block strong{color:var(--text)}
+        .section-block code{background:var(--bg3);padding:2px 6px;border-radius:3px;font-size:.9em}
+        .section-block pre{background:var(--bg3);padding:12px;border-radius:6px;overflow-x:auto;margin:12px 0}
+        .section-block pre code{background:none;padding:0}
+        .section-block blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:12px 0;color:var(--text2);font-style:italic}
+        footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}
+        footer a{color:var(--accent);text-decoration:none}
+    </style>
+</head>
+<body>
+    <header><div class="container"><div class="header-inner">
+        <a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a>
+        <a href="index.html" class="study-btn">&#127891; Study Flashcards</a>
+    </div></div></header>
+    <div class="container">
+        <main>
+            <h1 class="module-title">Module 12: Virus and Trojan Attacks</h1>
+
+            <section class="section-block"><h3>Section 1: Malware Fundamentals</h3>
+                <p><strong>Malware (Malicious Software)</strong> = any program created to cause damage to a computer, server, client, or computer network.</p>
+                <h4>Malware Lifecycle</h4>
+                <ol>
+                    <li><strong>Injection:</strong> Malware enters the system (email attachment, download, USB drive)</li>
+                    <li><strong>Installation:</strong> Malware installs itself on the target</li>
+                    <li><strong>Execution:</strong> Malware is activated and begins its malicious activity</li>
+                    <li><strong>Delivery:</strong> Malware delivers its payload (data theft, encryption, backdoor)</li>
+                </ol>
+                <h4>Types of Malware</h4>
+                <ul>
+                    <li><strong>Virus:</strong> Attaches itself to a program or file and requires human action to spread</li>
+                    <li><strong>Worm:</strong> Self-replicating malware that spreads without human interaction</li>
+                    <li><strong>Trojan:</strong> Disguises as legitimate software, creates backdoor</li>
+                    <li><strong>Ransomware:</strong> Encrypts files and demands payment for decryption</li>
+                    <li><strong>Spyware:</strong> Secretly monitors user activity and collects information</li>
+                    <li><strong>Rootkit:</strong> Hides presence of malware from detection tools</li>
+                    <li><strong>Bot/Botnet:</strong> Compromised system controlled by attacker as part of network</li>
+                    <li><strong>Logic Bomb:</strong> Triggers malicious action when specific condition is met</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 2: Virus Types and Techniques</h3>
+                <h4>Virus Characteristics</h4>
+                <p>A virus requires a host program or file to attach to. It needs human action (running the infected program) to propagate.</p>
+                <h4>Virus Lifecycle</h4>
+                <ol>
+                    <li><strong>Linking:</strong> Virus code is linked to host program</li>
+                    <li><strong>Waiting (Dormant):</strong> Virus waits for trigger condition</li>
+                    <li><strong>Execution:</strong> Host program runs, activating the virus</li>
+                    <li><strong>Testing/Discovery:</strong> Virus tests for target to infect</li>
+                    <li><strong>Infection/Replication:</strong> Virus infects other files/systems</li>
+                    <li><strong>Execution:</strong> Virus payload is carried out</li>
+                    <li><strong>Modification:</strong> Virus may modify itself to avoid detection</li>
+                </ol>
+                <h4>Virus Types</h4>
+                <ul>
+                    <li><strong>Boot Sector Virus:</strong> Infects the Master Boot Record (MBR) or boot sector. Loads into memory when computer starts.</li>
+                    <li><strong>File-Infector Virus:</strong> Attaches to executable files (.exe, .com). Activates when infected program runs.</li>
+                    <li><strong>Macro Virus:</strong> Embedded in macro commands within documents (Word, Excel). Spreads through document sharing.</li>
+                    <li><strong>Polymorphic Virus:</strong> Changes its code (using mutation engine) each time it replicates to avoid signature-based detection.</li>
+                    <li><strong>Metamorphic Virus:</strong> Rewrites its entire code while maintaining functionality. More advanced than polymorphic.</li>
+                    <li><strong>Multipartite Virus:</strong> Combines boot sector and file-infector techniques. Infects both files and boot sectors.</li>
+                    <li><strong>Resident Virus:</strong> Installs itself in system memory, allowing it to infect files as they are opened or created.</li>
+                    <li><strong>Non-Resident Virus:</strong> Does not install in memory. Activates when infected file is run, infects other files, then exits.</li>
+                    <li><strong>Overwrite Virus:</strong> Overwrites programs and data with its own code, destroying the original file.</li>
+                </ul>
+                <h4>Virus Protection Techniques</h4>
+                <ul>
+                    <li><strong>Signature-based detection:</strong> Matches malware against known signatures (limited effectiveness against polymorphic viruses)</li>
+                    <li><strong>Heuristic analysis:</strong> Detects suspicious behavior or code patterns rather than specific signatures</li>
+                    <li><strong>Scanning:</strong> Examines entire files or system areas for known virus patterns</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 3: Trojan Types and Techniques</h3>
+                <p><strong>Trojan (Trojan Horse)</strong> = malware that disguises itself as legitimate software. Unlike viruses, Trojans do not replicate themselves.</p>
+                <h4>Trojan Characteristics</h4>
+                <ul>
+                    <li>Does not self-replicate</li>
+                    <li>Relies on social engineering to trick users into installation</li>
+                    <li>Creates backdoor for remote access</li>
+                    <li>Can install additional malware</li>
+                </ul>
+                <h4>Trojan Types</h4>
+                <table>
+                    <tr><th>Type</th><th>Description</th></tr>
+                    <tr><td>Remote Access Trojan (RAT)</td><td>Provides attacker full remote control of infected system</td></tr>
+                    <tr><td>Banker Trojan</td><td>Steals financial information (online banking credentials)</td></tr>
+                    <tr><td>Downloader Trojan</td><td>Downloads and installs additional malware</td></tr>
+                    <tr><td>Dropper Trojan</td><td>Delivers and deploys other malware to target system</td></tr>
+                    <tr><td>Game Plug-in Trojan</td><td>Hides inside game add-ons to steal information</td></tr>
+                    <tr><td>Gamotrojan</td><td>Miners cryptojacking resources disguised as games</td></tr>
+                    <tr><td>Ransomware Trojan</td><td>Delivers ransomware payload (e.g., CryptoLocker)</td></tr>
+                    <tr><td>Wiper Trojan</td><td>Destructively erases data from target systems</td></tr>
+                </table>
+                <h4>Reverse Connection Trojan</h4>
+                <p>Trojan initiates outbound connection to attacker's command and control server, bypassing inbound firewall rules.</p>
+                <ol>
+                    <li>Victim installs the Trojan (disguised as legitimate software)</li>
+                    <li>Trojan opens a backdoor on the victim system</li>
+                    <li>Trojan connects to attacker's C2 server (often on port 80 or 443)</li>
+                    <li>Attacker gains remote access to the compromised system</li>
+                </ol>
+            </section>
+
+            <section class="section-block"><h3>Section 4: Other Malware Types</h3>
+                <h4>Ransomware</h4>
+                <p>Encrypts victim's files and demands payment (usually cryptocurrency) for the decryption key.</p>
+                <h4>Types</h4>
+                <ul>
+                    <li><strong>Cryptographic ransomware:</strong> Encrypts files with strong algorithms (AES, RSA)</li>
+                    <li><strong>Locker ransomware:</strong> Locks user out of system without encrypting files</li>
+                </ul>
+                <h4>Ransomware Distribution</h4>
+                <ul>
+                    <li>Email attachments (malicious documents with macros)</li>
+                    <li>Drive-by downloads from compromised websites</li>
+                    <li>Remote Desktop Protocol (RDP) brute force attacks</li>
+                    <li>Exploit kits targeting vulnerabilities</li>
+                    <li>Bundled with other malware (Trojan downloaders)</li>
+                </ul>
+
+                <h4>Spyware and Keyloggers</h4>
+                <p>Spyware secretly monitors user activity. Keyloggers record keystrokes to capture passwords and sensitive data.</p>
+
+                <h4>Rootkits</h4>
+                <p>Tools that hide the existence of malware from detection methods. Operate at various levels of the system.</p>
+                <h4>Rootkit Types</h4>
+                <ul>
+                    <li><strong>User-Mode Rootkits:</strong> Hook API calls to hide processes, files, registry keys</li>
+                    <li><strong>Kernel-Mode Rootkits:</strong> Operate at ring 0 level, most dangerous and hardest to detect</li>
+                    <li><strong>Hypervisor Rootkits:</strong> Run below the operating system, control the entire system</li>
+                    <li><strong>Boot Sector Rootkits:</strong> Infect MBR, load before OS</li>
+                    <li><strong>Firmware Rootkits:</strong> Infected BIOS/UEFI, persist across reboots and reinstalls</li>
+                </ul>
+                <h4>Rootkit Techniques</h4>
+                <ul>
+                    <li><strong>System call hooking:</strong> Intercept and modify API calls to hide malicious activity</li>
+                    <li><strong>Inline hooking (MS Hook):</strong> Modify first few bytes of functions to redirect execution</li>
+                    <li><strong>IDT hooking:</strong> Interrupt Descriptor Table modification</li>
+                    <li><strong>SSDT hooking:</strong> System Service Descriptor Table modification</li>
+                </ul>
+
+                <h4>Logic Bombs</h4>
+                <p>Malicious code that triggers when specific conditions are met (date, event, action). Often planted by disgruntled employees.</p>
+
+                <h4>Fileless Malware</h4>
+                <p>Operates entirely in memory without writing to disk. Uses legitimate system tools (PowerShell, WMI) to execute malicious code.</p>
+            </section>
+
+            <section class="section-block"><h3>Section 5: Trojan Tools and Techniques</h3>
+                <h4>Trojan Development Tools</h4>
+                <ul>
+                    <li><strong>Armitage:</strong> GUI-based network attack tool with built-in Trojan generation</li>
+                    <li><strong>Thc-ipv6:</strong> IPv6 attack toolkit that includes Trojan capabilities</li>
+                    <li><strong>Metasploit Framework:</strong> Generates backdoor payloads (meterpreter)</li>
+                    <li><strong>Mimikatz:</strong> Extracts credentials and creates pass-the-hash tokens</li>
+                </ul>
+                <h4>Trojan Infection Techniques</h4>
+                <ol>
+                    <li><strong>Disguise:</strong> Package malware as legitimate software (cracks, keygens, games)</li>
+                    <li><strong>Obfuscation:</strong> Encrypt or encode the payload to avoid detection</li>
+                    <li><strong>Distribution:</strong> Deliver via email, website, USB drive, or software bundle</li>
+                    <li><strong>Execution:</strong> User runs the Trojan, activating the backdoor</li>
+                    <li><strong>C2 Communication:</strong> Trojan connects to attacker's command and control server</li>
+                </ol>
+            </section>
+
+            <section class="section-block"><h3>Section 6: Malware Countermeasures</h3>
+                <h4>Prevention Techniques</h4>
+                <ul>
+                    <li><strong>Antivirus/Antimalware:</strong> Install and maintain updated signature databases</li>
+                    <li><strong>Firewalls:</strong> Block unauthorized outbound connections (detect reverse trojans)</li>
+                    <li><strong>Application whitelisting:</strong> Only allow approved programs to run</li>
+                    <li><strong>Email filtering:</strong> Scan attachments and links for malware</li>
+                    <li><strong>Regular updates/patching:</strong> Fix vulnerabilities that malware exploits</li>
+                    <li><strong>User education:</strong> Train employees to recognize social engineering</li>
+                    <li><strong>Least privilege:</strong> Limit user permissions to reduce malware impact</li>
+                </ul>
+                <h4>Detection Techniques</h4>
+                <ul>
+                    <li><strong>Behavioral analysis:</strong> Monitor for suspicious process behavior</li>
+                    <li><strong>Integrity monitoring:</strong> Check for unauthorized file/registry changes</li>
+                    <li><strong>Network monitoring:</strong> Detect C2 communication patterns</li>
+                    <li><strong>Endpoint Detection and Response (EDR):</strong> Advanced threat detection on endpoints</li>
+                </ul>
+                <h4>Rootkit Detection Tools</h4>
+                <ul>
+                    <li><strong>SFC (System File Checker):</strong> Windows system file integrity checking</li>
+                    <li><strong>GMER:</strong> Rootkit detection tool (scan for kernel-level modifications)</li>
+                    <li><strong>RKill:</strong> Terminates rootkit processes before running antivirus</li>
+                    <li><strong>MAL/Rootkit detect:</strong> Built-in Windows Defender capabilities</li>
+                    <li><strong>chkrootkit:</strong> Linux rootkit detection tool</li>
+                </ul>
+                <h4>Ransomware Countermeasures</h4>
+                <ul>
+                    <li><strong>Regular backups:</strong> Maintain offline backups of critical data</li>
+                    <li><strong>Email hygiene:</strong> Filter malicious attachments</li>
+                    <li><strong>Application control:</strong> Restrict execution of untrusted code</li>
+                    <li><strong>Disable macros:</strong> Prevent Office document macros from running</li>
+                    <li><strong>Network segmentation:</strong> Limit ransomware spread</li>
+                </ul>
+            </section>
+
+            <section class="section-block"><h3>Section 7: Notable Malware Incidents</h3>
+                <h4>Melissa (1999)</h4>
+                <p>Macro virus that spread via Outlook email attachments. Requested $400 for "password protected" files, distributed itself through email contacts.</p>
+
+                <h4>ILOVEYOU (2000)</h4>
+                <p>Email worm that spread via subject "ILOVEYOU" with attached "LOVE-LETTER-FOR-YOU.TXT.vbs". Caused an estimated $10 billion in damages worldwide.</p>
+
+                <h4>Stuxnet (2010)</h4>
+                <p>Sophisticated worm targeting Iranian nuclear facilities. Used multiple zero-day exploits and four stolen digital certificates to spread via USB drives.</p>
+
+                <h4>CryptoLocker (2013)</h4>
+                <p>Ransomware that encrypted files and demanded Bitcoin payment. Distributed via Gameover ZeuS trojan. Estimated $3 million in ransom before takedown.</p>
+
+                <h4>WannaCry (2017)</h4>
+                <p>Ransomware worm that exploited EternalBlue (Windows SMB vulnerability). Spread rapidly across 150 countries, affecting 200,000+ computers including NHS hospitals in the UK.</p>
+
+                <h4>Emotet (2014-2021)</h4>
+                <p>Initially a banking trojan, evolved into a modular malware distribution platform. Delivered TrickBot and ransomware payloads through email campaigns.</p>
+            </section>
+        </main>
+    </div>
+    <footer><div class="container">
+        <p>Built for the CEH community. Study smart, pass your exam.</p>
+        <p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </div></footer>
+</body>
+</html>
