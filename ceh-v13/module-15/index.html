@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 15: SQL Injection — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 15 flashcards: UNION-based SQLi, blind SQLi, boolean-based, time-based, sqlmap, WAF bypass, parameterized queries. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-15/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 15: SQL Injection — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 15 covering UNION-based, blind, boolean-based, time-based SQL injection, sqlmap usage, and WAF bypass techniques.",
+        "url": "https://cehstudy.com/ceh-v13/module-15/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 15: SQL Injection", "item": "https://cehstudy.com/ceh-v13/module-15/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "SQL Injection",
+            "termCode": "CEH-M15",
+            "description": "UNION-based, blind, boolean-based, and time-based SQL injection techniques. sqlmap tool usage, WAF bypass techniques, and prevention through parameterized queries."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=15" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 15 Flashcards</a>
+    </div></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 15: SQL Injection</nav>
+
+        <h1 class="page-title">CEH v13 Module 15: SQL Injection</h1>
+        <p class="content-text">SQL injection (SQLi) is one of the most critical web application vulnerabilities. This module covers UNION-based, blind, boolean-based, and time-based SQL injection techniques. Learn how to use sqlmap for automated exploitation, bypass WAFs, and implement prevention through parameterized queries.</p>
+
+        <a href="/?module=15" class="flashcard-link">&#127891; Launch Flashcards — Module 15</a>
+
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>SQL injection fundamentals and how it works at the query level</li>
+            <li>UNION-based SQL injection: combining results from multiple queries</li>
+            <li>Blind SQL injection: inferring data through true/false responses</li>
+            <li>Boolean-based blind SQLi: using HTTP response differences</li>
+            <li>Time-based blind SQLi: using SLEEP() and WAITFOR delays</li>
+            <li>Out-of-band SQL injection techniques</li>
+            <li>sqlmap tool usage and advanced options</li>
+            <li>WAF bypass techniques for SQL injection</li>
+            <li>Prevention: parameterized queries, prepared statements, input validation</li>
+        </ul>
+
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>UNION-based SQLi:</strong> Uses the UNION operator to combine results from the original query with an attacker-injected SELECT statement. Requires same number of columns in both queries.</div>
+        <div class="term-box"><strong>Blind SQL Injection:</strong> No data is returned in the response. Attacker infers data by observing true/false responses or time delays. Slower but works when error messages are disabled.</div>
+        <div class="term-box"><strong>Boolean-based Blind SQLi:</strong> Injects conditions that evaluate to TRUE or FALSE, observing differences in HTTP response content to infer data character by character.</div>
+        <div class="term-box"><strong>Time-based Blind SQLi:</strong> Uses database-specific time functions (SLEEP(5) in MySQL, WAITFOR DELAY '00:00:05' in MSSQL) to infer data based on response timing.</div>
+        <div class="term-box"><strong>sqlmap:</strong> Open-source tool that automates SQL injection detection and exploitation. Supports UNION, blind, time-based, error-based, out-of-band techniques. Can take full database control.</div>
+        <div class="term-box"><strong>WAF Bypass:</strong> Techniques to evade Web Application Firewalls: encoding (%27 for single quote), double encoding, comment injection (--, #), character set manipulation, and chunk size attacks.</div>
+
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Understand how SQL injection works at the query level (concatenation of user input into queries)</li>
+            <li>Differentiate UNION-based vs blind vs boolean-based vs time-based techniques</li>
+            <li>Know sqlmap command-line options for different attack scenarios</li>
+            <li>Memorize prevention: parameterized queries are the single most effective defense</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>What is SQL injection?</strong><br>Inserting malicious SQL code into input fields to manipulate backend database queries. Can lead to data theft, authentication bypass, and full database compromise.</p>
+        <p><strong>What are the types of SQL injection attacks?</strong><br>In-band (UNION-based, error-based), Blind (boolean-based, time-based), and Out-of-band. In-band is easiest — attacker uses same channel for attack and results. Blind is slower but works when errors are hidden.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-14/">Module 14: Hacking Web Applications</a> — SQL injection is a key OWASP Top 10 web application vulnerability</li>
+            <li><a href="/ceh-v13/module-16/">Module 16: Hacking Wireless Networks</a> — next phase of the attack chain</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '15';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
+</body>
+</html>
