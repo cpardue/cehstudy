@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEH v13 Module 12: Evading IDS, Firewalls & Honeypots — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 12 flashcards: IDS vs IPS, NIDS/HIDS, signature/anomaly detection, firewall evasion, fragmentation, honeypot types. Free study resources.">
+    <meta name="description" content="CEH v13 Module 12 evading IDS/firewalls flashcards: IDS types, firewall evasion, tunneling, fragmentation. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-12/">
 
@@ -14,7 +14,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "CEH v13 Module 12: Evading IDS, Firewalls & Honeypots — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 12 covering IDS vs IPS, NIDS/HIDS, signature/anomaly detection, firewall evasion, and honeypot types.",
+        "description": "Free flashcards for CEH v13 Module 12 covering IDS evasion, firewall evasion, tunneling, and fragmentation techniques.",
         "url": "https://cehstudy.com/ceh-v13/module-12/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -27,7 +27,7 @@
             "@type": "DefinedTerm",
             "name": "Evading IDS, Firewalls & Honeypots",
             "termCode": "CEH-M12",
-            "description": "Techniques to bypass network security controls including IDS/IPS evasion, firewall rule bypass, fragmentation attacks, tunneling, IP spoofing, and honeypot detection."
+            "description": "Techniques for evading intrusion detection systems, firewalls, and honeypots during penetration testing."
         }
     }
     </script>
@@ -48,45 +48,36 @@
     <div class="container">
         <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 12: Evading IDS, Firewalls & Honeypots</nav>
 
-        <h1 class="page-title">CEH v13 Module 12: Evading IDS, Firewalls &amp; Honeypots</h1>
-        <p class="content-text">This module covers techniques used to bypass network security controls. Attackers use evasion methods to avoid detection by IDS/IPS systems, firewall rules, and honeypots. Understanding these techniques is essential for both offensive security testing and defensive deployment.</p>
+        <h1 class="page-title">CEH v13 Module 12: Evading IDS, Firewalls & Honeypots</h1>
+        <p class="content-text">This module covers techniques for evading security controls including IDS, firewalls, and honeypots. Topics include IDS types (network-based, host-based), firewall evasion methods, tunneling, fragmentation, and honeypot/honeynet detection.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>IDS vs IPS: detection vs prevention systems</li>
-            <li>Network-based (NIDS) vs host-based (HIDS) intrusion detection</li>
-            <li>Signature-based vs anomaly-based detection methods</li>
-            <li>Firewall evasion: fragmentation, tunneling, IP spoofing</li>
-            <li>Honeypot and honeynet types and detection</li>
-            <li>IPsec evasion techniques</li>
+            <li>IDS types: NIDS vs HIDS, signature vs anomaly-based</li>
+            <li>Firewall evasion: IP fragmentation, tunneling, decoy scanning</li>
+            <li>Tunneling techniques: DNS, ICMP, HTTP/HTTPS</li>
+            <li>Honeypot/honeynet detection and avoidance</li>
+            <li>Encrypted traffic evasion</li>
         </ul>
 
         <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>IDS (Intrusion Detection System):</strong> Monitors network traffic for suspicious activity and generates alerts. Does not block traffic — purely detection.</div>
-        <div class="term-box"><strong>IPS (Intrusion Prevention System):</strong> Like IDS but actively blocks or drops malicious traffic in real-time. Can cause false positives that disrupt legitimate traffic.</div>
-        <div class="term-box"><strong>NIDS (Network IDS):</strong> Monitors all traffic across the entire network at strategic points. Placed at the perimeter or on VLANs.</div>
-        <div class="term-box"><strong>HIDS (Host IDS):</strong> Monitors activity on a single host — file integrity, system logs, running processes, registry changes.</div>
-        <div class="term-box"><strong>Signature-Based Detection:</strong> Matches traffic against a database of known attack patterns. Misses zero-day attacks but has low false-positive rate.</div>
-        <div class="term-box"><strong>Anomaly-Based Detection:</strong> Establishes a baseline of normal traffic and alerts on deviations. Detects unknown attacks but has higher false-positive rate.</div>
-        <div class="term-box"><strong>Fragmentation Attack:</strong> Sending packet fragments that reassemble into an attack payload outside the IPS inspection window. Defeats signature-based IDS/IPS.</div>
-        <div class="term-box"><strong>Honeypot:</strong> A decoy system designed to attract attackers and study their behavior. Low-interaction (simulated services) vs high-interaction (real systems).</div>
+        <div class="term-box"><strong>NIDS:</strong> Network-based IDS monitors all network traffic. Placed at network perimeter. Signature-based (known patterns) vs anomaly-based (baseline deviations). Tools: Snort, Suricata.</div>
+        <div class="term-box"><strong>HIDS:</strong> Host-based IDS monitors a single system. Checks file integrity, logs, processes. Detects post-compromise activity. Tools: OSSEC, Tripwire.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Differentiate IDS from IPS — detection vs prevention</li>
-            <li>Know NIDS vs HIDS and signature-based vs anomaly-based detection</li>
-            <li>Memorize evasion techniques: fragmentation, tunneling, spoofing, IP address rotation</li>
-            <li>Understand honeypot types and how to detect them during penetration testing</li>
+            <li>Know IDS types and their differences</li>
+            <li>Understand firewall evasion techniques</li>
+            <li>Learn tunneling methods and their uses</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the difference between IDS and IPS?</strong><br>IDS only monitors and alerts on suspicious activity. IPS actively blocks or drops malicious traffic in real-time. Both are important but IPS can cause false positives.</p>
-        <p><strong>How do you evade a firewall during scanning?</strong><br>Techniques include IP fragmentation, using DNS tunneling (port 53), encrypting traffic, slow scanning rates, decoy scanning (using multiple source IPs), and splitting payloads across fragments.</p>
+        <p><strong>What's the best IDS evasion technique?</strong><br>Tunneling through allowed ports (DNS/HTTPS) — most firewalls permit this traffic.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-05/">Module 5: Vulnerability Analysis</a> — evasion is needed before vulnerability scanning</li>
-            <li><a href="/ceh-v13/module-13/">Module 13: Hacking Web Servers</a> — evaded firewalls to reach web servers</li>
+            <li><a href="/ceh-v13/module-11/" style="color:var(--accent)">Module 11: Denial of Service</a> — DDoS evasion of defenses</li>
+            <li><a href="/ceh-v13/module-13/" style="color:var(--accent)">Module 13: Cryptography</a> — encryption enables tunneling evasion</li>
         </ul>
     </div>
 
