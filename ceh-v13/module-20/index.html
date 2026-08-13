@@ -43,7 +43,6 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
-        <a href="/?module=20" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 20 Flashcards</a>
     </div></div></header>
 
     <div class="container">
@@ -51,8 +50,6 @@
 
         <h1 class="page-title">CEH v13 Module 20: Cryptography</h1>
         <p class="content-text">Cryptography is the foundation of information security. This module covers encryption algorithms (symmetric, asymmetric, hash), public key infrastructure (PKI), digital signatures, key management, cryptographic attacks, secure communication protocols, and wireless cryptography. Understanding these concepts is essential for ethical hackers to evaluate security postures and identify weaknesses.</p>
-
-        <a href="/?module=20" class="flashcard-link">&#127891; Launch Flashcards — Module 20</a>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -72,17 +69,17 @@
         <div class="term-box"><strong>Symmetric Encryption:</strong> Uses the same key for encryption and decryption. Fast and efficient for bulk data. Examples: AES (128/192/256-bit), DES (56-bit, broken), 3DES, Blowfish, ChaCha20. Modes of operation: ECB, CBC, CFB, OFB, GCM.</div>
         <div class="term-box"><strong>Asymmetric Encryption:</strong> Uses a public/private key pair. Public key encrypts, private key decrypts. Slower than symmetric but solves key distribution. Examples: RSA (2048-4096-bit), ECC (256-521-bit), DSA (signatures only), Diffie-Hellman (key exchange).</div>
         <div class="term-box"><strong>Cryptographic Hash Functions:</strong> One-way functions producing fixed-size digests. Properties: deterministic, pre-image resistant, collision resistant, avalanche effect. Secure: SHA-256, SHA-384, SHA-512, BLAKE2. Broken: MD5 (collisions), SHA-1 (SHAttered).</div>
-        <div class="term-box"><strong>Digital Signatures:</strong> Provide authentication, integrity, and non-repudiation. Process: hash message &rarr; encrypt hash with sender's private key &rarr; append signature &rarr; receiver decrypts with sender's public key &rarr; compares hashes. Standards: DSS, PKCS#10, PKCS#7, ECDSA.</div>
+        <div class="term-box"><strong>Digital Signatures:</strong> Provide authentication, integrity, and non-repudiation. Process: hash message → encrypt hash with sender's private key → append signature → receiver decrypts with sender's public key → compares hashes. Standards: DSS, PKCS#10, PKCS#7, ECDSA.</div>
         <div class="term-box"><strong>PKI (Public Key Infrastructure):</strong> Framework managing digital certificates and public-key cryptography. Components: Certificate Authority (CA) issues/signs certs, Registration Authority (RA) verifies requests, X.509 certificates bind identity to public key, CRL/OCSP for revocation checking.</div>
         <div class="term-box"><strong>Key Management:</strong> Covers key generation, distribution, storage (HSM, keystore), usage, rotation, revocation, and destruction. Methods: physical delivery, pre-shared keys (PSK), public-key encryption, Diffie-Hellman key exchange, KDC (Kerberos).</div>
-        <div class="term-box"><strong>Cryptographic Attacks:</strong> Brute force (try all keys), known/chosen plaintext/ciphertext, collision attacks (two inputs &rarr; same hash), side channel (timing/power/EM leaks), man-in-the-middle, rubber hose coercion. Minimum key sizes: RSA 2048-bit, ECC 256-bit, AES 128-bit.</div>
+        <div class="term-box"><strong>Cryptographic Attacks:</strong> Brute force (try all keys), known/chosen plaintext/ciphertext, collision attacks (two inputs → same hash), side channel (timing/power/EM leaks), man-in-the-middle, rubber hose coercion. Minimum key sizes: RSA 2048-bit, ECC 256-bit, AES 128-bit.</div>
         <div class="term-box"><strong>Secure Protocols:</strong> TLS/SSL (asymmetric handshake + symmetric data), IPsec (AH/ESP at network layer), SSH (ports 22, asymmetric auth + symmetric data), PGP/GPG (email/file encryption with combined symmetric+asymmetric).</div>
         <div class="term-box"><strong>Wireless Cryptography:</strong> WEP (RC4, broken), WPA (TKIP, deprecated), WPA2 (AES-CCMP, current standard), WPA3 (AES-GCMP/Suite B, forward secrecy). WPA3 introduces SAE (Simultaneous Authentication of Equals) replacing PSK.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
             <li>Memorize the difference between symmetric and asymmetric encryption with specific algorithm examples</li>
-            <li>Know hash function strengths/weaknesses &mdash; which are broken (MD5, SHA-1) vs secure (SHA-256+, BLAKE2)</li>
+            <li>Know hash function strengths/weaknesses — which are broken (MD5, SHA-1) vs secure (SHA-256+, BLAKE2)</li>
             <li>Understand the digital signature process step-by-step</li>
             <li>Learn PKI components and how CAs, RAs, and certificates work together</li>
             <li>Know minimum key size requirements for each algorithm type</li>
@@ -91,14 +88,14 @@
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
         <p><strong>Why is cryptography critical for ethical hackers?</strong><br>Cryptography is the backbone of security. Ethical hackers must understand it to evaluate encryption strength, identify weak algorithms (DES, MD5), assess PKI configurations, and test protocol implementations for vulnerabilities.</p>
-        <p><strong>What's the most important algorithm to know for the exam?</strong><br>AES &mdash; it's the current symmetric standard. Also know RSA for asymmetric, SHA-256 for hashing, and the difference between WPA2 (AES) and WPA3 (forward secrecy).</p>
+        <p><strong>What's the most important algorithm to know for the exam?</strong><br>AES — it's the current symmetric standard. Also know RSA for asymmetric, SHA-256 for hashing, and the difference between WPA2 (AES) and WPA3 (forward secrecy).</p>
         <p><strong>How does PKI relate to digital certificates?</strong><br>PKI is the entire framework that issues, manages, and revokes digital certificates. The CA signs certificates, RA verifies identities, and CRL/OCSP handle revocation. Certificates bind public keys to real-world identities.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-06/">Module 6: System Hacking</a> &mdash; cryptography used in password cracking and encryption</li>
-            <li><a href="/ceh-v13/module-16/">Module 16: Hacking Wireless Networks</a> &mdash; wireless cryptography (WEP/WPA/WPA2/WPA3)</li>
-            <li><a href="/ceh-v13/module-12/">Module 12: Evading IDS, Firewalls &amp; Honeypots</a> &mdash; encryption used to evade detection</li>
+            <li><a href="/ceh-v13/module-06/">Module 6: System Hacking</a> — cryptography used in password cracking and encryption</li>
+            <li><a href="/ceh-v13/module-16/">Module 16: Hacking Wireless Networks</a> — wireless cryptography (WEP/WPA/WPA2/WPA3)</li>
+            <li><a href="/ceh-v13/module-12/">Module 12: Evading IDS, Firewalls &amp; Honeypots</a> — encryption used to evade detection</li>
         </ul>
     </div>
 
