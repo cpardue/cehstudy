@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 16: Hacking Wireless Networks — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 16 flashcards: WEP/WPA/WPA2 cracking, evil twin, rogue AP, deauth attacks, WPS attacks, Bluetooth exploits. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-16/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 16: Hacking Wireless Networks — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 16 covering WEP/WPA/WPA2 cracking, evil twin attacks, rogue access points, deauthentication attacks, Bluetooth exploits, and WPS PIN brute force.",
+        "url": "https://cehstudy.com/ceh-v13/module-16/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 16: Hacking Wireless Networks", "item": "https://cehstudy.com/ceh-v13/module-16/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "Hacking Wireless Networks",
+            "termCode": "CEH-M16",
+            "description": "Wireless network attacks including WEP/WPA/WPA2 cracking, evil twin attacks, rogue access points, deauthentication attacks, Bluetooth exploits, and WPS PIN brute force."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=16" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 16 Flashcards</a>
+    </div></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 16: Hacking Wireless Networks</nav>
+
+        <h1 class="page-title">CEH v13 Module 16: Hacking Wireless Networks</h1>
+        <p class="content-text">This module covers wireless network attacks including WEP/WPA/WPA2 cracking, evil twin attacks, rogue access points, deauthentication attacks, Bluetooth exploits, and Wi-Fi Protected Setup (WPS) attacks. Understanding wireless protocols is essential for both attacking and securing wireless infrastructure.</p>
+
+        <a href="/?module=16" class="flashcard-link">&#127891; Launch Flashcards — Module 16</a>
+
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>WEP cracking: IV collection, Aircrack-ng suite</li>
+            <li>WPA/WPA2-PSK: handshake capture and dictionary attacks</li>
+            <li>Evil twin attack: creating rogue AP with same SSID</li>
+            <li>Rogue access point deployment and detection</li>
+            <li>Deauthentication attacks to force reconnection</li>
+            <li>WPS PIN brute force (Reaver tool)</li>
+            <li>Bluetooth attacks: bluejacking, bluesnarfing, BlueBorne</li>
+        </ul>
+
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>WEP (Wired Equivalent Privacy):</strong> Oldest and weakest Wi-Fi security. Uses RC4 with static IVs. Crackable in minutes using Aircrack-ng. Completely broken — never use.</div>
+        <div class="term-box"><strong>WPA/WPA2-PSK:</strong> Pre-Shared Key authentication using TKIP (WPA) or AES (WPA2). Vulnerable to handshake capture + dictionary/brute-force attacks. WPA2 is the minimum acceptable standard.</div>
+        <div class="term-box"><strong>Evil Twin:</strong> Rogue AP broadcasting the same SSID as a legitimate network. Used for MITM attacks, credential harvesting, and traffic interception. Often deployed with deauth to force client association.</div>
+        <div class="term-box"><strong>Rogue AP:</strong> Unauthorized access point connected to a secured network. Can be an employee's home WiFi or a malicious device. Creates a backdoor into the internal network.</div>
+        <div class="term-box"><strong>Deauthentication Attack:</strong> Sends deauth frames to disconnect clients from an AP. Forces reconnection so attacker can capture the WPA handshake for offline cracking. Tools: aircrack-ng, mdk3.</div>
+        <div class="term-box"><strong>WPS (Wi-Fi Protected Setup):</strong> Convenience feature with PIN-based authentication. Vulnerable to brute force — Reaver can recover WPS PIN in hours, then crack the PSK. Disable WPS on all APs.</div>
+
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Know WEP vs WPA vs WPA2 security levels and crackability</li>
+            <li>Understand the evil twin attack flow: create AP → deauth clients → MITM</li>
+            <li>Memorize wireless attack tools: aircrack-ng suite, Reaver, Kismet, Wireshark</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>Which Wi-Fi security is easiest to crack?</strong><br>WEP is the easiest (minutes). WPA2-WPS is next if WPS is enabled (hours). WPA2 without WPS requires capturing the handshake then offline dictionary/brute-force attack.</p>
+        <p><strong>What is an evil twin attack?</strong><br>Creating a rogue access point with the same SSID as a legitimate network. Victims connect automatically, and the attacker performs MITM to capture traffic and credentials.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-08/">Module 8: Sniffing</a> — wireless sniffing captures unencrypted traffic</li>
+            <li><a href="/ceh-v13/module-17/">Module 17: Mobile Security</a> — mobile devices often connect to wireless networks</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '16';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
+</body>
+</html>
