@@ -7,6 +7,7 @@
     <meta name="description" content="Browse all 20 CEH v13 study modules. Access free flashcards, study guides, key terms, and FAQs for every Certified Ethical Hacker exam domain.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/">
+    <link rel="stylesheet" href="/styles.css">
 
     <script type="application/ld+json">
     {
@@ -18,124 +19,134 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#151515;--bg2:#1e1e1e;--bg3:#2c2c2c;--text:#d1d0c5;--text2:#646669;--accent:#39ff88;--border:#2c2c2c}
-        body{font-family:'JetBrains Mono','Fira Code',Consolas,monospace;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
-        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
-        header a{color:var(--accent);text-decoration:none;font-size:.9rem}
-        header a:hover{text-decoration:underline}
-        .container{max-width:800px;margin:0 auto;padding:30px 20px;flex:1}
-        h1{font-size:1.5rem;color:var(--accent);margin-bottom:16px}
-        h2{font-size:1.2rem;color:var(--accent);margin-top:32px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-        p{margin-bottom:14px;font-size:.92rem}
-        .breadcrumb{font-size:.82rem;color:var(--text2);margin-bottom:20px}
-        .breadcrumb a{color:var(--text2);text-decoration:none}
-        .breadcrumb a:hover{color:var(--accent)}
-        .module-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin:20px 0}
-        .module-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px;text-decoration:none;transition:border-color .15s,background .15s;display:block}
-        .module-card:hover{border-color:var(--accent);background:var(--bg3)}
-        .module-card .num{color:var(--accent);font-size:.8rem;font-weight:600;text-transform:uppercase}
-        .module-card .title{color:var(--text);font-size:.95rem;margin-top:4px}
-        footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.78rem;color:var(--text2)}
-        footer a{color:var(--accent);text-decoration:none}
-        @media(max-width:600px){h1{font-size:1.25rem}.module-grid{grid-template-columns:1fr}}
-    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type":"ListItem","position":1,"name":"Home","item":"https://cehstudy.com/"},
+            {"@type":"ListItem","position":2,"name":"CEH v13 Modules","item":"https://cehstudy.com/ceh-v13/"}
+        ]
+    }
+    </script>
 </head>
 <body>
-    <header><div class="container" style="padding:0"><a href="/">&larr; Back to CEHStudy</a></div></header>
 
-    <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; CEH v13 Modules</nav>
+<header class="header-sticky">
+  <div class="header-nav-inner">
+    <a href="/" class="header-nav-logo">CEHStudy</a>
+    <nav class="header-nav-links">
+      <a href="/ceh-v13/">Modules</a>
+      <a href="/ceh-v13-study-guide/">Study Guide</a>
+      <a href="/ceh-practice-questions/">Practice Questions</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+  </div>
+</header>
 
-        <h1>CEH v13 Study Modules</h1>
-        <p>All 20 modules of the Certified Ethical Hacker v13 curriculum. Each module includes free flashcards, key terms, study guides, and FAQ sections.</p>
+<div class="container">
+    <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; CEH v13 Modules</nav>
 
-        <div class="module-grid">
-            <a href="/ceh-v13/module-01/" class="module-card">
-                <span class="num">Module 1</span>
-                <div class="title">Introduction to Ethical Hacking</div>
-            </a>
-            <a href="/ceh-v13/module-02/" class="module-card">
-                <span class="num">Module 2</span>
-                <div class="title">Footprinting & Reconnaissance</div>
-            </a>
-            <a href="/ceh-v13/module-03/" class="module-card">
-                <span class="num">Module 3</span>
-                <div class="title">Scanning Networks</div>
-            </a>
-            <a href="/ceh-v13/module-04/" class="module-card">
-                <span class="num">Module 4</span>
-                <div class="title">Enumeration</div>
-            </a>
-            <a href="/ceh-v13/module-05/" class="module-card">
-                <span class="num">Module 5</span>
-                <div class="title">Vulnerability Analysis</div>
-            </a>
-            <a href="/ceh-v13/module-06/" class="module-card">
-                <span class="num">Module 6</span>
-                <div class="title">System Hacking</div>
-            </a>
-            <a href="/ceh-v13/module-07/" class="module-card">
-                <span class="num">Module 7</span>
-                <div class="title">Malware Threats</div>
-            </a>
-            <a href="/ceh-v13/module-08/" class="module-card">
-                <span class="num">Module 8</span>
-                <div class="title">Sniffing</div>
-            </a>
-            <a href="/ceh-v13/module-09/" class="module-card">
-                <span class="num">Module 9</span>
-                <div class="title">Social Engineering</div>
-            </a>
-            <a href="/ceh-v13/module-10/" class="module-card">
-                <span class="num">Module 10</span>
-                <div class="title">Denial-of-Service</div>
-            </a>
-            <a href="/ceh-v13/module-11/" class="module-card">
-                <span class="num">Module 11</span>
-                <div class="title">Session Hijacking</div>
-            </a>
-            <a href="/ceh-v13/module-12/" class="module-card">
-                <span class="num">Module 12</span>
-                <div class="title">Evading IDS, Firewalls & Honeypots</div>
-            </a>
-            <a href="/ceh-v13/module-13/" class="module-card">
-                <span class="num">Module 13</span>
-                <div class="title">Hacking Web Servers</div>
-            </a>
-            <a href="/ceh-v13/module-14/" class="module-card">
-                <span class="num">Module 14</span>
-                <div class="title">Hacking Web Applications</div>
-            </a>
-            <a href="/ceh-v13/module-15/" class="module-card">
-                <span class="num">Module 15</span>
-                <div class="title">SQL Injection</div>
-            </a>
-            <a href="/ceh-v13/module-16/" class="module-card">
-                <span class="num">Module 16</span>
-                <div class="title">Hacking Wireless Networks</div>
-            </a>
-            <a href="/ceh-v13/module-17/" class="module-card">
-                <span class="num">Module 17</span>
-                <div class="title">Hacking Mobile Platforms</div>
-            </a>
-            <a href="/ceh-v13/module-18/" class="module-card">
-                <span class="num">Module 18</span>
-                <div class="title">IoT & OT Hacking</div>
-            </a>
-            <a href="/ceh-v13/module-19/" class="module-card">
-                <span class="num">Module 19</span>
-                <div class="title">Cloud Computing</div>
-            </a>
-        </div>
+    <h1 class="page-title">CEH v13 Study Modules</h1>
+    <p class="content-text">All 20 modules of the Certified Ethical Hacker v13 curriculum. Each module includes free flashcards, key terms, study guides, and FAQ sections.</p>
 
-        <p style="margin-top:24px"><a href="/" style="color:var(--accent)">&#127891; Start Flashcards →</a></p>
+    <div class="module-grid">
+        <a href="/ceh-v13/module-01/" class="module-card">
+            <span class="num">Module 1</span>
+            <div class="title">Introduction to Ethical Hacking</div>
+        </a>
+        <a href="/ceh-v13/module-02/" class="module-card">
+            <span class="num">Module 2</span>
+            <div class="title">Footprinting & Reconnaissance</div>
+        </a>
+        <a href="/ceh-v13/module-03/" class="module-card">
+            <span class="num">Module 3</span>
+            <div class="title">Scanning Networks</div>
+        </a>
+        <a href="/ceh-v13/module-04/" class="module-card">
+            <span class="num">Module 4</span>
+            <div class="title">Enumeration</div>
+        </a>
+        <a href="/ceh-v13/module-05/" class="module-card">
+            <span class="num">Module 5</span>
+            <div class="title">Vulnerability Analysis</div>
+        </a>
+        <a href="/ceh-v13/module-06/" class="module-card">
+            <span class="num">Module 6</span>
+            <div class="title">System Hacking</div>
+        </a>
+        <a href="/ceh-v13/module-07/" class="module-card">
+            <span class="num">Module 7</span>
+            <div class="title">Malware Threats</div>
+        </a>
+        <a href="/ceh-v13/module-08/" class="module-card">
+            <span class="num">Module 8</span>
+            <div class="title">Sniffing</div>
+        </a>
+        <a href="/ceh-v13/module-09/" class="module-card">
+            <span class="num">Module 9</span>
+            <div class="title">Social Engineering</div>
+        </a>
+        <a href="/ceh-v13/module-10/" class="module-card">
+            <span class="num">Module 10</span>
+            <div class="title">Denial-of-Service</div>
+        </a>
+        <a href="/ceh-v13/module-11/" class="module-card">
+            <span class="num">Module 11</span>
+            <div class="title">Session Hijacking</div>
+        </a>
+        <a href="/ceh-v13/module-12/" class="module-card">
+            <span class="num">Module 12</span>
+            <div class="title">Evading IDS, Firewalls & Honeypots</div>
+        </a>
+        <a href="/ceh-v13/module-13/" class="module-card">
+            <span class="num">Module 13</span>
+            <div class="title">Hacking Web Servers</div>
+        </a>
+        <a href="/ceh-v13/module-14/" class="module-card">
+            <span class="num">Module 14</span>
+            <div class="title">Hacking Web Applications</div>
+        </a>
+        <a href="/ceh-v13/module-15/" class="module-card">
+            <span class="num">Module 15</span>
+            <div class="title">SQL Injection</div>
+        </a>
+        <a href="/ceh-v13/module-16/" class="module-card">
+            <span class="num">Module 16</span>
+            <div class="title">Hacking Wireless Networks</div>
+        </a>
+        <a href="/ceh-v13/module-17/" class="module-card">
+            <span class="num">Module 17</span>
+            <div class="title">Hacking Mobile Platforms</div>
+        </a>
+        <a href="/ceh-v13/module-18/" class="module-card">
+            <span class="num">Module 18</span>
+            <div class="title">IoT & OT Hacking</div>
+        </a>
+        <a href="/ceh-v13/module-19/" class="module-card">
+            <span class="num">Module 19</span>
+            <div class="title">Cloud Computing</div>
+        </a>
     </div>
 
-    <footer><a href="/">CEHStudy</a> &middot; Free CEH v13 Study Flashcards &middot; Not affiliated with EC-Council</footer>
+    <p style="margin-top:24px"><a href="/" style="color:var(--accent)">&#127891; Start Flashcards →</a></p>
+</div>
+
+<footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/">Flashcards</a>
+        <a href="/ceh-v13/">CEH v13 Modules</a>
+        <a href="/ceh-v13-study-guide/">Study Guide</a>
+        <a href="/ceh-practice-questions/">Practice Questions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/disclaimer/">Disclaimer</a>
+    </nav>
+    <p class="footer-copy">CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
+</footer>
+
 </body>
 </html>
