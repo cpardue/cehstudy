@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 11: Session Hijacking — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 11 flashcards: TCP session hijacking, SIDJACKING, XSS-based attacks, cookie poisoning, session fixation, HTTPS prevention. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-11/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 11: Session Hijacking — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 11 covering TCP session hijacking, SIDJACKING, XSS-based attacks, cookie poisoning, and session fixation.",
+        "url": "https://cehstudy.com/ceh-v13/module-11/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 11: Session Hijacking", "item": "https://cehstudy.com/ceh-v13/module-11/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "Session Hijacking",
+            "termCode": "CEH-M11",
+            "description": "Taking over active user sessions by stealing or predicting session tokens including TCP hijacking, SIDJACKING, XSS-based attacks, cookie poisoning, and session fixation."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=11" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 11 Flashcards</a>
+    </div></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 11: Session Hijacking</nav>
+
+        <h1 class="page-title">CEH v13 Module 11: Session Hijacking</h1>
+        <p class="content-text">Session hijacking involves taking over an active user session by stealing or predicting the session token. This module covers TCP session hijacking, SIDJACKING, XSS-based attacks, cookie poisoning, session fixation, and prevention measures including HTTPS and secure cookie flags.</p>
+
+        <a href="/?module=11" class="flashcard-link">&#127891; Launch Flashcards — Module 11</a>
+
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>TCP session hijacking: sequence prediction, IP spoofing, RST injection</li>
+            <li>SIDJACKING: stealing unencrypted session IDs over the network</li>
+            <li>XSS-based session hijacking: injecting JavaScript to steal cookies</li>
+            <li>Cookie poisoning and manipulation</li>
+            <li>Session fixation attacks</li>
+            <li>HTTP header manipulation techniques</li>
+            <li>Prevention: HTTPS, Secure/HttpOnly cookie flags, token binding</li>
+        </ul>
+
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>TCP Session Hijacking:</strong> Attacker takes over an established TCP connection by predicting sequence numbers, spoofing the source IP, and injecting packets. Requires the attacker to be in-line with the traffic.</div>
+        <div class="term-box"><strong>SIDJACKING:</strong> Stealing a user's session ID (cookie) from network traffic. Works when sessions use HTTP (not HTTPS). Tools: Wireshark, Firesheep.</div>
+        <div class="term-box"><strong>XSS-Based Hijacking:</strong> Injecting malicious JavaScript into a vulnerable web page that reads the victim's cookies and sends them to the attacker. More common than SIDJACKING today.</div>
+        <div class="term-box"><strong>Session Fixation:</strong> Attacker sets a known session ID for the victim, then waits for the victim to authenticate with that same ID. The attacker already knows the session token.</div>
+        <div class="term-box"><strong>Cookie Poisoning:</strong> Tampering with session cookie data stored on the client side to manipulate application behavior or gain elevated privileges.</div>
+
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Understand the 4 steps of TCP session hijacking (sniff, sequence prediction, IP spoofing, RST injection)</li>
+            <li>Differentiate SIDJACKING from XSS-based cookie theft</li>
+            <li>Know prevention techniques: HTTPS, Secure/HttpOnly/SameSite flags, session regeneration after login</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>What is session hijacking?</strong><br>An attacker takes over an active user's session by stealing or predicting the session token, allowing unauthorized access without needing credentials.</p>
+        <p><strong>How do you prevent session hijacking?</strong><br>Use HTTPS for all sessions, set Secure and HttpOnly flags on cookies, regenerate session IDs after authentication, implement SameSite cookie attribute, and use multi-factor authentication.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-08/">Module 8: Sniffing</a> — SIDJACKING requires network sniffing to capture session IDs</li>
+            <li><a href="/ceh-v13/module-14/">Module 14: Hacking Web Applications</a> — XSS-based hijacking is a web application attack</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '11';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
+</body>
+</html>
