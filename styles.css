@@ -486,6 +486,7 @@ header {
 
 .seo-content ul {
     list-style-type: disc;
+    list-style-color: var(--text);
     padding-left: 20px;
     margin-bottom: 14px;
 }
@@ -704,6 +705,7 @@ blockquote {
 
 .content-list {
     list-style-type: disc;
+    list-style-color: var(--text);
     padding-left: 20px;
     margin-bottom: 14px;
 }
