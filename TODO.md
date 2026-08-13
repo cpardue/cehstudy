@@ -38,6 +38,14 @@
 
 ---
 
+### Bugfix: Select Modules button not working on fresh load ✅ FIXED
+- Added null checks for DOM elements in `setupEventListeners()` to prevent silent failures
+- Moved `menuList` from global const to local lookup inside `buildMenu()` to avoid race condition
+- Wrapped `init()` body in try/catch with console.error logging for debugging
+- **Committed:** `fbad9a42e1b4e6d0fa71afa8fe6ce63c21352cec`
+
+---
+
 ## Summary of Changes
 
 **Before:** Each module had its own standalone HTML page with "Launch Flashcards - Module XX" buttons that opened separate pages.
@@ -49,7 +57,7 @@
 
 **Files Changed:**
 - `index.html` - Cleaned up, removed standalone module references
-- `flashcards_app.js` - Added ?module=X query param support + URL sync
+- `flashcards_app.js` - Added ?module=X query param support + URL sync + null safety checks
 - `robots.txt` - Added disallow rules for deleted URLs
 - `ceh-v13/index.html` - Updated description text
 
