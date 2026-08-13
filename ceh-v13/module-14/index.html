@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 14: Hacking Web Applications — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 14 flashcards: OWASP Top 10, XSS (reflected/stored/DOM), CSRF, injection flaws, broken authentication, IDOR. Free study resources.">
+    <title>CEH v13 Module 14: Network Interface Attacks — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 14 network interface attacks flashcards: wireless attacks, Bluetooth attacks, mobile device attacks. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-14/">
 
@@ -13,21 +13,21 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 14: Hacking Web Applications — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 14 covering OWASP Top 10, XSS (reflected/stored/DOM-based), CSRF, injection flaws, broken authentication, and IDOR.",
+        "name": "CEH v13 Module 14: Network Interface Attacks — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 14 covering wireless attacks, Bluetooth attacks, and mobile device attacks.",
         "url": "https://cehstudy.com/ceh-v13/module-14/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 14: Hacking Web Applications", "item": "https://cehstudy.com/ceh-v13/module-14/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 14: Network Interface Attacks", "item": "https://cehstudy.com/ceh-v13/module-14/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Hacking Web Applications",
+            "name": "Network Interface Attacks",
             "termCode": "CEH-M14",
-            "description": "OWASP Top 10 web application vulnerabilities including XSS (reflected/stored/DOM), CSRF, injection flaws, security misconfigurations, and broken authentication."
+            "description": "Wireless, Bluetooth, and mobile device attacks targeting network interfaces."
         }
     }
     </script>
@@ -46,46 +46,37 @@
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 14: Hacking Web Applications</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 14: Network Interface Attacks</nav>
 
-        <h1 class="page-title">CEH v13 Module 14: Hacking Web Applications</h1>
-        <p class="content-text">This module covers attacks against web applications, focusing on the OWASP Top 10 vulnerabilities. Attackers exploit XSS (reflected, stored, DOM-based), CSRF, injection flaws, security misconfigurations, and broken authentication to compromise web application systems and data.</p>
+        <h1 class="page-title">CEH v13 Module 14: Network Interface Attacks</h1>
+        <p class="content-text">This module covers attacks targeting network interfaces including wireless, Bluetooth, and mobile devices. Topics include Wi-Fi attacks (WEP/WPA/WPA2 cracking), evil twin, rogue AP, Bluetooth attacks, and mobile device exploitation.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>OWASP Top 10 categories and their evolution in v13</li>
-            <li>Reflected XSS vs Stored XSS vs DOM-based XSS</li>
-            <li>Cross-Site Request Forgery (CSRF) attacks and token bypass</li>
-            <li>SQL injection, command injection, LDAP injection</li>
-            <li>Security misconfiguration: default credentials, verbose errors</li>
-            <li>Broken authentication and session management</li>
-            <li>Insecure Direct Object References (IDOR)</li>
+            <li>Wi-Fi security: WEP, WPA, WPA2, WPA3 protocols and weaknesses</li>
+            <li>Wireless attacks: evil twin, rogue AP, war driving, war chalking</li>
+            <li>Bluetooth attacks: bluejacking, bluesnarfing, Blueborne</li>
+            <li>Mobile device attacks: SIM cloning, SMS interception, app vulnerabilities</li>
         </ul>
 
         <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>OWASP Top 10:</strong> The ten most critical web application security risks, updated periodically. Categories include injection, broken authentication, XSS, insecure direct object references, security misconfiguration, and more.</div>
-        <div class="term-box"><strong>Reflected XSS:</strong> Malicious script is embedded in a URL or form submission and executed immediately in the victim's browser. Not stored on the server. Requires tricking user into clicking a crafted link.</div>
-        <div class="term-box"><strong>Stored XSS:</strong> Malicious script is permanently stored on the target server (in comments, user profiles, forums). Every user who views the stored data is affected — most dangerous XSS type.</div>
-        <div class="term-box"><strong>DOM-based XSS:</strong> Vulnerability exists in client-side JavaScript rather than server code. The attack modifies the DOM environment in the victim's browser without server interaction.</div>
-        <div class="term-box"><strong>CSRF (Cross-Site Request Forgery):</strong> Forces an authenticated user's browser to perform unwanted actions on a trusted site. Mitigated with anti-CSRF tokens, SameSite cookies, and re-authentication for sensitive operations.</div>
-        <div class="term-box"><strong>IDOR (Insecure Direct Object References):</strong> Accessing resources by manipulating object identifiers in URLs (e.g., changing ?user_id=100 to ?user_id=101). Allows unauthorized access to other users' data.</div>
+        <div class="term-box"><strong>WEP:</strong> Wired Equivalent Privacy — broken protocol using RC4. Vulnerable to IV attacks. Cracked in minutes with aircrack-ng.</div>
+        <div class="term-box"><strong>Evil Twin:</strong> Rogue AP mimicking legitimate network SSID. Users connect unknowingly. Defenses: 802.1X authentication, certificate validation.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Know all OWASP Top 10 categories and their descriptions</li>
-            <li>Differentiate reflected vs stored vs DOM-based XSS with examples</li>
-            <li>Understand CSRF attack flow and mitigation techniques</li>
-            <li>Practice identifying web application vulnerabilities in sample code</li>
+            <li>Know wireless security protocol differences (WEP vs WPA vs WPA2 vs WPA3)</li>
+            <li>Understand each attack mechanism</li>
+            <li>Learn defense strategies for wireless networks</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the OWASP Top 10?</strong><br>A standard awareness document for web application security listing the ten most critical security risks. It is updated every few years to reflect evolving threats.</p>
-        <p><strong>What are the types of XSS attacks?</strong><br>Three types: Reflected (script delivered via link), Stored (script saved on server), and DOM-based (exploits client-side JavaScript). Stored XSS is most dangerous as it affects all visitors.</p>
+        <p><strong>Which wireless protocol is most secure?</strong><br>WPA3 — uses AES-256, forward secrecy, SAE authentication. Replaces PSK with more secure handshake.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-13/">Module 13: Hacking Web Servers</a> — web server compromise often leads to application attacks</li>
-            <li><a href="/ceh-v13/module-15/">Module 15: SQL Injection</a> — SQL injection is one of the most critical OWASP Top 10 vulnerabilities</li>
+            <li><a href="/ceh-v13/module-13/" style="color:var(--accent)">Module 13: Cryptography</a> — wireless cryptography (WEP/WPA/WPA2/WPA3)</li>
+            <li><a href="/ceh-v13/module-15/" style="color:var(--accent)">Module 15: IoT Attacks</a> — IoT devices often use wireless interfaces</li>
         </ul>
     </div>
 
