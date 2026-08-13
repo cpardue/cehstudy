@@ -43,7 +43,6 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
-        <a href="/?module=11" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 11 Flashcards</a>
     </div></div></header>
 
     <div class="container">
@@ -51,8 +50,6 @@
 
         <h1 class="page-title">CEH v13 Module 11: Session Hijacking</h1>
         <p class="content-text">Session hijacking involves taking over an active user session by stealing or predicting the session token. This module covers TCP session hijacking, SIDJACKING, XSS-based attacks, cookie poisoning, session fixation, and prevention measures including HTTPS and secure cookie flags.</p>
-
-        <a href="/?module=11" class="flashcard-link">&#127891; Launch Flashcards — Module 11</a>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -65,7 +62,7 @@
             <li>Prevention: HTTPS, Secure/HttpOnly cookie flags, token binding</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
         <div class="term-box"><strong>TCP Session Hijacking:</strong> Attacker takes over an established TCP connection by predicting sequence numbers, spoofing the source IP, and injecting packets. Requires the attacker to be in-line with the traffic.</div>
         <div class="term-box"><strong>SIDJACKING:</strong> Stealing a user's session ID (cookie) from network traffic. Works when sessions use HTTP (not HTTPS). Tools: Wireshark, Firesheep.</div>
         <div class="term-box"><strong>XSS-Based Hijacking:</strong> Injecting malicious JavaScript into a vulnerable web page that reads the victim's cookies and sends them to the attacker. More common than SIDJACKING today.</div>
