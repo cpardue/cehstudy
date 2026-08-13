@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 18: Lateral Movement — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 18 flashcards: pass-the-hash, pass-the-ticket, remote service attacks, pivoting, credential dumping, Mimikatz. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-18/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 18: Lateral Movement — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 18 covering pass-the-hash, pass-the-ticket, remote service attacks, pivoting, credential dumping with Mimikatz.",
+        "url": "https://cehstudy.com/ceh-v13/module-18/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 18: Lateral Movement", "item": "https://cehstudy.com/ceh-v13/module-18/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "Lateral Movement",
+            "termCode": "CEH-M18",
+            "description": "Techniques attackers use to move through a network from an initial compromise including pass-the-hash, pass-the-ticket, remote service exploitation, pivoting, and credential dumping."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=18" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 18 Flashcards</a>
+    </div></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 18: Lateral Movement</nav>
+
+        <h1 class="page-title">CEH v13 Module 18: Lateral Movement</h1>
+        <p class="content-text">Lateral movement is the set of techniques attackers use to move through a network from an initial compromise to other systems. This module covers pass-the-hash (PtH), pass-the-ticket (PTT), remote service exploitation (SMB, RDP, SSH, WinRM), pivoting techniques, credential dumping, and Metasploit post-exploitation modules.</p>
+
+        <a href="/?module=18" class="flashcard-link">&#127891; Launch Flashcards — Module 18</a>
+
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>Pass-the-Hash (PtH): using NTLM hashes instead of passwords</li>
+            <li>Pass-the-Ticket (PTT): using stolen Kerberos tickets</li>
+            <li>Remote service attacks: SMB, RDP, SSH, WinRM, WMI</li>
+            <li>Pivoting: using compromised host as jump point</li>
+            <li>Credential dumping: Mimikatz, LSASS extraction</li>
+            <li>Lateral movement detection and prevention</li>
+            <li>Metasploit post-exploitation modules</li>
+        </ul>
+
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>Pass-the-Hash (PtH):</strong> Attacker captures NTLM hash and uses it to authenticate to remote services without knowing the plaintext password. Tools: Mimikatz, Impacket (psexec.py, smbexec.py).</div>
+        <div class="term-box"><strong>Pass-the-Ticket (PTT):</strong> Attacker extracts Kerberos TGT (ticket-granting ticket) and uses it to authenticate without credentials. More advanced than PtH — works in pure Kerberos environments.</div>
+        <div class="term-box"><strong>Pivoting:</strong> Using a compromised host as a jump point to reach otherwise inaccessible internal networks. Tools: Metasploit port forwards, ssh -L/-D, Chisel, Ligolo.</div>
+        <div class="term-box"><strong>Mimikatz:</strong> Most widely known credential dumping tool. Extracts passwords, hashes, PINs, and Kerberos tickets from memory. Can perform PtH and PTT attacks.</div>
+        <div class="term-box"><strong>Credential Dumping:</strong> Extracting credentials from memory (LSASS on Windows). Methods: lsass.exe injection, token manipulation, registry extraction of cached credentials.</div>
+        <div class="term-box"><strong>WinRM (Windows Remote Management):</strong> Microsoft's implementation of WS-Management protocol. Commonly abused for lateral movement via PowerShell Invoke-Command and Impacket's winrm.py.</div>
+
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Understand the difference between PtH and PTT attacks</li>
+            <li>Know which remote services are commonly abused for lateral movement</li>
+            <li>Learn pivoting techniques and tools</li>
+            <li>Understand how credential dumping works and detection methods</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>What is lateral movement?</strong><br>The process attackers use to move through a network from an initial compromise to other systems, escalating privileges and expanding access.</p>
+        <p><strong>How do you prevent lateral movement?</strong><br>Network segmentation, least privilege access, disable SMB/RDP where possible, LSA protection, Credential Guard, MFA, endpoint detection (EDR), and monitoring for anomalous authentication patterns.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-05/">Module 5: System Hacking</a> — initial system compromise enables lateral movement</li>
+            <li><a href="/ceh-v13/module-19/">Module 19: Post-Exploitation / IR</a> — lateral movement leads to post-exploitation objectives</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '18';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
+</body>
+</html>
