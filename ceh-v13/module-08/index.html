@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEH v13 Module 8: Sniffing — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 8 flashcards: passive/active sniffing, Wireshark, ARP poisoning, MAC flooding, DHCP starvation, packet capture. Free study resources.">
+    <meta name="description" content="CEH v13 Module 8 sniffing flashcards: protocol analysis, packet capture, Wireshark, ARP/DNS/RARP sniffing. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-08/">
 
@@ -14,7 +14,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "CEH v13 Module 8: Sniffing — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 8 covering passive/active sniffing, Wireshark, ARP poisoning, MAC flooding, and DHCP starvation.",
+        "description": "Free flashcards for CEH v13 Module 8 covering protocol analysis, packet capture with Wireshark, and ARP/DNS/RARP sniffing.",
         "url": "https://cehstudy.com/ceh-v13/module-08/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -27,7 +27,7 @@
             "@type": "DefinedTerm",
             "name": "Sniffing",
             "termCode": "CEH-M08",
-            "description": "Intercepting and analyzing network traffic including passive vs active sniffing, ARP poisoning, MAC flooding, DHCP starvation, and packet capture tools."
+            "description": "Network protocol analysis and packet capture techniques including Wireshark, ARP/DNS/RARP sniffing for ethical hacking."
         }
     }
     </script>
@@ -49,45 +49,35 @@
         <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 8: Sniffing</nav>
 
         <h1 class="page-title">CEH v13 Module 8: Sniffing</h1>
-        <p class="content-text">Sniffing is the act of intercepting and analyzing traffic on a network. This module covers passive vs active sniffing, packet capture tools like Wireshark and tcpdump, ARP poisoning attacks, MAC address table overflow, DHCP starvation, and techniques for evading switched networks.</p>
+        <p class="content-text">This module covers network sniffing techniques — capturing and analyzing network traffic. Topics include protocol analysis, packet capture with Wireshark, ARP/DNS/RARP sniffing, switch evasion, and defense mechanisms.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Passive vs active sniffing techniques</li>
-            <li>Packet capture tools: Wireshark, tcpdump, Cain & Abel, EtherPeek</li>
-            <li>ARP poisoning/ARP spoofing attacks</li>
-            <li>MAC address table overflow (CAM table flooding)</li>
-            <li>DHCP starvation attacks</li>
-            <li>Switched network evasion techniques</li>
-            <li>Protocol analysis and payload extraction</li>
-            <li>Network monitoring countermeasures</li>
+            <li>Protocol analysis: TCP/IP stack, common protocols</li>
+            <li>Packet capture: Wireshark, tcpdump, Nmap scripts</li>
+            <li>ARP sniffing: intercepting ARP traffic</li>
+            <li>DNS/RARP sniffing techniques</li>
+            <li>Switch evasion: port mirroring, MAC flooding</li>
         </ul>
 
         <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Passive Sniffing:</strong> Simply listening to network traffic without sending packets. Works on hubs where all traffic is broadcast to every port. Cannot work on switches without additional attacks.</div>
-        <div class="term-box"><strong>Active Sniffing:</strong> Injecting packets into the network to redirect traffic toward the attacker. Includes ARP poisoning, MAC flooding, and DHCP starvation attacks.</div>
-        <div class="term-box"><strong>ARP Poisoning (ARP Spoofing):</strong> Sending fake ARP replies to associate the attacker's MAC address with the target's IP. Creates a Man-in-the-Middle position.</div>
-        <div class="term-box"><strong>CAM Table Overflow:</strong> Flooding a switch's MAC address table until it enters "fail-open" mode, broadcasting all traffic like a hub. Tools: Macof, Cain & Abel.</div>
-        <div class="term-box"><strong>DHCP Starvation:</strong> Creating fake DHCP requests with random MACs to exhaust the DHCP pool (DHCP exhaustion). Also called a DHCP starvation attack. Tools: Yersinia.</div>
-        <div class="term-box"><strong>Wireshark:</strong> The world's most popular network protocol analyzer. GUI-based, supports hundreds of protocols, captures and displays packet-level data in real-time.</div>
-        <div class="term-box"><strong>tcpdump:</strong> Command-line packet capture tool for Linux/Unix. Uses BPF (Berkeley Packet Filter) syntax for filtering captured packets.</div>
+        <div class="term-box"><strong>Promiscuous Mode:</strong> Network interface configured to capture all traffic on the segment, not just traffic addressed to it. Required for sniffing.</div>
+        <div class="term-box"><strong>MAC Flooding:</strong> Overwhelming switch CAM table with fake MAC addresses forces switch into hub mode, broadcasting all traffic. Defenses: port security, BPDU guard.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Understand the difference between passive and active sniffing with examples</li>
-            <li>Know how ARP poisoning creates a Man-in-the-Middle position</li>
-            <li>Memorize how MAC flooding forces switches into hub-like behavior</li>
-            <li>Practice using Wireshark to analyze captured traffic</li>
+            <li>Practice Wireshark capture and filtering</li>
+            <li>Understand common protocol headers</li>
+            <li>Learn switch evasion techniques</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the difference between hub and switch sniffing?</strong><br>On a hub, all traffic goes to every port — passive sniffing works easily. On a switch, traffic is sent only to the destination MAC, so active attacks (ARP poisoning, MAC flooding) are required.</p>
-        <p><strong>How does ARP poisoning work?</strong><br>The attacker sends unsolicited fake ARP replies telling the gateway that the attacker's MAC is the target's IP. All traffic for the target now goes through the attacker's machine.</p>
+        <p><strong>What is the best tool for sniffing?</strong><br>Wireshark for analysis, tcpdump for CLI. Both are essential tools.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-07/">Module 7: Malware Threats</a> — malware can be used to sniff traffic on compromised hosts</li>
-            <li><a href="/ceh-v13/module-09/">Module 9: Social Engineering</a> — sniffed credentials can fuel phishing attacks</li>
+            <li><a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7: Network-based Attacks</a> — sniffing supports MITM attacks</li>
+            <li><a href="/ceh-v13/module-09/" style="color:var(--accent)">Module 9: Social Engineering</a> — social engineering enables physical sniffing access</li>
         </ul>
     </div>
 
