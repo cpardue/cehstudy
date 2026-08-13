@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEH v13 Module 4: Enumeration — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 4 flashcards: SNMP enumeration, LDAP enumeration, SMB enumeration, DNS zone transfers, WinRM. Free study resources.">
+    <meta name="description" content="CEH v13 Module 4 enumeration flashcards: SNMP, SMB, LDAP, DNS zone transfer, SMTP enumeration, Telnet/SSH. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-04/">
 
@@ -14,7 +14,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "CEH v13 Module 4: Enumeration — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 4 covering SNMP, LDAP, SMB, DNS zone transfers, and WinRM enumeration.",
+        "description": "Free flashcards for CEH v13 Module 4 covering SNMP enumeration, SMB shares, LDAP queries, DNS zone transfer, SMTP user enumeration, and Telnet/SSH attacks.",
         "url": "https://cehstudy.com/ceh-v13/module-04/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -27,7 +27,7 @@
             "@type": "DefinedTerm",
             "name": "Enumeration",
             "termCode": "CEH-M04",
-            "description": "Enumeration techniques including SNMP, LDAP, SMB, DNS zone transfers, and WinRM to extract user/account information."
+            "description": "Techniques for extracting user accounts, passwords, hostname, network segments, and system properties from target services including SNMP, SMB, LDAP, DNS, and SMTP."
         }
     }
     </script>
@@ -43,42 +43,46 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
-        <a href="/" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">🎱 Study All Flashcards</a>
     </div></div></header>
 
     <div class="container">
         <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 4: Enumeration</nav>
 
         <h1 class="page-title">CEH v13 Module 4: Enumeration</h1>
-        <p class="content-text">Enumeration extracts user accounts, passwords, hash values, file shares, and system information from target systems. This module covers SNMP, LDAP, SMB, DNS zone transfers, and WinRM enumeration techniques used by ethical hackers.</p>
+        <p class="content-text">This module covers enumeration techniques — extracting detailed information from target services. Topics include SNMP enumeration, SMB shares and user listing, LDAP queries, DNS zone transfer, SMTP user enumeration, and Telnet/SSH attacks.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>SNMP enumeration: community strings, MIBs, SNMPwalk</li>
-            <li>LDAP enumeration: user accounts, group policies, domain info</li>
-            <li>SMB enumeration: file shares, user lists, password policies</li>
-            <li>DNS zone transfers: AXFR, IXFR protocols</li>
-            <li>WinRM and PowerShell remoting enumeration</li>
-            <li>NetBIOS and WMI enumeration</li>
+            <li>SNMP enumeration: community strings, MIB traversal, SNMPwalk</li>
+            <li>SMB enumeration: shares, users, groups, OS info</li>
+            <li>LDAP queries: directory information, user accounts, group membership</li>
+            <li>DNS zone transfer: AXFR, IXFR protocols</li>
+            <li>SMTP enumeration: VRFY, EXPN, RCPT TO commands</li>
+            <li>Telnet and SSH attacks: brute force, banner grabbing</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms & Concepts</h2>
-        <div class="term-box"><strong>SNMP Enumeration:</strong> Using default/well-known community strings (public/private) to query network devices. Tools: snmpwalk, onesixtyone for brute-forcing community strings.</div>
-        <div class="term-box"><strong>LDAP Enumeration:</strong> Querying Active Directory for users, groups, and policies. Tools: ldapsearch, BloodHound, SharpHound.</div>
+        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
+        <div class="term-box"><strong>SNMP Community Strings:</strong> SNMPv1/v2c use plaintext community strings (public/private by default). Tools: snmp-check, BGSU SNMP Scanner, onesixtyone for auditing.</div>
+        <div class="term-box"><strong>SMB Enumeration:</strong> Can reveal shared drives, user accounts, password policies. Tools: smbclient, nmap scripts (smb-enum-shares, smb-enum-users), enum4linux.</div>
+        <div class="term-box"><strong>DNS Zone Transfer (AXFR):</strong> Requesting full DNS zone file from a nameserver. Often succeeds when misconfigured. Tools: nslookup, dig axfr, nmap --dns-strip.</div>
+        <div class="term-box"><strong>LDAP Queries:</strong> Can extract user accounts, groups, computers, password policies. Default ports: 389 (unencrypted), 636 (LDAPS). Tools: ldapsearch, BloodHound.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Know each enumeration protocol and what data it reveals</li>
-            <li>Understand common tools for each enumeration type</li>
+            <li>Know which protocols/ports are used for each enumeration technique</li>
+            <li>Understand the difference between SNMPv1/v2c vs v3 security</li>
+            <li>Learn common commands for each enumeration tool</li>
+            <li>Understand how to defend against enumeration attacks</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the most valuable enumeration target?</strong><br>Active Directory via LDAP — reveals entire domain hierarchy, user relationships, and group policies in one query.</p>
+        <p><strong>Which enumeration protocol is most dangerous?</strong><br>SNMP with default community strings — it can reveal entire network topology, routing tables, and interface statistics. Always change default strings.</p>
+        <p><strong>What's the best tool for SMB enumeration?</strong><br>enum4linux combines multiple techniques: smbclient, nmblookup, RPC client, and more into a single comprehensive tool.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-03/">Module 3: Scanning</a> — scanning identifies ports that enumeration targets</li>
-            <li><a href="/ceh-v13/module-05/">Module 5: Vulnerability Analysis</a> — enumeration data feeds vulnerability assessment</li>
+            <li><a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3: Scanning Networks</a> — enumeration follows scanning</li>
+            <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: System Hacking</a> — enumeration data enables system attacks</li>
         </ul>
     </div>
 
