@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 3: Scanning — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 3 flashcards: port scanning, network mapping, nmap, Nessus, OpenVAS, banner grabbing, bypassing IDS/firewalls. Free study resources.">
+    <title>CEH v13 Module 3: Scanning Networks — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 3 flashcards: port scanning, TCP/UDP scanning, banner grabbing, SNMP enumeration, firewall bypass techniques. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-03/">
 
@@ -13,21 +13,21 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 3: Scanning — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 3 covering port scanning, network mapping, nmap, Nessus, OpenVAS, banner grabbing, and bypassing IDS/firewalls.",
+        "name": "CEH v13 Module 3: Scanning Networks — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 3 covering port scanning, TCP/UDP scanning, banner grabbing, SNMP enumeration, and firewall bypass techniques.",
         "url": "https://cehstudy.com/ceh-v13/module-03/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 3: Scanning", "item": "https://cehstudy.com/ceh-v13/module-03/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 3: Scanning Networks", "item": "https://cehstudy.com/ceh-v13/module-03/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Scanning",
+            "name": "Network and System Scanning",
             "termCode": "CEH-M03",
-            "description": "Network and port scanning techniques including nmap, Nessus, OpenVAS, banner grabbing, and bypassing IDS/firewalls."
+            "description": "Network and system scanning techniques including port scanning, TCP/UDP scanning, banner grabbing, SNMP enumeration, and firewall bypass techniques."
         }
     }
     </script>
@@ -43,44 +43,74 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
-        <a href="/" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">🎱 Study All Flashcards</a>
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 3: Scanning</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 3: Scanning Networks</nav>
 
-        <h1 class="page-title">CEH v13 Module 3: Scanning</h1>
-        <p class="content-text">Scanning builds on footprinting by actively probing target systems. This module covers port scanning with nmap, network mapping, vulnerability scanning with Nessus and OpenVAS, banner grabbing, and techniques for bypassing IDS and firewalls.</p>
+        <h1 class="page-title">CEH v13 Module 3: Scanning Networks</h1>
+        <p class="content-text">This module covers network and system scanning — the second phase of ethical hacking. Learn port scanning techniques, TCP/UDP scanning, banner grabbing, SNMP enumeration, firewall bypass methods, and tools like Nmap, Netcat, and Metasploit.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Port scanning techniques: SYN, connect, UDP, FIN, Xmas, Null, Idle scans</li>
-            <li>nmap flags and options for different scan types</li>
+            <li>Scanning vs footprinting: differences and relationships</li>
+            <li>TCP connections: three-way handshake, SYN, ACK, FIN flags</li>
+            <li>Port scanning techniques: SYN, connect, UDP, XMAS, NULL, FIN, ACK scan</li>
             <li>Network mapping and topology discovery</li>
-            <li>Vulnerability scanning: Nessus, OpenVAS, Nexpose</li>
             <li>Banner grabbing and service identification</li>
+            <li>SNMP enumeration and community strings</li>
             <li>Firewall and IDS evasion techniques</li>
+            <li>Scanning tools: Nmap, Netcat, Metasploit, Masscan</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms & Concepts</h2>
-        <div class="term-box"><strong>nmap SYN Scan (Stealth Scan):</strong> Sends SYN packets and analyzes responses. Faster and less likely to be logged than full connect scans. Uses -sS flag in nmap.</div>
-        <div class="term-box"><strong>TCP Connect Scan:</strong> Completes full TCP handshake. More noticeable but requires no special privileges. Uses -sT flag in nmap.</div>
-        <div class="term-box"><strong>Xmas Scan:</strong> Sends packets with FIN, PSH, and URG flags set. Named after Christmas tree lights. Can determine if port is filtered/unfiltered.</div>
+        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
+        <div class="term-box"><strong>Port Scanning:</strong> The process of identifying which ports are open on a target system. Common techniques include SYN scan (stealthy), connect scan (full connection), and UDP scan.</div>
+        <div class="term-box"><strong>SYN Scan (Half-Open):</strong> Sends a SYN packet, reads the response, and immediately disconnects without completing the three-way handshake. Faster and less detectable than full connect scans.</div>
+        <div class="term-box"><strong>XMAS Scan:</strong> Sends a TCP packet with FIN, PSH, and URG flags set. Named after how the packet looks like it's decorated for Christmas. Probes ports without completing connection.</div>
+        <div class="term-box"><strong>NULL Scan:</strong> Sends a TCP packet with no flags set. Only works on UNIX-like systems where closed ports respond with RST.</div>
+        <div class="term-box"><strong>Banner Grabbing:</strong> Connecting to an open port and reading the service's response banner to identify the application and version.</div>
+        <div class="term-box"><strong>SNMP Enumeration:</strong> Using Simple Network Management Protocol to extract network information from devices. Common default community strings: "public" (read-only) and "private" (read-write).</div>
+
+        <h2 class="section-heading">TCP Port States</h2>
+        <ul class="content-list">
+            <li><strong>Open:</strong> Application is listening on this port</li>
+            <li><strong>Closed:</strong> Port is reachable but no service is listening</li>
+            <li><strong>Filtered:</strong> Firewall or packet filter is blocking the probe</li>
+            <li><strong>Unfiltered:</strong> Port accessibility unknown, but firewall rules are not active</li>
+            <li><strong>Open|Filtered:</strong> Cannot determine if open or filtered</li>
+            <li><strong>Closed|Filtered:</strong> Cannot determine if closed or filtered</li>
+        </ul>
+
+        <h2 class="section-heading">Common Port Numbers</h2>
+        <ul class="content-list">
+            <li><code>21</code> FTP &mdash; File Transfer Protocol</li>
+            <li><code>22</code> SSH &mdash; Secure Shell</li>
+            <li><code>23</code> Telnet &mdash; Unencrypted remote access</li>
+            <li><code>25</code> SMTP &mdash; Simple Mail Transfer Protocol</li>
+            <li><code>53</code> DNS &mdash; Domain Name System</li>
+            <li><code>80</code> HTTP &mdash; Hypertext Transfer Protocol</li>
+            <li><code>110</code> POP3 &mdash; Post Office Protocol</li>
+            <li><code>143</code> IMAP &mdash; Internet Message Access Protocol</li>
+            <li><code>443</code> HTTPS &mdash; HTTP Secure</li>
+            <li><code>445</code> SMB &mdahl; Server Message Block</li>
+        </ul>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Know each nmap scan type and when to use it</li>
-            <li>Understand vulnerability scanner operation and report interpretation</li>
+            <li>Understand TCP three-way handshake and how different scan types interact with it</li>
+            <li>Memorize common port numbers and their associated services</li>
+            <li>Know the differences between Nmap scan types (SYN, connect, UDP, XMAS, NULL)</li>
+            <li>Understand banner grabbing and SNMP enumeration techniques</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the most common scanning technique?</strong><br>nmap SYN scan (-sS) is most commonly used — fast, relatively stealthy, and widely supported.</p>
-        <p><strong>How do you bypass an IDS during scanning?</strong><br>Use slow timing, fragment packets, decoy scans, sleep between probes, and use nmap's evasion flags (-f, --data-length, -D).</p>
+        <p><strong>Is Module 3 important for the CEH exam?</strong><br>Yes. Network scanning is a core skill that accounts for approximately 15% of the CEH v13 exam.</p>
+        <p><strong>How many cards are in this module?</strong><br>Module 3 contains flashcards covering all sections: Overview, TCP/IP Basics, Scanning Techniques, Port Scanning Tools (Nmap), Banner Grabbing, Bypassing IDS/Firewall, and Network Mapping.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-02/">Module 2: Footprinting</a> — scanning builds on footprinting data</li>
-            <li><a href="/ceh-v13/module-04/">Module 4: Enumeration</a> — enumeration extracts user/account info from scanned ports</li>
+            <li><a href="/ceh-v13/module-02/" style="color:var(--accent)">Module 2: Footprinting & Reconnaissance</a> — scanning builds on information gathered during footprinting</li>
+            <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> — enumeration uses data from scanning to extract detailed system information</li>
         </ul>
     </div>
 
