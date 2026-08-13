@@ -43,7 +43,6 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
-        <a href="/?module=18" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 18 Flashcards</a>
     </div></div></header>
 
     <div class="container">
@@ -51,8 +50,6 @@
 
         <h1 class="page-title">CEH v13 Module 18: Lateral Movement</h1>
         <p class="content-text">Lateral movement is the set of techniques attackers use to move through a network from an initial compromise to other systems. This module covers pass-the-hash (PtH), pass-the-ticket (PTT), remote service exploitation (SMB, RDP, SSH, WinRM), pivoting techniques, credential dumping, and Metasploit post-exploitation modules.</p>
-
-        <a href="/?module=18" class="flashcard-link">&#127891; Launch Flashcards — Module 18</a>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -65,7 +62,7 @@
             <li>Metasploit post-exploitation modules</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
         <div class="term-box"><strong>Pass-the-Hash (PtH):</strong> Attacker captures NTLM hash and uses it to authenticate to remote services without knowing the plaintext password. Tools: Mimikatz, Impacket (psexec.py, smbexec.py).</div>
         <div class="term-box"><strong>Pass-the-Ticket (PTT):</strong> Attacker extracts Kerberos TGT (ticket-granting ticket) and uses it to authenticate without credentials. More advanced than PtH — works in pure Kerberos environments.</div>
         <div class="term-box"><strong>Pivoting:</strong> Using a compromised host as a jump point to reach otherwise inaccessible internal networks. Tools: Metasploit port forwards, ssh -L/-D, Chisel, Ligolo.</div>
