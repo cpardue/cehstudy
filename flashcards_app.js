@@ -1,4 +1,4 @@
-// CEHStudy Flashcard App - Core Application
+// CEStudy Flashcard App - Core Application
 // Handles module selection, flashcard navigation, progress tracking, and localStorage persistence
 
 (function() {
@@ -44,6 +44,22 @@
     function init() {
         loadFromStorage();
         buildMenu();
+        // Check for ?module=X query param - toggle that module, turn off others
+        const urlParams = new URLSearchParams(window.location.search);
+        const moduleParam = parseInt(urlParams.get('module'), 10);
+        if (!isNaN(moduleParam)) {
+            const modExists = CEH_DATA.modules.some(m => m.id === moduleParam);
+            if (modExists) {
+                selectedModules.clear();
+                selectedModules.add(moduleParam);
+                saveModules();
+                // Update menu checkboxes to match
+                menuList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                    const cbModId = parseInt(cb.dataset.moduleId, 10);
+                    cb.checked = cbModId === moduleParam;
+                });
+            }
+        }
         buildDeck();
         setupEventListeners();
         renderCard();
@@ -259,9 +275,20 @@
             selectedModules.delete(modId);
         }
         saveModules();
+        syncUrl();
         buildDeck();
         renderCard();
         updateReviewCount();
+    }
+
+    // === URL Sync ===
+    function syncUrl() {
+        const mods = [...selectedModules].sort((a, b) => a - b);
+        if (mods.length > 0 && mods.length <= CEH_DATA.modules.length) {
+            const lastMod = mods[mods.length - 1];
+            const newUrl = `${window.location.origin}${window.location.pathname}?module=${lastMod}`;
+            window.history.replaceState({}, '', newUrl);
+        }
     }
 
     // === Card Deck ===
@@ -514,7 +541,7 @@
                         <div class="stats-bar"><div class="stats-bar-fill" style="width:${modPct}%"></div></div>
                     </td>
                     <td>${modPct}%</td>
-                    ${isActive ? `<td><button class="stats-reset-module" data-module-id="${mod.id}" title="Reset module progress">&times;</button></td>` : '<td>—</td>'}
+                    ${isActive ? `<td><button class="stats-reset-module" data-module-id="${mod.id}" title="Reset module progress">&times;</button></td>` : '<td>&mdash;</td>'}
                 </tr>`;
         });
 
