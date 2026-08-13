@@ -3,112 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 14: Cryptography - CEH v13 Study Notes</title>
-    <meta name="description" content="CEH v13 Module 14 study notes: cryptography, symmetric/asymmetric encryption, PKI, digital signatures, hash functions.">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--text:#c9d1d9;--text2:#8b949e;--accent:#58a6ff;--accent2:#1f6feb;--border:#30363d}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-        .container{max-width:900px;margin:0 auto;padding:0 20px}
-        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
-        .header-inner{display:flex;justify-content:space-between;align-items:center}
-        .back-link{color:var(--accent);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:4px}
-        .study-btn{color:var(--accent);text-decoration:none;font-size:.9rem;padding:6px 14px;border:1px solid var(--accent);border-radius:6px;transition:all .15s}
-        main{padding:30px 0}
-        .module-title{font-size:1.8rem;font-weight:700;margin-bottom:8px}
-        .section-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:16px}
-        .section-block h3{font-size:1.2rem;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-        .section-block h4{color:var(--text);margin:16px 0 8px;font-size:1rem}
-        .section-block p,.section-block ul,.section-block ol{color:var(--text2);margin-bottom:12px}
-        .section-block li{margin-bottom:6px}
-        .section-block strong{color:var(--text)}
-        .section-block code{background:var(--bg3);padding:2px 6px;border-radius:3px;font-size:.9em}
-        footer{text-align:center;padding:30px 0;color:var(--text2);font-size:.85rem;border-top:1px solid var(--border);margin-top:40px}
-    </style>
+    <title>Module 14: Hacking Web Applications - CEH v13 Study Flashcards</title>
+    <meta name="description" content="CEH v13 Module 14 flashcards: OWASP Top 10, web application vulnerabilities, SQL injection, XSS, CSRF, session hijacking, and web app security testing.">
+    <meta name="keywords" content="CEH module 14, web application hacking, OWASP Top 10, SQL injection, XSS, CSRF, web app security, CEH v13 flashcards">
+    <meta name="author" content="Chris Pardue">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/module14.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header><div class="container"><div class="header-inner">
-        <a href="index.html" class="back-link">&#8592; CEH Study Flashcards</a>
-        <a href="index.html" class="study-btn">&#127891; Study Flashcards</a>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=14" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 14 Flashcards</a>
     </div></div></header>
-    <div class="container"><main>
-        <h1 class="module-title">Module 14: Cryptography</h1>
 
-        <section class="section-block"><h3>Section 1: Cryptography Fundamentals</h3>
-            <p><strong>Cryptography</strong> = the science of securing information through transformation into unreadable format.</p>
-            <h4>Key Concepts</h4>
-            <ul><li><strong>Plaintext:</strong> Original readable message/data</li><li><strong>Ciphertext:</strong> Encrypted/encoded message</li><li><strong>Encryption Algorithm (Cipher):</strong> Mathematical process to convert plaintext to ciphertext</li><li><strong>Decryption Algorithm:</strong> Process to convert ciphertext back to plaintext</li><li><strong>Key:</strong> Secret value used by encryption algorithm</li></ul>
-            <h4>Cryptographic Goals (CIA Triad)</h4>
-            <ul><li><strong>Confidentiality:</strong> Only authorized parties can access information</li><li><strong>Integrity:</strong> Data has not been altered unauthorizedly</li><li><strong>Availability:</strong> Information accessible when needed</li><li><strong>Authentication:</strong> Verifying identity of communicating parties</li><li><strong>Non-repudiation:</strong> Sender cannot deny sending message</li></ul>
-        </section>
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 14: Hacking Web Applications</nav>
 
-        <section class="section-block"><h3>Section 2: Symmetric Key Cryptography</h3>
-            <p><strong>Symmetric encryption</strong> uses the same key for both encryption and decryption.</p>
-            <h4>Common Symmetric Algorithms</h4>
-            <ul><li><strong>DES:</strong> 56-bit block cipher - BROKEN</li><li><strong>3DES (Triple DES):</strong> 112/168 bits - Deprecated</li><li><strong>AES:</strong> 128/192/256-bit block cipher - Current standard (Rijndael)</li><li><strong>Blowfish:</strong> 32-448 bit key size, block cipher</li><li><strong>ChaCha20:</strong> 256-bit stream cipher, used in TLS 1.3</li><li><strong>RC4:</strong> Stream cipher - BROKEN (RFC 7465)</li></ul>
-            <h4>Block vs Stream Ciphers</h4>
-            <ul><li><strong>Block ciphers:</strong> Encrypt fixed-size blocks (64/128 bits). Modes: ECB, CBC, CFB, OFB, GCM</li><li><strong>Stream ciphers:</strong> Encrypt data one bit/byte at a time continuously</li></ul>
-        </section>
+        <h1 class="page-title">CEH v13 Module 14: Hacking Web Applications</h1>
+        <p class="content-text">Web applications are prime targets for attackers due to their widespread availability and frequent exposure to the internet. This module covers common web application vulnerabilities, OWASP Top 10 risks, and attack techniques that ethical hackers must understand to evaluate and improve web application security.</p>
 
-        <section class="section-block"><h3>Section 3: Asymmetric Key Cryptography</h3>
-            <p><strong>Asymmetric encryption</strong> uses a pair of keys: public key (encryption) and private key (decryption).</p>
-            <h4>Common Asymmetric Algorithms</h4>
-            <ul><li><strong>RSA:</strong> Based on integer factorization. 2048-4096 bit keys. Widely used.</li><li><strong>DSA:</strong> Discrete logarithm. Signatures only. 2048-3072 bits.</li><li><strong>ECC:</strong> Elliptic curve cryptography. 256-521 bits. Modern, efficient.</li><li><strong>Diffie-Hellman:</strong> Key exchange algorithm. Vulnerable to MITM without authentication.</li></ul>
-            <h4>RSA (Rivest-Shamir-Adleman)</h4>
-            <p>Most widely used public-key algorithm. Used in SSL/TLS, digital signatures, SSH.</p>
-        </section>
+        <a href="/?module=14" class="flashcard-link">&#127891; Launch Flashcards — Module 14</a>
 
-        <section class="section-block"><h3>Section 4: Hash Functions</h3>
-            <p><strong>Cryptographic hash functions</strong> convert input data to fixed-size digest. One-way function.</p>
-            <h4>Common Hash Algorithms</h4>
-            <ul><li><strong>MD5:</strong> 128-bit digest - BROKEN (collisions found)</li><li><strong>SHA-1:</strong> 160-bit digest - BROKEN (SHAttered attack)</li><li><strong>SHA-256:</strong> 256-bit digest - Secure. Used in Bitcoin, TLS.</li><li><strong>SHA-384/SHA-512:</strong> Larger variants of SHA-2 family</li><li><strong>BLAKE2:</strong> Secure and fast modern alternative</li></ul>
-            <h4>Hash Function Properties</h4>
-            <ul><li><strong>Deterministic:</strong> Same input always produces same output</li><li><strong>Pre-image resistant:</strong> Cannot reverse hash to find original data</li><li><strong>Avalanche effect:</strong> Small change = large difference in output</li><li><strong>Collision resistant:</strong> Hard to find two inputs with same hash</li></ul>
-            <h4>HMAC (Hash-based Message Authentication Code)</h4>
-            <p>Combines hash function with secret key. Provides both integrity and authentication.</p>
-        </section>
+        <!-- Cross-reference to Module 20 -->
+        <div style="background:#1a2332;border:1px solid #2d4a6f;border-radius:8px;padding:16px;margin:20px 0">
+            <h3 style="color:#58a6ff;margin:0 0 8px">&#128276; Related Cryptography Content</h3>
+            <p style="color:#8b949e;margin:0;font-size:.95rem">Web application security relies heavily on cryptography. For detailed coverage of encryption algorithms, PKI, digital signatures, TLS/SSL, and hash functions, see <a href="/ceh-v13/module-20/" style="color:#58a6ff">CEH v13 Module 20: Cryptography</a>.</p>
+        </div>
 
-        <section class="section-block"><h3>Section 5: Digital Signatures</h3>
-            <p><strong>Digital signatures</strong> provide authentication, integrity, and non-repudiation.</p>
-            <h4>Digital Signature Process</h4>
-            <ol><li>Sender creates message hash using hash function</li><li>Hash encrypted with sender's private key (digital signature)</li><li>Signature appended to message and sent</li><li>Receiver decrypts signature with sender's public key</li><li>Receiver computes own hash of received message</li><li>Hashes compared - if match, signature valid</li></ol>
-            <h4>Digital Signature Algorithms: DSS, PKCS #10, PKCS #7/CMS, ECDSA</h4>
-        </section>
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>OWASP Top 10 — the most critical web application security risks</li>
+            <li>SQL Injection (SQLi) — injecting malicious SQL to manipulate backend databases</li>
+            <li>Cross-Site Scripting (XSS) — injecting client-side scripts into web pages</li>
+            <li>Cross-Site Request Forgery (CSRF) — forcing users to perform unwanted actions</li>
+            <li>Session hijacking and fixation attacks</li>
+            <li>Web server misconfigurations and information disclosure</li>
+            <li>Authentication and authorization bypass techniques</li>
+            <li>Server-side request forgery (SSRF) and file inclusion attacks</li>
+            <li>API security vulnerabilities and REST/GraphQL risks</li>
+        </ul>
 
-        <section class="section-block"><h3>Section 6: Public Key Infrastructure (PKI)</h3>
-            <p><strong>PKI</strong> = framework for managing public-key cryptography through certificates and CAs.</p>
-            <h4>PKI Components</h4>
-            <ul><li><strong>Certificate Authority (CA):</strong> Trusted entity that issues digital certificates</li><li><strong>Registration Authority (RA):</strong> Verifies certificate requests</li><li><strong>Digital Certificate:</strong> Binds identity to public key (X.509 format)</li><li><strong>Certificate Revocation List (CRL):</strong> List of revoked certificates</li><li><strong>OCSP:</strong> Online Certificate Status Protocol for real-time revocation checking</li></ul>
-            <h4>X.509 Certificate Fields: Version, Serial Number, Signature Algorithm, Issuer, Validity Period, Subject, Subject Public Key, Signature Value</h4>
-            <h4>PKCS Standards</h4>
-            <ul><li><strong>PKCS #1:</strong> RSA cryptography</li><li><strong>PKCS #5:</strong> Password-based encryption</li><li><strong>PKCS #7:</strong> Cryptographic message syntax (CMS)</li><li><strong>PKCS #10:</strong> Certificate signing request format</li><li><strong>PKCS #12:</strong> Personal information exchange (.pfx files)</li></ul>
-        </section>
+        <h2 class="section-heading">OWASP Top 10 (2021)</h2>
+        <div class="term-box"><strong>1. Broken Access Control:</strong> Restrictions enforcing the intended security policy are missing or ineffective. Examples: unauthorized access to other users' data, accessing admin functions without privilege, bypassing authorization.</div>
+        <div class="term-box"><strong>2. Cryptographic Failures:</strong> Failure to protect sensitive data per requirements. Examples: transmitting credit card numbers, PI, passwords in clear text, weak or nonexistent encryption. <em>See Module 20: Cryptography for detailed coverage.</em></div>
+        <div class="term-box"><strong>3. Injection:</strong> Untrusted data is sent as part of a command or query. Examples: SQL injection, NoSQL injection, OS injection, LDAP injection. SQLi remains the most critical and common.</div>
+        <div class="term-box"><strong>4. Insecure Design:</strong> Missing or ineffective control design. Examples: lacking threat modeling, using unsafe third-party components, insufficient business logic controls.</div>
+        <div class="term-box"><strong>5. Security Misconfiguration:</strong> Incorrect configuration of security settings. Examples: default credentials, unnecessary features enabled, verbose error messages, missing security headers.</div>
+        <div class="term-box"><strong>6. Vulnerable and Outdated Components:</strong> Using components with known vulnerabilities. Examples: outdated libraries, unsupported frameworks, unpatched dependencies.</div>
+        <div class="term-box"><strong>7. Identification and Authentication Failures:</strong> Attacks related to authentication. Examples: brute force, credential stuffing, session fixation, weak password policies.</div>
+        <div class="term-box"><strong>8. Software and Data Integrity Failures:</strong> Unauthorized code or data influence. Examples: insecure CI/CD pipelines, unsigned deserialization, unverified updates.</div>
+        <div class="term-box"><strong>9. Security Logging and Monitoring Failures:</strong> Insufficient logging and monitoring. Examples: lack of real-time monitoring, no incident response, delayed breach detection.</div>
+        <div class="term-box"><strong>10. Server-Side Request Forgery (SSRF):</strong> Attacker sends crafted requests from the server itself to bypass access controls. Can be used to scan internal networks or access cloud metadata.</div>
 
-        <section class="section-block"><h3>Section 7: Key Management</h3>
-            <h4>Key Distribution: Physical delivery, Pre-shared keys (PSK), Public-key encryption, Diffie-Hellman, KDC (Kerberos)</h4>
-            <h4>Key Lifecycle: Generation &rarr; Distribution &rarr; Storage &rarr; Usage &rarr; Rotation &rarr; Revocation &rarr; Destruction</h4>
-        </section>
+        <h2 class="section-heading">SQL Injection (SQLi)</h2>
+        <div class="term-box"><strong>What is SQL Injection?</strong> A technique where malicious SQL statements are inserted into input fields to manipulate the backend database. Types: In-band (Classic), Blind (Boolean-based, Time-based), Out-of-band.</div>
+        <div class="term-box"><strong>SQLi Examples:</strong> <code>' OR '1'='1</code> — bypasses login. <code>'; DROP TABLE users; --</code> — destructive attack. <code>' UNION SELECT username, password FROM users --</code> — data extraction.</div>
+        <div class="term-box"><strong>Prevention:</strong> Use parameterized queries/prepared statements, input validation, least privilege database accounts, WAF (Web Application Firewall), ORM frameworks.</div>
 
-        <section class="section-block"><h3>Section 8: Cryptographic Attacks</h3>
-            <ul><li><strong>Brute Force:</strong> Try all possible keys</li><li><strong>Known/Chosen Plaintext:</strong> Attacker has access to plaintext-ciphertext pairs</li><li><strong>Collision Attack:</strong> Find two inputs producing same hash</li><li><strong>Side Channel:</strong> Exploit timing, power consumption, electromagnetic leaks</li><li><strong>Man-in-the-Middle:</strong> Intercept and modify communications</li></ul>
-            <h4>Minimum Key Size Requirements: RSA 2048 bits, ECC 256 bits, AES 128 bits, SHA-256 minimum</h4>
-        </section>
+        <h2 class="section-heading">Cross-Site Scripting (XSS)</h2>
+        <div class="term-box"><strong>What is XSS?</strong> Injecting malicious client-side scripts into otherwise benign web pages. Types: Stored (persisted on server), Reflected (from URL parameters), DOM-based (client-side only).</div>
+        <div class="term-box"><strong>XSS Impact:</strong> Session hijacking, credential theft, defacement, malware distribution, keylogging, phishing.</div>
+        <div class="term-box"><strong>Prevention:</strong> Output encoding, Content Security Policy (CSP) headers, input validation, HttpOnly and Secure cookie flags, modern frameworks with auto-escaping.</div>
 
-        <section class="section-block"><h3>Section 9: Protocols Using Cryptography</h3>
-            <ul><li><strong>TLS/SSL:</strong> Asymmetric handshake + symmetric data transfer</li><li><strong>IPsec:</strong> Network-layer encryption (AH, ESP)</li><li><strong>SSH:</strong> Port 22, asymmetric auth + symmetric encryption</li><li><strong>PGP/GPG:</strong> Email/file encryption with digital signatures</li></ul>
-        </section>
+        <h2 class="section-heading">Cross-Site Request Forgery (CSRF)</h2>
+        <div class="term-box"><strong>What is CSRF?</strong> Forcing an authenticated user to perform unwanted actions on a web application. The attacker tricks the victim's browser into making requests to a trusted site where they're logged in.</div>
+        <div class="term-box"><strong>Prevention:</strong> Anti-CSRF tokens, SameSite cookie attribute, verifying Origin/Referer headers, requiring re-authentication for sensitive actions.</div>
 
-        <section class="section-block"><h3>Section 10: Wireless Cryptography</h3>
-            <ul><li><strong>WEP:</strong> RC4 - BROKEN</li><li><strong>WPA:</strong> TKIP/RC4 - Deprecated</li><li><strong>WPA2:</strong> AES-CCMP - Current standard</li><li><strong>WPA3:</strong> AES-GCMP - Latest, forward secrecy</li></ul>
-        </section>
+        <h2 class="section-heading">Session Attacks</h2>
+        <div class="term-box"><strong>Session Hijacking:</strong> Taking over a user's authenticated session by stealing or predicting the session ID. Techniques: network sniffing, XSS, side-channel attacks, brute force.</div>
+        <div class="term-box"><strong>Session Fixation:</strong> Attacker sets a known session ID for the victim before authentication. After login, the attacker uses the same session ID.</div>
+        <div class="term-box"><strong>Prevention:</strong> Regenerate session IDs after login, use Secure and HttpOnly flags, implement session timeout, bind sessions to IP/user agent (carefully).</div>
 
-        <section class="section-block"><h3>Section 11: Notable Cryptographic Incidents</h3>
-            <h4>Flame Malware (2012)</h4><p>Spoofed Microsoft Windows Update signatures by stealing a legitimate certificate.</p>
-            <h4>Stuxnet (2010)</h4><p>Used four stolen digital certificates to spread. Targeted Siemens SCADA systems.</p>
-            <h4>Heartbleed (CVE-2014-0160)</h4><p>OpenSSL vulnerability allowing memory disclosure. Exposed private keys and passwords.</p>
-            <h4>Snowden Revelations (2013)</h4><p>Revealed NSA's backdoored Dual_EC_DRBG random number generator, mass surveillance.</p>
-        </section>
-    </main></div>
-    <footer><div class="container"><p>Built for the CEH community. Study smart, pass your exam.</p><p style="margin-top:8px"><a href="index.html">cehstudy.com</a> &middot; Not affiliated with EC-Council</p></div></footer>
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Memorize the OWASP Top 10 — know each category and at least one example attack</li>
+            <li>Understand SQL injection types: In-band, Blind (Boolean/Time-based), Out-of-band</li>
+            <li>Know the difference between Stored, Reflected, and DOM-based XSS</li>
+            <li>Practice identifying vulnerable input fields and understanding how payloads work</li>
+            <li>Cross-reference Module 20 for cryptography topics (encryption, TLS, certificates) relevant to web security</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>Why is SQL injection still critical in 2026?</strong><br>Despite awareness, SQLi remains common due to legacy codebases, improper input validation, and developers using string concatenation instead of parameterized queries.</p>
+        <p><strong>What tool do ethical hackers use for web app testing?</strong><br>Common tools include Burp Suite (proxy and vulnerability scanner), OWASP ZAP (free alternative), sqlmap (SQLi automation), and OWASP Top 10 checklist.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-20/">Module 20: Cryptography</a> — encryption, TLS/SSL, PKI, digital signatures for web security</li>
+            <li><a href="/ceh-v13/module-13/">Module 13: Hacking Web Servers</a> — server-side vulnerabilities (IIS, Apache)</li>
+            <li><a href="/ceh-v13/module-15/">Module 15: SQL Injection</a> — detailed SQLi techniques and exploitation</li>
+            <li><a href="/ceh-v13/module-11/">Module 11: Session Hijacking</a> — session attacks and mitigation</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '14';
+        const key = 'cphstudymod' + mod;
+        const total = 80;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
 </body>
 </html>
