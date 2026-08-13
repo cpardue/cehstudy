@@ -6,7 +6,8 @@
   <title>CEH v13 Study Guide — How to Prepare for the CEH Exam | CEHStudy</title>
   <meta name="description" content="Complete CEH v13 study guide with exam overview, recommended study schedule, module breakdown, and free flashcard resources to pass the Certified Ethical Hacker exam.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="/ceh-v13-study-guide/">
+  <link rel="canonical" href="https://cehstudy.com/ceh-v13-study-guide/">
+  <link rel="stylesheet" href="/styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,7 +22,7 @@
     "dateModified": "2026-08-12",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "/ceh-v13-study-guide/"
+      "@id": "https://cehstudy.com/ceh-v13-study-guide/"
     }
   }
   </script>
@@ -30,10 +31,10 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "CEHStudy",
-    "url": "/",
+    "url": "https://cehstudy.com/",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "/?q={search_term_string}",
+      "target": "https://cehstudy.com/?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -43,131 +44,19 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "CEH v13 Modules",
-        "item": "/ceh-v13/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Study Guide",
-        "item": "/ceh-v13-study-guide/"
-      }
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://cehstudy.com/"},
+      {"@type":"ListItem","position":2,"name":"CEH v13 Modules","item":"https://cehstudy.com/ceh-v13/"},
+      {"@type":"ListItem","position":3,"name":"Study Guide","item":"https://cehstudy.com/ceh-v13-study-guide/"}
     ]
   }
   </script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: #0d1117;
-      color: #c9d1d9;
-      line-height: 1.7;
-      padding: 0;
-    }
-    a { color: #58a6ff; text-decoration: none; }
-    a:hover { color: #79b8ff; text-decoration: underline; }
-    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-    header {
-      background: #161b22;
-      border-bottom: 1px solid #30363d;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.3em; font-weight: bold; color: #f0f6fc; }
-    .logo a { color: #f0f6fc; text-decoration: none; }
-    nav a { color: #8b949e; margin-left: 20px; font-size: 0.95em; }
-    nav a:hover { color: #58a6ff; }
-    h1 { color: #f0f6fc; margin: 30px 0 15px; font-size: 2em; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-    h2 { color: #f0f6fc; margin: 35px 0 15px; font-size: 1.5em; }
-    h3 { color: #c9d1d9; margin: 25px 0 10px; font-size: 1.2em; }
-    p { margin-bottom: 15px; }
-    ul, ol { margin: 10px 0 20px 30px; }
-    li { margin-bottom: 8px; }
-    .breadcrumb { color: #8b949e; font-size: 0.9em; margin-bottom: 15px; }
-    .breadcrumb a { color: #8b949e; }
-    .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 20px 0; }
-    .module-card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 15px;
-      transition: border-color 0.2s;
-    }
-    .module-card:hover { border-color: #58a6ff; }
-    .module-card h3 { margin: 0 0 8px; font-size: 1em; color: #58a6ff; }
-    .module-card p { margin: 0; font-size: 0.9em; color: #8b949e; }
-    .schedule-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-    .schedule-table th, .schedule-table td { text-align: left; padding: 10px 15px; border: 1px solid #30363d; }
-    .schedule-table th { background: #161b22; color: #f0f6fc; font-weight: 600; }
-    .schedule-table tr:nth-child(even) { background: #161b22; }
-    .tip-box {
-      background: #1a2332;
-      border-left: 4px solid #58a6ff;
-      padding: 15px 20px;
-      margin: 20px 0;
-      border-radius: 0 8px 8px 0;
-    }
-    .tip-box h3 { color: #58a6ff; margin-top: 0; }
-    .cta-section {
-      background: linear-gradient(135deg, #1a2332 0%, #1c192b 100%);
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 30px;
-      margin: 35px 0;
-      text-align: center;
-    }
-    .cta-section h2 { margin-top: 0; color: #f0f6fc; }
-    .cta-button {
-      display: inline-block;
-      background: #238636;
-      color: #fff;
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-size: 1.1em;
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 15px;
-      transition: background 0.2s;
-    }
-    .cta-button:hover { background: #2ea043; color: #fff; text-decoration: none; }
-    .faq-item { border-bottom: 1px solid #30363d; padding: 15px 0; }
-    .faq-item h3 { margin-top: 0; color: #f0f6fc; }
-    footer {
-      background: #161b22;
-      border-top: 1px solid #30363d;
-      padding: 30px 0;
-      margin-top: 50px;
-      text-align: center;
-      color: #8b949e;
-      font-size: 0.9em;
-    }
-    footer a { color: #8b949e; }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 15px; }
-    @media (max-width: 600px) {
-      .module-grid { grid-template-columns: 1fr; }
-      .header-inner { flex-direction: column; gap: 10px; }
-      nav a { margin-left: 10px; font-size: 0.85em; }
-    }
-  </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <div class="logo"><a href="/">CEHStudy</a></div>
-    <nav>
+<header class="header-sticky">
+  <div class="header-nav-inner">
+    <a href="/" class="header-nav-logo">CEHStudy</a>
+    <nav class="header-nav-links">
       <a href="/ceh-v13/">Modules</a>
       <a href="/ceh-v13-study-guide/">Study Guide</a>
       <a href="/glossary/">Glossary</a>
@@ -178,35 +67,35 @@
 
 <div class="container">
 
-  <p class="breadcrumb"><a href="/">Home</a> &raquo; <a href="/ceh-v13/">CEH v13 Modules</a> &raquo; Study Guide</p>
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13 Modules</a> &rsaquo; Study Guide</p>
 
-  <h1>CEH v13 Study Guide — How to Prepare for the CEH Exam</h1>
+  <h1 class="page-title">CEH v13 Study Guide — How to Prepare for the CEH Exam</h1>
 
-  <p>This comprehensive guide covers everything you need to know about preparing for the <strong>EC-Council Certified Ethical Hacker (CEH v13)</strong> exam. Whether you're a beginner or experienced IT professional, this study plan will help you structure your preparation efficiently.</p>
+  <p class="content-text">This comprehensive guide covers everything you need to know about preparing for the <strong>EC-Council Certified Ethical Hacker (CEH v13)</strong> exam.</p>
 
   <div class="tip-box">
-    <h3>⚡ Quick Start</h3>
+    <h3 class="section-heading" style="margin-top:0;">⚡ Quick Start</h3>
     <p><strong>New to CEH?</strong> Start here: Read the exam overview below → Review all 19 modules → Use our free flashcards → Take practice questions. Expected study time: 4–8 weeks at 10–15 hours per week.</p>
   </div>
 
-  <h2>What Is the CEH Certification?</h2>
+  <h2 class="section-heading">What Is the CEH Certification?</h2>
 
-  <p>The <strong>Certified Ethical Hacker (CEH)</strong> certification is offered by EC-Council and is one of the most recognized ethical hacking certifications globally. It validates your ability to think like a hacker — to identify vulnerabilities in IT systems before malicious actors can exploit them.</p>
+  <p class="content-text">The <strong>Certified Ethical Hacker (CEH)</strong> certification is offered by EC-Council and is one of the most recognized ethical hacking certifications globally.</p>
 
-  <p><strong>CEH v13</strong> is the latest version of the exam, updated to reflect modern threat landscapes including cloud security, IoT/OT hacking, and advanced lateral movement techniques. The exam code is <strong>312-50</strong>.</p>
+  <p class="content-text"><strong>CEH v13</strong> is the latest version of the exam, updated to reflect modern threat landscapes including cloud security, IoT/OT hacking, and advanced lateral movement techniques. The exam code is <strong>312-50</strong>.</p>
 
-  <h3>Who Should Get CEH Certified?</h3>
-  <ul>
-    <li><strong>Security Analysts / Engineers</strong> — Professionals who need hands-on penetration testing skills</li>
-    <li><strong>IT Administrators</strong> — System admins who want to understand offensive security</li>
-    <li><strong>SOC Analysts</strong> — Security operations team members who investigate attacks</li>
-    <li><strong>Penetration Testers</strong> — Those entering the ethical hacking profession</li>
-    <li><strong>Security Consultants</strong> — Advisors who assess client security postures</li>
-    <li><strong>Students</strong> — Those pursuing cybersecurity careers</li>
+  <h3 class="section-heading">Who Should Get CEH Certified?</h3>
+  <ul class="content-list">
+    <li><strong>Security Analysts / Engineers</strong></li>
+    <li><strong>IT Administrators</strong></li>
+    <li><strong>SOC Analysts</strong></li>
+    <li><strong>Penetration Testers</strong></li>
+    <li><strong>Security Consultants</strong></li>
+    <li><strong>Students</strong></li>
   </ul>
 
-  <h3>CEH Exam Details</h3>
-  <ul>
+  <h3 class="section-heading">CEH Exam Details</h3>
+  <ul class="content-list">
     <li><strong>Exam Code:</strong> 312-50</li>
     <li><strong>Format:</strong> Multiple choice, 125 questions</li>
     <li><strong>Duration:</strong> 4 hours</li>
@@ -216,14 +105,12 @@
     <li><strong>Delivery:</strong> Pearson VUE test centers or online proctoring</li>
   </ul>
 
-  <h2>CEH v13 Exam Topics Overview</h2>
+  <h2 class="section-heading">CEH v13 Exam Topics Overview</h2>
 
-  <p>The CEH v13 exam covers the following domains. Each domain maps to one or more of our free flashcard modules:</p>
+  <p class="content-text">The CEH v13 exam covers the following domains:</p>
 
   <table class="schedule-table">
-    <thead>
-      <tr><th>Domain</th><th>Weight</th><th>Modules Covered</th></tr>
-    </thead>
+    <thead><tr><th>Domain</th><th>Weight</th><th>Modules Covered</th></tr></thead>
     <tbody>
       <tr><td>Footprinting and Reconnaissance</td><td>15%</td><td><a href="/ceh-v13/module-02/">Module 2</a></td></tr>
       <tr><td>Scanning Vulnerabilities</td><td>20%</td><td><a href="/ceh-v13/module-03/">Module 3</a></td></tr>
@@ -239,11 +126,9 @@
     </tbody>
   </table>
 
-  <h2>All 19 CEH v13 Modules</h2>
+  <h2 class="section-heading">All 19 CEH v13 Modules</h2>
 
-  <p>Browse all modules below. Each page includes a description, key terms, study tips, and links to free flashcards:</p>
-
-  <div class="module-grid">
+  <div class="module-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;">
     <div class="module-card"><h3>Module 01</h3><p>Introduction to Ethical Hacking</p></div>
     <div class="module-card"><h3>Module 02</h3><p>Reconnaissance / Footprinting</p></div>
     <div class="module-card"><h3>Module 03</h3><p>Scanning</p></div>
@@ -267,93 +152,73 @@
 
   <p style="text-align:center; margin-top:20px;"><a href="/ceh-v13/" style="font-size:1.1em;">→ View All 19 CEH v13 Modules →</a></p>
 
-  <h2>How to Study for the CEH Exam</h2>
+  <h2 class="section-heading">How to Study for the CEH Exam</h2>
 
-  <h3>Step 1: Understand the Exam Blueprint</h3>
-  <p>Before diving into study materials, review the official EC-Council exam objectives. Know exactly which topics will be tested and their weight percentages. This helps you allocate study time proportionally — spend more hours on Scanning (20%) than on Evading IDS (5%).</p>
+  <h3 class="section-heading">Step 1: Understand the Exam Blueprint</h3>
+  <p class="content-text">Before diving into study materials, review the official EC-Council exam objectives. Know exactly which topics will be tested and their weight percentages.</p>
 
-  <h3>Step 2: Build Foundational Knowledge</h3>
-  <p>Start with <a href="/ceh-v13/module-01/">Module 1: Introduction to Ethical Hacking</a> to understand the legal and ethical framework. Then move through modules in order, building your knowledge progressively.</p>
+  <h3 class="section-heading">Step 2: Build Foundational Knowledge</h3>
+  <p class="content-text">Start with <a href="/ceh-v13/module-01/">Module 1: Introduction to Ethical Hacking</a> to understand the legal and ethical framework.</p>
 
-  <h3>Step 3: Use Our Free Flashcards</h3>
-  <p>Our flashcards are organized by module and designed for efficient memorization. Key features:</p>
-  <ul>
+  <h3 class="section-heading">Step 3: Use Our Free Flashcards</h3>
+  <ul class="content-list">
     <li><strong>Selective studying:</strong> Focus on one or multiple modules at a time</li>
     <li><strong>Randomized order:</strong> No repeats per session to test true knowledge</li>
     <li><strong>Mobile-friendly:</strong> Study on any device, anywhere</li>
     <li><strong>Completely free:</strong> No signup required</li>
   </ul>
 
-  <h3>Step 4: Practice with Hands-On Labs</h3>
-  <p>The CEH exam tests practical knowledge. Supplement your reading with:</p>
-  <ul>
+  <h3 class="section-heading">Step 4: Practice with Hands-On Labs</h3>
+  <ul class="content-list">
     <li>Virtual lab environments (TryHackMe, HackTheBox)</li>
     <li>Practice penetration testing in isolated networks</li>
     <li>Command-line tool practice (Nmap, Metasploit, Wireshark)</li>
     <li>Web application vulnerability labs (OWASP WebGoat, DVWA)</li>
   </ul>
 
-  <h3>Step 5: Review and Reinforce</h3>
-  <p>In the final week before your exam:</p>
-  <ul>
+  <h3 class="section-heading">Step 5: Review and Reinforce</h3>
+  <ul class="content-list">
     <li>Review all flashcard modules at least twice</li>
     <li>Focus on weak areas identified during practice tests</li>
     <li>Re-read key definitions and cryptographic concepts</li>
     <li>Practice timeline estimation for scanning phases</li>
   </ul>
 
-  <h2>Recommended Study Schedule</h2>
-
-  <p>This 6-week plan assumes 10–15 hours of study per week. Adjust based on your background and target exam date.</p>
+  <h2 class="section-heading">Recommended Study Schedule</h2>
 
   <table class="schedule-table">
-    <thead>
-      <tr><th>Week</th><th>Focus</th><th>Modules</th><th>Hours</th></tr>
-    </thead>
+    <thead><tr><th>Week</th><th>Focus</th><th>Modules</th><th>Hours</th></tr></thead>
     <tbody>
       <tr><td>1</td><td>Foundations &amp; Recon</td><td>Module 01, Module 02</td><td>10–12</td></tr>
       <tr><td>2</td><td>Scanning &amp; Vulnerability Analysis</td><td>Module 03, Module 04</td><td>12–15</td></tr>
       <tr><td>3</td><td>Exploitation Techniques</td><td>Module 05, Module 06, Module 07</td><td>12–15</td></tr>
-      <tr><td>4</td><td>Web &amp; Network Attacks</td><td>Module 08, Module 09, Module 10, Module 11</td><td>12–15</td></tr>
-      <tr><td>5</td><td>Advanced Topics</td><td>Module 12–Module 17</td><td>10–15</td></tr>
+      <tr><td>4</td><td>Web &amp; Network Attacks</td><td>Module 08–11</td><td>12–15</td></tr>
+      <tr><td>5</td><td>Advanced Topics</td><td>Module 12–17</td><td>10–15</td></tr>
       <tr><td>6</td><td>Review &amp; Practice</td><td>Module 18, Module 19 + all review</td><td>12–15</td></tr>
     </tbody>
   </table>
 
   <div class="tip-box">
-    <h3>📌 Pro Tip</h3>
-    <p>Don't rush through Modules 02 and 03 — they form the foundation for the entire ethical hacking methodology. Spend extra time on footprinting, scanning tools, and port numbers. These topics alone account for 35% of the exam.</p>
+    <h3 class="section-heading" style="margin-top:0;">📌 Pro Tip</h3>
+    <p>Don't rush through Modules 02 and 03 — they form the foundation for the entire ethical hacking methodology. Spend extra time on footprinting, scanning tools, and port numbers.</p>
   </div>
 
-  <h2>CEH Study Tips from Experienced Test Takers</h2>
+  <h2 class="section-heading">CEH Study Tips from Experienced Test Takers</h2>
 
-  <ol>
-    <li><strong>Memorize port numbers</strong> — Common ports (21, 22, 23, 25, 53, 80, 443, 445, 3389) and their associated services appear frequently</li>
-    <li><strong>Understand scan types</strong> — Know the difference between TCP connect, SYN stealth, FIN, XMAS, and NULL scans cold</li>
+  <ol class="content-list">
+    <li><strong>Memorize port numbers</strong> — Common ports (21, 22, 23, 25, 53, 80, 443, 445, 3389)</li>
+    <li><strong>Understand scan types</strong> — Know the difference between TCP connect, SYN stealth, FIN, XMAS, and NULL scans</li>
     <li><strong>Learn tool flags</strong> — Nmap switches (-sS, -sV, -O, -A), Metasploit modules, Wireshark filters</li>
     <li><strong>Cryptography basics</strong> — Symmetric vs asymmetric algorithms, hash functions, digital signatures, PKI</li>
-    <li><strong>Think like an attacker</strong> — CEH tests offensive mindset; practice thinking about how vulnerabilities chain together</li>
-    <li><strong>Eliminate wrong answers</strong> — Multiple choice questions often have 2 obviously wrong options; focus on the remaining 2</li>
-    <li><strong>Watch for keywords</strong> — "BEST", "FIRST", "MOST appropriate" change the correct answer significantly</li>
+    <li><strong>Think like an attacker</strong> — CEH tests offensive mindset</li>
+    <li><strong>Eliminate wrong answers</strong> — Multiple choice questions often have 2 obviously wrong options</li>
+    <li><strong>Watch for keywords</strong> — "BEST", "FIRST", "MOST appropriate" change the correct answer</li>
   </ol>
 
-  <h2>Common CEH Topics That Appear Every Exam</h2>
+  <h2 class="section-heading">Resources and Tools You Should Know</h2>
 
-  <ul>
-    <li><strong>Footprinting tools:</strong> Whois, NSlookup, Dig, Wireshark, Maltego, TheHarvester</li>
-    <li><strong>Scanning commands:</strong> Nmap syntax and output interpretation</li>
-    <li><strong>TCP handshake:</strong> SYN, SYN-ACK, ACK — and how each scan type interacts with it</li>
-    <li><strong>Password attacks:</strong> Brute force, dictionary, rainbow tables, salting</li>
-    <li><strong>SQL injection types:</strong> Union-based, blind, boolean-based, time-based</li>
-    <li><strong>XSS categories:</strong> Reflected, stored, DOM-based</li>
-    <li><strong>Wireless attacks:</strong> KRACK, Evil Twin, Bluejacking/Bluesnarfing</li>
-    <li><strong>Social engineering vectors:</strong> Phishing, vishing, smishing, tailgating, pretexting</li>
-  </ul>
-
-  <h2>Resources and Tools You Should Know</h2>
-
-  <h3>Reconnaissance &amp; Scanning</h3>
-  <ul>
+  <h3 class="section-heading">Reconnaissance &amp; Scanning</h3>
+  <ul class="content-list">
     <li>Nmap — Network discovery and port scanning</li>
     <li>Masscan — High-speed internet scanner</li>
     <li>TheHarvester — Email/subdomain harvesting</li>
@@ -361,24 +226,23 @@
     <li>Shodan — Internet-connected device search engine</li>
   </ul>
 
-  <h3>Vulnerability Analysis</h3>
-  <ul>
+  <h3 class="section-heading">Vulnerability Analysis</h3>
+  <ul class="content-list">
     <li>Nessus — Vulnerability scanner</li>
     <li>OpenVAS — Open-source vulnerability scanner</li>
     <li>Qualys — Cloud-based vulnerability management</li>
-    <li>Nexpose / Rapid7 — Vulnerability management</li>
   </ul>
 
-  <h3>Exploitation</h3>
-  <ul>
+  <h3 class="section-heading">Exploitation</h3>
+  <ul class="content-list">
     <li>Metasploit Framework — Exploitation framework</li>
     <li>Burp Suite — Web application testing</li>
     <li>SQLmap — SQL injection automation</li>
     <li>John the Ripper — Password cracking</li>
   </ul>
 
-  <h3>Post-Exploitation &amp; Reporting</h3>
-  <ul>
+  <h3 class="section-heading">Post-Exploitation &amp; Reporting</h3>
+  <ul class="content-list">
     <li>Mimikatz — Credential extraction from Windows</li>
     <li>Netcat / Ncat — Network utility</li>
     <li>Wireshark — Packet analysis</li>
@@ -386,60 +250,54 @@
   </ul>
 
   <div class="cta-section">
-    <h2>Start Practicing with Free Flashcards</h2>
-    <p>Access all 19 CEH v13 flashcard modules instantly. No signup required — just pick your module and start studying.</p>
+    <h2 class="section-heading" style="margin-top:0;">Start Practicing with Free Flashcards</h2>
+    <p class="content-text">Access all 19 CEH v13 flashcard modules instantly. No signup required.</p>
     <a href="/?module=1" class="cta-button">Launch Flashcards →</a>
     <p style="margin-top:15px; font-size:0.9em;"><a href="/ceh-v13/">Or browse all 19 modules →</a></p>
   </div>
 
-  <h2>Frequently Asked Questions</h2>
+  <h2 class="section-heading">Frequently Asked Questions</h2>
 
   <div class="faq-item">
-    <h3>How long does it take to prepare for the CEH exam?</h3>
-    <p>Most candidates spend 4–8 weeks preparing, studying 10–15 hours per week. If you already have security experience (Security+, CISSP), you may need less time. Complete beginners should plan for the full 6–8 weeks.</p>
+    <h3 class="section-heading" style="margin-top:0;">How long does it take to prepare for the CEH exam?</h3>
+    <p class="content-text">Most candidates spend 4–8 weeks preparing, studying 10–15 hours per week.</p>
   </div>
 
   <div class="faq-item">
-    <h3>Is CEH v13 harder than v12?</h3>
-    <p>v13 introduces new topics like IoT/OT hacking, cloud security, and lateral movement while removing some legacy content. The difficulty is comparable but the exam now reflects more modern attack vectors. Focus on the new domains if you're switching from v12.</p>
+    <h3 class="section-heading" style="margin-top:0;">Is CEH v13 harder than v12?</h3>
+    <p class="content-text">v13 introduces new topics like IoT/OT hacking, cloud security, and lateral movement.</p>
   </div>
 
   <div class="faq-item">
-    <h3>Can I pass CEH with just flashcards?</h3>
-    <p>Flashcards are excellent for memorizing key terms, port numbers, tool names, and scan types — but they're not sufficient alone. Combine them with hands-on labs, official study guides, and practice exams for the best chance of passing.</p>
+    <h3 class="section-heading" style="margin-top:0;">Can I pass CEH with just flashcards?</h3>
+    <p class="content-text">Flashcards are excellent for memorizing key terms but not sufficient alone. Combine them with hands-on labs.</p>
   </div>
 
   <div class="faq-item">
-    <h3>How much does the CEH exam cost?</h3>
-    <p>The standalone exam voucher costs $1,199 USD. If you enroll in EC-Council's official training (CET), the exam is included for $849. Third-party vouchers may be available through authorized resellers at discounted rates.</p>
+    <h3 class="section-heading" style="margin-top:0;">How much does the CEH exam cost?</h3>
+    <p class="content-text">The standalone exam voucher costs $1,199 USD. EC-Council students pay $849.</p>
   </div>
 
   <div class="faq-item">
-    <h3>Can I use these free flashcards on my phone?</h3>
-    <p>Yes! Our flashcard app is fully responsive and works on any device — desktop, tablet, or smartphone. No app download required; just open the URL in your mobile browser.</p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Are these materials affiliated with EC-Council?</h3>
-    <p>No. CEHStudy is an independent educational resource and is not endorsed by or affiliated with EC-Council. All CEH trademarks belong to EC-Council.</p>
+    <h3 class="section-heading" style="margin-top:0;">Are these materials affiliated with EC-Council?</h3>
+    <p class="content-text">No. CEHStudy is an independent educational resource and is not endorsed by or affiliated with EC-Council.</p>
   </div>
 
 </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-links">
-      <a href="/">Flashcards</a>
-      <a href="/ceh-v13/">CEH v13 Modules</a>
-      <a href="/ceh-v13-study-guide/">Study Guide</a>
-      <a href="/glossary/">Glossary</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/disclaimer/">Disclaimer</a>
-    </div>
-    <p>CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
-  </div>
+<footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/">Flashcards</a>
+        <a href="/ceh-v13/">CEH v13 Modules</a>
+        <a href="/ceh-v13-study-guide/">Study Guide</a>
+        <a href="/ceh-practice-questions/">Practice Questions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/disclaimer/">Disclaimer</a>
+    </nav>
+    <p class="footer-copy">CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
 </footer>
 
 </body>
