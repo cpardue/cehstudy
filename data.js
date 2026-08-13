@@ -148,7 +148,7 @@ const CEH_DATA = {
         {q:"What are the ICMP ping types in nmap?",a:"<code>-PI</code> — ICMP ping. <code>-PP</code> ICMP Timestamp. <code>-PM</code> ICMP Netmask. <code>-PB</code> combines all ICMP pings."},
         {q:"How do you specify output formats in nmap?",a:"<code>-oN</code> Normal, <code>-oX</code> XML, <code>-oG</code> Grepable, <code>-oA</code> All outputs."},
         {q:"What are the nmap timing options?",a:"<code>-T0</code> Paranoid (300s wait), <code>-T1</code> Sneaky (15s wait), <code>-T2</code> Polite (0.4s wait), <code>-T3</code> Normal, <code>-T4</code> Aggressive (300s timeout, 1.25s/probe), <code>-T5</code> Insane (75s timeout, 0.3s/probe)."},
-        {q:"How do you specify ports in nmap?",a:"<code>-p &lt;port ranges&gt;</code> — e.g., <code>-p 1-1000</code> or <code>-p 22,80,443</code>."},
+        {q:"How do you specify ports in nmap?",a:"<code>-p <port ranges></code> — e.g., <code>-p 1-1000</code> or <code>-p 22,80,443</code>."},
         {q:"How do you perform OS fingerprinting with randomization in nmap?",a:"<code>nmap --randomize hosts -O</code> — Randomizes host order and attempts OS detection."}
       ]}
     ]},
@@ -164,7 +164,7 @@ const CEH_DATA = {
         {q:"How do you enumerate Windows user accounts?",a:"Use email patterns (e.g., tom.john@smith.com → tom.john), try default passwords, or use tools like dumpusers, GetAcct, DumpSec, Hyena."}
       ]},
       { title:"Security Identifier (SID)", content:"<h4>Windows SID Format</h4>", cards:[
-        {q:"What is a Security Identifier (SID)?",a:"A unique value assigned by Windows to each security principal (user, group, computer). Format: <code>S-&lt;revision&gt;-&lt;authority&gt;-&lt;subauthorities&gt;-&lt;RID&gt;</code>."},
+        {q:"What is a Security Identifier (SID)?",a:"A unique value assigned by Windows to each security principal (user, group, computer). Format: <code>S-<revision>-<authority>-<subauthorities>-<RID></code>."},
         {q:"What does the SID <code>S-1-5-21-...-500</code> mean?",a:"S = Security, 1 = revision, 5 = SECURITY_NT_AUTHORITY, 21 = local significance, ... = authority values, 500 = Administrator account."},
         {q:"What are common Windows RID values?",a:"500 = Administrator, 501 = Guest, 502 = Printer Operator, 512 = Domain Admins, 513 = Domain Users."},
         {q:"What tools are used for Windows SID enumeration?",a:"<code>user2sid</code>, <code>sid2user</code>, dumpusers, GetAcct, DumpSec, Hyena, PsGetSid."}
@@ -172,8 +172,8 @@ const CEH_DATA = {
       { title:"NetBIOS Enumeration", content:"<h4>NetBIOS Concepts</h4>", cards:[
         {q:"What is NetBIOS?",a:"Network Basic Input/Output System — a naming system for Windows machines that allows file/printer sharing using SMB protocol. Easily exploitable, often one of the first scans."},
         {q:"What information can NetBIOS enumeration reveal?",a:"System name, username, domain, printers, and available shares."},
-        {q:"How do you enumerate NetBIOS names?",a:"<code>nbtstat -a &lt;IP or hostname&gt;</code> shows NetBIOS names. <code>net view &lt;IP&gt;</code> prints available shares."},
-        {q:"What is smb-nat?",a:"NetBIOS Auditing Tool — brute forces usernames and passwords for administrative shares: <code>nbt -o output -u userlist -p passwordlist &lt;ip/range&gt;</code>."}
+        {q:"How do you enumerate NetBIOS names?",a:"<code>nbtstat -a <IP or hostname></code> shows NetBIOS names. <code>net view <IP></code> prints available shares."},
+        {q:"What is smb-nat?",a:"NetBIOS Auditing Tool — brute forces usernames and passwords for administrative shares: <code>nbt -o output -u userlist -p passwordlist <ip/range></code>."}
       ]},
       { title:"SNMP Enumeration", content:"<h4>SNMP Concepts</h4>", cards:[
         {q:"What is SNMP?",a:"Simple Network Management Protocol — used for monitoring and remotely modifying network equipment settings. Uses community strings for authentication."},
@@ -181,7 +181,7 @@ const CEH_DATA = {
         {q:"What is an SNMP manager and agent?",a:"Agent embedded in network devices sends data to manager via port 162. Data messages are called traps."},
         {q:"What is an Object Identifier (OID)?",a:"A unique identifier for any monitored device. E.g., <code>1.3.6.1.2.1.2.2.1.8</code>."},
         {q:"What is a Management Information Base (MIB)?",a:"A text file that translates numerical OIDs to word-based names (e.g., <code>SYNOLOGY-SYSTEM-MIB::temperature.0</code>)."},
-        {q:"How do you perform SNMP enumeration?",a:"<code>snmpwalk -c public -v1 &lt;IP&gt;</code> enumerates ports. <code>snmp-check &lt;IP&gt; -v 2c</code> gives routing tables, storage, users."},
+        {q:"How do you perform SNMP enumeration?",a:"<code>snmpwalk -c public -v1 <IP></code> enumerates ports. <code>snmp-check <IP> -v 2c</code> gives routing tables, storage, users."},
         {q:"What are the SNMP version security differences?",a:"v1/v2: no encryption, only community string (insecure). v3: username + password + encryption."}
       ]},
       { title:"LDAP Enumeration", content:"<h4>LDAP Concepts</h4>", cards:[
@@ -196,20 +196,85 @@ const CEH_DATA = {
       { title:"SMTP Enumeration", content:"<h4>SMTP Concepts</h4>", cards:[
         {q:"What is SMTP enumeration?",a:"Using SMTP (port 25) to validate email addresses — checking if they exist. Secure variants: SMTPS (port 587, TLS), STARTTLS (port 465)."},
         {q:"What SMTP commands are used for enumeration?",a:"<code>VRFY</code> validates email addresses. <code>EXPN</code> reveals mailing list members. <code>RCPT TO</code> defines recipients."},
-        {q:"What tool is commonly used for SMTP user enumeration?",a:"<code>smtp-user-enum</code> — inspects responses to VRFY, EXPN, and RCPT TO commands. E.g., <code>smtp-user-enum -M &lt;method&gt; -U &lt;userlist&gt; -t &lt;server&gt;</code>."}
+        {q:"What tool is commonly used for SMTP user enumeration?",a:"<code>smtp-user-enum</code> — inspects responses to VRFY, EXPN, and RCPT TO commands. E.g., <code>smtp-user-enum -M <method> -U <userlist> -t <server></code>."}
       ]},
       { title:"Active Directory Brute Force", content:"<h4>AD Enumeration</h4>", cards:[
         {q:"How do you brute force Active Directory?",a:"1) Find admin user with SID 500: <code>Get-ADUser -Filter * | where {$_.SID -like \"*-500\"}</code>. 2) Brute-force credentials with <code>net use \\computername password /u:user@domain</code>."}
       ]}
     ]},
     { id:5, title:"Vulnerability Analysis", slug:"module5", sections:[
-      { title:"Vulnerability Assessment", content:"<p>Identifying, quantifying, and prioritizing vulnerabilities in a system.</p>", cards:[
-        {q:"What is vulnerability assessment?",a:"The process of identifying, quantifying, and prioritizing vulnerabilities using automated tools and manual analysis."}
+      { title:"Vulnerability Assessment Overview", content:"<h4>Vulnerability Assessment Concepts</h4><p>The process of identifying, quantifying, and prioritizing vulnerabilities to understand an organization's security posture.</p>", cards:[
+        {q:"What is vulnerability assessment?",a:"The process of identifying, quantifying, and prioritizing vulnerabilities using automated tools and manual analysis to understand an organization's security posture."},
+        {q:"How does vulnerability assessment differ from penetration testing?",a:"Vulnerability assessment identifies and lists vulnerabilities. Penetration testing actively exploits them to demonstrate actual impact. VA is broader; PT is deeper."},
+        {q:"How does vulnerability assessment differ from a security audit?",a:"Security audit checks policy compliance. Vulnerability assessment finds technical vulnerabilities. Penetration test demonstrates exploitation."}
+      ]},
+      { title:"CVE & CVSS Frameworks", content:"<h4>Vulnerability Classification</h4>", cards:[
+        {q:"What is CVE?",a:"Common Vulnerabilities and Exposures — a standardized dictionary of publicly disclosed security vulnerabilities. Each has a unique identifier (e.g., CVE-2024-1234)."},
+        {q:"What is CVSS?",a:"Common Vulnerability Scoring System — a framework for scoring vulnerability severity from 0.0 to 10.0."},
+        {q:"What are the CVSS score categories?",a:"0.0–3.9 = Low (green), 4.0–6.9 = Medium (yellow/orange), 7.0–8.9 = High (red), 9.0–10.0 = Critical (dark red)."},
+        {q:"What is a vulnerability score?",a:"A numerical value representing the severity of a vulnerability, typically based on CVSS metrics ranging from 0.0 to 10.0."}
+      ]},
+      { title:"Vulnerability Scanning Tools", content:"<h4>Scanning & Assessment Tools</h4>", cards:[
+        {q:"What is Nessus?",a:"One of the most widely used vulnerability scanning tools by Tenable. Provides comprehensive scanning for networks, web apps, databases, and cloud environments."},
+        {q:"What is OpenVAS?",a:"An open-source vulnerability scanner that provides full-featured vulnerability detection and reporting capabilities."},
+        {q:"What types of vulnerability scanners exist?",a:"Network-based (scans entire network), host-based (single system), database scanners, wireless scanners, web application scanners."}
+      ]},
+      { title:"Scanner Accuracy & Reporting", content:"<h4>False Positives & Negatives</h4>", cards:[
+        {q:"What is a false positive in vulnerability scanning?",a:"When a scanner reports a vulnerability that does not actually exist. A major challenge in vulnerability management."},
+        {q:"What is a false negative in vulnerability scanning?",a:"When a scanner fails to detect a vulnerability that does exist. More dangerous than false positives as it creates false confidence."}
+      ]},
+      { title:"Patch Management", content:"<h4>Remediation Strategies</h4>", cards:[
+        {q:"What is patch management?",a:"The process of testing, distributing, and installing patches to fix vulnerabilities. A critical part of vulnerability remediation."}
+      ]},
+      { title:"Risk Assessment", content:"<h4>Risk Prioritization</h4>", cards:[
+        {q:"What is risk assessment in vulnerability analysis?",a:"The process of evaluating identified vulnerabilities, determining their potential impact, and prioritizing remediation based on risk level."}
       ]}
     ]},
     { id:6, title:"System Hacking", slug:"module6", sections:[
-      { title:"Gaining Access", content:"<p>Techniques for gaining access including password cracking and exploitation.</p>", cards:[
-        {q:"What is password cracking?",a:"Recovering passwords from data stored in scrambled form. Methods include brute-force, dictionary attacks, and rainbow tables."}
+      { title:"Password Cracking Methods", content:"<h4>Password Recovery Techniques</h4><p>Recovering passwords from encrypted/hashed data using various attack methods.</p>", cards:[
+        {q:"What is password cracking?",a:"The process of recovering passwords from encrypted/hashed data. Methods: brute-force, dictionary, rainbow tables, hybrid attacks."},
+        {q:"What is a brute-force attack on passwords?",a:"Trying all possible character combinations until the correct password is found. Guaranteed to work but slow for long passwords. Speed depends on GPU power and hash algorithm complexity."},
+        {q:"What is a dictionary attack?",a:"Trying common words, phrases, and previously leaked passwords from wordlists (e.g., rockyou.txt). Most commonly used — balances speed and effectiveness. Most users choose weak, dictionary-based passwords."},
+        {q:"What is a rainbow table?",a:"A precomputed table of hash values for every possible password combination. Used to reverse cryptographic hash functions quickly — defeated by password salting. Large storage requirement."},
+        {q:"What is a hybrid attack?",a:"Combines dictionary and brute-force methods. Starts with dictionary words, then applies character substitutions (e.g., p@ssw0rd). More targeted than pure brute-force."},
+        {q:"What is credential stuffing?",a:"Using leaked username/password pairs from one breach to attempt login on other sites. Users often reuse credentials across multiple services. Mitigation: enable MFA, use password managers."}
+      ]},
+      { title:"Privilege Escalation", content:"<h4>Gaining Higher Access Levels</h4>", cards:[
+        {q:"What is privilege escalation?",a:"Exploiting a bug or design flaw to gain higher access levels (e.g., standard user → Administrator). Can be vertical (more privileges) or horizontal (same level, different account)."},
+        {q:"What is vertical privilege escalation?",a:"Gaining higher privileges than the current user — e.g., standard user to system administrator. Most impactful type of escalation."},
+        {q:"What is horizontal privilege escalation?",a:"Gaining access to another account at the same privilege level — e.g., regular user to another regular user. Used for lateral movement."},
+        {q:"How do you prevent privilege escalation?",a:"Apply security patches promptly, disable unnecessary services, configure proper NTFS permissions, enable LSA protection, restrict administrator privileges, implement least privilege principle."}
+      ]},
+      { title:"UAC Bypass Techniques", content:"<h4>Windows User Account Control</h4>", cards:[
+        {q:"What is UAC bypass?",a:"Techniques to bypass Windows User Account Control: DLL side-loading, job objects, replace existing process, trusted developer policies. Used to execute code with elevated privileges without user prompt."},
+        {q:"What is a token in Windows?",a:"An object that contains the security context of a logged-on user. Tokens hold the user's SID, privileges, and groups. High-privilege tokens (Administrator) allow system-wide changes."},
+        {q:"What is token manipulation?",a:"Stealing or duplicating high-privilege process tokens to execute commands with elevated rights. Tools: Incognito, Tokenvator, Powershell Empire."}
+      ]},
+      { title:"Password Hashing (LM & NTLM)", content:"<h4>Windows Password Storage</h4>", cards:[
+        {q:"What is an LM hash?",a:"Legacy Windows password hash — extremely weak. Max 14 characters split into two 7-character halves. Each half encrypted separately with DES. Easily cracked with tools like John the Ripper. Disabled by default in modern Windows."},
+        {q:"What is an NTLM hash?",a:"NT LAN Manager hash — stronger than LM but still vulnerable to brute-force. Derived from the Unicode password using MD4. Stored in the SAM database or NTDS.dit for domain accounts."},
+        {q:"What is the SAM database?",a:"Security Account Manager — a database file (C:\\Windows\\System32\\config\\SAM) storing Windows account passwords as hashes (not plaintext). Local accounts only. Requires SYSTEM privileges to read."},
+        {q:"What is NTDS.dit?",a:"Active Directory database file containing all domain account hashes, group memberships, and policies. Located at %SYSTEMROOT%\\NTDS\\ntds.dit. Extracted using ntdsutil or volume shadow copy exploitation. Primary target in AD attacks."},
+        {q:"What is the difference between LM and NTLM hashes?",a:"LM: 14-char max, split into two 7-char halves, DES-based, easily cracked. NTLM: Unicode password, MD4-based, case-sensitive, no length limit (practically 128 chars). LM disabled by default in modern Windows."}
+      ]},
+      { title:"File System Attacks", content:"<h4>NTFS & Alternative Data Streams</h4>", cards:[
+        {q:"What are Alternative Data Streams (ADS)?",a:"NTFS feature allowing hidden data within files. Syntax: <code>echo secret > file.txt:hidden.txt</code>. Used by malware for persistence, data exfiltration. View with: <code>dir /r</code>."},
+        {q:"How do you detect ADS?",a:"<code>dir /r</code> shows alternate streams. <code>streams.exe</code> (Sysinternals) lists ADS. PowerShell: <code>Get-Content file.txt -Stream *</code>."},
+        {q:"What are NTFS permissions?",a:"File system access controls: Full Control, Modify, Read & Execute, List Folder Contents, Read, Write. Applied to files/folders. Combined with share permissions for final access level."}
+      ]},
+      { title:"Rootkits & Hiding Presence", content:"<h4>Anti-Forensics Techniques</h4>", cards:[
+        {q:"What is a rootkit?",a:"Malicious software designed to hide the existence of other malware by intercepting and modifying OS calls at the kernel level. Makes malicious processes, files, and registry entries invisible."},
+        {q:"How do rootkits work?",a:"Intercept API calls at kernel level (SSDT hooking, IDT hooking, inline hooking). When you run task manager or list files, the rootkit filters out its own artifacts. Can operate in user-mode or kernel-mode."},
+        {q:"How do you detect rootkits?",a:"Behavioral analysis (unusual process behavior), specialized tools (GMER, RootkitRevealer, TDSSKiller), comparing running processes from inside vs outside the OS, memory forensics, boot-level scanners."}
+      ]},
+      { title:"Post-Exploitation", content:"<h4>After Gaining Access</h4>", cards:[
+        {q:"What is credential dumping?",a:"Extracting password hashes and plaintext credentials from memory after gaining system access. Tools: Mimikatz, LaZagne, SecretsDump. Primary target: LSASS memory."},
+        {q:"What is lateral movement?",a:"Using compromised credentials to move through the network, accessing other systems. Methods: RDP, PsExec, WMI, SMB. Exploits trust relationships between systems."},
+        {q:"What are common cover-your-tracks activities?",a:"Clearing event logs (<code>wevtutil cl Security</code>), deleting/shadow copying VSS files, disabling logging services, installing rootkits, masquerading as legitimate processes, using time-based attacks during off-hours."}
+      ]},
+      { title:"Steganography", content:"<h4>Hiding Data Within Files</h4>", cards:[
+        {q:"What is steganography?",a:"The practice of hiding confidential data within ordinary, non-secret files or channels. Unlike encryption — the existence of the message itself is concealed. Common载体: images, audio, video, text files."},
+        {q:"What is steganalysis?",a:"The detection and extraction of hidden data from steganographic carrier files. Used by forensic analysts to find covertly embedded information."}
       ]}
     ]},
     { id:7, title:"Malware Threats", slug:"module7", sections:[
@@ -364,7 +429,7 @@ const CEH_DATA = {
         {q:"What is certificate chaining/certification path?",a:"The chain from the end-entity certificate up to a trusted root CA through intermediate CAs. Chain: End Entity → Intermediate CA(s) → Root CA. Each level signs the one below it. Client validates the entire chain to trust the end certificate."},
         {q:"What is a self-signed certificate?",a:"A certificate signed by its own private key instead of being signed by a CA. Not trusted by default by browsers/OS. Used internally, for testing, or in enterprise environments with manually installed root certificates."},
         {q:"What are the types of SSL/TLS certificates?",a:"Domain Validated (DV) — verifies domain ownership only. Organization Validated (OV) — verifies organization identity. Extended Validation (EV) — most rigorous verification, shows green bar (deprecated in browsers 2019). Wildcard — covers subdomains (*.example.com). Multi-domain (SAN) — covers multiple domains."},
-        {q:"What is a certificate pinning?",a:"An security mechanism where a client (browser/app) expects a server to present a specific, pre-defined certificate or public key. Prevents MITM attacks even if a fraudulent CA issues a certificate. Deprecated in browsers due to maintenance issues."},
+        {q:"What is certificate pinning?",a:"An security mechanism where a client (browser/app) expects a server to present a specific, pre-defined certificate or public key. Prevents MITM attacks even if a fraudulent CA issues a certificate. Deprecated in browsers due to maintenance issues."},
         {q:"How does PKI relate to web browsing (HTTPS)?",a:"When you visit https://site.com: 1) Server presents its X.509 certificate. 2) Browser verifies the certificate chain to a trusted root CA. 3) Browser checks validity period, revocation status (OCSP/CRL). 4) If valid, browser uses the public key for asymmetric key exchange to establish symmetric session key. 5) Encrypted communication proceeds."},
         {q:"What is Web of Trust?",a:"Alternative to PKI used by PGP/GPG. Instead of hierarchical CAs, users sign each other's keys to build a trust network. Used in email encryption. Less scalable than PKI but decentralized and no single point of failure."}
       ]},
@@ -446,7 +511,7 @@ const CEH_DATA = {
         {q:"What is hashcat?",a:"Advanced password recovery tool supporting GPU acceleration. Supports 350+ hash types including NTLM, WPA-WPA2, SHA-256, bcrypt. Modes: dictionary attack (-m 1000), brute force, mask attack, combination, rule-based. Example: <code>hashcat -m 0 hashes.txt rockyou.txt</code>."},
         {q:"What is John the Ripper?",a:"Open-source password cracker supporting multiple formats and hash types. Modes: single crack, wordlist, incremental (brute force), external. Example: <code>john --wordlist=rockyou.txt shadow</code>. Good for cracking SSH keys (<code>john ssh_keys/id_rsa</code>)."},
         {q:"What is aircrack-ng?",a:"Complete suite of tools for 802.11 wireless network security. Components: airodump-ng (capture packets), aireplay-ng (inject packets), aircrack-ng (crack WEP/WPA keys). Example: <code>aircrack-ng -w wordlist.txt capture.cap</code>. Requires monitor mode interface."},
-        {q:"What is nmap's scripting engine for crypto?",a:"<code>nmap --script ssl-enum-ciphers &lt;target&gt;</code> — enumerates supported cipher suites. <code>ssl-cert</code> — shows certificate details. <code>ssl-heartbleed</code> — checks for Heartbleed vulnerability. <code>tls-sig-alg</code> — checks signature algorithms."}
+        {q:"What is nmap's scripting engine for crypto?",a:"<code>nmap --script ssl-enum-ciphers <target></code> — enumerates supported cipher suites. <code>ssl-cert</code> — shows certificate details. <code>ssl-heartbleed</code> — checks for Heartbleed vulnerability. <code>tls-sig-alg</code> — checks signature algorithms."}
       ]}
     ]}
   ]
