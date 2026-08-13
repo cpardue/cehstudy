@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 5: Vulnerability Analysis — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 5 flashcards: vulnerability assessment, CVE/CVSS scoring, Nessus/OpenVAS scanners, patch management, risk assessment, false positives/negatives. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-05/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 5: Vulnerability Analysis — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 5 covering vulnerability assessment, CVE/CVSS scoring, Nessus/OpenVAS scanners, patch management, and risk assessment.",
+        "url": "https://cehstudy.com/ceh-v13/module-05/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 5: Vulnerability Analysis", "item": "https://cehstudy.com/ceh-v13/module-05/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "Vulnerability Analysis",
+            "termCode": "CEH-M05",
+            "description": "Vulnerability assessment methodologies, CVE/CVSS frameworks, scanning tools like Nessus and OpenVAS, patch management strategies, and risk assessment."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=5" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 5 Flashcards</a>
+    </div></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 5: Vulnerability Analysis</nav>
+
+        <h1 class="page-title">CEH v13 Module 5: Vulnerability Analysis</h1>
+        <p class="content-text">Vulnerability analysis is the process of identifying, quantifying, and prioritizing vulnerabilities in systems and applications. This module covers vulnerability assessment methodologies, scanning tools like Nessus and OpenVAS, CVE/CVSS frameworks, patch management, and risk assessment strategies.</p>
+
+        <a href="/?module=5" class="flashcard-link">&#127891; Launch Flashcards — Module 5</a>
+
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>Vulnerability assessment vs. penetration testing vs. security audit</li>
+            <li>CVE (Common Vulnerabilities and Exposures) database</li>
+            <li>CVSS (Common Vulnerability Scoring System) metrics</li>
+            <li>Vulnerability scanning tools: Nessus, OpenVAS, Nexpose, Qualys</li>
+            <li>Network-based vs. host-based vulnerability scanners</li>
+            <li>Patch management and remediation strategies</li>
+            <li>Risk assessment and prioritization frameworks</li>
+            <li>Compliance scanning and regulatory requirements</li>
+        </ul>
+
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>Vulnerability Assessment:</strong> The process of identifying, quantifying, and prioritizing vulnerabilities using automated tools and manual analysis to understand an organization's security posture.</div>
+        <div class="term-box"><strong>CVE (Common Vulnerabilities and Exposures):</strong> A standardized dictionary of publicly disclosed security vulnerabilities. Each CVE has a unique identifier (e.g., CVE-2024-1234).</div>
+        <div class="term-box"><strong>CVSS (Common Vulnerability Scoring System):</strong> A framework for scoring vulnerability severity from 0.0 to 10.0. Scores: 0.0-3.9 (Low), 4.0-6.9 (Medium), 7.0-8.9 (High), 9.0-10.0 (Critical).</div>
+        <div class="term-box"><strong>Nessus:</strong> One of the most widely used vulnerability scanning tools by Tenable. Provides comprehensive scanning for networks, web apps, databases, and cloud environments.</div>
+        <div class="term-box"><strong>OpenVAS:</strong> An open-source vulnerability scanner that provides full-featured vulnerability detection and reporting capabilities.</div>
+        <div class="term-box"><strong>False positive:</strong> When a scanner reports a vulnerability that does not actually exist. A major challenge in vulnerability management.</div>
+        <div class="term-box"><strong>False negative:</strong> When a scanner fails to detect a vulnerability that does exist. More dangerous than false positives as it creates false confidence.</div>
+
+        <h2 class="section-heading">CVSS Score Categories</h2>
+        <ul class="content-list">
+            <li><code>0.0 - 3.9</code> — Low severity (green)</li>
+            <li><code>4.0 - 6.9</code> — Medium severity (yellow/orange)</li>
+            <li><code>7.0 - 8.9</code> — High severity (red)</li>
+            <li><code>9.0 - 10.0</code> — Critical severity (dark red)</li>
+        </ul>
+
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Understand the difference between vulnerability assessment, penetration testing, and security audits</li>
+            <li>Memorize CVSS score ranges and their severity classifications</li>
+            <li>Know the major scanning tools (Nessus, OpenVAS, Nexpose) and their key features</li>
+            <li>Understand false positive vs false negative implications in vulnerability management</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>What is vulnerability assessment?</strong><br>The process of identifying, quantifying, and prioritizing vulnerabilities using automated tools to proactively discover security weaknesses before attackers can exploit them.</p>
+        <p><strong>How does vulnerability assessment differ from penetration testing?</strong><br>Vulnerability assessment identifies and lists vulnerabilities. Penetration testing actively exploits them to demonstrate the actual impact. VA is broader; PT is deeper.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-04/">Module 4: Enumeration</a> — enumeration data feeds vulnerability scanners</li>
+            <li><a href="/ceh-v13/module-06/">Module 6: System Hacking</a> — identified vulnerabilities are then exploited</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '5';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
+</body>
+</html>
