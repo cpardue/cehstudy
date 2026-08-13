@@ -19,19 +19,36 @@ Remove legacy `module1.html` through `module19.html` pages (study notes format).
 - [x] Verify all deletions pushed to github
 - [x] Status: ✅ Complete
 
-## Task 3: Verify sitemap.xml
+## Task 3: Fix ceh-v13 module page flashcard links
+- [x] Change all `/moduleX.html` → `/?module=X` in ceh-v13/module-XX/index.html
+- [x] Verify no remaining old links in any HTML file on GitHub
+- [x] Status: ✅ Complete
+
+## Task 4: Verify sitemap.xml
 - [x] Confirm no references to module1.html etc. (already verified clean)
 - [x] Status: ✅ Complete
 
-## Task 4: Commit and push to github.com/cpardue/cehstudy
+## Task 5: Commit and push to github.com/cpardue/cehstudy
 - [x] Committed and pushed: flashcards_app.js changes + module1-5.html deletions
 - [x] Pushed remaining deletions (module13-17.html)
+- [x] Updated ceh-v13/module-01 through module-03 with correct `/?module=X` links
+- [x] Verified all 20 ceh-v13 module pages use `/?module=X` format
 - [x] Status: ✅ Complete
 
 ---
 
 ## Recent Changes (2026-08-13)
-- Deleted from GitHub: module13.html, module14.html, module15.html, module16.html, module17.html
+### Flashcard Link Fixes
+- Updated ceh-v13/module-01/index.html: `/module1.html` → `/?module=1`
+- Updated ceh-v13/module-02/index.html: `/module2.html` → `/?module=2`
+- Updated ceh-v13/module-03/index.html: `/module3.html` → `/?module=3`
+- Verified ceh-v13/module-04 through module-20 already had correct links
+
+### Legacy Page Deletions
+- Deleted from GitHub: module1-5.html (previous commits), module13-17.html (this session)
 - All legacy module pages (module1-19.html) now removed from repository
-- ceh-v13 module pages correctly link to `/?module=N` for flashcards app
+
+### Verification
+- Zero old `/moduleX.html` links remain in any HTML file
 - sitemap.xml verified clean - no references to deleted module*.html pages
+- All ceh-v13 module pages correctly link to `/?module=N` for flashcards app
