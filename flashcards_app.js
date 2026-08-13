@@ -64,6 +64,7 @@
             // Keep ?module=X in URL for bookmarkability — don't clean it
         }
         updateModuleVisibility();
+        buildDeck();
         setupEventListeners();
         renderCard();
         updateReviewCount();
