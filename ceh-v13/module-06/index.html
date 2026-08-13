@@ -43,7 +43,6 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
-        <a href="/?module=6" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 6 Flashcards</a>
     </div></div></header>
 
     <div class="container">
@@ -51,8 +50,6 @@
 
         <h1 class="page-title">CEH v13 Module 6: System Hacking</h1>
         <p class="content-text">System hacking involves gaining unauthorized access to target systems and maintaining that access. This module covers password cracking methods, privilege escalation techniques, file system attacks, service exploitation, malware deployment, steganography, and post-exploitation cover-your-tracks activities.</p>
-
-        <a href="/?module=6" class="flashcard-link">&#127891; Launch Flashcards — Module 6</a>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -66,14 +63,14 @@
             <li>Post-exploitation: credential dumping, lateral movement</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
         <div class="term-box"><strong>Password Cracking:</strong> The process of recovering passwords from encrypted/hashed data using methods like brute-force (trying all combinations), dictionary (common words), rainbow tables (precomputed hashes), and hybrid attacks.</div>
         <div class="term-box"><strong>Rainbow Table:</strong> A precomputed table of hash values for every possible password combination. Used to reverse cryptographic hash functions quickly — defeated by password salting.</div>
         <div class="term-box"><strong>Privilege Escalation:</strong> Exploiting a bug or design flaw to gain higher access levels (e.g., standard user → Administrator). Can be vertical (more privileges) or horizontal (same level, different account).</div>
         <div class="term-box"><strong>UAC Bypass:</strong> Techniques to bypass Windows User Account Control: DLL side-loading, job objects, replace existing process, trusted developer policies.</div>
         <div class="term-box"><strong>LM Hash:</strong> Legacy Windows password hash — extremely weak, max 14 chars split into two 7-char halves. Easily cracked with tools like John the Ripper.</div>
         <div class="term-box"><strong>NTDS.dit:</strong> Active Directory database file containing all domain account hashes. Extracted using tools like ntdsutil or volume shadow copy exploitation.</div>
-        <div class="term-box"><strong>Alternative Data Streams (ADS):</strong> NTFS feature allowing hidden data within files. Commonly used by malware for persistence: <code>echo secret > file.txt:hidden.txt</code></div>
+        <div class="term-box"><strong>Alternative Data Streams (ADS):</strong> NTFS feature allowing hidden data within files. Commonly used by malware for persistence: <code>echo secret &gt; file.txt:hidden.txt</code></div>
         <div class="term-box"><strong>Rootkit:</strong> Malicious software designed to hide the existence of other malware by intercepting and modifying OS calls at the kernel level.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
