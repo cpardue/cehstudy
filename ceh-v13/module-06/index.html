@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 6: System Hacking — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 6 flashcards: password cracking, privilege escalation, NTFS permissions, UAC bypass, rootkits, LM/NTLM hashes, alternative data streams. Free study resources.">
+    <title>CEH v13 Module 6: Malware Attacks — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 6 malware attacks flashcards: trojans, worms, viruses, rootkits, fileless malware, IoT malware. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-06/">
 
@@ -13,21 +13,21 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 6: System Hacking — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 6 covering password cracking, privilege escalation, NTFS permissions, UAC bypass, rootkits, and post-exploitation.",
+        "name": "CEH v13 Module 6: Malware Attacks — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 6 covering trojans, worms, viruses, rootkits, fileless malware, and IoT malware.",
         "url": "https://cehstudy.com/ceh-v13/module-06/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 6: System Hacking", "item": "https://cehstudy.com/ceh-v13/module-06/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 6: Malware Attacks", "item": "https://cehstudy.com/ceh-v13/module-06/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "System Hacking",
+            "name": "Malware Attacks",
             "termCode": "CEH-M06",
-            "description": "Password cracking methods, privilege escalation, NTFS permissions, UAC bypass, rootkits, alternative data streams (ADS), and post-exploitation cover-your-tracks activities."
+            "description": "Types and techniques of malicious software including trojans, worms, viruses, rootkits, fileless malware, and IoT-specific attacks."
         }
     }
     </script>
@@ -46,49 +46,39 @@
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 6: System Hacking</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 6: Malware Attacks</nav>
 
-        <h1 class="page-title">CEH v13 Module 6: System Hacking</h1>
-        <p class="content-text">System hacking involves gaining unauthorized access to target systems and maintaining that access. This module covers password cracking methods, privilege escalation techniques, file system attacks, service exploitation, malware deployment, steganography, and post-exploitation cover-your-tracks activities.</p>
+        <h1 class="page-title">CEH v13 Module 6: Malware Attacks</h1>
+        <p class="content-text">This module covers malware types, delivery mechanisms, and analysis techniques. Topics include trojans, worms, viruses, rootkits, fileless malware, IoT malware, ransomware, and advanced persistent threats.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Password cracking methods: brute-force, dictionary, rainbow tables, hybrid attacks</li>
-            <li>Privilege escalation techniques: token manipulation, UAC bypass, service exploitation</li>
-            <li>File system attacks: NTFS permissions, alternative data streams (ADS), fileless techniques</li>
-            <li>Service exploitation and backdoor installation</li>
-            <li>Password hashing: LM hashes, NTLM hashes, SAM database</li>
-            <li>Masking access: log clearing, rootkit installation, process hiding</li>
-            <li>Steganography and stegotography techniques</li>
-            <li>Post-exploitation: credential dumping, lateral movement</li>
+            <li>Trojans: service-based, download/inject, multi-vector delivery</li>
+            <li>Worms: self-propagating, network-based spread</li>
+            <li>Viruses: file, boot sector, macro, polymorphic</li>
+            <li>Rootkits: kernel-mode, user-mode, hypervisor-level</li>
+            <li>Fileless malware: PowerShell, WMI, memory-only attacks</li>
+            <li>Ransomware: crypto, locker, double/extortion</li>
         </ul>
 
         <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Password Cracking:</strong> The process of recovering passwords from encrypted/hashed data using methods like brute-force (trying all combinations), dictionary (common words), rainbow tables (precomputed hashes), and hybrid attacks.</div>
-        <div class="term-box"><strong>Rainbow Table:</strong> A precomputed table of hash values for every possible password combination. Used to reverse cryptographic hash functions quickly — defeated by password salting.</div>
-        <div class="term-box"><strong>Privilege Escalation:</strong> Exploiting a bug or design flaw to gain higher access levels (e.g., standard user → Administrator). Can be vertical (more privileges) or horizontal (same level, different account).</div>
-        <div class="term-box"><strong>UAC Bypass:</strong> Techniques to bypass Windows User Account Control: DLL side-loading, job objects, replace existing process, trusted developer policies.</div>
-        <div class="term-box"><strong>LM Hash:</strong> Legacy Windows password hash — extremely weak, max 14 chars split into two 7-char halves. Easily cracked with tools like John the Ripper.</div>
-        <div class="term-box"><strong>NTDS.dit:</strong> Active Directory database file containing all domain account hashes. Extracted using tools like ntdsutil or volume shadow copy exploitation.</div>
-        <div class="term-box"><strong>Alternative Data Streams (ADS):</strong> NTFS feature allowing hidden data within files. Commonly used by malware for persistence: <code>echo secret &gt; file.txt:hidden.txt</code></div>
-        <div class="term-box"><strong>Rootkit:</strong> Malicious software designed to hide the existence of other malware by intercepting and modifying OS calls at the kernel level.</div>
+        <div class="term-box"><strong>Rootkit:</strong> Stealthy malware that hides its existence and activities. Types: kernel-mode (most dangerous), user-mode, hypervisor-level, firmware/BIOS. Detection: behavior monitoring, memory analysis.</div>
+        <div class="term-box"><strong>Fileless Malware:</strong> Operates entirely in memory without writing to disk. Uses PowerShell, WMI, and LOLBins. Detection requires behavioral analysis and memory forensics.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Understand each password cracking method and when to use it (brute-force vs dictionary vs rainbow tables)</li>
-            <li>Memorize privilege escalation techniques, especially UAC bypass methods</li>
-            <li>Know the difference between LM and NTLM hash formats</li>
-            <li>Understand how rootkits hide malicious processes and files at the kernel level</li>
+            <li>Know malware types and their distinguishing characteristics</li>
+            <li>Understand delivery mechanisms and prevention techniques</li>
+            <li>Learn analysis methods: static vs dynamic, sandboxing</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the most common password attack?</strong><br>Dictionary attacks are the most commonly used because they balance speed and effectiveness. Most users choose weak, dictionary-based passwords.</p>
-        <p><strong>How do you prevent privilege escalation?</strong><br>Apply security patches promptly, disable unnecessary services, configure proper NTFS permissions, enable LSA protection, and restrict administrator privileges.</p>
+        <p><strong>What's the most dangerous malware type?</strong><br>Rootkits (especially hypervisor/firmware) — they operate at the lowest system level and are hardest to detect/remove.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-04/">Module 4: Enumeration</a> — enumeration data feeds into password cracking and system access</li>
-            <li><a href="/ceh-v13/module-07/">Module 7: Malware Threats</a> — malware deployment follows successful system hacking</li>
+            <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: System Hacking</a> — system compromise enables malware deployment</li>
+            <li><a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7: Network-based Attacks</a> — network attacks often deliver malware</li>
         </ul>
     </div>
 
