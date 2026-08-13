@@ -44,26 +44,6 @@
     function init() {
         loadFromStorage();
         buildMenu();
-        // Check for ?module=X query param
-        const urlParams = new URLSearchParams(window.location.search);
-        const moduleParam = parseInt(urlParams.get('module'), 10);
-        if (!isNaN(moduleParam)) {
-            // Find the module in CEH_DATA
-            const modExists = CEH_DATA.modules.some(m => m.id === moduleParam);
-            if (modExists) {
-                // Only select the specified module, override localStorage
-                selectedModules.clear();
-                selectedModules.add(moduleParam);
-                saveModules();
-                // Update menu checkboxes to match
-                menuList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                    const cbModId = parseInt(cb.dataset.moduleId, 10);
-                    cb.checked = cbModId === moduleParam;
-                });
-            }
-            // Keep ?module=X in URL for bookmarkability — don't clean it
-        }
-        updateModuleVisibility();
         buildDeck();
         setupEventListeners();
         renderCard();
@@ -279,30 +259,9 @@
             selectedModules.delete(modId);
         }
         saveModules();
-        updateModuleVisibility();
-        syncUrl();
-        resetCardDeck();
-    }
-
-    // === URL Sync ===
-    function syncUrl() {
-        // When user manually toggles, keep the last selected module in URL
-        const mods = [...selectedModules].sort((a, b) => a - b);
-        if (mods.length > 0 && mods.length <= CEH_DATA.modules.length) {
-            const lastMod = mods[mods.length - 1];
-            const newUrl = `${window.location.origin}${window.location.pathname}?module=${lastMod}`;
-            window.history.replaceState({}, '', newUrl);
-        }
-    }
-
-    function updateModuleVisibility() {
-        if (selectedModules.size === 0) {
-            CEH_DATA.modules.forEach(m => selectedModules.add(m.id));
-            menuList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                cb.checked = true;
-            });
-            saveModules();
-        }
+        buildDeck();
+        renderCard();
+        updateReviewCount();
     }
 
     // === Card Deck ===
@@ -355,7 +314,7 @@
             fcModuleLabel.classList.add('hidden');
             fcTitle.classList.add('hidden');
             fcInfo.classList.add('hidden');
-            fcHint.textContent = 'Toggle on modules to begin';
+            fcHint.textContent = 'All modules selected — use Select Modules to customize';
             fcCounter.classList.add('hidden');
             prevBtn.disabled = true;
             nextBtn.disabled = true;
