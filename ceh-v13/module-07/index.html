@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 7: Malware Threats — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 7 flashcards: viruses, worms, trojans, ransomware, rootkits, fileless malware, polymorphic threats, and malware analysis. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-07/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 7: Malware Threats — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 7 covering viruses, worms, trojans, ransomware, rootkits, fileless malware, and malware analysis.",
+        "url": "https://cehstudy.com/ceh-v13/module-07/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 7: Malware Threats", "item": "https://cehstudy.com/ceh-v13/module-07/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "Malware Threats",
+            "termCode": "CEH-M07",
+            "description": "Types of malicious software including viruses, worms, trojans, ransomware, spyware, rootkits, fileless malware, and polymorphic threats."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=7" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 7 Flashcards</a>
+    </div></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 7: Malware Threats</nav>
+
+        <h1 class="page-title">CEH v13 Module 7: Malware Threats</h1>
+        <p class="content-text">This module covers the various types of malicious software used by attackers, including viruses, worms, trojans, ransomware, spyware, rootkits, fileless malware, and polymorphic threats. Understanding these threats is critical for both offensive and defensive security professionals.</p>
+
+        <a href="/?module=7" class="flashcard-link">&#127891; Launch Flashcards — Module 7</a>
+
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>Virus vs worm differences: file infection vs self-replication across networks</li>
+            <li>Trojan types: Remote Access Trojan (RAT), banking trojans, DDoS trojans</li>
+            <li>Ransomware variants: crypto-ransomware, scareware, locker ransomware</li>
+            <li>Rootkit detection and removal techniques</li>
+            <li>Fileless malware: living-off-the-land, PowerShell attacks, memory-only execution</li>
+            <li>Polymorphic and metamorphic malware techniques</li>
+            <li>Boot sector and macro viruses</li>
+            <li>Malware analysis methods: static vs dynamic analysis, sandboxing</li>
+        </ul>
+
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>Virus:</strong> Malicious code that attaches itself to legitimate programs and requires human action (executing an infected file) to spread. Types: file infector, polymorphic, encryption, multipartite.</div>
+        <div class="term-box"><strong>Worm:</strong> Self-replicating malware that spreads across networks without user interaction. Unlike viruses, worms do not need a host program (e.g., Conficker, WannaCry worm component).</div>
+        <div class="term-box"><strong>Trojan (RAT):</strong> Malicious software disguised as legitimate. Remote Access Trojan (RAT) gives attackers full remote control: keylogging, screen capture, file access.</div>
+        <div class="term-box"><strong>Ransomware:</strong> Encrypts victim's files and demands payment. Crypto-ransomware encrypts files. Scareware tricks users with fake alerts. Locker ransomware blocks system access.</div>
+        <div class="term-box"><strong>Rootkit:</strong> Software that hides malware presence by intercepting OS calls at the kernel level. Can be user-mode or kernel-level. Detected via behavioral analysis and specialized tools (GMER, RootkitRevealer).</div>
+        <div class="term-box"><strong>Fileless Malware:</strong> Operates entirely in memory without writing to disk. Uses legitimate tools like PowerShell and WMI. Extremely difficult to detect by traditional antivirus.</div>
+        <div class="term-box"><strong>Polymorphic Malware:</strong> Changes its code/signature on each infection using encryption and mutation engines to evade signature-based detection. The decryptor stub remains constant.</div>
+
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Understand the key differences between viruses, worms, and trojans</li>
+            <li>Know each malware type's characteristics, infection methods, and detection techniques</li>
+            <li>Memorize ransomware variants and their specific behaviors</li>
+            <li>Understand fileless malware techniques — a major topic in CEH v13</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>What is the difference between a virus and a worm?</strong><br>A virus requires a host program and human action to spread. A worm is self-contained and replicates independently across networks without user interaction.</p>
+        <p><strong>What is fileless malware?</strong><br>Malware that operates entirely in memory without writing files to disk. It uses legitimate system tools (PowerShell, WMI) making it nearly invisible to traditional antivirus solutions.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-06/">Module 6: System Hacking</a> — malware is often deployed after system access is gained</li>
+            <li><a href="/ceh-v13/module-08/">Module 8: Sniffing</a> — malware can be used to capture network traffic for sniffing</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '7';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
+</body>
+</html>
