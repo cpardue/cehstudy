@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 12: Evading IDS, Firewalls & Honeypots — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 12 flashcards: IDS vs IPS, NIDS/HIDS, signature/anomaly detection, firewall evasion, fragmentation, honeypot types. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-12/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 12: Evading IDS, Firewalls & Honeypots — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 12 covering IDS vs IPS, NIDS/HIDS, signature/anomaly detection, firewall evasion, and honeypot types.",
+        "url": "https://cehstudy.com/ceh-v13/module-12/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 12: Evading IDS, Firewalls & Honeypots", "item": "https://cehstudy.com/ceh-v13/module-12/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "Evading IDS, Firewalls & Honeypots",
+            "termCode": "CEH-M12",
+            "description": "Techniques to bypass network security controls including IDS/IPS evasion, firewall rule bypass, fragmentation attacks, tunneling, and honeypot detection."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=12" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 12 Flashcards</a>
+    </div></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 12: Evading IDS, Firewalls & Honeypots</nav>
+
+        <h1 class="page-title">CEH v13 Module 12: Evading IDS, Firewalls & Honeypots</h1>
+        <p class="content-text">This module covers techniques used to bypass network security controls. Attackers use evasion methods to avoid detection by IDS/IPS systems, firewall rules, and honeypots. Understanding these techniques is essential for both offensive security testing and defensive deployment.</p>
+
+        <a href="/?module=12" class="flashcard-link">&#127891; Launch Flashcards — Module 12</a>
+
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>IDS vs IPS: detection vs prevention systems</li>
+            <li>Network-based (NIDS) vs host-based (HIDS) intrusion detection</li>
+            <li>Signature-based vs anomaly-based detection methods</li>
+            <li>Firewall evasion: fragmentation, tunneling, IP spoofing</li>
+            <li>Honeypot and honeynet types and detection</li>
+            <li>IPsec evasion techniques</li>
+        </ul>
+
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>IDS (Intrusion Detection System):</strong> Monitors network traffic for suspicious activity and generates alerts. Does not block traffic — purely detection.</div>
+        <div class="term-box"><strong>IPS (Intrusion Prevention System):</strong> Like IDS but actively blocks or drops malicious traffic in real-time. Can cause false positives that disrupt legitimate traffic.</div>
+        <div class="term-box"><strong>NIDS (Network IDS):</strong> Monitors all traffic across the entire network at strategic points. Placed at the perimeter or on VLANs.</div>
+        <div class="term-box"><strong>HIDS (Host IDS):</strong> Monitors activity on a single host — file integrity, system logs, running processes, registry changes.</div>
+        <div class="term-box"><strong>Signature-Based Detection:</strong> Matches traffic against a database of known attack patterns. Misses zero-day attacks but has low false-positive rate.</div>
+        <div class="term-box"><strong>Anomaly-Based Detection:</strong> Establishes a baseline of normal traffic and alerts on deviations. Detects unknown attacks but has higher false-positive rate.</div>
+        <div class="term-box"><strong>Fragmentation Attack:</strong> Sending packet fragments that reassemble into an attack payload outside the IPS inspection window. Defeats signature-based IDS/IPS.</div>
+        <div class="term-box"><strong>Honeypot:</strong> A decoy system designed to attract attackers and study their behavior. Low-interaction (simulated services) vs high-interaction (real systems).</div>
+
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Differentiate IDS from IPS — detection vs prevention</li>
+            <li>Know NIDS vs HIDS and signature-based vs anomaly-based detection</li>
+            <li>Memorize evasion techniques: fragmentation, tunneling, spoofing, IP address rotation</li>
+            <li>Understand honeypot types and how to detect them during penetration testing</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>What is the difference between IDS and IPS?</strong><br>IDS only monitors and alerts on suspicious activity. IPS actively blocks or drops malicious traffic in real-time. Both are important but IPS can cause false positives.</p>
+        <p><strong>How do you evade a firewall during scanning?</strong><br>Techniques include IP fragmentation, using DNS tunneling (port 53), encrypting traffic, slow scanning rates, decoy scanning (using multiple source IPs), and splitting payloads across fragments.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-05/">Module 5: Vulnerability Analysis</a> — evasion is needed before vulnerability scanning</li>
+            <li><a href="/ceh-v13/module-13/">Module 13: Hacking Web Servers</a> — evaded firewalls to reach web servers</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '12';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
+</body>
+</html>
