@@ -34,3 +34,4 @@ Remove legacy `module1.html` through `module19.html` pages (study notes format).
 - Deleted from GitHub: module13.html, module14.html, module15.html, module16.html, module17.html
 - All legacy module pages (module1-19.html) now removed from repository
 - ceh-v13 module pages correctly link to `/?module=N` for flashcards app
+- sitemap.xml verified clean - no references to deleted module*.html pages
