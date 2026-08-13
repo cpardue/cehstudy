@@ -1,5 +1,5 @@
 // CEHStudy Flashcard App - Core Application
-// Handles module selection, flashcard navigation, progress tracking, and localStorage persistence
+// Simplified: All 20 modules always active, no module selection UI
 
 (function() {
     'use strict';
@@ -8,7 +8,6 @@
     let allCards = [];
     let currentIndex = 0;
     let reviewedSet = new Set();
-    let selectedModules = new Set();
     let shuffleDeck = false;
 
     // Spaced repetition state: { "moduleId-qHash": { lastReview: timestamp, ease: number, interval: number, repetitions: number } }
@@ -16,10 +15,6 @@
 
     // === DOM Elements ===
     const progressBar = document.getElementById('progressBar');
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const slideMenu = document.getElementById('slideMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const menuClose = document.getElementById('menuClose');
     const fcCard = document.getElementById('fcCard');
     const placeholderCard = document.getElementById('placeholderCard');
     const fcModuleLabel = document.getElementById('fcModuleLabel');
@@ -33,7 +28,6 @@
     const globalReviewed = document.getElementById('globalReviewed');
 
     // === localStorage Keys ===
-    const STORAGE_KEY_MODULES = 'cehstudy_modules';
     const STORAGE_KEY_REVIEWED = 'cehstudy_reviewed';
     const STORAGE_KEY_INDEX = 'cehstudy_index';
     const STORAGE_KEY_SR = 'cehstudy_sr';
@@ -43,26 +37,6 @@
     function init() {
         try {
             loadFromStorage();
-            buildMenu();
-            // Check for ?module=X query param - toggle that module, turn off others
-            const urlParams = new URLSearchParams(window.location.search);
-            const moduleParam = parseInt(urlParams.get('module'), 10);
-            if (!isNaN(moduleParam)) {
-                const modExists = CEH_DATA.modules.some(m => m.id === moduleParam);
-                if (modExists) {
-                    selectedModules.clear();
-                    selectedModules.add(moduleParam);
-                    saveModules();
-                    // Update menu checkboxes to match (after buildMenu created them)
-                    const menuListEl = document.getElementById('menuList');
-                    if (menuListEl) {
-                        menuListEl.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                            const cbModId = parseInt(cb.dataset.moduleId, 10);
-                            cb.checked = cbModId === moduleParam;
-                        });
-                    }
-                }
-            }
             buildDeck();
             setupEventListeners();
             renderCard();
@@ -75,12 +49,6 @@
     // === Storage ===
     function loadFromStorage() {
         try {
-            const mods = localStorage.getItem(STORAGE_KEY_MODULES);
-            if (mods) {
-                selectedModules = new Set(JSON.parse(mods));
-            } else {
-                CEH_DATA.modules.forEach(m => selectedModules.add(m.id));
-            }
             const rev = localStorage.getItem(STORAGE_KEY_REVIEWED);
             if (rev) reviewedSet = new Set(JSON.parse(rev));
             const idx = localStorage.getItem(STORAGE_KEY_INDEX);
@@ -103,12 +71,6 @@
         } catch(e) {
             console.warn('Failed to load from localStorage:', e);
         }
-    }
-
-    function saveModules() {
-        try {
-            localStorage.setItem(STORAGE_KEY_MODULES, JSON.stringify([...selectedModules]));
-        } catch(e) { /* ignore */ }
     }
 
     function saveReviewed() {
@@ -186,35 +148,7 @@
             entry.interval = Math.round(entry.interval * entry.ease);
         }
         entry.repetitions++;
-        // Ease factor stays at 2.5 for study purposes (auto-review)
         saveSRData();
-    }
-
-    function getPriorityCards() {
-        // Return cards sorted by spaced repetition priority (overdue first, then newest)
-        if (allCards.length === 0) return allCards;
-
-        const cardPriority = allCards.map(card => {
-            const key = getCardSRKey(card);
-            const entry = srData[key] || { lastReview: 0, interval: 0 };
-            const now = Date.now();
-            const msSinceReview = now - (entry.lastReview || 0);
-            const daysSinceReview = msSinceReview / (1000 * 60 * 60 * 24);
-
-            // Priority: negative = overdue, higher = due sooner
-            let priority = 0;
-            if (entry.lastReview === 0) {
-                priority = -9999; // New cards first
-            } else if (daysSinceReview < entry.interval) {
-                priority = daysSinceReview - entry.interval; // Negative = not due yet
-            } else {
-                priority = daysSinceReview - entry.interval; // Positive = overdue
-            }
-            return { card, priority };
-        });
-
-        cardPriority.sort((a, b) => b.priority - a.priority);
-        return cardPriority.map(p => p.card);
     }
 
     // === Reset Functions ===
@@ -234,76 +168,10 @@
         }
     }
 
-    function resetModuleProgress(modId) {
-        if (confirm(`Reset progress for Module ${modId}?`)) {
-            reviewedSet = new Set([...reviewedSet].filter(k => !k.startsWith(`${modId}-`)));
-            srData = Object.keys(srData).reduce((acc, k) => {
-                if (!k.startsWith(`${modId}-`)) acc[k] = srData[k];
-                return acc;
-            }, {});
-            const stats = getStats();
-            delete stats.moduleReviews?.[modId];
-            saveStats();
-            saveReviewed();
-            saveSRData();
-            updateReviewCount();
-            renderStatsDashboard();
-        }
-    }
-
-    // === Menu ===
-    function buildMenu() {
-        const menuList = document.getElementById('menuList');
-        if (!menuList) return;
-        menuList.innerHTML = '';
-        CEH_DATA.modules.forEach(mod => {
-            const li = document.createElement('li');
-            li.className = 'menu-item';
-            const isChecked = selectedModules.has(mod.id) ? 'checked' : '';
-            li.innerHTML = `
-                <span class="menu-item-label">${mod.title}</span>
-                <label class="toggle-switch">
-                    <input type="checkbox" data-module-id="${mod.id}" ${isChecked}>
-                    <span class="toggle-slider"></span>
-                </label>
-            `;
-            menuList.appendChild(li);
-        });
-
-        menuList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-            cb.addEventListener('change', onModuleToggle);
-        });
-    }
-
-    function onModuleToggle(e) {
-        const modId = parseInt(e.target.dataset.moduleId, 10);
-        if (e.target.checked) {
-            selectedModules.add(modId);
-        } else {
-            selectedModules.delete(modId);
-        }
-        saveModules();
-        syncUrl();
-        buildDeck();
-        renderCard();
-        updateReviewCount();
-    }
-
-    // === URL Sync ===
-    function syncUrl() {
-        const mods = [...selectedModules].sort((a, b) => a - b);
-        if (mods.length > 0 && mods.length <= CEH_DATA.modules.length) {
-            const lastMod = mods[mods.length - 1];
-            const newUrl = `${window.location.origin}${window.location.pathname}?module=${lastMod}`;
-            window.history.replaceState({}, '', newUrl);
-        }
-    }
-
-    // === Card Deck ===
+    // === Card Deck (all modules always active) ===
     function buildDeck() {
         allCards = [];
         CEH_DATA.modules.forEach(mod => {
-            if (!selectedModules.has(mod.id)) return;
             mod.sections.forEach(section => {
                 section.cards.forEach(card => {
                     allCards.push({
@@ -349,7 +217,7 @@
             fcModuleLabel.classList.add('hidden');
             fcTitle.classList.add('hidden');
             fcInfo.classList.add('hidden');
-            fcHint.textContent = 'All modules selected — use Select Modules to customize';
+            fcHint.textContent = 'No flashcards available';
             fcCounter.classList.add('hidden');
             prevBtn.disabled = true;
             nextBtn.disabled = true;
@@ -442,27 +310,8 @@
 
     // === Event Listeners ===
     function setupEventListeners() {
-        if (hamburgerBtn) {
-            hamburgerBtn.addEventListener('click', () => {
-                slideMenu.classList.add('open');
-                menuOverlay.classList.add('open');
-            });
-        }
-
-        if (menuClose) {
-            menuClose.addEventListener('click', closeMenu);
-        }
-        if (menuOverlay) {
-            menuOverlay.addEventListener('click', closeMenu);
-        }
-
-        function closeMenu() {
-            slideMenu.classList.remove('open');
-            menuOverlay.classList.remove('open');
-        }
-
-        if (prevBtn) prevBtn.addEventListener('click', () => { showPrevCard(); markReviewed(); });
-        if (nextBtn) nextBtn.addEventListener('click', () => { showNextCard(); markReviewed(); });
+        prevBtn.addEventListener('click', () => { showPrevCard(); markReviewed(); });
+        nextBtn.addEventListener('click', () => { showNextCard(); markReviewed(); });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
@@ -514,10 +363,6 @@
         // Reset buttons in stats panel
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('stats-reset-all')) resetProgress();
-            if (e.target.classList.contains('stats-reset-module')) {
-                const modId = e.target.dataset.moduleId;
-                resetModuleProgress(modId);
-            }
         });
     }
 
@@ -537,18 +382,17 @@
             const modCards = mod.sections.reduce((s, sec) => s + sec.cards.length, 0);
             const modReviewed = mod.sections.reduce((s, sec) => s + sec.cards.filter(c => reviewedSet.has(`${mod.id}-${c.q}`)).length, 0);
             const modPct = modCards > 0 ? Math.round((modReviewed / modCards) * 100) : 0;
-            const isActive = selectedModules.has(mod.id);
 
             moduleRows += `
-                <tr class="stats-module-row${isActive ? '' : ' inactive'}">
-                    <td>${isActive ? mod.id : '?'}</td>
+                <tr class="stats-module-row">
+                    <td>${mod.id}</td>
                     <td>${mod.title}</td>
                     <td>${modReviewed}/${modCards}</td>
                     <td>
                         <div class="stats-bar"><div class="stats-bar-fill" style="width:${modPct}%"></div></div>
                     </td>
                     <td>${modPct}%</td>
-                    ${isActive ? `<td><button class="stats-reset-module" data-module-id="${mod.id}" title="Reset module progress">&times;</button></td>` : '<td>&mdash;</td>'}
+                    <td><button class="stats-reset-module" data-module-id="${mod.id}" title="Reset module progress">&times;</button></td>
                 </tr>`;
         });
 
