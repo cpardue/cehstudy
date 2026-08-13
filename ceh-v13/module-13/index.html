@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEH v13 Module 13: Hacking Web Servers — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 13 flashcards: IIS vulnerabilities, Apache exploits, nginx misconfigurations, directory traversal, HTTP methods, web server hardening. Free study resources.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-13/">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "CEH v13 Module 13: Hacking Web Servers — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 13 covering IIS vulnerabilities, Apache exploits, nginx misconfigurations, directory traversal, and web server hardening.",
+        "url": "https://cehstudy.com/ceh-v13/module-13/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
+                {"@type": "ListItem", "position": 2, "name": "Module 13: Hacking Web Servers", "item": "https://cehstudy.com/ceh-v13/module-13/"}
+            ]
+        },
+        "about": {
+            "@type": "DefinedTerm",
+            "name": "Hacking Web Servers",
+            "termCode": "CEH-M13",
+            "description": "Attacks against web server platforms including IIS, Apache, and nginx — misconfigurations, directory traversal, HTTP method abuse, and web server hardening."
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=13" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 13 Flashcards</a>
+    </div></div></header>
+
+    <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 13: Hacking Web Servers</nav>
+
+        <h1 class="page-title">CEH v13 Module 13: Hacking Web Servers</h1>
+        <p class="content-text">This module covers attacks against web server platforms including IIS, Apache, and nginx. Attackers exploit misconfigurations, directory traversal vulnerabilities, default credentials, unnecessary modules, and HTTP method abuses to gain unauthorized access to web server systems.</p>
+
+        <a href="/?module=13" class="flashcard-link">&#127891; Launch Flashcards — Module 13</a>
+
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
+            <li>IIS vulnerabilities: IIS 6.0/7.0 path parsing, ASP.NET attacks</li>
+            <li>Apache exploits: .htaccess manipulation, mod_ssl vulnerabilities</li>
+            <li>Web server misconfigurations and hardening techniques</li>
+            <li>Directory traversal attacks (../, URL encoding)</li>
+            <li>HTTP methods: TRACE, TRACK, PUT, DELETE exploitation</li>
+            <li>Default credentials and unpatched services</li>
+            <li>Unnecessary modules and attack surface reduction</li>
+        </ul>
+
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>IIS (Internet Information Services):</strong> Microsoft's web server for Windows. Vulnerabilities include path parsing in IIS 6.0 (.asp; extension), ASP.NET view state exploitation, and default configuration weaknesses.</div>
+        <div class="term-box"><strong>Apache Exploits:</strong> Includes .htaccess manipulation to execute PHP, mod_ssl heartbleed-like vulnerabilities, directory listing enabled by default, and misconfigured virtual hosts exposing sensitive files.</div>
+        <div class="term-box"><strong>Directory Traversal:</strong> Using ../ sequences (or URL-encoded variants like %2e%2e%2f) to access files outside the web root. Can expose /etc/passwd, configuration files, and source code.</div>
+        <div class="term-box"><strong>HTTP TRACE Method:</strong> Echoes back the request content — used in Cross-Site Tracing (XST) attacks to steal cookies or credentials. Should be disabled on production servers.</div>
+        <div class="term-box"><strong>Nginx Misconfigurations:</strong> Includes improper fastcgi configuration, directory listing, default virtual host settings, and worker process privilege issues.</div>
+
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
+            <li>Know common vulnerabilities for IIS, Apache, and nginx specifically</li>
+            <li>Understand directory traversal techniques and URL encoding bypasses</li>
+            <li>Memorize which HTTP methods should be enabled/disabled on production servers</li>
+        </ul>
+
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p><strong>What are common web server vulnerabilities?</strong><br>Misconfigurations (directory listing, default pages), outdated software versions, unnecessary modules, weak file permissions, enabled dangerous HTTP methods, and default credentials.</p>
+        <p><strong>How do you secure IIS and Apache?</strong><br>Apply security patches, disable unnecessary modules/methods, configure proper file permissions, disable directory listing, remove default pages, and implement web server hardening guidelines.</p>
+
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
+            <li><a href="/ceh-v13/module-12/">Module 12: Evading IDS, Firewalls & Honeypots</a> — evasion techniques to reach web servers</li>
+            <li><a href="/ceh-v13/module-14/">Module 14: Hacking Web Applications</a> — web server compromise often leads to application attacks</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. &middot; <a href="https://cehstudy.com">cehstudy.com</a> &middot; Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '13';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
+</body>
+</html>
