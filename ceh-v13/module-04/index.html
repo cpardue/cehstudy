@@ -69,7 +69,7 @@
 
         <h2 class="section-heading">Important Terms & Concepts</h2>
         <div class="term-box"><strong>Enumeration:</strong> Actively engaging a system to extract user accounts, passwords, hashes, SMB info, SNMP data, and directory service information.</div>
-        <div class="term-box"><strong>Null session:</strong> An anonymous connection allowing enumeration of machine configuration: <code>net use \\target\\ipc$ "" /user: ""</code></div>
+        <div class="term-box"><strong>Null session:</strong> An anonymous connection allowing enumeration of machine configuration: <code>net use \\target\\ipc$ \"\" /user: \"\"</code></div>
         <div class="term-box"><strong>SID format:</strong> <code>S-<revision>-<authority>-<subauthorities>-<RID></code> — e.g., S-1-5-21-...-500 = Administrator</div>
         <div class="term-box"><strong>Common RIDs:</strong> 500 = Administrator, 501 = Guest, 512 = Domain Admins, 513 = Domain Users</div>
         <div class="term-box"><strong>NetBIOS:</strong> Network Basic Input/Output System — naming system for Windows machines enabling file/printer sharing via SMB.</div>
