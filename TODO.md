@@ -37,7 +37,19 @@ Remove legacy `module1.html` through `module19.html` pages (study notes format).
 
 ---
 
+## Task 6: Keep ?module=X in URL for bookmarkability
+- [x] Remove immediate URL cleanup after ?module=X processing in flashcards_app.js
+- [x] Add syncUrl() function that updates URL when modules are toggled
+- [x] URL now shows ?module=X (last selected module) after manual toggle
+- [x] Status: ✅ Complete
+
 ## Recent Changes (2026-08-13)
+
+### Critical Bugfix: Missing buildDeck() in init()
+- [x] Added `buildDeck()` call in flashcards_app.js init() — was missing, causing empty flashcard deck on fresh load
+- [x] Commit: 08f5058402d352e32b75e963412b5566d8e5e44f
+- [x] Status: ✅ Complete
+
 ### Flashcard Link Fixes
 - Updated ceh-v13/module-01/index.html: `/module1.html` → `/?module=1`
 - Updated ceh-v13/module-02/index.html: `/module2.html` → `/?module=2`
