@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 18: Lateral Movement — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 18 flashcards: pass-the-hash, pass-the-ticket, remote service attacks, pivoting, credential dumping, Mimikatz. Free study resources.">
+    <title>CEH v13 Module 18: Mobile Attacks — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 18 mobile attacks flashcards: Android/iOS vulnerabilities, mobile malware, SIM cloning. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-18/">
 
@@ -13,21 +13,21 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 18: Lateral Movement — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 18 covering pass-the-hash, pass-the-ticket, remote service attacks, pivoting, credential dumping with Mimikatz.",
+        "name": "CEH v13 Module 18: Mobile Attacks — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 18 covering Android/iOS vulnerabilities, mobile malware, and SIM cloning.",
         "url": "https://cehstudy.com/ceh-v13/module-18/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 18: Lateral Movement", "item": "https://cehstudy.com/ceh-v13/module-18/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 18: Mobile Attacks", "item": "https://cehstudy.com/ceh-v13/module-18/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Lateral Movement",
+            "name": "Mobile Attacks",
             "termCode": "CEH-M18",
-            "description": "Techniques attackers use to move through a network from an initial compromise including pass-the-hash, pass-the-ticket, remote service exploitation, pivoting, and credential dumping."
+            "description": "Mobile device attacks including Android/iOS vulnerabilities, mobile malware, and SIM cloning techniques."
         }
     }
     </script>
@@ -46,46 +46,38 @@
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 18: Lateral Movement</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 18: Mobile Attacks</nav>
 
-        <h1 class="page-title">CEH v13 Module 18: Lateral Movement</h1>
-        <p class="content-text">Lateral movement is the set of techniques attackers use to move through a network from an initial compromise to other systems. This module covers pass-the-hash (PtH), pass-the-ticket (PTT), remote service exploitation (SMB, RDP, SSH, WinRM), pivoting techniques, credential dumping, and Metasploit post-exploitation modules.</p>
+        <h1 class="page-title">CEH v13 Module 18: Mobile Attacks</h1>
+        <p class="content-text">This module covers mobile device attacks. Topics include Android/iOS vulnerabilities, mobile malware, SIM cloning, SMS interception, app security, NFC/QR code attacks, and mobile penetration testing.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Pass-the-Hash (PtH): using NTLM hashes instead of passwords</li>
-            <li>Pass-the-Ticket (PTT): using stolen Kerberos tickets</li>
-            <li>Remote service attacks: SMB, RDP, SSH, WinRM, WMI</li>
-            <li>Pivoting: using compromised host as jump point</li>
-            <li>Credential dumping: Mimikatz, LSASS extraction</li>
-            <li>Lateral movement detection and prevention</li>
-            <li>Metasploit post-exploitation modules</li>
+            <li>Mobile OS: Android vs iOS — architecture, security models</li>
+            <li>Mobile malware: trojans, spyware, ransomware</li>
+            <li>SIM cloning and SMS interception attacks</li>
+            <li>App security: reverse engineering, code injection</li>
+            <li>NFC/QR code attacks</li>
         </ul>
 
         <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Pass-the-Hash (PtH):</strong> Attacker captures NTLM hash and uses it to authenticate to remote services without knowing the plaintext password. Tools: Mimikatz, Impacket (psexec.py, smbexec.py).</div>
-        <div class="term-box"><strong>Pass-the-Ticket (PTT):</strong> Attacker extracts Kerberos TGT (ticket-granting ticket) and uses it to authenticate without credentials. More advanced than PtH — works in pure Kerberos environments.</div>
-        <div class="term-box"><strong>Pivoting:</strong> Using a compromised host as a jump point to reach otherwise inaccessible internal networks. Tools: Metasploit port forwards, ssh -L/-D, Chisel, Ligolo.</div>
-        <div class="term-box"><strong>Mimikatz:</strong> Most widely known credential dumping tool. Extracts passwords, hashes, PINs, and Kerberos tickets from memory. Can perform PtH and PTT attacks.</div>
-        <div class="term-box"><strong>Credential Dumping:</strong> Extracting credentials from memory (LSASS on Windows). Methods: lsass.exe injection, token manipulation, registry extraction of cached credentials.</div>
-        <div class="term-box"><strong>WinRM (Windows Remote Management):</strong> Microsoft's implementation of WS-Management protocol. Commonly abused for lateral movement via PowerShell Invoke-Command and Impacket's winrm.py.</div>
+        <div class="term-box"><strong>SIM Cloning:</strong> Copying SIM card data to another card. Requires physical access or network-based attack. Tools: SIM tool kit, ADB.</div>
+        <div class="term-box"><strong>Android APK Reverse Engineering:</strong> Decompile APK → review source code → find vulnerabilities. Tools: apktool, jadx, dex2jar.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Understand the difference between PtH and PTT attacks</li>
-            <li>Know which remote services are commonly abused for lateral movement</li>
-            <li>Learn pivoting techniques and tools</li>
-            <li>Understand how credential dumping works and detection methods</li>
+            <li>Know Android vs iOS security differences</li>
+            <li>Understand mobile malware types and delivery methods</li>
+            <li>Learn app reverse engineering techniques</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is lateral movement?</strong><br>The process attackers use to move through a network from an initial compromise to other systems, escalating privileges and expanding access.</p>
-        <p><strong>How do you prevent lateral movement?</strong><br>Network segmentation, least privilege access, disable SMB/RDP where possible, LSA protection, Credential Guard, MFA, endpoint detection (EDR), and monitoring for anomalous authentication patterns.</p>
+        <p><strong>Which mobile OS is more secure?</strong><br>iOS — tighter app store control, sandboxing, slower patch cycle but more consistent enforcement.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-05/">Module 5: System Hacking</a> — initial system compromise enables lateral movement</li>
-            <li><a href="/ceh-v13/module-19/">Module 19: Post-Exploitation / IR</a> — lateral movement leads to post-exploitation objectives</li>
+            <li><a href="/ceh-v13/module-17/" style="color:var(--accent)">Module 17: IoT Attacks</a> — mobile apps manage IoT devices</li>
+            <li><a href="/ceh-v13/module-19/" style="color:var(--accent)">Module 19: Cryptography</a> — mobile cryptography for data protection</li>
         </ul>
     </div>
 
