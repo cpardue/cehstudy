@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEH v13 Module 2: Footprinting &amp; Reconnaissance — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 2 flashcards: footprinting, passive/active reconnaissance, OSINT tools, DNS enumeration, WHOIS lookup, email harvesting, Google Dorks. Free study resources.">
+    <meta name="description" content="CEH v13 Module 2 footprinting flashcards: DNS records, WHOIS, Google hacking, Shodan, email footprinting, network footprinting. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-02/">
 
@@ -13,8 +13,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 2: Footprinting & Reconnaissance — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 2 covering footprinting, passive/active reconnaissance, OSINT tools, DNS enumeration, WHOIS lookup, and Google Dorks.",
+        "name": "CEH v13 Module 2: Footprinting &amp; Reconnaissance — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 2 covering DNS reconnaissance, WHOIS lookups, Google hacking techniques, Shodan, email footprinting, and network footprinting.",
         "url": "https://cehstudy.com/ceh-v13/module-02/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -25,9 +25,9 @@
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Footprinting and Reconnaissance",
+            "name": "Footprinting & Reconnaissance",
             "termCode": "CEH-M02",
-            "description": "Footprinting and reconnaissance techniques including passive/active information gathering, OSINT tools, DNS enumeration, WHOIS lookups, email harvesting, and Google Dorks."
+            "description": "Information gathering techniques including DNS analysis, WHOIS lookups, search engine exploitation, email and network footprinting for ethical hacking."
         }
     }
     </script>
@@ -48,54 +48,42 @@
     <div class="container">
         <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 2: Footprinting & Reconnaissance</nav>
 
-        <h1 class="page-title">CEH v13 Module 2: Footprinting &amp; Reconnaissance</h1>
-        <p class="content-text">This module covers footprinting and reconnaissance techniques — the first phase of any ethical hacking engagement. Learn passive vs active information gathering, OSINT tools, DNS enumeration, WHOIS lookups, email harvesting, Google Dorks, and other intelligence-gathering methods.</p>
+        <h1 class="page-title">CEH v13 Module 2: Footprinting & Reconnaissance</h1>
+        <p class="content-text">This module covers footprinting and reconnaissance techniques — the foundational information gathering phase of ethical hacking. Topics include DNS record analysis, WHOIS lookups, Google hacking, Shodan exploration, email footprinting, network footprinting, and website footprinting methods.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Passive vs active reconnaissance techniques</li>
-            <li>OSINT (Open Source Intelligence) tools and methodologies</li>
-            <li>DNS enumeration: zone transfers, NS/MX/A records</li>
-            <li>WHOIS lookup and reverse IP lookups</li>
-            <li>Email harvesting and social engineering preparation</li>
-            <li>Google Dorks: advanced search operators for security research</li>
-            <li>Network mapping and website footprinting</li>
-            <li>Corporate intelligence gathering via public records</li>
+            <li>DNS record types: A, AAAA, CNAME, MX, NS, TXT, SOA, PTR, SRV, CAA</li>
+            <li>WHOIS lookups and domain registration data</li>
+            <li>Google hacking with advanced search operators</li>
+            <li>Shodan for IoT and service discovery</li>
+            <li>Email footprinting: Hunter.io, theHarvester, Maltego</li>
+            <li>Network footprinting: traceroute, ping sweeps, banner grabbing</li>
+            <li>Website footprinting: sitemap analysis, robots.txt, technology fingerprinting</li>
         </ul>
 
         <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Footprinting:</strong> The process of collecting information about a target organization's systems and services. It is the first step in the intelligence-driven penetration testing framework.</div>
-        <div class="term-box"><strong>Passive Reconnaissance:</strong> Gathering information without directly interacting with the target system (e.g., Google searches, WHOIS lookups, social media research). Lower risk of detection.</div>
-        <div class="term-box"><strong>Active Reconnaissance:</strong> Directly interacting with target systems to gather information (e.g., ping sweeps, port scanning, DNS zone transfers). Higher risk of detection but more detailed.</div>
-        <div class="term-box"><strong>OSINT:</strong> Open Source Intelligence — collecting data from publicly available sources including websites, social media, government databases, and search engines.</div>
-        <div class="term-box"><strong>DNS Zone Transfer (AXFR):</strong> A mechanism to replicate DNS records across name servers. Misconfigured zone transfers can expose entire network topology.</div>
-        <div class="term-box"><strong>Google Dorks:</strong> Advanced Google search operators used to find sensitive information exposed on the web, e.g., <code>site:example.com filetype:pdf</code></div>
-
-        <h2 class="section-heading">OSINT Tools</h2>
-        <ul class="content-list">
-            <li><strong>Maltego:</strong> Visual link analysis for reconnaissance</li>
-            <li><strong>TheHarvester:</strong> Email, subdomain, and name harvesting</li>
-            <li><strong>Shodan/Censys:</strong> Internet-connected device search engines</li>
-            <li><strong>Google Advanced Search:</strong> Site-specific searches with operators</li>
-            <li><strong>WHOIS/DNS tools:</strong> Domain registration and DNS record lookups</li>
-        </ul>
+        <div class="term-box"><strong>DNS Zone Transfer (AXFR):</strong> Requesting a full copy of the DNS zone file. Can expose all internal hostnames. Defenses: restrict to authorized secondary DNS servers, disable AXFR.</div>
+        <div class="term-box"><strong>Google Hacking:</strong> Using advanced Google search operators (site:, inurl:, intitle:, filetype:, etc.) to discover sensitive information exposed on the web. Tools: GHDB, Google Dorks.</div>
+        <div class="term-box"><strong>Shodan:</strong> Search engine for internet-connected devices. Reveals open ports, services, banners, and vulnerabilities. Used for reconnaissance and vulnerability assessment.</div>
+        <div class="term-box"><strong>theHarvester:</strong> Open-source OSINT tool that gathers emails, subdomains, hosts, employee names, and open port information from public sources (search engines, PGP key servers, virtual hosts).</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Understand the differences between passive and active reconnaissance</li>
-            <li>Memorize common OSINT tools and their specific uses</li>
-            <li>Learn Google Dork operators: site:, filetype:, inurl:, intitle:, etc.</li>
-            <li>Understand DNS record types and their relevance to footprinting</li>
+            <li>Memorize all DNS record types and their purposes</li>
+            <li>Practice using Google hacking operators in a safe environment</li>
+            <li>Understand how Shodan works and what information it reveals</li>
+            <li>Know the difference between passive and active reconnaissance</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>Is Module 2 important for the CEH exam?</strong><br>Absolutely. Footprinting accounts for approximately 15% of the CEH v13 exam, making it one of the highest-weighted modules.</p>
-        <p><strong>How many cards are in this module?</strong><br>Module 2 contains flashcards covering all sections: Overview, Passive vs Active Reconnaissance, OSINT Tools, DNS Enumeration, WHOIS Lookup, Email Footprinting, Network Footprinting, Google Dorks, Website Footprinting, and Social Engineering Foundations.</p>
+        <p><strong>What is the difference between footprinting and reconnaissance?</strong><br>Footprinting is broader — it encompasses all information gathering about an organization. Reconnaissance is more focused on technical data collection from discovered targets.</p>
+        <p><strong>Which Google hacking operator is most useful?</strong><br>site: (specific domains), filetype: (documents), inurl: (URL patterns), intitle: (page titles). Combine multiple operators for precision.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-01/" style="color:var(--accent)">Module 1: Introduction to Ethical Hacking</a> — reconnaissance is the first stage of hacking</li>
-            <li><a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3: Scanning Networks</a> — scanning follows footprinting and builds on collected data</li>
+            <li><a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3: Scanning Networks</a> — scanning builds on footprinting data</li>
+            <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> — enumeration follows reconnaissance</li>
         </ul>
     </div>
 
