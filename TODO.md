@@ -15,17 +15,13 @@
 - [x] Extracted flashcard terms from ceh-v13/module-18 (IoT & OT Hacking) - 1 section, ~6 cards → replaced with Post-Exploitation content
 - [x] Extracted flashcard terms from ceh-v13/module-19 (Cloud Computing) - 2 sections, ~6 cards → replaced with APT/Incident Response content
 - [x] Updated data.js locally with all flashcard content
-
-**Note:** GitHub commit failed due to payload size limit via MCP tool. Manual push required:
-```
-git add data.js && git commit -m "Expand flashcards for Modules 7-19 from study page content" && git push origin main
-```
+- [x] Pushed data.js to GitHub repository
 
 ## Pending TODOs
 (Review this list periodically and add new tasks as they arise.)
 
 ### High Priority
-- [ ] Push updated data.js to GitHub repository
+- [x] Push updated data.js to GitHub repository — DONE (4be140f)
 - [ ] Verify all 20 modules load correctly with expanded flashcards
 
 ### Completed
