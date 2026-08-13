@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 19: Post-Exploitation &amp; Incident Response — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 19 flashcards: persistence mechanisms, privilege escalation, log clearing, data exfiltration, IR lifecycle (NIST/SANS), digital forensics. Free study resources.">
+    <title>CEH v13 Module 19: Attacks on OT and ICS — Flashcards | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 19 OT/ICS attacks flashcards: SCADA security, industrial control systems, supply chain attacks. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-19/">
 
@@ -13,21 +13,21 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 19: Post-Exploitation &amp; Incident Response — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 19 covering persistence mechanisms, privilege escalation, log clearing, data exfiltration, IR lifecycle (NIST/SANS), and digital forensics.",
+        "name": "CEH v13 Module 19: Attacks on OT and ICS — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 19 covering SCADA security, industrial control systems, and supply chain attacks.",
         "url": "https://cehstudy.com/ceh-v13/module-19/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 19: Post-Exploitation &amp; Incident Response", "item": "https://cehstudy.com/ceh-v13/module-19/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 19: Attacks on OT and ICS", "item": "https://cehstudy.com/ceh-v13/module-19/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Post-Exploitation &amp; Incident Response",
+            "name": "Attacks on OT and ICS",
             "termCode": "CEH-M19",
-            "description": "Post-exploitation techniques (persistence, privilege escalation, log clearing, data exfiltration) and incident response lifecycle (NIST/SANS), digital forensics fundamentals, and recovery procedures."
+            "description": "Operational Technology and Industrial Control System attacks including SCADA security, ICS vulnerabilities, and supply chain attacks."
         }
     }
     </script>
@@ -46,46 +46,38 @@
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 19: Post-Exploitation &amp; Incident Response</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 19: Attacks on OT and ICS</nav>
 
-        <h1 class="page-title">CEH v13 Module 19: Post-Exploitation &amp; Incident Response</h1>
-        <p class="content-text">This module covers what happens after initial compromise — both from the attacker's perspective (persistence, privilege escalation, log clearing, data exfiltration) and the defender's perspective (incident response lifecycle, forensic investigation, recovery procedures). Understanding both sides is critical for ethical hackers.</p>
+        <h1 class="page-title">CEH v13 Module 19: Attacks on OT and ICS</h1>
+        <p class="content-text">This module covers Operational Technology (OT) and Industrial Control System (ICS) attacks. Topics include SCADA security, ICS architecture, Stuxnet, supply chain attacks, zero trust architecture, and physical security hacking.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Persistence mechanisms: registry keys, scheduled tasks, services, startup folders</li>
-            <li>Privilege escalation: local exploits, misconfigurations, token manipulation</li>
-            <li>Log clearing and anti-forensics techniques</li>
-            <li>Data exfiltration methods and covert channels</li>
-            <li>Incident Response lifecycle (NIST/SANS frameworks)</li>
-            <li>Digital forensics fundamentals and chain of custody</li>
-            <li>System recovery and hardening after compromise</li>
+            <li>ICS/SCADA architecture: PLCs, RTUs, HMI, DCS</li>
+            <li>Stuxnet analysis: first cyber weapon, USB传播, PLC targeting</li>
+            <li>Supply chain attacks: SolarWinds, code repository compromises</li>
+            <li>Zero trust architecture for OT environments</li>
+            <li>Physical security hacking: locks, access control systems</li>
         </ul>
 
         <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Persistence:</strong> Maintaining access after reboot or credential changes. Methods: registry Run keys, Windows Services, scheduled tasks, WMI event subscriptions, bootkits/rootkits.</div>
-        <div class="term-box"><strong>Privilege Escalation:</strong> Moving from standard user to administrator/root. Vertical escalation (higher privileges) vs horizontal escalation (different user). Tools: Mimikatz, WinPEAS, LinPEAS.</div>
-        <div class="term-box"><strong>Log Clearing:</strong> Deleting or modifying event logs, firewall logs, and application logs to cover tracks. Windows: `wevtutil`, `Clear-EventLog`. Linux: `auditctl -C`, log rotation.</div>
-        <div class="term-box"><strong>Data Exfiltration:</strong> Transferring stolen data out of the network. Methods: DNS tunneling, HTTP/S POST, FTP, cloud storage upload, email, ICMP tunneling, covert channels.</div>
-        <div class="term-box"><strong>Incident Response Lifecycle (NIST):</strong> 1) Preparation → 2) Detection &amp; Analysis → 3) Containment &amp; Eradication → 4) Recovery → 5) Post-Incident Activity.</div>
-        <div class="term-box"><strong>Chain of Custody:</strong> Documented record of evidence handling from collection to presentation. Critical for legal admissibility. Includes who collected, when, where, and how evidence was stored/transferred.</div>
+        <div class="term-box"><strong>Stuxnet:</strong> First known cyber weapon targeting industrial SCADA. Spread via USB, exploited 4 zero-days. Targeted Siemens PLCs controlling uranium centrifuges. Discovered 2010.</div>
+        <div class="term-box"><strong>Zero Trust:</strong> Never trust, always verify. Applies to OT/ICS — microsegmentation, least privilege, continuous monitoring for industrial networks.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Memorize the Incident Response lifecycle phases and key activities in each</li>
-            <li>Know common persistence mechanisms on Windows and Linux</li>
-            <li>Understand privilege escalation techniques (local exploits, misconfigurations)</li>
-            <li>Learn anti-forensics methods and how to detect them</li>
+            <li>Understand ICS/SCADA architecture layers</li>
+            <li>Know Stuxnet attack chain</li>
+            <li>Learn supply chain attack techniques</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the first step in incident response?</strong><br>Preparation — having tools, policies, and trained personnel ready before an incident occurs. Once an incident happens, Detection &amp; Analysis is the first active phase.</p>
-        <p><strong>How do ethical hackers use this knowledge?</strong><br>To test persistence mechanisms, verify privilege escalation paths, check if logs are properly configured, and assess incident response readiness through red team exercises.</p>
+        <p><strong>What makes ICS security different from IT?</strong><br>ICS prioritizes safety and availability over confidentiality. Downtime can be catastrophic (power plants, water treatment). Patching is harder due to 24/7 operation requirements.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-05/">Module 5: System Hacking</a> — initial compromise techniques</li>
-            <li><a href="/ceh-v13/module-18/">Module 18: Lateral Movement</a> — moves through network after exploitation</li>
+            <li><a href="/ceh-v13/module-18/" style="color:var(--accent)">Module 18: Mobile Attacks</a> — mobile used for ICS management</li>
+            <li><a href="/ceh-v13/module-20/" style="color:var(--accent)">Module 20: Security Operations</a> — SOC monitoring for ICS</li>
         </ul>
     </div>
 
