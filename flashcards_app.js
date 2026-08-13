@@ -1,4 +1,4 @@
-// CEStudy Flashcard App - Core Application
+// CEHStudy Flashcard App - Core Application
 // Handles module selection, flashcard navigation, progress tracking, and localStorage persistence
 
 (function() {
@@ -20,7 +20,6 @@
     const slideMenu = document.getElementById('slideMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     const menuClose = document.getElementById('menuClose');
-    const menuList = document.getElementById('menuList');
     const fcCard = document.getElementById('fcCard');
     const placeholderCard = document.getElementById('placeholderCard');
     const fcModuleLabel = document.getElementById('fcModuleLabel');
@@ -42,28 +41,35 @@
 
     // === Initialize ===
     function init() {
-        loadFromStorage();
-        buildMenu();
-        // Check for ?module=X query param - toggle that module, turn off others
-        const urlParams = new URLSearchParams(window.location.search);
-        const moduleParam = parseInt(urlParams.get('module'), 10);
-        if (!isNaN(moduleParam)) {
-            const modExists = CEH_DATA.modules.some(m => m.id === moduleParam);
-            if (modExists) {
-                selectedModules.clear();
-                selectedModules.add(moduleParam);
-                saveModules();
-                // Update menu checkboxes to match
-                menuList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                    const cbModId = parseInt(cb.dataset.moduleId, 10);
-                    cb.checked = cbModId === moduleParam;
-                });
+        try {
+            loadFromStorage();
+            buildMenu();
+            // Check for ?module=X query param - toggle that module, turn off others
+            const urlParams = new URLSearchParams(window.location.search);
+            const moduleParam = parseInt(urlParams.get('module'), 10);
+            if (!isNaN(moduleParam)) {
+                const modExists = CEH_DATA.modules.some(m => m.id === moduleParam);
+                if (modExists) {
+                    selectedModules.clear();
+                    selectedModules.add(moduleParam);
+                    saveModules();
+                    // Update menu checkboxes to match (after buildMenu created them)
+                    const menuListEl = document.getElementById('menuList');
+                    if (menuListEl) {
+                        menuListEl.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                            const cbModId = parseInt(cb.dataset.moduleId, 10);
+                            cb.checked = cbModId === moduleParam;
+                        });
+                    }
+                }
             }
+            buildDeck();
+            setupEventListeners();
+            renderCard();
+            updateReviewCount();
+        } catch(e) {
+            console.error('Init error:', e);
         }
-        buildDeck();
-        setupEventListeners();
-        renderCard();
-        updateReviewCount();
     }
 
     // === Storage ===
@@ -247,6 +253,8 @@
 
     // === Menu ===
     function buildMenu() {
+        const menuList = document.getElementById('menuList');
+        if (!menuList) return;
         menuList.innerHTML = '';
         CEH_DATA.modules.forEach(mod => {
             const li = document.createElement('li');
@@ -434,28 +442,27 @@
 
     // === Event Listeners ===
     function setupEventListeners() {
-        hamburgerBtn.addEventListener('click', () => {
-            slideMenu.classList.add('open');
-            menuOverlay.classList.add('open');
-        });
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                slideMenu.classList.add('open');
+                menuOverlay.classList.add('open');
+            });
+        }
 
-        menuClose.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
+        if (menuClose) {
+            menuClose.addEventListener('click', closeMenu);
+        }
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', closeMenu);
+        }
 
         function closeMenu() {
             slideMenu.classList.remove('open');
             menuOverlay.classList.remove('open');
         }
 
-        prevBtn.addEventListener('click', () => {
-            showPrevCard();
-            markReviewed();
-        });
-
-        nextBtn.addEventListener('click', () => {
-            showNextCard();
-            markReviewed();
-        });
+        if (prevBtn) prevBtn.addEventListener('click', () => { showPrevCard(); markReviewed(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { showNextCard(); markReviewed(); });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
@@ -472,27 +479,27 @@
         let touchStartX = 0;
         let touchEndX = 0;
 
-        fcCard.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
+        if (fcCard) {
+            fcCard.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
 
-        fcCard.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    showNextCard();
-                    markReviewed();
-                } else {
-                    showPrevCard();
-                    markReviewed();
+            fcCard.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        showNextCard();
+                        markReviewed();
+                    } else {
+                        showPrevCard();
+                        markReviewed();
+                    }
                 }
-            }
-        }, { passive: true });
+            }, { passive: true });
 
-        fcCard.addEventListener('click', () => {
-            markReviewed();
-        });
+            fcCard.addEventListener('click', () => { markReviewed(); });
+        }
 
         // Stats dashboard toggle
         const statsToggle = document.getElementById('statsToggle');
@@ -596,9 +603,12 @@
             </div>
         `;
 
-        document.getElementById('statsClose').addEventListener('click', () => {
-            panel.classList.remove('open');
-        });
+        const statsClose = document.getElementById('statsClose');
+        if (statsClose) {
+            statsClose.addEventListener('click', () => {
+                panel.classList.remove('open');
+            });
+        }
     }
 
     // === Start ===
