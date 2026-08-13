@@ -8,6 +8,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-01/">
 
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -34,45 +35,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#151515;--bg2:#1e1e1e;--bg3:#2c2c2c;--text:#d1d0c5;--text2:#646669;--accent:#39ff88;--border:#2c2c2c}
-        body{font-family:'JetBrains Mono','Fira Code',Consolas,monospace;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
-        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
-        header a{color:var(--accent);text-decoration:none;font-size:.9rem}
-        header a:hover{text-decoration:underline}
-        .container{max-width:800px;margin:0 auto;padding:30px 20px;flex:1}
-        h1{font-size:1.5rem;color:var(--accent);margin-bottom:16px}
-        h2{font-size:1.2rem;color:var(--accent);margin-top:32px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-        p{margin-bottom:14px;font-size:.92rem}
-        ul{list-style:none;padding-left:0;margin-bottom:14px}
-        ul li{padding:5px 0 5px 18px;position:relative;font-size:.92rem}
-        ul li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
-        .breadcrumb{font-size:.82rem;color:var(--text2);margin-bottom:20px}
-        .breadcrumb a{color:var(--text2);text-decoration:none}
-        .breadcrumb a:hover{color:var(--accent)}
-        .flashcard-link{display:inline-block;background:var(--accent);color:var(--bg);padding:10px 24px;border-radius:6px;text-decoration:none;font-weight:600;margin:16px 0;font-size:.9rem}
-        .flashcard-link:hover{opacity:.85;text-decoration:none}
-        .term-box{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 18px;margin:10px 0}
-        .term-box strong{color:var(--accent)}
-        footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.78rem;color:var(--text2)}
-        footer a{color:var(--accent);text-decoration:none}
-        @media(max-width:600px){h1{font-size:1.25rem}}
-    </style>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <header><div class="container" style="padding:0"><a href="/">← Back to CEHStudy</a></div></header>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header><div class="container" style="padding:0"><div class="header-row">
+        <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=1" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">📚 Study Module 1 Flashcards</a>
+    </div></div></header>
 
     <div class="container">
         <nav class="breadcrumb"><a href="/">Home</a> › <a href="/ceh-v13/">CEH v13</a> › Module 1: Introduction to Ethical Hacking</nav>
 
-        <h1>CEH v13 Module 1: Introduction to Ethical Hacking</h1>
-        <p>This module covers the foundational concepts of ethical hacking, including the CIA triad, hacker classifications, penetration testing methodologies, and the five stages of hacking. These are the core principles every Certified Ethical Hacker must master.</p>
+        <h1 class="page-title">CEH v13 Module 1: Introduction to Ethical Hacking</h1>
+        <p class="content-text">This module covers the foundational concepts of ethical hacking, including the CIA triad, hacker classifications, penetration testing methodologies, and the five stages of hacking. These are the core principles every Certified Ethical Hacker must master.</p>
 
-        <a href="/module1.html" class="flashcard-link">📚 Launch Flashcards — Module 1</a>
+        <a href="/?module=1" class="flashcard-link">📚 Launch Flashcards — Module 1</a>
 
-        <h2>Key Topics Covered</h2>
-        <ul>
+        <h2 class="section-heading">Key Topics Covered</h2>
+        <ul class="content-list">
             <li>Information security overview and core principles</li>
             <li>CIA triad: Confidentiality, Integrity, Availability</li>
             <li>Functionality, Usability, Security triangle</li>
@@ -84,7 +67,7 @@
             <li>Red team vs blue team operations</li>
         </ul>
 
-        <h2>Important Terms &amp; Concepts</h2>
+        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
         <div class="term-box"><strong>Hack value:</strong> A hacker's evaluation of whether a target is worth pursuing. High hack value examples include credit card data over names.</div>
         <div class="term-box"><strong>Vulnerability:</strong> A weakness that can compromise the system and be used for an attack (e.g., policy weaknesses, implementation errors).</div>
         <div class="term-box"><strong>Exploit:</strong> Code or technique that takes advantage of a vulnerability.</div>
@@ -94,8 +77,8 @@
         <div class="term-box"><strong>Botnet:</strong> A network of infected machines controlled by attackers for malicious activities like DDoS.</div>
         <div class="term-box"><strong>Advanced Persistent Threat (APT):</strong> A stealthy, long-term threat actor targeting high-value organizations using sophisticated malware and low-and-slow data extraction.</div>
 
-        <h2>Penetration Testing Methodologies</h2>
-        <ul>
+        <h2 class="section-heading">Penetration Testing Methodologies</h2>
+        <ul class="content-list">
             <li><strong>Black box:</strong> No prior knowledge — simulates external attack, more realistic but costlier</li>
             <li><strong>Grey box:</strong> Partial knowledge — balances realism and cost-effectiveness</li>
             <li><strong>White box:</strong> Full knowledge — most cost-effective for thorough testing</li>
@@ -103,25 +86,57 @@
             <li><strong>Double-blind:</strong> Neither tester nor target knows — most reliable but expensive</li>
         </ul>
 
-        <h2>How to Study This Module</h2>
-        <ul>
+        <h2 class="section-heading">How to Study This Module</h2>
+        <ul class="content-list">
             <li>Review all key terms before starting flashcard sessions</li>
             <li>Focus on understanding the differences between hacker types and penetration testing approaches</li>
             <li>Memorize the 5 stages of hacking in order: Reconnaissance → Scanning → Gaining Access → Maintaining Access → Clearing Tracks</li>
             <li>Use the flashcard app to practice until you can answer every card confidently</li>
         </ul>
 
-        <h2>Frequently Asked Questions</h2>
+        <h2 class="section-heading">Frequently Asked Questions</h2>
         <p><strong>Is Module 1 important for the CEH exam?</strong><br>Yes. Introduction to Ethical Hacking is foundational — questions about the CIA triad, hacker types, and hacking stages appear on every CEH exam.</p>
         <p><strong>How many cards are in this module?</strong><br>Module 1 contains flashcards covering all 8 sections: Information Security Overview, CIA Triad, Functionality/Usability/Security Triangle, Document Types, Hacker Types, Hacking Stages, Security Threats, and Penetration Testing.</p>
 
-        <h2>Related Modules</h2>
-        <ul>
+        <h2 class="section-heading">Related Modules</h2>
+        <ul class="content-list">
             <li><a href="/ceh-v13/module-02/" style="color:var(--accent)">Module 2: Footprinting &amp; Reconnaissance</a> — builds on the reconnaissance stage</li>
             <li><a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3: Scanning Networks</a> — covers the scanning stage in depth</li>
         </ul>
     </div>
 
-    <footer><a href="/">CEHStudy</a> · Free CEH v13 Study Flashcards · Not affiliated with EC-Council</footer>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <nav class="footer-nav" aria-label="Site navigation">
+            <a href="/">Flashcards</a>
+            <a href="/ceh-v13/">CEH v13 Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/glossary/">Glossary</a>
+            <a href="/faq/">FAQ</a>
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href="/disclaimer/">Disclaimer</a>
+        </nav>
+        <p class="footer-copy">ALWAYS FREE, ANYTIME, ANYWHERE. · <a href="https://cehstudy.com">cehstudy.com</a> · Not affiliated with EC-Council</p>
+    </footer>
+
+    <!-- Module Progress Tracking -->
+    <script>
+    (function(){
+        const mod = '1';
+        const key = 'cphstudymod' + mod;
+        const total = 50;
+        let studied = parseInt(localStorage.getItem(key) || '0', 10);
+        function updateBar(){
+            const bar = document.getElementById('progressBar');
+            if(bar){
+                const pct = Math.min(100, (studied / total) * 100);
+                bar.style.width = pct + '%';
+            }
+        }
+        updateBar();
+    })();
+    </script>
 </body>
 </html>
