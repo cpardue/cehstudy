@@ -1,39 +1,36 @@
-# TODO
+# TODO — CEHStudy Module Unification
 
-## ✅ Expand Flashcards for Modules 7-19 from Study Pages
-- [x] Extracted flashcard terms from ceh-v13/module-07 (Malware Threats) - 6 sections, ~21 cards
-- [x] Extracted flashcard terms from ceh-v13/module-08 (Sniffing) - 3 sections, ~11 cards
-- [x] Extracted flashcard terms from ceh-v13/module-09 (Social Engineering) - 2 sections, ~9 cards
-- [x] Extracted flashcard terms from ceh-v13/module-10 (Denial-of-Service) - 3 sections, ~10 cards
-- [x] Extracted flashcard terms from ceh-v13/module-11 (Session Hijacking) - 2 sections, ~7 cards
-- [x] Extracted flashcard terms from ceh-v13/module-12 (Evading IDS, Firewalls & Honeypots) - 3 sections, ~9 cards
-- [x] Extracted flashcard terms from ceh-v13/module-13 (Hacking Web Servers) - 1 section, ~5 cards
-- [x] Extracted flashcard terms from ceh-v13/module-14 (Hacking Web Applications) - 2 sections, ~7 cards
-- [x] Extracted flashcard terms from ceh-v13/module-15 (SQL Injection) - 2 sections, ~6 cards
-- [x] Extracted flashcard terms from ceh-v13/module-16 (Hacking Wireless Networks) - 2 sections, ~7 cards
-- [x] Extracted flashcard terms from ceh-v13/module-17 (Hacking Mobile Platforms) - 2 sections, ~6 cards
-- [x] Extracted flashcard terms from ceh-v13/module-18 (IoT & OT Hacking) - 1 section, ~6 cards → replaced with Post-Exploitation content
-- [x] Extracted flashcard terms from ceh-v13/module-19 (Cloud Computing) - 2 sections, ~6 cards → replaced with APT/Incident Response content
-- [x] Updated data.js locally with all flashcard content
+## Summary
+Remove legacy `module1.html` through `module19.html` pages (study notes format). Add `?module=X` query param support to flashcards app so "Launch Flashcards — Module X" buttons on ceh-v13 module pages work correctly. Users landing via `?module=N` see only that module's flashcards but can toggle additional modules via Select Modules menu.
 
-**Note:** GitHub commit failed due to payload size limit via MCP tool. Manual push required:
-```
-git add data.js && git commit -m "Expand flashcards for Modules 7-19 from study page content" && git push origin main
-```
+---
 
-## Pending TODOs
-(Review this list periodically and add new tasks as they arise.)
+## Task 1: Add `?module=X` support to flashcards_app.js
+- [x] Parse URL query params for `module=N` on init
+- [x] Auto-toggle only specified module, leave others off
+- [x] Allow user to toggle additional modules normally
+- [x] Handle invalid module numbers gracefully (no-op)
+- [x] Status: ✅ Complete
 
-### High Priority
-- [x] Push updated data.js to GitHub repository — DONE (4be140f)
-- [x] Verify all 20 modules load correctly with expanded flashcards — DONE via MCP push
+## Task 2: Delete old module pages
+- [x] Delete `module1.html` through `module5.html` from root
+- [x] Delete local `backup/2026-08-12/` folder
+- [x] Delete `module6.html` through `module19.html` from GitHub repo
+- [x] Verify all deletions pushed to github
+- [x] Status: ✅ Complete
 
-### Completed
-- [x] Add progress tracking persistence (localStorage) — per-module progress, daily sessions, streak tracking
-- [x] Implement study statistics dashboard — overall progress, cards reviewed, total reviews, day streak, per-module breakdown
-- [x] Add spaced repetition algorithm — SM-2 based interval tracking with ease factor
-- [x] Remove "Dark mode toggle" from TODO list
-- [x] Remove "Export flashcards to PDF/CSV" from TODO list
+## Task 3: Verify sitemap.xml
+- [x] Confirm no references to module1.html etc. (already verified clean)
+- [x] Status: ✅ Complete
 
-### Low Priority
-- [ ] Mobile responsiveness improvements (stats panel full-screen on mobile)
+## Task 4: Commit and push to github.com/cpardue/cehstudy
+- [x] Committed and pushed: flashcards_app.js changes + module1-5.html deletions
+- [x] Pushed remaining deletions (module13-17.html)
+- [x] Status: ✅ Complete
+
+---
+
+## Recent Changes (2026-08-13)
+- Deleted from GitHub: module13.html, module14.html, module15.html, module16.html, module17.html
+- All legacy module pages (module1-19.html) now removed from repository
+- ceh-v13 module pages correctly link to `/?module=N` for flashcards app
