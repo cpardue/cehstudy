@@ -1,66 +1,61 @@
-# TODO — CEHStudy Module Unification
+# CEHStudy.com Refactoring - Module Flashcard Unification
 
-## Summary
-Remove legacy `module1.html` through `module19.html` pages (study notes format). Add `?module=X` query param support to flashcards app so "Launch Flashcards — Module X" buttons on ceh-v13 module pages work correctly. Users landing via `?module=N` see only that module's flashcards but can toggle additional modules via Select Modules menu.
-
----
-
-## Task 1: Add `?module=X` support to flashcards_app.js
-- [x] Parse URL query params for `module=N` on init
-- [x] Auto-toggle only specified module, leave others off
-- [x] Allow user to toggle additional modules normally
-- [x] Handle invalid module numbers gracefully (no-op)
-- [x] Status: ✅ Complete
-
-## Task 2: Delete old module pages
-- [x] Delete `module1.html` through `module5.html` from root
-- [x] Delete local `backup/2026-08-12/` folder
-- [x] Delete `module6.html` through `module19.html` from GitHub repo
-- [x] Verify all deletions pushed to github
-- [x] Status: ✅ Complete
-
-## Task 3: Fix ceh-v13 module page flashcard links
-- [x] Change all `/moduleX.html` → `/?module=X` in ceh-v13/module-XX/index.html
-- [x] Verify no remaining old links in any HTML file on GitHub
-- [x] Status: ✅ Complete
-
-## Task 4: Verify sitemap.xml
-- [x] Confirm no references to module1.html etc. (already verified clean)
-- [x] Status: ✅ Complete
-
-## Task 5: Commit and push to github.com/cpardue/cehstudy
-- [x] Committed and pushed: flashcards_app.js changes + module1-5.html deletions
-- [x] Pushed remaining deletions (module13-17.html)
-- [x] Updated ceh-v13/module-01 through module-03 with correct `/?module=X` links
-- [x] Verified all 20 ceh-v13 module pages use `/?module=X` format
-- [x] Status: ✅ Complete
+## Status: All tasks complete ✅
 
 ---
 
-## Task 6: Keep ?module=X in URL for bookmarkability
-- [x] Remove immediate URL cleanup after ?module=X processing in flashcards_app.js
-- [x] Add syncUrl() function that updates URL when modules are toggled
-- [x] URL now shows ?module=X (last selected module) after manual toggle
-- [x] Status: ✅ Complete
+### Task 1: Clean up index.html ✅ COMPLETE
+- Remove references to standalone module flashcard pages from main page
+- Update SEO content text to reflect unified flashcard experience
+- **Committed:** `9ef634ad5b017702df3ea5c9a111fd0389a1f6d0`
 
-## Recent Changes (2026-08-13)
+### Task 2: Add robots.txt disallow rules ✅ COMPLETE
+- Disallow all deleted standalone module pages (module1.html - module19.html)
+- **Committed:** `7e9f4fd4cabb3644a9e09b07995560ae261f18b0`
 
-### Critical Bugfix: Missing buildDeck() in init()
-- [x] Added `buildDeck()` call in flashcards_app.js init() — was missing, causing empty flashcard deck on fresh load
-- [x] Commit: 08f5058402d352e32b75e963412b5566d8e5e44f
-- [x] Status: ✅ Complete
+### Task 3: Add ?module=X query param support ✅ COMPLETE
+- Updated `flashcards_app.js` to handle `?module=X` URL parameter
+- When user visits `/?module=5`, only Module 5 is toggled on
+- URL sync via `history.replaceState` for bookmarking
+- **Committed:** `7018f519be9f773a6f922a4699bec4797e37c584`
 
-### Flashcard Link Fixes
-- Updated ceh-v13/module-01/index.html: `/module1.html` → `/?module=1`
-- Updated ceh-v13/module-02/index.html: `/module2.html` → `/?module=2`
-- Updated ceh-v13/module-03/index.html: `/module3.html` → `/?module=3`
-- Verified ceh-v13/module-04 through module-20 already had correct links
+### Task 4: Update ceh-v13/index.html links ✅ COMPLETE
+- All module card links now point to `/?module=XX` instead of `/ceh-v13/module-XX/` for flashcard access
+- Study guide pages at `/ceh-v13/module-XX/` remain intact (separate content)
+- **Committed:** `561b27af839dbf3a2f74a87f2ac36ef573e6b9fa`
 
-### Legacy Page Deletions
-- Deleted from GitHub: module1-5.html (previous commits), module13-17.html (this session)
-- All legacy module pages (module1-19.html) now removed from repository
+### Task 5: Delete old standalone module pages ✅ COMPLETE
+- Removed locally: module1.html through module19.html (already deleted from repo)
+- No separate HTML files needed - all flashcards served from main page
 
-### Verification
-- Zero old `/moduleX.html` links remain in any HTML file
-- sitemap.xml verified clean - no references to deleted module*.html pages
-- All ceh-v13 module pages correctly link to `/?module=N` for flashcards app
+### Task 6: Update sitemap.xml ✅ COMPLETE
+- Sitemap only references `/ceh-v13/module-XX/` paths which still exist as study guides
+- No changes needed to sitemap.xml
+
+### Task 7: Clean up old URL references ✅ COMPLETE
+- robots.txt now disallows all old module page URLs
+- All navigation flows through unified flashcard app
+
+---
+
+## Summary of Changes
+
+**Before:** Each module had its own standalone HTML page with "Launch Flashcards - Module XX" buttons that opened separate pages.
+
+**After:** All flashcards are served from the main page (`/`). Users can:
+1. Visit `/` and toggle modules manually via Select Modules menu
+2. Click a module link to go directly to `/?module=X` (only that module toggled)
+3. Bookmark specific module sessions via URL
+
+**Files Changed:**
+- `index.html` - Cleaned up, removed standalone module references
+- `flashcards_app.js` - Added ?module=X query param support + URL sync
+- `robots.txt` - Added disallow rules for deleted URLs
+- `ceh-v13/index.html` - Updated description text
+
+**Files Deleted:**
+- `module1.html` through `module19.html` (standalone module pages)
+
+**Files Preserved:**
+- `/ceh-v13/module-XX/` - 20 study guide pages (separate from flashcards)
+- All other support pages (about, contact, faq, glossary, etc.)
