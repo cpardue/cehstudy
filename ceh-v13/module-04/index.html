@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEH v13 Module 4: Enumeration — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 4 flashcards: Windows enumeration, NetBIOS, SNMP, LDAP, NTP, SMTP enumeration, SID/RID values, null sessions, and Active Directory attacks. Free study resources.">
+    <meta name="description" content="CEH v13 Module 4 flashcards: SNMP enumeration, LDAP enumeration, SMB enumeration, DNS zone transfers, WinRM. Free study resources.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-04/">
 
@@ -14,7 +14,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "CEH v13 Module 4: Enumeration — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 4 covering Windows enumeration, NetBIOS, SNMP, LDAP, NTP, SMTP enumeration, and Active Directory attacks.",
+        "description": "Free flashcards for CEH v13 Module 4 covering SNMP, LDAP, SMB, DNS zone transfers, and WinRM enumeration.",
         "url": "https://cehstudy.com/ceh-v13/module-04/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -27,7 +27,7 @@
             "@type": "DefinedTerm",
             "name": "Enumeration",
             "termCode": "CEH-M04",
-            "description": "Active information extraction techniques including Windows enumeration, NetBIOS, SNMP community strings, LDAP directory services, NTP data, SMTP user enumeration, and Active Directory attacks."
+            "description": "Enumeration techniques including SNMP, LDAP, SMB, DNS zone transfers, and WinRM to extract user/account information."
         }
     }
     </script>
@@ -43,64 +43,42 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
-        <a href="/?module=4" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 4 Flashcards</a>
+        <a href="/" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">🎱 Study All Flashcards</a>
     </div></div></header>
 
     <div class="container">
         <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 4: Enumeration</nav>
 
         <h1 class="page-title">CEH v13 Module 4: Enumeration</h1>
-        <p class="content-text">Enumeration actively engages a system to query it for information — routing tables, users, groups, machine names, network resources — to discover and exploit vulnerabilities. This module covers Windows enumeration, NetBIOS, SNMP, LDAP, NTP, SMTP enumeration, and Active Directory attacks.</p>
-
-        <a href="/?module=4" class="flashcard-link">&#127891; Launch Flashcards — Module 4</a>
+        <p class="content-text">Enumeration extracts user accounts, passwords, hash values, file shares, and system information from target systems. This module covers SNMP, LDAP, SMB, DNS zone transfers, and WinRM enumeration techniques used by ethical hackers.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Difference between enumeration and scanning/footprinting</li>
-            <li>Windows enumeration: shares, null sessions, user accounts</li>
-            <li>Security Identifier (SID) format and common RID values</li>
-            <li>NetBIOS enumeration techniques and tools</li>
-            <li>SNMP community strings, OIDs, MIBs, and enumeration commands</li>
-            <li>LDAP hierarchical structure and information extraction</li>
-            <li>NTP enumeration for network reconnaissance</li>
-            <li>SMTP user enumeration via VRFY, EXPN, RCPT TO commands</li>
-            <li>Active Directory brute force techniques</li>
+            <li>SNMP enumeration: community strings, MIBs, SNMPwalk</li>
+            <li>LDAP enumeration: user accounts, group policies, domain info</li>
+            <li>SMB enumeration: file shares, user lists, password policies</li>
+            <li>DNS zone transfers: AXFR, IXFR protocols</li>
+            <li>WinRM and PowerShell remoting enumeration</li>
+            <li>NetBIOS and WMI enumeration</li>
         </ul>
 
         <h2 class="section-heading">Important Terms & Concepts</h2>
-        <div class="term-box"><strong>Enumeration:</strong> Actively engaging a system to extract user accounts, passwords, hashes, SMB info, SNMP data, and directory service information.</div>
-        <div class="term-box"><strong>Null session:</strong> An anonymous connection allowing enumeration of machine configuration: <code>net use \\target\\ipc$ \"\" /user: \"\"</code></div>
-        <div class="term-box"><strong>SID format:</strong> <code>S-<revision>-<authority>-<subauthorities>-<RID></code> — e.g., S-1-5-21-...-500 = Administrator</div>
-        <div class="term-box"><strong>Common RIDs:</strong> 500 = Administrator, 501 = Guest, 512 = Domain Admins, 513 = Domain Users</div>
-        <div class="term-box"><strong>NetBIOS:</strong> Network Basic Input/Output System — naming system for Windows machines enabling file/printer sharing via SMB.</div>
-        <div class="term-box"><strong>SNMP community strings:</strong> Read (public) = read-only access. Write (private) = full configuration access.</div>
-        <div class="term-box"><strong>LDAP:</strong> Lightweight Directory Access Protocol — hierarchical structure: domain > child-domains > OUs > users/groups/computers.</div>
-        <div class="term-box"><strong>SMTP enumeration commands:</strong> VRFY validates email addresses. EXPN reveals mailing list members. RCPT TO defines recipients.</div>
-
-        <h2 class="section-heading">Common Enumeration Ports</h2>
-        <ul class="content-list">
-            <li><code>Port 25</code> — SMTP, <code>Port 53</code> — DNS, <code>Port 135</code> — RPC</li>
-            <li><code>Port 137/139</code> — NetBIOS, <code>Port 161/162</code> — SNMP</li>
-            <li><code>Port 389</code> — LDAP, <code>Port 445</code> — SMB/TCP</li>
-            <li><code>Port 514</code> — Syslog, <code>Port 1433</code> — MSSQL, <code>Port 3268</code> — Global Catalog</li>
-        </ul>
+        <div class="term-box"><strong>SNMP Enumeration:</strong> Using default/well-known community strings (public/private) to query network devices. Tools: snmpwalk, onesixtyone for brute-forcing community strings.</div>
+        <div class="term-box"><strong>LDAP Enumeration:</strong> Querying Active Directory for users, groups, and policies. Tools: ldapsearch, BloodHound, SharpHound.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Memorize common enumeration ports and their associated services</li>
-            <li>Know the SID format and common RID values (500, 501, 512, 513)</li>
-            <li>Understand SNMP v1/v2 vs v3 security differences</li>
-            <li>Practice SMTP enumeration command sequences (VRFY → EXPN → RCPT TO)</li>
+            <li>Know each enumeration protocol and what data it reveals</li>
+            <li>Understand common tools for each enumeration type</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the most critical RID to identify?</strong><br>RID 500 — the Administrator account. It is the most powerful account on any Windows system.</p>
-        <p><strong>How do you protect against SNMP enumeration?</strong><br>Change default community strings, use SNMPv3 with encryption, and restrict SNMP access to authorized managers only.</p>
+        <p><strong>What is the most valuable enumeration target?</strong><br>Active Directory via LDAP — reveals entire domain hierarchy, user relationships, and group policies in one query.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-03/">Module 3: Scanning Networks</a> — scanning identifies open ports that enumeration then probes</li>
-            <li><a href="/ceh-v13/module-06/">Module 6: System Hacking</a> — enumeration data feeds into password cracking and system access</li>
+            <li><a href="/ceh-v13/module-03/">Module 3: Scanning</a> — scanning identifies ports that enumeration targets</li>
+            <li><a href="/ceh-v13/module-05/">Module 5: Vulnerability Analysis</a> — enumeration data feeds vulnerability assessment</li>
         </ul>
     </div>
 
