@@ -261,13 +261,40 @@
     function updateReviewCount() {
         globalReviewed.textContent = sessionReviewedCount;
 
-        // Render cycling flame emojis: 1→2→3 at every multiple of 5
+        const reviewedLabelEl = document.getElementById('reviewedLabel');
         const flameContainer = document.getElementById('flameContainer');
-        if (flameContainer && sessionReviewedCount > 0 && sessionReviewedCount % 5 === 0) {
+        const isFlameMilestone = sessionReviewedCount > 0 && sessionReviewedCount % 5 === 0;
+
+        if (isFlameMilestone) {
             const flameCount = ((sessionReviewedCount / 5) % 3) + 1;
             flameContainer.textContent = '\u{1F525}'.repeat(flameCount);
+
+            // Trigger green flash animation on "Reviewed" label and count
+            if (reviewedLabelEl) {
+                reviewedLabelEl.classList.remove('fire-active');
+                void reviewedLabelEl.offsetWidth; // force reflow
+                reviewedLabelEl.classList.add('fire-active');
+            }
+            globalReviewed.classList.remove('fire-active');
+            void globalReviewed.offsetWidth; // force reflow
+            globalReviewed.classList.add('fire-active');
+
+            // Trigger flame appearance animation
+            flameContainer.classList.remove('fire-active');
+            void flameContainer.offsetWidth; // force reflow
+            flameContainer.classList.add('fire-active');
+
+            // Auto-remove fire-active after 1s to fade out flames + flash
+            setTimeout(() => {
+                if (reviewedLabelEl) reviewedLabelEl.classList.remove('fire-active');
+                globalReviewed.classList.remove('fire-active');
+                flameContainer.classList.remove('fire-active');
+            }, 1000);
         } else if (flameContainer) {
             flameContainer.textContent = '';
+            flameContainer.classList.remove('fire-active');
+            if (reviewedLabelEl) reviewedLabelEl.classList.remove('fire-active');
+            globalReviewed.classList.remove('fire-active');
         }
     }
 
