@@ -463,4 +463,13 @@
         init();
     }
 
+    // Reset sessionReviewedCount when user navigates back to this page (bfcache)
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            // Page was loaded from bfcache — reset session counter
+            sessionReviewedCount = 0;
+            updateReviewCount();
+        }
+    });
+
 })();
