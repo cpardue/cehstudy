@@ -216,7 +216,7 @@ header {
     transition: .2s;
 }
 
-.toggle-switch:before {
+.toggle-slider:before {
     content: "";
     position: absolute;
     height: 16px;
@@ -299,15 +299,17 @@ header {
     animation: green-flash-num .6s ease;
 }
 
-#flameEmoji {
+/* Flame container for cycling flame emojis */
+#flameContainer {
     font-size: 1rem;
     opacity: 0;
-    transition: opacity .2s ease;
+    transition: opacity .6s ease;
     display: inline-block;
     transform: scale(0.8);
+    margin-left: 2px;
 }
 
-#flameEmoji.fire-active {
+#flameContainer.fire-active {
     opacity: 1;
     animation: flame-pop .5s ease;
 }
@@ -1043,6 +1045,7 @@ blockquote {
     color: var(--bg);
     background: var(--accent);
     border-color: var(--accent);
+    color: var(--bg);
 }
 
 .stats-panel {
