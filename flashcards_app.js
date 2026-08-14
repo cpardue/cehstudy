@@ -9,6 +9,7 @@
     let currentIndex = 0;
     let reviewedSet = new Set();
     let shuffleDeck = false;
+    let sessionReviewedCount = 0; // resets on page load
 
     // Spaced repetition state: { "moduleId-qHash": { lastReview: timestamp, ease: number, interval: number, repetitions: number } }
     let srData = {};
@@ -37,6 +38,7 @@
     function init() {
         try {
             loadFromStorage();
+            sessionReviewedCount = 0; // reset session counter on page load
             buildDeck();
             setupEventListeners();
             renderCard();
@@ -257,20 +259,15 @@
     }
 
     function updateReviewCount() {
-        const totalReviewed = reviewedSet.size;
-        globalReviewed.textContent = totalReviewed;
+        globalReviewed.textContent = sessionReviewedCount;
 
-        // Only animate every 5 reviews (at multiples of 5)
-        if (totalReviewed > 0 && totalReviewed % 5 === 0) {
-            reviewedLabel.classList.add('fire-active');
-            globalReviewed.classList.add('fire-active');
-            document.getElementById('flameEmoji').classList.add('fire-active');
-
-            setTimeout(() => {
-                reviewedLabel.classList.remove('fire-active');
-                globalReviewed.classList.remove('fire-active');
-                document.getElementById('flameEmoji').classList.remove('fire-active');
-            }, 700);
+        // Render cycling flame emojis: 1→2→3 at every multiple of 5
+        const flameContainer = document.getElementById('flameContainer');
+        if (flameContainer && sessionReviewedCount > 0 && sessionReviewedCount % 5 === 0) {
+            const flameCount = ((sessionReviewedCount / 5) % 3) + 1;
+            flameContainer.textContent = '\u{1F525}'.repeat(flameCount);
+        } else if (flameContainer) {
+            flameContainer.textContent = '';
         }
     }
 
@@ -305,8 +302,9 @@
         if (!reviewedSet.has(key)) {
             reviewedSet.add(key);
             saveReviewed();
-            updateReviewCount();
         }
+        sessionReviewedCount++;
+        updateReviewCount();
         recordReview(card.moduleId);
         updateSRForCard(card);
     }
