@@ -8,7 +8,7 @@
     let allCards = [];
     let currentIndex = 0;
     let reviewedSet = new Set();
-    let shuffleDeck = false;
+    let shuffleDeck = true;
     let sessionReviewedCount = 0; // resets on page load
 
     // Spaced repetition state: { "moduleId-qHash": { lastReview: timestamp, ease: number, interval: number, repetitions: number } }
