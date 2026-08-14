@@ -260,15 +260,18 @@
         const totalReviewed = reviewedSet.size;
         globalReviewed.textContent = totalReviewed;
 
-        reviewedLabel.classList.add('fire-active');
-        globalReviewed.classList.add('fire-active');
-        document.getElementById('flameEmoji').classList.add('fire-active');
+        // Only animate every 5 reviews (at multiples of 5)
+        if (totalReviewed > 0 && totalReviewed % 5 === 0) {
+            reviewedLabel.classList.add('fire-active');
+            globalReviewed.classList.add('fire-active');
+            document.getElementById('flameEmoji').classList.add('fire-active');
 
-        setTimeout(() => {
-            reviewedLabel.classList.remove('fire-active');
-            globalReviewed.classList.remove('fire-active');
-            document.getElementById('flameEmoji').classList.remove('fire-active');
-        }, 700);
+            setTimeout(() => {
+                reviewedLabel.classList.remove('fire-active');
+                globalReviewed.classList.remove('fire-active');
+                document.getElementById('flameEmoji').classList.remove('fire-active');
+            }, 700);
+        }
     }
 
     // === Navigation ===
