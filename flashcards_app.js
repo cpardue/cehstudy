@@ -195,7 +195,6 @@
     }
 
     function resetCardDeck() {
-        shuffleDeck = false;
         buildDeck();
         renderCard();
         updateReviewCount();
