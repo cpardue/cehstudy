@@ -58,16 +58,11 @@ a:hover {
 header {
     background: var(--bg2);
     border-bottom: 1px solid var(--border);
-    padding: 16px 20px;
+    padding: 12px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 200;
-}
-
-.header-inner {
-    max-width: 800px;
-    width: 100%;
 }
 
 .header-row {
@@ -78,6 +73,20 @@ header {
     width: 100%;
 }
 
+.logo {
+    color: var(--accent);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -.01em;
+    text-shadow: 0 0 8px rgba(57, 255, 136, 0.4);
+    transition: text-shadow .2s ease;
+}
+
+.logo:hover {
+    text-shadow: 0 0 14px rgba(57, 255, 136, 0.7);
+}
+
 .logo-block {
     display: flex;
     flex-direction: column;
@@ -85,26 +94,23 @@ header {
     gap: 2px;
 }
 
-.logo {
-    color: var(--accent);
-    font-size: 1.6rem;
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: .02em;
-    line-height: 1.2;
-}
-
-.logo:hover {
-    color: var(--accent2);
-    text-decoration: none;
-}
-
 .logo-tagline {
-    color: var(--text);
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: .5px;
-    opacity: 0.9;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    animation: cursor-blink 1s step-end infinite;
+}
+
+.logo-tagline::after {
+    content: " _";
+    animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .select-modules-btn {
@@ -993,8 +999,8 @@ blockquote {
 /* === Responsive === */
 @media (max-width: 600px) {
     .fc-card {
-        padding: 30px 24px;
-        margin: 0 50px;
+        padding: 30px 8px;
+        margin: 0 6px;
         min-height: 220px;
     }
 
@@ -1015,14 +1021,6 @@ blockquote {
 
     .header-row {
         gap: 12px;
-    }
-
-    .logo {
-        font-size: 1.3rem;
-    }
-
-    .logo-tagline {
-        font-size: 0.75rem;
     }
 
     .seo-content {
@@ -1259,7 +1257,6 @@ blockquote {
     }
 
     .reviewed-badge {
-        flex-direction: column;
-        gap: 4px;
+        white-space: nowrap;
     }
 }
