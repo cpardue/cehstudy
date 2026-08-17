@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
     <title>CEH v13 Module 16: Hacking Wireless Networks — Study Guide, Flashcards & Practice | CEHStudy</title>
     <meta name="description" content="CEH v13 Module 16: Hacking Wireless Networks — Free study guide with flashcards covering WEP/WPA/WPA2 cracking, evil twin attacks, deauth frames, WPS brute force, and Aircrack-ng. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-16/">
+
+    <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/">
+    <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -147,7 +151,7 @@
             <p>To effectively study Module 16 for the Certified Ethical Hacker exam:</p>
             <ol>
                 <li>Create a wireless protocol comparison table: Protocol (WEP/WPA/WPA2/WPA3) | Encryption (RC4/TKIP/AES/SAE) | Authentication Method | Known Vulnerabilities | Attack Time (with typical password strength). The exam frequently asks you to match a vulnerability to the specific protocol version — e.g., "Which protocol is vulnerable to the PTW attack?" (Answer: WPA-TKIP, not WPA2-AES)</li>
-                <li>Hands-on exercise: Set up a virtual Wi-Fi environment using VirtualBox with a USB Wi-Fi adapter that supports monitor mode. Use Aircrack-ng suite to: put adapter in monitor mode, capture an 802.11 channel, identify the target SSID, perform deauthentication, capture the WPA handshake, and attempt cracking with a small wordlist. Document each step's output — this directly mirrors exam questions about the attack flow</li>
+                <li>Hands-on exercise: Set up a virtual Wi-Fi environment using VirtualBox with a USB Wi-Fi adapter that supports monitor mode (or use VritualBox's built-in wireless). Use Aircrack-ng suite to: put adapter in monitor mode, capture an 802.11 channel, identify the target SSID, perform deauthentication, capture the WPA handshake, and attempt cracking with a small wordlist. Document each step's output — this directly mirrors exam questions about the attack flow</li>
                 <li>Memorize the deauth → reassociate → handshake → crack pipeline as a sequence: (1) Identify target BSSID, (2) Set monitor mode on same channel, (3) Send 20-50 deauth frames to force disconnect, (4) Capture new association + 4-way handshake, (5) Run offline dictionary attack. Know that this entire chain works because 802.11 management frames are unencrypted in WPA2</li>
                 <li>Review related modules: <a href="/ceh-v13/module-08/" style="color:var(--accent)">Module 8 (Sniffing & Traffic Analysis)</a> for the packet analysis techniques used to examine captured 802.11 frames, and <a href="/ceh-v13/module-09/" style="color:var(--accent)">Module 9 (Social Engineering)</a> for how evil twin attacks are often combined with phishing — the rogue AP can serve a fake login page that harvests credentials beyond just the Wi-Fi password</li>
             </ol>
@@ -162,7 +166,7 @@
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">How does an evil twin attack work step by step?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">Complete evil twin attack flow: (1) Reconnaissance — use Kismet or airodump-ng to identify the target network's SSID, BSSID (MAC), channel, and security protocol. Note signal strength of the legitimate AP; (2) Prepare rogue AP — configure a second Wi-Fi adapter (or USB dongle) with the same SSID, matching encryption type (WPA2-PSK in most cases), and optionally the same BSSID (spoofing) if clients use MAC-based selection. Use hostapd + wpa_supplicant on Linux, or turnkey tools like Wifite; (3) Deploy — position the rogue AP with higher signal strength than the legitimate one (antenna gain or closer proximity); (4) Deauth — send deauthentication frames to all currently connected clients on the legitimate AP using aireplay-ng --deauth or mdk3. This disconnects them and forces reassociation; (5) Client association — disconnected clients scan for available networks and automatically connect to the SSID with the strongest signal (the rogue AP); (6) MITM execution — the rogue AP now controls all traffic: can serve a captive portal with fake login pages, perform SSL stripping on HTTP traffic, inject JavaScript into HTTPS via certificate spoofing, or relay traffic to a transparent proxy. On the CEH exam, the key vulnerability exploited is that 802.11 uses SSID (not BSSID) for network selection in most client implementations — two APs with the same SSID are indistinguishable by name alone.</p>
+                    <p itemprop="text">Complete evil twin attack flow: (1) Reconnaissance — use Kismet or airodump-ng to identify the target network's SSID, BSSID (MAC), channel, and security protocol. Note signal strength of the legitimate AP; (2) Prepare rogue AP — configure a second Wi-Fi adapter (or USB dongle) with the same SSID, matching encryption type (WPA2-PSK in most cases), and optionally the same BSSID (spooofing) if clients use MAC-based selection. Use hostapd + wpa_supplicant on Linux, or turnkey tools like Wifite; (3) Deploy — position the rogue AP with higher signal strength than the legitimate one (antenna gain or closer proximity); (4) Deauth — send deauthentication frames to all currently connected clients on the legitimate AP using aireplay-ng --deauth or mdk3. This disconnects them and forces reassociation; (5) Client association — disconnected clients scan for available networks and automatically connect to the SSID with the strongest signal (the rogue AP); (6) MITM execution — the rogue AP now controls all traffic: can serve a captive portal with fake login pages, perform SSL stripping on HTTP traffic, inject JavaScript into HTTPS via certificate spoofing, or relay traffic to a transparent proxy. On the CEH exam, the key vulnerability exploited is that 802.11 uses SSID (not BSSID) for network selection in most client implementations — two APs with the same SSID are indistinguishable by name alone.</p>
                 </div>
             </div>
 
