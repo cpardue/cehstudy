@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
     <title>CEH v13 Module 8: Sniffing & Traffic Analysis — Study Guide, Flashcards & Practice | CEHStudy</title>
     <meta name="description" content="CEH v13 Module 8: Sniffing & Traffic Analysis — Free study guide with flashcards covering Wireshark packet analysis, ARP spoofing, MAC flooding, DHCP starvation, and network interception techniques. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-08/">
+
+    <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/">
+    <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -164,7 +168,7 @@
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">What defensive measures prevent network sniffing on a LAN?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">The primary defenses against LAN sniffing attacks are: (1) Port Security — limit the number of MAC addresses per switch port, disabling the port on violation; (2) Dynamic ARP Inspection (DAI) — validates ARP packets against a DHCP snooping binding table, dropping spoofed replies; (3) DHCP Snooping — builds a trusted binding table of IP-MAC associations from legitimate DHCP exchanges, blocking rogue DHCP servers; (4) 802.1X Port-Based Authentication — requires device authentication before network access, limiting exposure to authorized devices only; (5) Network Segmentation (VLANs) — limits broadcast domain size so a single attacker cannot see traffic across the entire network; (6) Encryption (HTTPS, TLS) — even if traffic is intercepted, encrypted payloads are unreadable. On the CEH exam, know that no single defense is sufficient — defense in depth requires multiple layers.</p>
+                    <p itemprop="text">The primary defenses against LAN sniffing attacks are: (1) **Port Security** — limit the number of MAC addresses per switch port, disabling the port on violation; (2) **Dynamic ARP Inspection (DAI)** — validates ARP packets against a DHCP snooping binding table, dropping spoofed replies; (3) **DHCP Snooping** — builds a trusted binding table of IP-MAC associations from legitimate DHCP exchanges, blocking rogue DHCP servers; (4) **802.1X Port-Based Authentication** — requires device authentication before network access, limiting exposure to authorized devices only; (5) **Network Segmentation (VLANs)** — limits broadcast domain size so a single attacker cannot see traffic across the entire network; (6) **Encryption (HTTPS, TLS)** — even if traffic is intercepted, encrypted payloads are unreadable. On the CEH exam, know that no single defense is sufficient — defense in depth requires multiple layers.</p>
                 </div>
             </div>
 
