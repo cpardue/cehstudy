@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
     <title>CEH v13 Module 17: Mobile Platforms & IoT — Study Guide, Flashcards & Practice | CEHStudy</title>
     <meta name="description" content="CEH v13 Module 17: Mobile Platforms & IoT — Free study guide with flashcards covering Android/iOS security, jailbreaking/rooting, RFID cloning, NFC skimming, BlueBorne, and IoT vulnerabilities. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-17/">
+
+    <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/">
+    <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -162,7 +166,7 @@
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">How do you perform a firmware analysis on an IoT device for a CEH exam?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">IoT firmware analysis workflow tested on the CEH exam: (1) Acquire firmware — download from vendor website, extract via serial console (UART), or dump from flash chip using JTAG/SWD hardware; (2) Identify format — use file command and binwalk to determine if firmware is compressed (gzip, lzma, squashfs) or raw flash layout; (3) Extract filesystems — binwalk -e firmware.bin recursively extracts all embedded archives and filesystems (often CramFS, JFFS2, UBI, or squashfs); (4) Analyze web interface code — examine CGI scripts and web application files for SQL injection, command injection, and path traversal vulnerabilities; (5) Search for credentials — grep -r 'password|passwd|admin' across all extracted files to find hardcoded default credentials, API keys, and cryptographic secrets; (6) Examine binaries — use Ghidra or IDA Pro to disassemble main executables, looking for debug interfaces (hidden telnetd, netcat backdoors), insecure random number generation, and buffer overflows; (7) Check for update mechanisms — identify if the device has an OTA update process and whether firmware is signed (if not signed, attacker can push malicious firmware); (8) Document findings with CVE references where applicable. On the CEH exam, know that the most commonly found vulnerabilities are: default credentials (admin/admin), unencrypted telnet interface, hardcoded encryption keys, and absence of any update mechanism.</p>
+                    <p itemprop="text">IoT firmware analysis workflow tested on the CEH exam: (1) Acquire firmware — download from vendor website, extract via serial console (UART), or dump from flash chip using JTAG/SWD hardware; (2) Identify format — use file command and binwalk to determine if firmware is compressed (gzip, lzma, squashfs) or raw flash layout; (3) Extract filesystems — binwalk -e firmware.bin recursively extracts all embedded archives and filesystems (often CramFS, JFFS2, UBI, or squashfs); (4) Analyze web interface code — examine CGI scripts and web application files for SQL injection, command injection, and path traversal vulnerabilities; (5) Search for credentials — grep -r 'password\|passwd\|admin' across all extracted files to find hardcoded default credentials, API keys, and cryptographic secrets; (6) Examine binaries — use Ghidra or IDA Pro to disassemble main executables, looking for debug interfaces (hidden telnetd, netcat backdoors), insecure random number generation, and buffer overflows; (7) Check for update mechanisms — identify if the device has an OTA update process and whether firmware is signed (if not signed, attacker can push malicious firmware); (8) Document findings with CVE references where applicable. On the CEH exam, know that the most commonly found vulnerabilities are: default credentials (admin/admin), unencrypted telnet interface, hardcoded encryption keys, and absence of any update mechanism.</p>
                 </div>
             </div>
 
