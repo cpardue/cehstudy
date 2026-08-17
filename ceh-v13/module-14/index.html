@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 14: Network Interface Attacks — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 14 network interface attacks flashcards: wireless attacks, Bluetooth attacks, mobile device attacks. Free study resources.">
+    <title>CEH v13 Module 14: Hacking Web Applications — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 14: Hacking Web Applications — Free study guide with flashcards covering OWASP Top 10, XSS types, CSRF, injection flaws, IDOR, and broken authentication. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-14/">
 
@@ -13,22 +13,61 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 14: Network Interface Attacks — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 14 covering wireless attacks, Bluetooth attacks, and mobile device attacks.",
+        "name": "CEH v13 Module 14: Hacking Web Applications — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 14 covering OWASP Top 10, XSS (reflected/stored/DOM-based), CSRF, injection flaws, broken authentication, and IDOR.",
         "url": "https://cehstudy.com/ceh-v13/module-14/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 14: Network Interface Attacks", "item": "https://cehstudy.com/ceh-v13/module-14/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 14: Hacking Web Applications", "item": "https://cehstudy.com/ceh-v13/module-14/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Network Interface Attacks",
+            "name": "Hacking Web Applications",
             "termCode": "CEH-M14",
-            "description": "Wireless, Bluetooth, and mobile device attacks targeting network interfaces."
+            "description": "OWASP Top 10 web application vulnerabilities including XSS (reflected/stored/DOM), CSRF, injection flaws, security misconfigurations, and broken authentication."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 14: Hacking Web Applications?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 14 covers attacks against web applications organized around the OWASP Top 10 vulnerability categories. Key topics include three types of Cross-Site Scripting (XSS) — reflected (script delivered via crafted URL), stored (script persisted on server), and DOM-based (vulnerability in client-side JavaScript); Cross-Site Request Forgery (CSRF) attacks and token bypass techniques; injection flaws including SQL injection, OS command injection, and LDAP injection; security misconfiguration (default credentials, verbose error pages, open cloud storage); broken authentication and session management failures; insecure direct object references (IDOR); and vulnerable and outdated components. This domain accounts for approximately 15% of the CEH v13 exam questions, making it one of the highest-weighted web security domains on the exam."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between reflected and stored XSS on the CEH exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The key distinction is persistence and delivery mechanism. Reflected XSS: the malicious script is embedded in a URL or form submission parameter and reflected back to the victim in the server's response without being stored on the server. The attacker must trick the victim into clicking a specifically crafted link (e.g., via email or social engineering). When the victim clicks, their browser sends the malicious input to the server, which reflects it in the HTML response — the script executes in the victim's browser. Reflected XSS is stateless: the payload exists only in transit. Stored XSS: the malicious script is permanently saved on the target server's database or file system (in comment fields, user profiles, product reviews, forum posts). Every user who views the page containing the stored payload gets the script executed in their browser without any trickery needed beyond visiting the page. Stored XSS is stateful and significantly more dangerous because it can compromise all users of the application automatically, requires no social engineering to spread, and persists until the vulnerable code is patched or the malicious data is removed. On the CEH exam, know that stored XSS is also called 'persistent XSS' while reflected XSS is 'non-persistent' — this terminology appears in exam questions. DOM-based XSS is a third variant where the vulnerability exists entirely in client-side JavaScript (unsanitized use of document.location, document.referrer, or DOM methods like innerHTML) with no server interaction needed."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 14: Hacking Web Applications Study Guide",
+        "description": "Free study materials for CEH v13 Module 14 covering OWASP Top 10 vulnerabilities, XSS (reflected/stored/DOM), CSRF attacks and mitigations, injection flaws, IDOR, broken authentication, and security misconfiguration. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "OWASP Top 10 Vulnerability Categories, XSS Types and Exploitation (Reflected/Stored/DOM), CSRF Attack Flow and Mitigation, Injection Flaws (SQL/OS Command/LDAP), IDOR and Broken Authentication"
     }
     </script>
 
@@ -46,38 +85,94 @@
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 14: Network Interface Attacks</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 14: Hacking Web Applications</nav>
 
-        <h1 class="page-title">CEH v13 Module 14: Network Interface Attacks</h1>
-        <p class="content-text">This module covers attacks targeting network interfaces including wireless, Bluetooth, and mobile devices. Topics include Wi-Fi attacks (WEP/WPA/WPA2 cracking), evil twin, rogue AP, Bluetooth attacks, and mobile device exploitation.</p>
+        <h1 class="page-title">CEH v13 Module 14: Hacking Web Applications</h1>
+        <p class="content-text">This module covers attacks against web applications, focusing on the OWASP Top 10 vulnerabilities. Attackers exploit XSS (reflected, stored, DOM-based), CSRF, injection flaws, security misconfigurations, and broken authentication to compromise web application systems and data.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Wi-Fi security: WEP, WPA, WPA2, WPA3 protocols and weaknesses</li>
-            <li>Wireless attacks: evil twin, rogue AP, war driving, war chalking</li>
-            <li>Bluetooth attacks: bluejacking, bluesnarfing, Blueborne</li>
-            <li>Mobile device attacks: SIM cloning, SMS interception, app vulnerabilities</li>
+            <li>OWASP Top 10 categories and their evolution in v13</li>
+            <li>Reflected XSS vs Stored XSS vs DOM-based XSS</li>
+            <li>Cross-Site Request Forgery (CSRF) attacks and token bypass</li>
+            <li>SQL injection, command injection, LDAP injection</li>
+            <li>Security misconfiguration: default credentials, verbose errors</li>
+            <li>Broken authentication and session management</li>
+            <li>Insecure Direct Object References (IDOR)</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>WEP:</strong> Wired Equivalent Privacy — broken protocol using RC4. Vulnerable to IV attacks. Cracked in minutes with aircrack-ng.</div>
-        <div class="term-box"><strong>Evil Twin:</strong> Rogue AP mimicking legitimate network SSID. Users connect unknowingly. Defenses: 802.1X authentication, certificate validation.</div>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>OWASP Top 10:</strong> The ten most critical web application security risks, updated periodically. Categories include injection, broken authentication, XSS, insecure direct object references, security misconfiguration, and more.</div>
+        <div class="term-box"><strong>Reflected XSS:</strong> Malicious script is embedded in a URL or form submission and executed immediately in the victim's browser. Not stored on the server. Requires tricking user into clicking a crafted link.</div>
+        <div class="term-box"><strong>Stored XSS:</strong> Malicious script is permanently stored on the target server (in comments, user profiles, forums). Every user who views the stored data is affected — most dangerous XSS type.</div>
+        <div class="term-box"><strong>DOM-based XSS:</strong> Vulnerability exists in client-side JavaScript rather than server code. The attack modifies the DOM environment in the victim's browser without server interaction.</div>
+        <div class="term-box"><strong>CSRF (Cross-Site Request Forgery):</strong> Forces an authenticated user's browser to perform unwanted actions on a trusted site. Mitigated with anti-CSRF tokens, SameSite cookies, and re-authentication for sensitive operations.</div>
+        <div class="term-box"><strong>IDOR (Insecure Direct Object References):</strong> Accessing resources by manipulating object identifiers in URLs (e.g., changing ?user_id=100 to ?user_id=101). Allows unauthorized access to other users' data.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Know wireless security protocol differences (WEP vs WPA vs WPA2 vs WPA3)</li>
-            <li>Understand each attack mechanism</li>
-            <li>Learn defense strategies for wireless networks</li>
+            <li>Know all OWASP Top 10 categories and their descriptions</li>
+            <li>Differentiate reflected vs stored vs DOM-based XSS with examples</li>
+            <li>Understand CSRF attack flow and mitigation techniques</li>
+            <li>Practice identifying web application vulnerabilities in sample code</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>Which wireless protocol is most secure?</strong><br>WPA3 — uses AES-256, forward secrecy, SAE authentication. Replaces PSK with more secure handshake.</p>
+        <p><strong>What is the OWASP Top 10?</strong><br>A standard awareness document for web application security listing the ten most critical security risks. It is updated every few years to reflect evolving threats.</p>
+        <p><strong>What are the types of XSS attacks?</strong><br>Three types: Reflected (script delivered via link), Stored (script saved on server), and DOM-based (exploits client-side JavaScript). Stored XSS is most dangerous as it affects all visitors.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-13/" style="color:var(--accent)">Module 13: Cryptography</a> — wireless cryptography (WEP/WPA/WPA2/WPA3)</li>
-            <li><a href="/ceh-v13/module-15/" style="color:var(--accent)">Module 15: IoT Attacks</a> — IoT devices often use wireless interfaces</li>
+            <li><a href="/ceh-v13/module-13/">Module 13: Hacking Web Servers</a> — web server compromise often leads to application attacks</li>
+            <li><a href="/ceh-v13/module-15/">Module 15: SQL Injection</a> — SQL injection is one of the most critical OWASP Top 10 vulnerabilities</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is Web Application Hacking in Ethical Hacking?</h2>
+            <p>Web Application Hacking is the highest-weighted web security domain on the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module focuses on vulnerabilities in the application layer — the code, inputs, sessions, and business logic that run on top of web servers (covered in Module 13). The CEH v13 exam organizes these attacks around the OWASP Top 10 framework, which represents the most commonly exploited web application vulnerabilities in production systems. Web applications are the primary interface between users and organizational data, making them the most frequently targeted attack surface in modern enterprise environments. On the CEH v13 exam, questions related to Module 14 account for approximately 15% of total questions.</p>
+
+            <h2>Key Concepts in Hacking Web Applications</h2>
+            <ul>
+                <li><strong>XSS Vulnerability Classifications (Reflected vs Stored vs DOM-based):</strong> Cross-Site Scripting injects malicious JavaScript into web pages viewed by other users. The three types differ in persistence and attack complexity. Reflected (non-persistent): payload lives only in the request — attacker crafts a URL containing the script, victim clicks it, server reflects it back. Stored (persistent): payload is saved in the application's database — every visitor gets infected automatically without any social engineering. DOM-based: the vulnerability exists entirely in client-side JavaScript that unsafely uses user-controllable data (document.location.hash, window.name, document.referrer) to modify the page DOM without any server round-trip. On the CEH exam, the most frequently tested distinction is reflected vs stored — know that stored XSS is more dangerous because it's self-propagating, while reflected XSS requires victim interaction (clicking a link). The HttpOnly cookie flag specifically blocks both reflected and stored XSS from exfiltrating session cookies via document.cookie.</li>
+                <li><strong>CSRF Attack Flow & Mitigation Stack:</strong> Cross-Site Request Forgery exploits the fact that browsers automatically include cookies with cross-origin requests. The attack flow: (1) Attacker hosts a page with hidden form or JavaScript that sends a request to the target site, (2) Victim visits the attacker's page while authenticated to the target, (3) Browser automatically includes the victim's session cookie in the request to the target, (4) Target processes the request as if the victim initiated it — state change occurs (password change, fund transfer, permission grant). The mitigation stack: (1) Anti-CSRF tokens — unique per-session values that must be included in forms (attacker can't read them due to Same-Origin Policy), (2) SameSite cookie attribute — browser won't send cookies on cross-origin requests, (3) Verify Origin/Referer headers server-side, (4) Re-authentication for sensitive operations. On the CEH exam, know that CSRF does NOT give the attacker access to data (Same-Origin Policy prevents reading responses) but CAN force state changes — the distinction between read and write access is commonly tested.</li>
+                <li><strong>IDOR & Broken Access Control:</strong> Insecure Direct Object References occur when an application exposes an object identifier (database ID, filename, URL parameter) without verifying that the requesting user has permission to access that specific object. Example: /api/orders?order_id=1002 returns order details for any user who guesses or increments the ID. On the CEH exam, know that IDOR is now classified under OWASP A01:2021 (Broken Access Control) — the 2021 Top 10 consolidated several older categories. The defense is server-side authorization checks on every object access, not just authentication. Indirect references (using UUIDs or hashed identifiers instead of sequential integers) reduce the risk but are not a complete fix — the server must still verify the requesting user owns that resource.</li>
+                <li><strong>OWASP Top 10 Evolution (2017 → 2021):</strong> The CEH v13 exam references the OWASP Top 10 framework. Key changes from 2017 to 2021: Insecure Direct Object References (A05:2017) was merged into Broken Access Control (A01:2021); Security Misconfiguration (A05:2017) became Vulnerable and Outdated Components (A06:2021); Server-Side Request Forgery (SSRF) was promoted from the 2013 list back to Top 10 as A10:2021. The current 2021 list: A01 Broken Access Control, A02 Cryptographic Failures, A03 Injection, A04 Insecure Design, A05 Security Misconfiguration, A06 Vulnerable and Outdated Components, A07 Identification and Authentication Failures, A08 Software and Data Integrity Failures, A09 Security Logging and Monitoring Failures, A10 SSRF. On the CEH exam, know the category names and which specific attacks fall under each — e.g., SQL injection falls under A03 (Injection), weak TLS configuration falls under A02 (Cryptographic Failures).</li>
+            </ul>
+
+            <h2>Tools Used in Web Application Hacking</h2>
+            <p>Web application attack tools referenced on the CEH exam include <strong>Burp Suite</strong> (the industry-standard web application proxy for intercepting, modifying, and replaying HTTP requests; used to test XSS by injecting payloads into parameters, test CSRF by removing anti-CSRF tokens, enumerate IDOR by incrementing object IDs, and run automated vulnerability scans with the Pro scanner), <strong>OWASP ZAP (Zed Attack Proxy)</strong> (open-source alternative to Burp Suite with automated active and passive scanning; the CEH exam references it as a free tool for web application security testing), <strong>SQLMap</strong> (automated SQL injection detection and exploitation tool that tests all input parameters for SQLi using multiple techniques — union-based, boolean blind, time-based, error-based, and out-of-band), <strong>Wapiti</strong> (command-line web application scanner detecting XSS, SQLi, command injection, and path traversal vulnerabilities), and <strong>OWASP WebGoat</strong> (deliberately vulnerable training application maintained by OWASP that demonstrates all Top 10 vulnerabilities in an interactive lab environment — ideal for hands-on practice before the CEH exam). On the CEH exam, know that Burp Suite is the most commonly referenced tool for manual web application testing, while SQLMap is specifically associated with SQL injection exploitation.</p>
+
+            <h2>How to Study Web Application Hacking for the CEH v13 Exam</h2>
+            <p>To effectively study Module 14 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Create a reference table of all 10 OWASP Top 10 (2021) categories with: Category Name | Example Attack | Mitigation Technique | CEH Exam Tip. The exam asks you to classify specific attacks into their OWASP category — e.g., "An attacker manipulates a URL parameter to access another user's account" = A01 Broken Access Control (IDOR). Practice classifying 20+ scenarios until you can do it in under 30 seconds per question</li>
+                <li>Hands-on exercise: Set up OWASP WebGoat locally (Docker or standalone JAR). Work through all XSS lessons (reflected, stored, DOM-based), CSRF lab, and IDOR challenges. For each vulnerability, document: the exact request that triggers it, what the response looks like, and which mitigation would have prevented it. This mirrors exam questions that present a scenario and ask for the appropriate defense</li>
+                <li>Memorize XSS payload structures for each type: Reflected = '<img src=x onerror=alert(document.cookie)>' in URL parameter; Stored = same payload in a comment/profile field; DOM-based = vulnerable JavaScript like document.write(location.hash). Know which HttpOnly/Content-Security-Policy/SameSite flags block which XSS vector</li>
+                <li>Review related modules: <a href="/ceh-v13/module-15/" style="color:var(--accent)">Module 15 (SQL Injection)</a> for deep-dive SQLi techniques that are part of the OWASP A03 Injection category, and <a href="/ceh-v13/module-11/" style="color:var(--accent)">Module 11 (Session Hijacking)</a> for how XSS is used as the attack vector to steal session cookies — understanding the connection between XSS (Module 14) and session theft (Module 11) is a common exam scenario</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About Web Application Hacking</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is Content-Security-Policy (CSP) and how does it prevent XSS?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">Content-Security-Policy is an HTTP response header that tells the browser which sources of content are allowed to execute. A strict CSP (e.g., "default-src 'self'") means only scripts from the same origin can run — any injected inline script or external script from an attacker's domain is blocked by the browser before execution. On the CEH exam, understand how CSP complements other XSS defenses: HttpOnly blocks cookie theft but doesn't prevent the XSS itself (the script still executes for DOM manipulation, data exfiltration via API calls, etc.); CSP blocks the malicious script from executing in the first place. The most effective defense combines both: CSP prevents execution, HttpOnly limits the damage if XSS occurs anyway. A common CSP bypass technique tested on advanced exams: if the policy allows 'unsafe-inline', attackers can still inject inline scripts — so the strongest CSP omits 'unsafe-inline' and uses nonces or hashes instead. The CEH v13 exam may present a CSP header and ask whether a specific attack would be blocked by it.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">How does SQL injection differ from other injection flaws in the OWASP Top 10?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">All injection flaws share the same root cause: the application concatenates user input into a command (SQL query, OS command, LDAP query, XML document) without proper sanitization or parameterization. The difference is the target language and the resulting impact. SQL Injection (most common): user input is concatenated into SQL queries — attacker can read/modify/delete database contents, authenticate as any user, or in some DBMS configurations execute OS commands. OS Command Injection: user input is passed to system() or exec() calls — attacker executes arbitrary shell commands on the server. LDAP Injection: user input is inserted into LDAP directory queries — attacker can enumerate directory users, bypass authentication, or modify attributes. XML Injection (XXE): user input is processed as XML — attacker can read local files, perform SSRF, or trigger denial of service. On the CEH exam, all four fall under OWASP A03:2021 (Injection). The universal defense for all types is input validation and parameterized queries (prepared statements for SQL, escaped arguments for OS commands, proper XML parsers with external entity loading disabled for XXE). The exam may present code snippets and ask you to identify which injection type is present.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-15/" style="color:var(--accent)">Module 15: SQL Injection Attacks</a> — SQL injection is the most critical and most-tested vulnerability within the OWASP A03 (Injection) category. Module 15 provides deep coverage of all SQLi techniques: union-based, boolean blind, time-based blind, error-based, stacked queries, and second-order SQLi. For the CEH exam, Module 14 gives the OWASP framework context while Module 15 provides the technical exploitation detail</li>
+                <li><a href="/ceh-v13/module-11/" style="color:var(--accent)">Module 11: Session Hijacking</a> — XSS is the primary web application vulnerability that enables session hijacking over HTTPS. Module 14 covers how to find and exploit XSS vulnerabilities (the attack vector), while Module 11 covers what happens after cookie theft (the impact). Together these two modules explain the complete chain: find XSS → steal cookie via document.cookie → hijack session. The CEH exam frequently tests this relationship in scenario-based questions</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->
