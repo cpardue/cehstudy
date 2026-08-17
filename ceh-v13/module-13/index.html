@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 13: Hacking Web Servers — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 13 flashcards: IIS vulnerabilities, Apache exploits, nginx misconfigurations, directory traversal, HTTP methods, web server hardening. Free study resources.">
+    <title>CEH v13 Module 13: Hacking Web Servers — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 13: Hacking Web Servers — Free study guide with flashcards covering IIS/Apache/nginx exploitation, directory traversal, HTTP method abuse, and web server hardening. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-13/">
 
@@ -29,6 +29,45 @@
             "termCode": "CEH-M13",
             "description": "Attacks against web server platforms including IIS, Apache, and nginx — misconfigurations, directory traversal, HTTP method abuse, and web server hardening."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 13: Hacking Web Servers?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 13 covers attacks against web server platforms including IIS (Internet Information Services), Apache HTTP Server, and nginx. Key topics include IIS-specific vulnerabilities such as path parsing bugs (.asp;.txt extension trick in IIS 6.0), ASP.NET ViewState exploitation, and default configuration weaknesses. For Apache, the module covers .htaccess manipulation to enable script execution, mod_ssl vulnerabilities, directory listing misconfigurations, and virtual host exposure. Nginx topics include improper FastCGI configuration, default virtual host issues, and worker process privilege problems. The module also covers directory traversal attacks (../ sequences and URL encoding bypasses), HTTP method exploitation (TRACE, PUT, DELETE, OPTIONS abuse), unnecessary module removal for attack surface reduction, and web server hardening guidelines. This domain accounts for approximately 10% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between hacking a web server and hacking a web application on the CEH exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "On the CEH exam, these are distinct attack domains with different targets. Hacking a web SERVER (Module 13) targets the underlying platform itself — IIS, Apache, or nginx. The attacker exploits server-level misconfigurations: directory traversal to read server files (.htaccess, /etc/passwd), HTTP method abuse (TRACE for XST, PUT for file upload), path parsing bugs specific to the server version, and default credentials. The goal is to compromise the server operating system or gain filesystem access. Hacking a web APPLICATION (Module 14) targets the software running on top of the server — the code, inputs, sessions, and business logic. The attacker exploits application-level vulnerabilities: SQL injection, XSS, CSRF, broken authentication, insecure direct object references. The goal is to manipulate application data or session state without necessarily touching the server OS. On the CEH exam, know that web server attacks often provide a stepping stone to web application attacks — once you have server access, you can read application source code, database credentials, and configuration files that reveal application-level vulnerabilities."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 13: Hacking Web Servers Study Guide",
+        "description": "Free study materials for CEH v13 Module 13 covering IIS vulnerabilities, Apache exploitation, nginx misconfigurations, directory traversal attacks, HTTP method abuse, and web server hardening techniques. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "IIS Path Parsing and ASP.NET Exploitation, Apache .htaccess and Module Vulnerabilities, Nginx FastCGI Misconfigurations, Directory Traversal and URL Encoding Bypasses, HTTP Method Abuse and Web Server Hardening"
     }
     </script>
 
@@ -62,7 +101,7 @@
             <li>Unnecessary modules and attack surface reduction</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
         <div class="term-box"><strong>IIS (Internet Information Services):</strong> Microsoft's web server for Windows. Vulnerabilities include path parsing in IIS 6.0 (.asp; extension), ASP.NET view state exploitation, and default configuration weaknesses.</div>
         <div class="term-box"><strong>Apache Exploits:</strong> Includes .htaccess manipulation to execute PHP, mod_ssl heartbleed-like vulnerabilities, directory listing enabled by default, and misconfigured virtual hosts exposing sensitive files.</div>
         <div class="term-box"><strong>Directory Traversal:</strong> Using ../ sequences (or URL-encoded variants like %2e%2e%2f) to access files outside the web root. Can expose /etc/passwd, configuration files, and source code.</div>
@@ -82,9 +121,56 @@
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-12/">Module 12: Evading IDS, Firewalls &amp; Honeypots</a> — evasion techniques to reach web servers</li>
+            <li><a href="/ceh-v13/module-12/">Module 12: Evading IDS, Firewalls & Honeypots</a> — evasion techniques to reach web servers</li>
             <li><a href="/ceh-v13/module-14/">Module 14: Hacking Web Applications</a> — web server compromise often leads to application attacks</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is Web Server Hacking in Ethical Hacking?</h2>
+            <p>Web Server Hacking is a critical domain tested on the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers attacks against the web server platforms themselves — IIS, Apache HTTP Server, and nginx — rather than the applications running on top of them. Unlike Module 14 which focuses on application-level vulnerabilities (XSS, SQLi), Module 13 targets the server's own misconfigurations, parsing bugs, and protocol weaknesses. Web servers are the gateway to most internet-facing systems, making their compromise a high-priority attack objective. On the CEH v13 exam, questions related to Module 13 account for approximately 10% of total questions.</p>
+
+            <h2>Key Concepts in Hacking Web Servers</h2>
+            <ul>
+                <li><strong>IIS Path Parsing Vulnerability (.asp;.txt):</strong> In IIS 6.0, the server processes files from left to right, checking extensions against registered handlers. If an attacker names a file "evil.asp;.jpg", IIS 6.0 sees ".asp" first and executes it as ASP code, while the browser sends it as an image request. This bypasses upload restrictions that only block .asp/.aspx extensions. IIS 7.0 changed to right-to-left parsing, closing this specific vector. On the CEH exam, know that path parsing bugs are version-specific — the exam may ask which IIS version is vulnerable to which parsing order. The practical implication: never trust file extension filtering as your sole defense against script execution.</li>
+                <li><strong>Directory Traversal & URL Encoding Bypasses:</strong> Directory traversal uses "../" sequences to navigate outside the web document root and access arbitrary files on the server. Basic traversal: /page?file=../../../etc/passwd. When the server blocks literal "../", attackers use encoding bypasses: %2e%2e%2f (URL-encoded), ..%c0%af (UTF-8 overlong), ..%252e%252f (double URL encoding), or backslash variants (..\..\). The CEH exam tests whether you can identify which encoding variant defeats which filter. On the exam, know that proper defense requires server-side input validation that decodes and normalizes the path before file access — not just pattern-matching against raw input strings.</li>
+                <li><strong>HTTP TRACE Method & XST Attacks:</strong> The HTTP TRACE method echoes back the client's request exactly as received by the server, including headers. In a Cross-Site Tracing (XST) attack, an attacker hosts a JavaScript page that sends a cross-origin TRACE request to the victim's authenticated session. The server's response includes the Set-Cookie header containing the session token. Without SameSite cookie protection or CORS restrictions, the JavaScript can read this echoed response and exfiltrate the session ID. On the CEH exam, know that TRACE should be disabled on all production web servers (configured via AllowVerbs in IIS or Limit in Apache). The XST attack is specifically referenced in OWASP as a lesser-known but valid cookie theft vector.</li>
+                <li><strong>Web Server Hardening & Attack Surface Reduction:</strong> Defense strategy: (1) Remove all unnecessary modules and handlers — every loaded module is potential attack surface, (2) Disable dangerous HTTP methods (TRACE, PUT, DELETE, OPTIONS) on production servers, (3) Remove default pages and test files (default.php, server-status), (4) Configure proper file permissions so the web server user cannot read system files, (5) Disable directory listing (Options -Indexes in Apache, Directory Browsing in IIS), (6) Use a Web Application Firewall (WAF) as defense-in-depth, (7) Keep the server OS and web platform patched. On the CEH exam, know that hardening is an ongoing process — new vulnerabilities are discovered regularly in even well-maintained platforms like Apache 2.4.x.</li>
+            </ul>
+
+            <h2>Tools Used in Web Server Hacking</h2>
+            <p>Web server attack tools referenced on the CEH exam include <strong>Nmap + NSE scripts</strong> (vuln detection: http-put, http-trace, http-methods scripts test for dangerous method exposure; http-apache-negotiation-check tests mod_negotiation misconfigurations), <strong>Metasploit</strong> (web server-specific exploits: multiple iis_webserver vulnerabilities, apache mod_cgi exploits, nginx off-by-one overflow), <strong>Burp Suite</strong> (proxy that intercepts HTTP requests to test directory traversal by modifying path parameters, test dangerous methods via Repeater, and identify information disclosure in response headers like Server and X-Powered-By), <strong>DirBuster/DirSearch</strong> (directory brute-forcing tools that find hidden paths, backup files, and administrative interfaces not listed in navigation — e.g., /admin/, /backup/, /config.php.bak), and <strong>Wapiti</strong> (web application scanner specifically designed to detect server-level issues like directory traversal, CORS misconfiguration, and HTTP method exposure). On the CEH exam, know that DirBuster is the most commonly referenced tool for finding hidden web server paths during reconnaissance.</p>
+
+            <h2>How to Study Web Server Hacking for the CEH v13 Exam</h2>
+            <p>To effectively study Module 13 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Create a comparison table: Web Server (IIS/Apache/nginx) | Common Vulnerability | CVE Example | Attack Vector | Defense. The exam frequently asks you to match a vulnerability to the specific server platform and explain the exploit mechanism — e.g., "Which web server is vulnerable to the .asp;.txt path parsing bug?" (Answer: IIS 6.0)</li>
+                <li>Hands-on exercise: Set up a vulnerable web server VM (Metasploitable or OWASP WebGoat). Use DirBuster to discover hidden directories, use Burp Suite Repeater to test TRACE/PUT methods, and attempt directory traversal on parameterized URLs. Document which attacks succeed against default configurations and what configuration changes block them — this directly maps to exam questions about hardening</li>
+                <li>Memorize the specific encoding bypasses for directory traversal: %2e%2e%2f (single URL encoding), ..%c0%af (UTF-8 overlong null), ..%252e%252f (double encoding), and backslash (..\) variants. The exam may present an attack string and ask which filter it defeats</li>
+                <li>Review related modules: <a href="/ceh-v13/module-14/" style="color:var(--accent)">Module 14 (Web Application Hacking)</a> for application-level attacks that follow server compromise, and <a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5 (Vulnerability Analysis)</a> for the scanning techniques that identify web server version and configuration</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About Web Server Hacking</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">How do you determine which web server a target is running?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">Several techniques reveal the web server platform during reconnaissance: (1) HTTP response headers — the Server header often reveals the platform and version (e.g., "Server: Microsoft-IIS/7.5", "Server: Apache/2.4.41 (Ubuntu)", "Server: nginx/1.18.0"), though many administrators suppress this via hardening; (2) Error pages — unhandled errors often display server-specific error pages with version information (IIS blue screen, Apache error page, nginx 50x page); (3) File extensions in URLs — .asp/.aspx indicate IIS with ASP.NET, .php suggests Apache or nginx with PHP-FPM, .do/.action suggest Java application servers; (4) Default paths — /iissamples/ indicates IIS, /server-status indicates Apache, /nginx_status indicates nginx; (5) Nmap version detection (-sV flag) and NSE scripts specifically designed for web server fingerprinting. On the CEH exam, know that header analysis is the fastest method but unreliable if the administrator has hardened the server — error page analysis is the fallback when headers are suppressed.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">Why are unnecessary web server modules a security risk?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">Each loaded web server module increases the attack surface — more code running in the server's memory means more potential vulnerabilities to exploit. Examples: Apache's mod_php loads PHP as a library within Apache (vs PHP-FPM which runs it separately) — a PHP memory corruption bug can crash or compromise Apache itself. Apache's mod_negotiation enables content negotiation based on client Accept headers — misconfigured, it allows directory listing and file access via partial filename matching. IIS's ASP.NET handlers process all .aspx requests — if the application has an insecure ViewState configuration, an attacker can forge server authentication state. The principle: if your application doesn't use a module, disable it. On the CEH exam, know that the OWASP Top 10 references "Security Misconfiguration" (A05) which specifically includes running with default settings and unnecessary modules enabled. The defense is to maintain a documented baseline of required modules and periodically audit the running configuration against it.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-14/" style="color:var(--accent)">Module 14: Hacking Web Applications</a> — Once a web server is compromised, attackers often pivot to application-level attacks. Module 14 covers OWASP Top 10 vulnerabilities (SQLi, XSS, CSRF) that operate at the application layer above the web server platform. Understanding both modules together provides complete coverage of the web attack stack: server → application → data</li>
+                <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: Vulnerability Analysis</a> — Web server vulnerabilities are typically discovered through automated scanning tools (Nessus, OpenVAS) that check for known CVEs in specific IIS/Apache/nginx versions. Module 5 covers the vulnerability assessment methodology and tool configuration needed to identify these platform-specific weaknesses during a penetration test</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->
