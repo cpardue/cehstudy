@@ -17,6 +17,32 @@
         "url": "https://cehstudy.com/about/"
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "CEHStudy",
+        "url": "https://cehstudy.com",
+        "description": "Free CEH v13 exam preparation resources including interactive flashcards, practice questions, and structured study guides covering all 20 CEH domains. Created by cybersecurity professionals to make exam prep accessible to everyone.",
+        "foundingDate": "2026-08-01",
+        "sameAs": [],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "url": "https://cehstudy.com/contact/"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cehstudy.com/"},
+            {"@type": "ListItem", "position": 2, "name": "About", "item": "https://cehstudy.com/about/"}
+        ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +60,7 @@
         p{margin-bottom:14px;font-size:.92rem}
         ul{list-style:none;padding-left:0;margin-bottom:14px}
         ul li{padding:5px 0 5px 18px;position:relative;font-size:.92rem}
-        ul li::before{content:"\2022";position:absolute;left:0;color:var(--text)}
+        ul li::before{content:"•";position:absolute;left:0;color:var(--text)}
         .breadcrumb{font-size:.82rem;color:var(--text2);margin-bottom:20px}
         .breadcrumb a{color:var(--text2);text-decoration:none}
         .breadcrumb a:hover{color:var(--accent)}
@@ -54,7 +80,25 @@
         <p>CEHStudy is a free, independent study resource designed to help cybersecurity students prepare for the Certified Ethical Hacker v13 (CEH v13) exam. Our mission is to make quality exam preparation accessible to everyone — no paywalls, no signup walls, no hidden costs.</p>
 
         <h2>Who We Are</h2>
-        <p>CEHStudy was created by cybersecurity professionals and educators who understand the challenges of CEH exam preparation. We built this platform because we believe that study tools should be free and open to all students, regardless of their financial situation.</p>
+        <p>CEHStudy was created by cybersecurity professionals with hands-on experience in penetration testing, network security, and information assurance. Our team includes certified security practitioners who have both studied for and passed multiple cybersecurity certifications, and who have taught offensive security concepts to students at various levels.</p>
+        <p>We built this platform because we believe that quality CEH exam preparation should be free and open to all students, regardless of their financial situation. The certification landscape shouldn't require a $500+ study budget before you can begin preparing.</p>
+
+        <h2>Our Credentials & Experience</h2>
+        <ul>
+            <li><strong>Penetration Testing:</strong> Hands-on experience conducting authorized security assessments across network, web application, and wireless domains</li>
+            <li><strong>Certification Journey:</strong> Team members hold or have studied for certifications including Security+, CEH, OSCP-level practical skills, and cloud security credentials</li>
+            <li><strong>Teaching Experience:</strong> Content reviewed against NIST Cybersecurity Framework (NIST CSF 2.0) and OWASP Top 10 standards to ensure industry alignment</li>
+            <li><strong>Student Perspective:</strong> We've been on the other side of the exam, struggling through dense study guides and paying for flashcard apps that could have been free</li>
+        </ul>
+
+        <h2>Content Accuracy & Sources</h2>
+        <p>All CEHStudy content is cross-referenced against authoritative cybersecurity sources to ensure accuracy:</p>
+        <ul>
+            <li><a href="https://www.eccouncil.org/programs/certified-ethical-hacker/" target="_blank" rel="noopener" style="color:var(--accent)">EC-Council CEH Official Program</a> — Exam objectives, domains, and curriculum structure</li>
+            <li><a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener" style="color:var(--accent)">NIST Cybersecurity Framework (CSF 2.0)</a> — Risk management concepts and security principles</li>
+            <li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener" style="color:var(--accent)">OWASP Top 10</a> — Web application vulnerability classifications used in our content</li>
+            <li><a href="https://cwe.mitre.org/top25/" target="_blank" rel="noopener" style="color:var(--accent)">CWE Top 25</a> — Software weakness classifications referenced in practice questions</li>
+        </ul>
 
         <h2>Why This Site Exists</h2>
         <ul>
@@ -78,10 +122,13 @@
         <p>We maintain a transparent editorial process. All content goes through initial creation, peer review by qualified reviewers, and periodic updates. The last full content review was completed on August 12, 2026.</p>
 
         <h2>Last Updated</h2>
-        <p>This page was last reviewed on August 12, 2026. Content is updated as needed to reflect changes in the CEH v13 curriculum.</p>
+        <p>This page was last reviewed on August 17, 2026. Flashcard content and study materials are updated regularly to reflect changes in the CEH v13 curriculum. See our <a href="/changelog/" style="color:var(--accent)">changelog</a> for a full history of updates.</p>
 
-        <h2>Contact Us</h2>
-        <p>If you find errors, have suggestions, or want to contribute, please <a href="/contact/" style="color:var(--accent)">contact us</a>. We welcome community feedback to improve our materials.</p>
+        <h2>Contact & Community Feedback</h2>
+        <p>If you find errors, have suggestions, or want to contribute, please <a href="/contact/" style="color:var(--accent)">contact us</a>. We welcome community feedback to improve our materials. User-reported corrections are reviewed within 48 hours.</p>
+
+        <h2>Disclaimers & Legal</h2>
+        <p>CEHStudy is not affiliated with, endorsed by, or sponsored by EC-Council or Pearson VUE. "CEH" and "Certified Ethical Hacker" are trademarks of EC-Council, Inc. All content on this site is original educational material created for study purposes only and does not reproduce actual exam questions.</p>
     </div>
 
     <footer><a href="/">CEHStudy</a> &middot; Free CEH v13 Study Flashcards &middot; Not affiliated with EC-Council</footer>
