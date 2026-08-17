@@ -46,24 +46,9 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://cehstudy.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "CEH v13 Modules",
-        "item": "https://cehstudy.com/ceh-v13/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Study Guide",
-        "item": "https://cehstudy.com/ceh-v13-study-guide/"
-      }
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cehstudy.com/"},
+      {"@type": "ListItem", "position": 2, "name": "CEH v13 Modules", "item": "https://cehstudy.com/ceh-v13/"},
+      {"@type": "ListItem", "position": 3, "name": "Study Guide", "item": "https://cehstudy.com/ceh-v13-study-guide/"}
     ]
   }
   </script>
@@ -123,7 +108,7 @@
     <li><strong>Delivery:</strong> Pearson VUE test centers or online proctoring</li>
   </ul>
 
-  <h2 class="section-heading">CEH v13 Exam Topics Overview — All Domains Covered</h2>
+  <h2 class="section-heading">CEH v13 Exam Topics Overview — All Domets Covered</h2>
 
   <p class="content-text">The CEH v13 exam covers the following domains. Each domain maps to one or more of our free flashcard modules below. Use this roadmap to plan your study schedule and allocate time proportionally to each domain's weight on the exam.</p>
 
@@ -214,7 +199,7 @@
 
   <h2 class="section-heading">Recommended CEH Study Schedule — 6-Week Plan</h2>
 
-  <p class="content-text">This 6-week free CEH study plan assumes 10–15 hours of study per week. Adjust based on your background, experience level, and target exam date. Combine this schedule with our free flashcards and practice questions for best results.</p>
+  <p class="content-text">This 6-week free CEH v13 study plan is structured around the official EC-Council exam blueprint, allocating study time proportionally to each domain's weight on the exam. The plan assumes 10–15 hours of focused study per week and adjusts based on your background, experience level, and target exam date. Each week builds on the previous one: Week 1 establishes foundational knowledge in ethical hacking principles and reconnaissance, Weeks 2-3 cover the highest-weighted domains (Scanning at 20% and Vulnerability Analysis), Week 4 addresses web and network attack vectors, Week 5 tackles emerging domains including IoT, OT, and cloud security, and Week 6 is dedicated to comprehensive review and practice testing. Combine this structured CEH study schedule with our free flashcards and practice questions for the most efficient path to exam readiness.</p>
 
   <table class="schedule-table">
     <thead>
@@ -235,11 +220,21 @@
     <p>Don't rush through Modules 02 and 03 — Footprinting & Reconnaissance and Scanning together account for 35% of the exam. Spend extra time on reconnaissance tools (TheHarvester, Maltego, Shodan, WHOIS), scanning commands (Nmap flags), and port numbers. These topics alone determine pass/fail for many candidates.</p>
   </div>
 
+  <h2 class="section-heading">Sources & References</h2>
+  <p class="content-text">This CEH v13 study guide draws on the following authoritative sources for exam objectives, domain weightings, and cybersecurity best practices:</p>
+  <ul class="content-list">
+    <li><a href="https://www.eccouncil.org/programs/certified-ethical-hacker/" target="_blank" rel="noopener">EC-Council Certified Ethical Hacker Official Program</a> — Exam blueprint, objectives, and certification requirements</li>
+    <li><a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener">NIST Cybersecurity Framework</a> — Risk management framework referenced in CEH study materials</li>
+    <li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10</a> — Web application security risks covered in CEH modules 13-15</li>
+    <li><a href="https://cwe.mitre.org/top25/" target="_blank" rel="noopener">CWE Top 25 Most Dangerous Software Weaknesses</a> — Common weakness enumeration used in vulnerability analysis</li>
+    <li><a href="/ceh-exam-domains/" target="_blank" rel="noopener">CEH v13 Exam Domains & Blueprint Breakdown</a> — Our detailed domain-by-domain study reference</li>
+  </ul>
+
   <h2 class="section-heading">CEH Study Tips from Experienced Test Takers</h2>
 
   <ol class="content-list">
     <li><strong>Memorize port numbers cold</strong> — Common ports (21 FTP, 22 SSH, 23 Telnet, 25 SMTP, 53 DNS, 80 HTTP, 443 HTTPS, 445 SMB, 3389 RDP) and their associated services appear on every CEH exam</li>
-    <li><strong>Understand scan types inside out</strong> — Know the difference between TCP connect (-sT), SYN stealth (-sS), FIN (-sF), XMAS (-sX), and NULL (-sN) scans cold. Nmap is the most tested tool on the exam</li>
+    <li><strong>Understand scan types inside out</strong> — Know the difference between TCP connect ( -sT), SYN stealth (-sS), FIN (-sF), XMAS (-sX), and NULL (-sN) scans cold. Nmap is the most tested tool on the exam</li>
     <li><strong>Learn tool flags and commands</strong> — Nmap switches (-sS, -sV, -O, -A, -p), Metasploit modules (auxiliary, exploit, payload), Wireshark display filters</li>
     <li><strong>Cryptography basics are essential</strong> — Symmetric vs asymmetric algorithms (AES, RSA), hash functions (MD5, SHA-256), digital signatures, PKI infrastructure</li>
     <li><strong>Think like an attacker</strong> — CEH tests offensive mindset; practice thinking about how vulnerabilities chain together from footprinting through post-exploitation</li>
