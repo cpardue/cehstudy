@@ -1,0 +1,38 @@
+# CEHStudy
+Free CEH v13 exam preparation resources: interactive flashcards, practice questions, and structured study guides covering all 20 CEH domains. No signup required.
+
+## Study Resources
+- /ceh-v13-study-guide/: 6-week structured CEH v13 study plan
+- /ceh-practice-questions/: Practice exam questions with explanations
+- /glossary/: Key cybersecurity terminology definitions
+
+## Module Flashcards (all 20 CEH v13 domains)
+- /ceh-v13/module-01/: Introduction to Ethical Hacking
+- /ceh-v13/module-02/: Footprinting and Reconnaissance
+- /ceh-v13/module-03/: Scanning Networks
+- /ceh-v13/module-04/: Enumeration
+- /ceh-v13/module-05/: Vulnerability Analysis
+- /ceh-v13/module-06/: System Hacking
+- /ceh-v13/module-07/: Malware Threats
+- /ceh-v13/module-08/: Sniffing and Traffic Analysis
+- /ceh-v13/module-09/: Social Engineering
+- /ceh-v13/module-10/: Denial of Service
+- /ceh-v13/module-11/: Session Hijacking
+- /ceh-v13/module-12/: Evading IDS, Firewalls and Honeypots
+- /ceh-v13/module-13/: Hacking Web Servers
+- /ceh-v13/module-14/: Hacking Web Applications
+- /ceh-v13/module-15/: SQL Injection Attacks
+- /ceh-v13/module-16/: Attacking Wireless Networks
+- /ceh-v13/module-17/: Hacking Mobile Platforms
+- /ceh-v13/module-18/: IoT and OT Hacking
+- /ceh-v13/module-19/: Cloud Computing Cybersecurity
+- /ceh-v13/module-20/: Cryptography and Physical Security
+
+## High-Intent Pages
+- /ceh-exam-registration/: How to register for the CEH v13 exam
+- /ceh-comparison/: CEH vs Security+ vs CISSP comparison
+- /ceh-study-plan/: Detailed 6-week study plan
+- /ceh-exam-domains/: CEH v13 exam domains and blueprint breakdown
+
+## About
+CEHStudy is a free educational resource. Not affiliated with EC-Council.
