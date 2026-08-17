@@ -240,7 +240,7 @@
         fcTitle.innerHTML = card.q;
         fcInfo.innerHTML = card.a;
         fcCounter.textContent = `${currentIndex + 1} / ${allCards.length}`;
-        fcHint.textContent = 'Click answer to reveal - Arrow keys or swipe to navigate';
+        fcHint.textContent = 'Review Cards - Arrow keys or swipe to navigate';
 
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex === allCards.length - 1;
@@ -374,7 +374,7 @@
                 }
             }, { passive: true });
 
-            fcCard.addEventListener('click', () => { markReviewed(); });
+            fcCard.addEventListener('click', () => { showNextCard(); markReviewed(); });
         }
 
         // Stats dashboard toggle
