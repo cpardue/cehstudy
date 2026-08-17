@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 19: Attacks on OT and ICS — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 19 OT/ICS attacks flashcards: SCADA security, industrial control systems, supply chain attacks. Free study resources.">
+    <title>CEH v13 Module 19: Post-Exploitation & Incident Response — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 19: Post-Exploitation & IR — Free study guide with flashcards covering persistence mechanisms, privilege escalation, anti-forensics, data exfiltration, NIST/SANS IR lifecycle, and digital forensics. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-19/">
 
@@ -13,22 +13,61 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 19: Attacks on OT and ICS — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 19 covering SCADA security, industrial control systems, and supply chain attacks.",
+        "name": "CEH v13 Module 19: Post-Exploitation & Incident Response — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 19 covering persistence mechanisms, privilege escalation, log clearing, data exfiltration, IR lifecycle (NIST/SANS), and digital forensics.",
         "url": "https://cehstudy.com/ceh-v13/module-19/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 19: Attacks on OT and ICS", "item": "https://cehstudy.com/ceh-v13/module-19/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 19: Post-Exploitation & Incident Response", "item": "https://cehstudy.com/ceh-v13/module-19/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Attacks on OT and ICS",
+            "name": "Post-Exploitation & Incident Response",
             "termCode": "CEH-M19",
-            "description": "Operational Technology and Industrial Control System attacks including SCADA security, ICS vulnerabilities, and supply chain attacks."
+            "description": "Post-exploitation techniques (persistence, privilege escalation, log clearing, data exfiltration) and incident response lifecycle (NIST/SANS), digital forensics fundamentals, and recovery procedures."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 19: Post-Exploitation & Incident Response?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 19 covers the final stages of a penetration test (post-exploitation) and the defender's response framework. From the attacker's perspective: establishing persistence (registry Run keys, Windows services, scheduled tasks, WMI event subscriptions, bootkits/rootkits), privilege escalation (kernel exploits, misconfigurations, token manipulation using WinPEAS/LinPEAS), anti-forensics and log clearing (wevtutil, Clear-EventLog, auditctl), and data exfiltration (DNS tunneling, HTTP/S POST, covert channels). From the defender's perspective: the NIST Incident Response lifecycle (Preparation → Detection & Analysis → Containment & Eradication → Recovery → Post-Incident Activity), digital forensics fundamentals including chain of custody and evidence collection, and system recovery procedures. This domain accounts for approximately 8% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between NIST and SANS incident response frameworks on the CEH exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Both frameworks describe phases of incident response but differ in structure. NIST SP 800-61r2 framework has 4 phases: (1) Preparation — policies, tools, training, communication plans; (2) Detection & Analysis — identifying that an incident occurred, triaging severity, collecting initial evidence; (3) Containment, Eradication & Recovery — short-term containment (isolate affected systems), long-term containment (patch vulnerabilities), eradication (remove attacker artifacts), and recovery (restore systems to operational state with monitoring); (4) Post-Incident Activity — lessons learned, reporting, updating IR plan. The SANS PICERL model has 6 phases: Preparation → Identification → Containment → Eradication → Recovery → Lessons Learned. On the CEH exam, know that NIST is the more commonly referenced framework in US government contexts (federal agencies must use it), while SANS is widely used in private sector and is slightly more granular in separating identification from detection. The key exam distinction: NIST combines Detection & Analysis into one phase, while SANS has Identification as its own phase. Both emphasize that Preparation is the most critical phase — organizations without prepared IR plans take 3-4x longer to respond to incidents."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 19: Post-Exploitation & Incident Response Study Guide",
+        "description": "Free study materials for CEH v13 Module 19 covering persistence mechanisms, privilege escalation techniques, anti-forensics and log clearing, data exfiltration methods, NIST/SANS incident response lifecycle, digital forensics with chain of custody, and system recovery procedures. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "Windows/Linux Persistence Mechanisms, Privilege Escalation with WinPEAS and LinPEAS, Anti-Forensics and Log Clearing Detection, Data Exfiltration and Covert Channels, NIST/SANS Incident Response Lifecycle, Digital Forensics and Chain of Custody"
     }
     </script>
 
@@ -43,42 +82,98 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=19" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 19 Flashcards</a>
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 19: Attacks on OT and ICS</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 19: Post-Exploitation & Incident Response</nav>
 
-        <h1 class="page-title">CEH v13 Module 19: Attacks on OT and ICS</h1>
-        <p class="content-text">This module covers Operational Technology (OT) and Industrial Control System (ICS) attacks. Topics include SCADA security, ICS architecture, Stuxnet, supply chain attacks, zero trust architecture, and physical security hacking.</p>
+        <h1 class="page-title">CEH v13 Module 19: Post-Exploitation & Incident Response</h1>
+        <p class="content-text">This module covers what happens after initial compromise — both from the attacker's perspective (persistence, privilege escalation, log clearing, data exfiltration) and the defender's perspective (incident response lifecycle, forensic investigation, recovery procedures). Understanding both sides is critical for ethical hackers.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>ICS/SCADA architecture: PLCs, RTUs, HMI, DCS</li>
-            <li>Stuxnet analysis: first cyber weapon, USB传播, PLC targeting</li>
-            <li>Supply chain attacks: SolarWinds, code repository compromises</li>
-            <li>Zero trust architecture for OT environments</li>
-            <li>Physical security hacking: locks, access control systems</li>
+            <li>Persistence mechanisms: registry keys, scheduled tasks, services, startup folders</li>
+            <li>Privilege escalation: local exploits, misconfigurations, token manipulation</li>
+            <li>Log clearing and anti-forensics techniques</li>
+            <li>Data exfiltration methods and covert channels</li>
+            <li>Incident Response lifecycle (NIST/SANS frameworks)</li>
+            <li>Digital forensics fundamentals and chain of custody</li>
+            <li>System recovery and hardening after compromise</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Stuxnet:</strong> First known cyber weapon targeting industrial SCADA. Spread via USB, exploited 4 zero-days. Targeted Siemens PLCs controlling uranium centrifuges. Discovered 2010.</div>
-        <div class="term-box"><strong>Zero Trust:</strong> Never trust, always verify. Applies to OT/ICS — microsegmentation, least privilege, continuous monitoring for industrial networks.</div>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>Persistence:</strong> Maintaining access after reboot or credential changes. Methods: registry Run keys, Windows Services, scheduled tasks, WMI event subscriptions, bootkits/rootkits.</div>
+        <div class="term-box"><strong>Privilege Escalation:</strong> Moving from standard user to administrator/root. Vertical escalation (higher privileges) vs horizontal escalation (different user). Tools: Mimikatz, WinPEAS, LinPEAS.</div>
+        <div class="term-box"><strong>Log Clearing:</strong> Deleting or modifying event logs, firewall logs, and application logs to cover tracks. Windows: `wevtutil`, `Clear-EventLog`. Linux: `auditctl -C`, log rotation.</div>
+        <div class="term-box"><strong>Data Exfiltration:</strong> Transferring stolen data out of the network. Methods: DNS tunneling, HTTP/S POST, FTP, cloud storage upload, email, ICMP tunneling, covert channels.</div>
+        <div class="term-box"><strong>Incident Response Lifecycle (NIST):</strong> 1) Preparation → 2) Detection & Analysis → 3) Containment & Eradication → 4) Recovery → 5) Post-Incident Activity.</div>
+        <div class="term-box"><strong>Chain of Custody:</strong> Documented record of evidence handling from collection to presentation. Critical for legal admissibility. Includes who collected, when, where, and how evidence was stored/transferred.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Understand ICS/SCADA architecture layers</li>
-            <li>Know Stuxnet attack chain</li>
-            <li>Learn supply chain attack techniques</li>
+            <li>Memorize the Incident Response lifecycle phases and key activities in each</li>
+            <li>Know common persistence mechanisms on Windows and Linux</li>
+            <li>Understand privilege escalation techniques (local exploits, misconfigurations)</li>
+            <li>Learn anti-forensics methods and how to detect them</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What makes ICS security different from IT?</strong><br>ICS prioritizes safety and availability over confidentiality. Downtime can be catastrophic (power plants, water treatment). Patching is harder due to 24/7 operation requirements.</p>
+        <p><strong>What is the first step in incident response?</strong><br>Preparation — having tools, policies, and trained personnel ready before an incident occurs. Once an incident happens, Detection & Analysis is the first active phase.</p>
+        <p><strong>How do ethical hackers use this knowledge?</strong><br>To test persistence mechanisms, verify privilege escalation paths, check if logs are properly configured, and assess incident response readiness through red team exercises.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-18/" style="color:var(--accent)">Module 18: Mobile Attacks</a> — mobile used for ICS management</li>
-            <li><a href="/ceh-v13/module-20/" style="color:var(--accent)">Module 20: Security Operations</a> — SOC monitoring for ICS</li>
+            <li><a href="/ceh-v13/module-05/">Module 5: System Hacking</a> — initial compromise techniques</li>
+            <li><a href="/ceh-v13/module-18/">Module 18: Lateral Movement</a> — moves through network after exploitation</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is Post-Exploitation and Incident Response in Ethical Hacking?</h2>
+            <p>Post-Exploitation & Incident Response (Module 19) is a dual-perspective domain on the Certified Ethical Hacker v13 (CEH v13) exam. The post-exploitation side covers what an attacker does after gaining access: establishing persistence to maintain long-term access, escalating privileges to reach administrative control, covering their tracks through anti-forensics, and exfiltrating stolen data from the environment. The incident response side covers how defenders detect, contain, and recover from such attacks using structured frameworks (NIST SP 800-61, SANS PICERL). Understanding both perspectives is what makes a CEH-certified professional valuable — you must know how attackers operate to build effective defenses. On the CEH v13 exam, questions related to Module 19 account for approximately 8% of total questions.</p>
+
+            <h2>Key Concepts in Post-Exploitation & IR</h2>
+            <ul>
+                <li><strong>Persistence Mechanisms — Maintaining Access:</strong> Persistence ensures the attacker's access survives reboots, credential resets, and even system reimages. The CEH exam tests knowledge of these specific techniques: (1) Registry Run keys — HKLM\Software\Microsoft\Windows\CurrentVersion\Run (executes at user logon); (2) Windows Services — creating a new service pointing to malicious binary (sc.exe create / sc.exe start); (3) Scheduled Tasks — task scheduler entries that run at specific times or trigger conditions; (4) WMI Event Subscriptions — persistent triggers in the WMI repository that execute code when specific events occur (e.g., process start, user logon); (5) Bootkits/Rootkits — firmware-level persistence that survives OS reinstallation (UEFI bootkits like LoJax); (6) Linux persistence — .bashrc/.profile modifications, cron jobs, systemd units, PAM backdoors. On the CEH exam, know that WMI event subscriptions are among the most stealthy persistence mechanisms because they leave minimal filesystem artifacts and can trigger on legitimate system events. Detection: review scheduled tasks, services with unusual paths or startup types, WMI event filters, and compare running processes against known-good baselines.</li>
+                <li><strong>Privilege Escalation — Local Exploitation Path:</strong> Privilege escalation moves from initial access (typically standard user) to administrative/root control. The CEH exam covers: (1) Kernel exploits — CVE-based exploits that escalate via kernel vulnerabilities (e.g., CVE-2021-34527 PrintSpoofer on Windows, dirty pipe/dirty cred on Linux); (2) Misconfiguration abuse — services with write permissions allowing binary replacement, unquoted service paths, token manipulation; (3) Credential harvesting for local use — stored credentials in registry, password files, service accounts running at high privilege; (4) Token/impersonation attacks — duplicating a token of a higher-privileged process (Mimikatz privilege::debug + token::steal); (5) SUID/SGID binary exploitation on Linux — finding binaries with setuid bit that can be exploited for root. Tools: WinPEAS (Windows Privilege Escalation Awesome Script — automated enumeration of all escalation paths), LinPEAS (Linux equivalent), Metasploit's local_exploit_suggester module. On the CEH exam, know that WinPEAS/LinPEAS are enumeration tools (they identify potential paths) rather than exploitation tools — you still need to apply the appropriate exploit after identification.</li>
+                <li><strong>Anti-Forensics & Log Clearing:</strong> Attackers use anti-forensics to prevent defenders from understanding what happened. Techniques tested on CEH: (1) Windows Event Log clearing — wevtutil cl Security / Clear-EventLog Security (this action itself generates a log event: Event ID 1102 "The audit log was cleared"); (2) Linux log manipulation — /var/log/auth.log deletion, auditctl -C (flush audit buffers), modifying /etc/wtmp and /etc/btmp (login records); (3) Timestamp manipulation — modifying file metadata to appear recently created (touch command on Linux, PowerShell on Windows); (4) Timestomping — setting file creation/modification times to match legitimate activity; (5) Memory clearing — zeroing RAM before shutdown to prevent memory forensics. On the CEH exam, know that log clearing is self-detecting in well-configured environments: if logs are forwarded to a central SIEM before clearing, the deletion attempt is captured. The key detection signal: Event ID 1102 (log cleared) combined with Event ID 4688 (process creation showing wevtutil or cmd.exe running clear commands). Best defense: ship logs to immutable storage (SIEM, cloud WORM storage) so they cannot be modified at the source.</li>
+                <li><strong>Data Exfiltration & Covert Channels:</strong> Data exfiltration is the final step where stolen data leaves the compromised environment. Methods tested on CEH: (1) DNS tunneling — encoding data into DNS query names (e.g., base32-encoded data as subdomain labels) — bypasses many egress firewalls because DNS (port 53) is rarely filtered; tools: dnscat, iodine; (2) HTTP/S POST — uploading to attacker-controlled server via web requests — most common method in real attacks; (3) Covert channels — hiding data in protocol fields that aren't normally inspected (ICMP payload, TCP timestamp field, DNS TXT records); (4) Cloud storage — uploading to public services (pastebin, cloud storage, image hosting) to avoid pattern-based detection; (5) Email exfiltration — sending data via email to attacker-controlled mailbox, often in compressed/encrypted attachments. On the CEH exam, know that DNS tunneling is the most commonly tested covert channel because it exploits the assumption that DNS traffic is trusted infrastructure. Detection: monitoring for unusually high DNS query volume from a single host, abnormally long subdomain labels (suggesting encoded data), and DNS queries to domains with high entropy (random-looking names). Network egress filtering should block direct outbound DNS to public resolvers from internal hosts (force use of internal recursive DNS with logging).</li>
+            </ul>
+
+            <h2>Tools Used in Post-Exploitation & IR</h2>
+            <p>Post-exploitation and incident response tools referenced on the CEH exam include <strong>Mimikatz</strong> (post-exploitation Swiss army knife: privilege::debug for token manipulation, token::steal for impersonation, lsadump::sam/lsadump::dcsync for offline credential extraction, and sekurlsa module for live memory dumping), <strong>WinPEAS/LinPEAS</strong> (automated local privilege escalation enumeration scripts: WinPEAS checks for kernel exploits applicable to current OS version, unquoted service paths, weak file permissions, stored credentials in registry/services/IIS config; LinPEAS checks SUID binaries, sudo misconfigurations, writable /etc/passwd, kernel CVE applicability), <strong>Cobalt Strike</strong> (post-exploitation framework: built-in persistence modules for services/tasks/WMI, privilege escalation modules calling Windows API directly, data exfiltration via beacon's malleable profiles, and report generation for pentest deliverables), <strong>Autoruns (Sysinternals)</strong> (Microsoft's definitive persistence enumeration tool — shows ALL auto-starting programs, services, drivers, scheduled tasks, WMI subscriptions, browser extensions, and other persistence locations in a single view; used by both attackers to verify their implants and defenders to detect unauthorized persistence), <strong>Autopsy</strong> (open-source digital forensics platform for examining disk images: file system analysis, keyword search, email recovery, web history extraction, and artifact correlation), and <strong>FTK (Forensic Toolkit)</strong> (commercial forensic examination tool used in legal investigations — evidence ingestion, timeline analysis, network flow reconstruction, and report generation for court presentation). On the CEH exam, know that Autoruns is the primary tool associated with persistence detection while Autopsy is associated with digital forensics on disk images.</p>
+
+            <h2>How to Study Post-Exploitation & IR for the CEH v13 Exam</h2>
+            <p>To effectively study Module 19 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Create a persistence comparison table: Mechanism | Location (registry path/file path) | Trigger (logon/reboot/scheduled/event) | Survives Reboot? | Survives Credential Reset? | Detection Method. The exam frequently asks which persistence mechanism survives specific remediation actions — e.g., "Which mechanism survives a password reset?" (Answer: services pointing to files, WMI subscriptions, bootkits — NOT registry Run keys if the user profile is reset, NOT scheduled tasks for that specific user)</li>
+                <li>Hands-on exercise: On a Windows VM, use WinPEAS to enumerate privilege escalation paths. Document what it finds: applicable kernel exploits, service misconfigurations, and credential storage locations. Then use Autoruns to catalog all persistence locations. For the IR side: practice writing an incident report using the NIST framework structure — describe a simulated breach through each phase (Preparation: what should have been in place; Detection: what alerts fired; Containment: what systems were isolated; Recovery: what was rebuilt; Post-Incident: what was learned)</li>
+                <li>Memorize the NIST SP 800-61r2 phases and key activities: Preparation (IR plan, tools, training, communication) → Detection & Analysis (identify, triage, collect evidence) → Containment/Eradication/Recovery (short-term isolation, remove root cause, restore from clean media) → Post-Incident (lessons learned report, update IR plan). Know that the SANS model (PICERL) separates Identification from Preparation and adds Lessons Learned as a distinct final phase. The exam may ask you to identify which phase a given activity belongs to</li>
+                <li>Review related modules: <a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5 (System Hacking)</a> for the initial access techniques that lead to post-exploitation activities, and <a href="/ceh-v13/module-18/" style="color:var(--accent)">Module 18 (Lateral Movement)</a> for how persistence and privilege escalation enable network-wide movement. On the CEH exam, know the complete attack lifecycle: Reconnaissance → Initial Access (Module 5) → Privilege Escalation (Module 19) → Lateral Movement (Module 18) → Objectives (Exfiltration/Ransomware from Module 19) → Cover Tracks (Anti-forensics from Module 19)</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About Post-Exploitation & IR</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is a WMI event subscription and why is it significant for persistence detection?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">A WMI (Windows Management Instrumentation) event subscription is a persistent trigger that executes code when a specific system event occurs, without creating a file on disk or appearing in standard process monitoring. The attacker uses the WMIC command or PowerShell to create three components: (1) An Event Filter — defines what triggers execution (e.g., __TimerFilter for periodic execution, __EventFilter for process start); (2) A Consumer — defines what executes (CommandLineEventConsumer running a binary, or ActiveScriptEventConsumer running code); (3) A Binding — connects the filter to the consumer. Example: wmic /namespace:\\root\\subscription create __EventFilter name="f" QueryLanguage="WQL" Query="SELECT * FROM __TimerFilter WITHIN 60". On the CEH exam, know that WMI event subscriptions are significant because: (1) They leave minimal filesystem artifacts (no dropped executable needed if using existing binaries like cmd.exe or powershell.exe); (2) They persist across reboots automatically; (3) They are not visible in standard Task Manager or Services.msc — you must specifically query WMI repository (Get-WmiObject -Namespace root/subscription) or use Autoruns' "WMI" tab. Detection: enumerate all event filters, consumers, and bindings in WMI subscription namespace and compare against a known-good baseline. The practical implication: if a defender only checks services and registry Run keys for persistence, they will miss WMI-based implants entirely.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is chain of custody and why is it critical in digital forensics?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">Chain of custody is the documented, unbroken record of who handled digital evidence from the moment it was collected until it is presented in court (or used in an investigation). It includes: (1) Date/time of collection; (2) Name and credentials of collector; (3) Location where evidence was found; (4) Description of evidence (make, model, serial number, IP address, hash value); (5) Each transfer — who received it, when, why, and how it was stored/transferred; (6) Storage conditions (forensic write-blocker used? Evidence bag sealed? Hash verified at each transfer?); (7) Final disposition. On the CEH exam, know that chain of custody is critical because: (1) Legal admissibility — without proper chain of custody, evidence can be excluded from court proceedings; (2) Integrity verification — hash values (MD5/SHA-256) calculated at collection and verified at each transfer prove the evidence was not modified; (3) Accountability — every person who touched the evidence is documented, preventing tampering. The standard process: photograph evidence in situ → connect through write-blocker → create forensic image (dd, FTK Imager, or X-Ways) → calculate hash of original and image → seal original in anti-static bag with evidence label → store in evidence locker with restricted access. On the CEH exam, know that the forensic write-blocker is the single most important piece of equipment — it prevents any modification to the original media during imaging, which is what makes the copy admissible as a true representation of the original.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: System Hacking</a> — Post-exploitation (Module 19) is the natural continuation of initial compromise in Module 5. After exploiting a vulnerability to gain code execution on a target system, the attacker's immediate next steps are: establish persistence (so access survives reboot), escalate privileges (to reach admin/root), and then either exfiltrate data or use the system for further attacks. Module 19 covers all three of these post-compromise activities. On the CEH exam, know that the transition from initial compromise to post-exploitation is where the penetration test's real value lies — finding a single exploit is less important than understanding what an attacker could do with it</li>
+                <li><a href="/ceh-v13/module-18/" style="color:var(--accent)">Module 18: Lateral Movement</a> — Post-exploitation (Module 19) and Lateral Movement (Module 18) overlap significantly in practice. Persistence mechanisms established in Module 19 (services, scheduled tasks, WMI subscriptions) on one host enable the lateral movement techniques of Module 18 (PtH, PTT, pivoting) to other hosts. Privilege escalation in Module 19 is often the prerequisite for lateral movement — you typically need at least domain user level (and often admin) before PtH/PTT attacks become effective. On the CEH exam, know that these two modules represent a continuous phase of the attack lifecycle: escalate locally (M19) → move laterally (M18) → escalate on new host (M19) → repeat until objective reached</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow Table Attack — Definition, How It Works & CEH Exam Guide | CEHStudy</title>
+    <meta name="description" content="What is a rainbow table attack? Complete guide to precomputed hash tables, salt as countermeasure, and password hash cracking. Learn about SHA-256/NTLM/Md5 for the CEH v13 exam.">
+    <meta name="keywords" content="rainbow table, rainbow table attack, password cracking, hash salting, MD5, SHA-256, NTLM hash, bcrypt, precomputed hash">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cehstudy.com/glossary-terms/rainbow-table-attack/">
+
+    <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/">
+    <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        "name": "Rainbow Table Attack",
+        "termCode": "Rainbow Table",
+        "inDefinedTermSet": {
+            "@type": "DefinedTermSet",
+            "name": "CEH Study Glossary",
+            "url": "https://cehstudy.com/glossary-terms/"
+        },
+        "description": "A Rainbow Table Attack is a password cracking technique that uses precomputed tables of hash values to reverse common passwords significantly faster than brute-force or dictionary attacks. Each table maps a chain of plaintext → hash → transformation → plaintext → hash sequences, allowing rapid lookup of a target hash by finding its matching position in the chain and working backwards."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Rainbow Table Attack?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A Rainbow Table Attack is a password cracking technique that uses precomputed tables of hash values to reverse common passwords significantly faster than brute-force or dictionary attacks. Each table maps a chain of plaintext → hash → transformation → plaintext → hash sequences, allowing rapid lookup of a target hash by finding its matching position in the chain and working backwards."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does Rainbow Table Attack appear on the CEH v13 exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Rainbow tables are covered in CEH v13 Module 06 (System Hacking) in the context of password attacks and credential recovery. The exam tests understanding of how hash chains work, why salting defeats rainbow tables (each salt requires separate table), the difference between LM and NTLM hashing (LM splits password into two 7-char halves, making it weaker), modern password storage best practices (bcrypt/scrypt/Argon2 with high cost factors), and how to identify which hashing algorithm was used from stored hash format. Questions may present hash values for algorithm identification."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cehstudy.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Glossary Terms", "item": "https://cehstudy.com/glossary-terms/"},
+            {"@type": "ListItem", "position": 3, "name": "Rainbow Table Attack", "item": "https://cehstudy.com/glossary-terms/rainbow-table-attack/"}
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#151515;--bg2:#1e1e1e;--bg3:#2c2c2c;--text:#d1d0c5;--text2:#646669;--accent:#39ff88;--border:#2c2c2c}
+        body{font-family:'JetBrains Mono','Fira Code',Consolas,monospace;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+        header a{color:var(--accent);text-decoration:none;font-size:.9rem}
+        .nav-links{display:flex;gap:16px}
+        .nav-links a{color:var(--text2);font-size:.8rem;transition:color .2s}
+        .nav-links a:hover{color:var(--accent)}
+        .container{max-width:850px;margin:0 auto;padding:30px 20px;flex:1}
+        h1{font-size:1.4rem;color:var(--accent);margin-bottom:16px;line-height:1.4}
+        h2{font-size:1.1rem;color:var(--accent);margin-top:32px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+        h3{font-size:.98rem;color:var(--text);margin-top:16px;margin-bottom:8px}
+        p{margin-bottom:14px;font-size:.92rem}
+        ul,ol{margin-bottom:14px;padding-left:20px}
+        li{margin-bottom:8px;font-size:.9rem}
+        a{color:var(--accent);text-decoration:none}
+        a:hover{text-decoration:underline}
+        .definition-box{background:var(--bg2);border-left:3px solid var(--accent);padding:16px 20px;margin:20px 0;border-radius:0 4px 4px 0}
+        .definition-box p{margin:0;font-size:.95rem;line-height:1.8}
+        .tool-list{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+        .tool-tag{background:var(--bg3);padding:4px 10px;border-radius:3px;font-size:.82rem;color:var(--text)}
+        .example-box{background:var(--bg2);border:1px solid var(--border);padding:14px 16px;margin:10px 0;border-radius:4px;font-size:.85rem}
+        .example-box strong{color:var(--accent)}
+        footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.75rem;color:var(--text2)}
+        footer a{color:var(--text2)}
+        .related-list li{font-size:.88rem}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/"></> CEHStudy</a>
+        <nav class="nav-links">
+            <a href="/glossary-terms/">Glossary</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-practice-questions/">Practice</a>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Rainbow Table Attack</h1>
+
+        <div class="definition-box">
+            <p>A Rainbow Table Attack is a password cracking technique that uses precomputed tables of hash values to reverse common passwords significantly faster than brute-force or dictionary attacks. Each table maps a chain of plaintext → hash → transformation → plaintext → hash sequences, allowing rapid lookup of a target hash by finding its matching position in the chain and working backwards.</p>
+        </div>
+
+        <h2>Types & Variations</h2>
+        <ul>
+            <li>Classic Rainbow Table — Precomputed hash chains for a specific hash algorithm (e.g., MD5) and character set; covers millions of common passwords</li>
+            <li>Salted Rainbow Tables — Extended tables that account for known salt values; requires one table per salt value (defeats salt effectiveness)</li>
+            <li>Hash Cracking Alternatives: Dictionary attacks (faster if password is in wordlist), brute force (slower but exhaustive), hybrid attacks (dictionary + character substitution rules)</li>
+            <li>Defensive Countermeasures: Salting (unique random value per password), key stretching (iterated hashing like PBKDF2, bcrypt, scrypt, Argon2), and length requirements</li>
+        </ul>
+
+        <h2>Common Tools & Techniques</h2>
+        <div class="tool-list">
+            <span class="tool-tag">rainbowcrack (original tool)</span>
+            <span class="tool-tag">hashcat (modern GPU-accelerated alternative)</span>
+            <span class="tool-tag">John the Ripper</span>
+            <span class="tool-tag">Ophcrack (LM/NTLM specific)</span>
+        </div>
+        <p>Ethical hackers and security professionals use these tools in authorized penetration tests and red team operations. Unauthorized use is illegal under the Computer Fraud and Abuse Act (CFAA) and equivalent legislation worldwide.</p>
+
+        <h2>Real-World Examples</h2>
+        <div class="example-box"><strong>MD5 Rainbow Table:</strong> 1e87303934c6a1b4d3a1b4c2e5f6... matches "password123" in table — found in <1 second vs hours for brute force</div>
+        <div class="example-box"><strong>NTLM Hash:</strong> LM hash splits "PASSWORD" into "PASSWO" + "RD____" (7+7 chars) — each half cracked independently, halving effective search space</div>
+        <div class="example-box"><strong>Salt Defeats Table:</strong> Stored hash = SHA256(password + "a3f8c2e1") — no precomputed table exists for this specific salt; must brute-force or use dictionary with that salt applied</div>
+
+        <h2>How Rainbow Table Attack Appears on the CEH v13 Exam</h2>
+        <p>Rainbow tables are covered in CEH v13 Module 06 (System Hacking) in the context of password attacks and credential recovery. The exam tests understanding of how hash chains work, why salting defeats rainbow tables (each salt requires separate table), the difference between LM and NTLM hashing (LM splits password into two 7-char halves, making it weaker), modern password storage best practices (bcrypt/scrypt/Argon2 with high cost factors), and how to identify which hashing algorithm was used from stored hash format. Questions may present hash values for algorithm identification.</p>
+
+        <h2>Prevention & Detection</h2>
+        <ul>
+            <li><strong>Input Validation:</strong> Implement strict allowlist-based input validation on all user-facing parameters</li>
+            <li><strong>Principle of Least Privilege:</strong> Run applications with minimum required permissions</li>
+            <li><strong>Regular Patching:</strong> Maintain timely vulnerability management and patch deployment</li>
+            <li><strong>Network Segmentation:</strong> Limit lateral movement through zone-based network architecture</li>
+            <li><strong>Monitoring & Alerting:</strong> Deploy SIEM/SOAR solutions with threat detection rules for anomalous activity</li>
+        </ul>
+
+        <h2>Related Glossary Terms</h2>
+        <ul class="related-list">
+            <li><a href="/glossary-terms/privilege-escalation/">Privilege Escalation</a> — Password cracking enables privilege escalation via credential reuse</li>
+            <li><a href="/glossary-terms/malware/">Malware</a> — Keyloggers and infostealers collect credentials for offline cracking</li>
+            <li><a href="/ceh-v13/module-06/">Module 06: System Hacking</a> — Full module on credential attacks and system exploitation</li>
+        </ul>
+
+        <h2>Study Resources</h2>
+        <ul>
+            <li><a href="/ceh-v13/">CEH v13 Module Flashcards</a></li>
+            <li><a href="/ceh-practice-questions/">Practice Exam Questions</a></li>
+            <li><a href="/ceh-exam-domains/">CEH v13 Exam Domains & Blueprint</a></li>
+            <li><a href="/glossary-terms/">Full Glossary Index</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>CEHStudy — Free CEH v13 exam preparation resources. Not affiliated with EC-Council.</p>
+        <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/changelog/">Changelog</a> · <a href="/disclaimer/">Disclaimer</a></p>
+    </footer>
+</body>
+</html>

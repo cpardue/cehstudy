@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 17: IoT Attacks — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 17 IoT attacks flashcards: embedded device attacks, firmware analysis, hardware hacking. Free study resources.">
+    <title>CEH v13 Module 17: Mobile Platforms & IoT — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 17: Mobile Platforms & IoT — Free study guide with flashcards covering Android/iOS security, jailbreaking/rooting, RFID cloning, NFC skimming, BlueBorne, and IoT vulnerabilities. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-17/">
 
@@ -13,22 +13,61 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 17: IoT Attacks — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 17 covering embedded device attacks, firmware analysis, and hardware hacking.",
+        "name": "CEH v13 Module 17: Mobile Platforms & IoT — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 17 covering Android/iOS security, jailbreaking/rooting, RFID cloning, NFC skimming, Bluetooth attacks, and IoT vulnerabilities.",
         "url": "https://cehstudy.com/ceh-v13/module-17/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 17: IoT Attacks", "item": "https://cehstudy.com/ceh-v13/module-17/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 17: Mobile Platforms & IoT", "item": "https://cehstudy.com/ceh-v13/module-17/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "IoT Attacks",
+            "name": "Mobile Platforms & IoT",
             "termCode": "CEH-M17",
-            "description": "Internet of Things attacks including embedded device exploitation, firmware analysis, and hardware hacking techniques."
+            "description": "Security vulnerabilities in mobile platforms (Android, iOS) and IoT devices including jailbreaking/rooting, malicious applications, RFID/NFC cloning, Bluetooth attacks, and IoT exploitation."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 17: Mobile Platforms & IoT?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 17 covers security vulnerabilities in mobile platforms (Android, iOS) and the Internet of Things (IoT). Key topics include Android security (APK analysis, permission model, sideloading risks, mobile malware types including trojans/spyware/ransomware), iOS jailbreaking and the App Store sandbox model, RFID cloning (low-frequency 125 kHz cards easily cloned with $20 devices) and NFC skimming attacks on contactless payments, Bluetooth vulnerabilities (BlueBorne protocol stack exploit affecting both Android and iOS without pairing), IoT device security weaknesses (default credentials, unencrypted communications, lack of patch management, firmware backdoors), and mobile device forensics including live/dead extraction techniques. This domain accounts for approximately 6% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between Android rooting and iOS jailbreaking on the CEH exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Both processes remove manufacturer-imposed restrictions to grant the user (or attacker) full system access, but they differ in mechanism and impact. Android Rooting: Gains root (superuser) privileges on the Linux kernel. Breaks the Android permission model — apps that normally require explicit user grants can now access all data, hardware sensors, and system files. Common tools: Magisk (modern), SuperSU (legacy). Security implications: voids hardware warranty, disables Play Protect security checks, allows installation of Xposed Framework for app interception, and breaks banking apps that detect rooted devices. iOS Jailbreaking: Removes Apple's sandbox restrictions on the iOS kernel. Enables installation of Cydia/Sileo package managers to sideload apps not approved by the App Store. Breaks code signing enforcement — any binary can be executed without Apple's digital signature. Common tools: unc0ver (jailbreak exploit), palera1n (checkm8 hardware exploit affecting A5-A11 chips). On the CEH exam, know that both create a significantly larger attack surface: on Android, rooted devices are targeted by adware and banking trojans; on iOS, jailbroken devices can run unsigned malware that persists across reboots. The exam also tests that enterprise MDM solutions can detect and flag rooted/jailbroken devices for policy enforcement."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 17: Mobile Platforms & IoT Study Guide",
+        "description": "Free study materials for CEH v13 Module 17 covering Android and iOS security models, jailbreaking/rooting, mobile malware types, RFID/NFC cloning and skimming, Bluetooth exploits (BlueBorne), IoT device vulnerabilities, and firmware analysis. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "Android APK Analysis and Permission Model, iOS Jailbreaking and Sandbox Bypass, RFID/NFC Cloning and Payment Skimming, Bluetooth Protocol Exploits (BlueBorne), IoT Vulnerability Assessment and Firmware Analysis"
     }
     </script>
 
@@ -43,42 +82,97 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=17" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 17 Flashcards</a>
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 17: IoT Attacks</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 17: Mobile Platforms & IoT</nav>
 
-        <h1 class="page-title">CEH v13 Module 17: IoT Attacks</h1>
-        <p class="content-text">This module covers Internet of Things (IoT) attacks. Topics include embedded device vulnerabilities, firmware analysis, hardware hacking, smart home devices, industrial control systems (ICS/SCADA), and automotive security.</p>
+        <h1 class="page-title">CEH v13 Module 17: Mobile Platforms & IoT</h1>
+        <p class="content-text">This module covers security vulnerabilities in mobile platforms (Android, iOS) and IoT devices. Topics include jailbreaking/rooting, malicious applications, RFID/NFC cloning, Bluetooth attacks, smartwatch vulnerabilities, and IoT device exploitation.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>IoT architecture: sensors, gateways, cloud platforms</li>
-            <li>Firmware analysis: extraction, reverse engineering, static/dynamic analysis</li>
-            <li>Hardware hacking: UART, JTAG, SPI interfaces</li>
-            <li>Smart home devices: cameras, locks, assistants</li>
-            <li>ICS/SCADA security: industrial control systems</li>
+            <li>Android security: APK analysis, permission model, malware types</li>
+            <li>iOS jailbreaking and App Store sideloading risks</li>
+            <li>Mobile malware: trojans, spyware, ransomware, rootkits</li>
+            <li>RFID cloning and NFC skimming attacks</li>
+            <li>Bluetooth attacks: BlueBorne, bluesnarfing, bluejacking</li>
+            <li>IoT device vulnerabilities and firmware analysis</li>
+            <li>Mobile device lost/stolen procedures and data protection</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Firmware Analysis:</strong> Extracting firmware from device (JTAG, UART, flash chip removal) → reverse engineering for vulnerabilities. Tools: binwalk, firmware-mod-kit.</div>
-        <div class="term-box"><strong>JTAG/UART:</strong> Hardware debugging interfaces. Provide direct access to device console/firmware. Common attack vector for IoT exploitation.</div>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>Jailbreaking (iOS):</strong> Removing manufacturer restrictions on iOS devices. Enables app sideloading but voids warranty, bypasses sandbox, and creates security risks.</div>
+        <div class="term-box"><strong>Rooting (Android):</strong> Gaining elevated privileges on Android devices. Similar to jailbreaking — enables full system access but compromises security model.</div>
+        <div class="term-box"><strong>RFID Cloning:</strong> Capturing and replicating RFID card data (access cards, payment cards). Low-frequency RFID (125 kHz) is easily cloned with inexpensive devices.</div>
+        <div class="term-box"><strong>NFC Skimming:</strong> Using near-field communication readers to steal contactless payment or access card data. Requires close proximity but is harder to detect than RFID cloning.</div>
+        <div class="term-box"><strong>BlueBorne:</strong> Critical Bluetooth vulnerability affecting Android and iOS. Allows takeover of devices through protocol stack exploits without pairing. Affects Bluetooth Classic and BLE.</div>
+        <div class="term-box"><strong>Mobile Malware Vectors:</strong> Sideloading apps, SMS/phishing links (smishing), malicious QR codes (quishing), compromised third-party app stores, and drive-by downloads.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Understand IoT architecture layers</li>
-            <li>Know firmware analysis techniques</li>
-            <li>Learn hardware interface attack methods</li>
+            <li>Differentiate Android vs iOS security models and attack vectors</li>
+            <li>Know RFID vs NFC vs Bluetooth attack types</li>
+            <li>Understand IoT device vulnerabilities: default credentials, unencrypted communications, outdated firmware</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What's the most common IoT vulnerability?</strong><br>Default/hardcoded credentials — present in majority of consumer IoT devices.</p>
+        <p><strong>What is the biggest mobile security threat?</strong><br>Malicious apps (sideloading), phishing/smishing attacks, and unpatched OS vulnerabilities. For organizations: BYOD policies with proper MDM/MAM solutions.</p>
+        <p><strong>How do you secure IoT devices?</strong><br>Change default credentials, disable unnecessary services, keep firmware updated, segment on separate VLAN, and monitor for unusual network behavior.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-16/" style="color:var(--accent)">Module 16: Hacking Wireless Networks</a> — IoT uses wireless connectivity</li>
-            <li><a href="/ceh-v13/module-18/" style="color:var(--accent)">Module 18: Network Attacks</a> — IoT attacks often target network services</li>
+            <li><a href="/ceh-v13/module-16/">Module 16: Hacking Wireless Networks</a> — mobile devices connect to wireless networks</li>
+            <li><a href="/ceh-v13/module-18/">Module 18: Attacks on OT and IoT</a> — deeper dive into industrial IoT/OT attacks</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is Mobile and IoT Security in Ethical Hacking?</h2>
+            <p>Mobile Platforms & IoT Security is a growing domain on the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers two interconnected attack surfaces: mobile devices (Android, iOS, tablets) and the broader Internet of Things (smart home devices, wearables, connected sensors). Mobile devices are increasingly used for corporate access (BYOD — Bring Your Own Device), making them high-value targets for data theft. IoT devices multiply the attack surface further — a single household may contain dozens of connected devices, many with no patching mechanism and weak authentication. On the CEH v13 exam, questions related to Module 17 account for approximately 6% of total questions.</p>
+
+            <h2>Key Concepts in Mobile & IoT Security</h2>
+            <ul>
+                <li><strong>Android Security Model & APK Attack Surface:</strong> Android's security model relies on: (1) Application sandboxing — each app runs in its own Linux UID with isolated data directories; (2) Permission system — apps must declare required permissions at install time, and the user can grant/deny them; (3) Code signing — APKs are signed with developer keys; (4) SELinux policy enforcement. Attack surface for CEH exam: Sideloading (installing unsigned or repackaged APKs from outside Play Store), permission escalation through vulnerable system services, inter-process communication (IPC) attacks via Intent hijacking, and APK decompilation (using apktool to examine code logic). On the CEH exam, know that Android is open-source (AOSP) while iOS is closed — this means Android vulnerabilities can be publicly analyzed and patched faster, but also that custom ROMs and rooted devices increase attack surface. Mobile malware on Android: banking trojans (FakeBank), spyware (SpyEye mobile), ransomware (locking device until payment), and SMS-forwarding malware that intercepts 2FA codes.</li>
+                <li><strong>RFID vs NFC: Frequency, Range & Cloneability:</strong> RFID (Radio-Frequency Identification) operates at three frequency bands: Low Frequency (125-134 kHz, range ~10 cm), High Frequency (13.56 MHz, range ~1 meter — used in most access cards and contactless payment), and Ultra-High Frequency (860-960 MHz, range up to 12 meters — inventory/logistics). NFC (Near-Field Communication) is a subset of HF RFID operating at 13.56 MHz with range limited to ~4 cm — the short range is a security feature (prevents remote skimming). On the CEH exam, know that: LF RFID cards (125 kHz proximity badges like HID Prox) contain static IDs that are trivially cloned with $20 Proxmark devices; HF RFID/NFC payment cards use cryptographic authentication (EMV Contactless, ISO 14443) making cloning much harder but not impossible (Mifare Classic DESFire vulnerabilities); the primary attack vector for NFC payments is relay attacks (extending range between victim's card and terminal using two RFID readers) rather than direct cloning.</li>
+                <li><strong>IoT Device Attack Patterns & Firmware Analysis:</strong> The most common IoT device vulnerabilities tested on CEH: (1) Default/weak credentials — many devices ship with admin/admin or no password, and users never change them; (2) Unencrypted administrative interfaces — HTTP (not HTTPS) for web panels, Telnet (not SSH) for command access; (3) Lack of patching mechanism — many IoT devices have no OTA update capability, leaving known CVEs exploitable indefinitely; (4) Insecure cloud connectivity — devices phoning home to vendor cloud with weak or no TLS; (5) Firmware backdoors — debug shells, hidden telnet interfaces, hardcoded API keys embedded in firmware. On the CEH exam, know that IoT device firmware analysis involves: extracting firmware from the device (JTAG/SWD for hardware, or downloading from vendor website), analyzing with binwalk (identifying and extracting filesystems), examining configuration files for hardcoded credentials, reviewing web application code for SQLi/XSS, and checking for debug interfaces. Mirai botnet is the most commonly referenced IoT attack — it exploits default credentials on IoT devices to build a DDoS botnet of 250,000+ compromised cameras and routers.</li>
+                <li><strong>BlueBorne: Bluetooth Attack Without Pairing:</strong> BlueBorne (CVE-2017-0781 through CVE-2017-0949) is a critical Bluetooth vulnerability affecting Android, iOS, Windows, Linux, and BlackBerry that allowed unauthenticated attackers to hijack devices and spread via the air. Unlike most Bluetooth attacks that require prior pairing, BlueBorne exploited the Bluetooth protocol stack itself — specifically the SDP (Service Discovery Protocol), L2CAP (Logical Link Control and Adaptation Protocol), and ATT (Attribute Protocol) implementations. Attack capabilities: execute arbitrary code with full user privileges, access camera/microphone, steal Bluetooth-paired data, and spread worm-style to nearby devices. On the CEH exam, know that BlueBorne's criticality came from: (1) No pairing required — proximity is sufficient; (2) Affects all major OSes simultaneously; (3) Chainable — compromised device can infect others in range; (4) Exploit was public and reliable before most patches were deployed. Mitigation: patch the Bluetooth stack firmware, disable Bluetooth when not in use, and be aware of the ~10-meter effective range for Classic Bluetooth.</li>
+            </ul>
+
+            <h2>Tools Used in Mobile & IoT Hacking</h2>
+            <p>Mobile and IoT security tools referenced on the CEH exam include <strong>Airspy</strong> (software-defined radio for intercepting and analyzing RF signals — used to identify RFID frequencies, clone low-frequency proximity cards, and perform passive surveillance of wireless device communications), <strong>Proxmark3</strong> (the primary RFID/NFC attack tool: reads and writes LF/HF transponders, emulates card interactions, performs relay attacks, and can extract keys from Mifare Classic cards using nested authentication attacks), <strong>apktool</strong> (Android APK decompilation tool — disassembles smali bytecode and extracts resources for security analysis; used to identify hardcoded API keys, insecure data storage, and permission misconfigurations in Android apps), <strong>OWASP Mobile Security Testing Guide (MSTG)</strong> (free framework for mobile application penetration testing covering 50+ test cases across platform security, cryptography, data storage, and code quality), <strong>Ghidra</strong> (NSA open-source reverse engineering tool used to analyze IoT device firmware binaries — disassembles ARM/MIPS/PowerPC executables to find backdoors and hardcoded credentials), <strong>binwalk</strong> (firmware extraction tool that identifies embedded filesystems, archives, and images within firmware blobs), and <strong>Netcat/ncat</strong> (basic network tools for testing IoT device port exposure and manual service interaction). On the CEH exam, know that Proxmark3 is specifically associated with RFID/NFC attacks while Ghidra+binwalk are the standard pair for IoT firmware analysis.</p>
+
+            <h2>How to Study Mobile & IoT Security for the CEH v13 Exam</h2>
+            <p>To effectively study Module 17 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Create a mobile platform comparison: Android vs iOS | Sandboxing mechanism | Permission model | Malware distribution channel | Root/Jailbreak method | Enterprise MDM support. The exam frequently asks which security feature belongs to which platform — e.g., "Which platform uses code signing to enforce app integrity?" (Answer: Both, but iOS enforces it more strictly; Android allows sideloading by default). Know that iOS is a closed ecosystem (all apps must be signed by Apple) while Android is open (users can install from any source)</li>
+                <li>Hands-on exercise: Download a vulnerable Android app from a CTF platform and use apktool to decompile it. Identify: hardcoded API keys in strings.xml, insecure data storage in SharedPreferences, cleartext HTTP connections in network calls, and unnecessary permissions in AndroidManifest.xml. This mirrors exam questions about Android security assessment. For IoT: download a firmware image from a public dataset and use binwalk to extract the filesystem, then search for default credentials with grep</li>
+                <li>Memorize the RFID frequency classification and cloneability: LF (125 kHz) — static ID, trivially cloned; HF (13.56 MHz) — cryptographic auth, harder to clone, NFC operates here; UHF (860-960 MHz) — long range, used for inventory not security. Know that Proxmark3 handles LF/HF while Airspy covers the broader RF spectrum including ZigBee (2.4 GHz) and sub-GHz IoT communications</li>
+                <li>Review related modules: <a href="/ceh-v13/module-16/" style="color:var(--accent)">Module 16 (Wireless Networks)</a> for the wireless attack techniques that apply to mobile devices (evil twin, deauth) since phones are wireless clients, and <a href="/ceh-v13/module-18/" style="color:var(--accent)">Module 18 (OT & IoT Attacks)</a> for industrial control system attacks that extend beyond consumer IoT into SCADA/ICS environments — Module 17 covers consumer/smart device IoT while Module 18 covers critical infrastructure IoT</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About Mobile & IoT Security</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is a Mifare Classic card and why is it vulnerable to cloning?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">Mifare Classic (MIFARE 1K) is a 13.56 MHz HF RFID chip manufactured by NXP Semiconductors, widely used for access control cards, transit passes, and loyalty programs. Each card contains 4 KB of memory organized into 16 sectors, with each sector having its own encryption key (Key A and Key B) using the proprietary Crypto-1 cipher. The vulnerability: Crypto-1 was broken in 2008 by researchers at Radboud University Nijmegen, revealing that a known-answer attack requires only about 20,000 authentication attempts (achievable in minutes with Proxmark3). Additionally, the nested authentication flaw means that cracking Key A of one sector gives you Key B of that sector AND Key A of the next sector — cascading through all 16 sectors. On the CEH exam, know that Mifare Classic should never be used for high-security access control. Modern replacements include Mifare DESFire (AES-128 encryption) and iCLASS SE (3DES with anti-clone features). The practical attack: use Proxmark3 to read the UID (always in cleartext) and if needed, crack Crypto-1 keys to clone the full card state including access permissions.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">How do you perform a firmware analysis on an IoT device for a CEH exam?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">IoT firmware analysis workflow tested on the CEH exam: (1) Acquire firmware — download from vendor website, extract via serial console (UART), or dump from flash chip using JTAG/SWD hardware; (2) Identify format — use file command and binwalk to determine if firmware is compressed (gzip, lzma, squashfs) or raw flash layout; (3) Extract filesystems — binwalk -e firmware.bin recursively extracts all embedded archives and filesystems (often CramFS, JFFS2, UBI, or squashfs); (4) Analyze web interface code — examine CGI scripts and web application files for SQL injection, command injection, and path traversal vulnerabilities; (5) Search for credentials — grep -r 'password|passwd|admin' across all extracted files to find hardcoded default credentials, API keys, and cryptographic secrets; (6) Examine binaries — use Ghidra or IDA Pro to disassemble main executables, looking for debug interfaces (hidden telnetd, netcat backdoors), insecure random number generation, and buffer overflows; (7) Check for update mechanisms — identify if the device has an OTA update process and whether firmware is signed (if not signed, attacker can push malicious firmware); (8) Document findings with CVE references where applicable. On the CEH exam, know that the most commonly found vulnerabilities are: default credentials (admin/admin), unencrypted telnet interface, hardcoded encryption keys, and absence of any update mechanism.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-16/" style="color:var(--accent)">Module 16: Hacking Wireless Networks</a> — Mobile devices are wireless clients that can be targeted by the same evil twin, deauthentication, and rogue AP attacks described in Module 16. Additionally, Bluetooth (covered in both modules) is a shorter-range wireless protocol with its own attack set: BlueBorne (Module 17) exploits the protocol stack without pairing, while Module 16 focuses on Wi-Fi-specific attacks. On the CEH exam, know that mobile device security requires understanding both the OS-level protections (sandboxing, code signing) AND the wireless attack vectors that can bypass network-level defenses</li>
+                <li><a href="/ceh-v13/module-18/" style="color:var(--accent)">Module 18: Attacks on OT & IoT</a> — Module 17 covers consumer and enterprise IoT (smart home devices, mobile apps, wearables) while Module 18 extends into Operational Technology (OT) environments: SCADA systems, PLCs, HMI panels, and industrial protocols (Modbus, DNP3, OPC). The overlap: both involve insecure default credentials, lack of patching, and network segmentation failures. The difference: OT attacks target physical safety (manipulating process variables, stopping safety interlocks) while IoT attacks target data availability or financial gain. On the CEH exam, know that ICS/OT attacks carry higher severity because they can cause physical damage or loss of life</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->

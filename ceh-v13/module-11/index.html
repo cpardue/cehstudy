@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 11: Session Hijacking — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 11 flashcards: TCP session hijacking, SIDJACKING, XSS-based attacks, cookie poisoning, session fixation, HTTPS prevention. Free study resources.">
+    <title>CEH v13 Module 11: Session Hijacking — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 11: Session Hijacking — Free study guide with flashcards covering TCP sequence prediction, SIDJACKING, cookie theft via XSS, session fixation, and prevention. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-11/">
 
@@ -29,6 +29,45 @@
             "termCode": "CEH-M11",
             "description": "Taking over active user sessions by stealing or predicting session tokens including TCP hijacking, SIDJACKING, XSS-based attacks, cookie poisoning, and session fixation."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 11: Session Hijacking?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 11 covers techniques for taking over active user sessions including TCP session hijacking (sequence number prediction, IP spoofing, RST injection to sever victim connection), SIDJACKING (capturing unencrypted session IDs from network traffic via sniffing), XSS-based session theft (injecting JavaScript to exfiltrate cookies), cookie poisoning (tampering with client-side session data), session fixation (forcing victim to use attacker-known session ID), and HTTP header manipulation. Prevention techniques include HTTPS enforcement, Secure/HttpOnly/SameSite cookie flags, session regeneration after authentication, and multi-factor authentication. This domain accounts for approximately 10% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between session hijacking and session fixation on the CEH exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Session hijacking means the attacker steals or predicts a session token that the victim is already using — the attacker takes over an active session after the fact (e.g., sniffing cookies over HTTP, predicting TCP sequence numbers, or stealing via XSS). Session fixation is different: the attacker forces the victim to use a session ID that the attacker already knows BEFORE the victim authenticates. The classic flow: attacker generates a random session ID, injects it into the victim's browser (via URL parameter manipulation, XSS, or cookie planting), then the victim logs in using that same session ID. Now the attacker — who already possesses the token — can simply wait for the victim to log in and gain access without needing to steal anything. On the CEH exam, the key distinction is timing: hijacking = stealing after authentication; fixation = controlling the token before authentication. The primary defense against session fixation is regenerating the session ID upon login (changing the token after credentials are verified)."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 11: Session Hijacking Study Guide",
+        "description": "Free study materials for CEH v13 Module 11 covering TCP session hijacking, SIDJACKING, XSS-based cookie theft, cookie poisoning, session fixation attacks, and defense mechanisms including HTTPS, Secure/HttpOnly/SameSite flags. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "TCP Sequence Prediction and IP Spoofing, SIDJACKING and Network Session ID Theft, XSS-Based Cookie Exfiltration, Session Fixation and Cookie Poisoning, Secure Cookie Flags and Prevention"
     }
     </script>
 
@@ -62,7 +101,7 @@
             <li>Prevention: HTTPS, Secure/HttpOnly cookie flags, token binding</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
         <div class="term-box"><strong>TCP Session Hijacking:</strong> Attacker takes over an established TCP connection by predicting sequence numbers, spoofing the source IP, and injecting packets. Requires the attacker to be in-line with the traffic.</div>
         <div class="term-box"><strong>SIDJACKING:</strong> Stealing a user's session ID (cookie) from network traffic. Works when sessions use HTTP (not HTTPS). Tools: Wireshark, Firesheep.</div>
         <div class="term-box"><strong>XSS-Based Hijacking:</strong> Injecting malicious JavaScript into a vulnerable web page that reads the victim's cookies and sends them to the attacker. More common than SIDJACKING today.</div>
@@ -85,6 +124,53 @@
             <li><a href="/ceh-v13/module-08/">Module 8: Sniffing</a> — SIDJACKING requires network sniffing to capture session IDs</li>
             <li><a href="/ceh-v13/module-14/">Module 14: Hacking Web Applications</a> — XSS-based hijacking is a web application attack</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is Session Hijacking in Ethical Hacking?</h2>
+            <p>Session Hijacking is a critical attack technique tested on the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers methods of taking over an authenticated user's session without needing their credentials — either by stealing the session token in transit (SIDJACKING), predicting TCP sequence numbers to inject packets into an active connection, or exploiting web vulnerabilities like XSS to exfiltrate cookies. The CEH v13 exam emphasizes that session hijacking is a direct threat to the Integrity pillar of the CIA triad because the attacker acts as the legitimate user — all actions appear authorized. On the CEH v13 exam, questions related to Module 11 account for approximately 10% of total questions.</p>
+
+            <h2>Key Concepts in Session Hijacking</h2>
+            <ul>
+                <li><strong>TCP Sequence Number Prediction:</strong> The foundational concept behind classic TCP session hijacking. TCP uses sequence numbers (SEQ) and acknowledgment numbers (ACK) to track packet ordering. An attacker who can observe enough traffic to determine the increment pattern of sequence numbers can predict the next expected value, then craft packets with correct SEQ/ACK values from a spoofed source IP. The target accepts these packets as legitimate because they appear to come from the expected address with correct sequencing. On the CEH exam, know that modern operating systems use random initial sequence numbers and entropy-based increments, making pure TCP hijacking extremely difficult against modern stacks — but it remains a heavily tested concept on the exam.</li>
+                <li><strong>SIDJACKING vs XSS-Based Cookie Theft:</strong> Two distinct methods of stealing session identifiers. SIDJACKING: attacker is in-line with network traffic (same LAN or via ARP spoofing) and captures unencrypted HTTP cookies containing session IDs using a sniffer (Wireshark, Firesheep for WiFi). Requires the victim to be on unencrypted HTTP. XSS-Based: attacker exploits a Cross-Site Scripting vulnerability in the web application to inject JavaScript that reads document.cookie and exfiltrates it to an attacker-controlled server. Works even over HTTPS because the script executes within the victim's browser context. On the CEH exam, the key distinction is: SIDJACKING = network-level interception; XSS-based = application-level exploitation.</li>
+                <li><strong>Session Fixation & Token Binding:</strong> Session fixation requires the attacker to plant or control the session ID BEFORE authentication. Methods include: URL parameter injection (?JSESSIONID=attacker_token), HTTP response header manipulation (Set-Cookie via proxy), or direct cookie planting. The fix is token regeneration upon login — the server issues a completely new random session ID after successful credential verification, invalidating any previously fixed token. Token binding (a newer standard) cryptographically binds the session token to specific TLS connection properties so stolen tokens cannot be replayed from a different connection. On the CEH exam, know that session fixation is less common in practice but a frequently tested concept because it tests understanding of when session IDs should change.</li>
+                <li><strong>Defense in Depth for Session Security:</strong> The CEH exam tests layered session protections: (1) HTTPS everywhere (prevents SIDJACKING), (2) HttpOnly flag (prevents JavaScript from reading cookies — blocks XSS cookie theft), (3) Secure flag (cookie only sent over HTTPS), (4) SameSite attribute (prevents cross-origin cookie sending — mitigates CSRF-driven attacks), (5) Session timeout and IP binding, (6) MFA for sensitive actions (even if session is hijacked, additional verification required), (7) Anomaly detection (geographic impossibility, rapid location changes). On the exam, know that no single control is sufficient — defense in depth requires multiple layers.</li>
+            </ul>
+
+            <h2>Tools Used in Session Hijacking</h2>
+            <p>Session hijacking tools referenced on the CEH exam include <strong>Firesheep</strong> (Firefox extension that captures unencrypted session cookies from HTTPS sites — demonstrates SIDJACKING on open WiFi networks; works by parsing HTTP Referer headers and Set-Cookie responses), <strong>Ettercap</strong> (powerful MITM framework supporting ARP poisoning, TCP stream editing, and session hijacking via its built-in filter system — can modify HTTP responses in real-time to inject session fixation payloads), <strong>Wireshark</strong> (packet analysis to observe TCP sequence patterns and identify unencrypted session tokens in plaintext traffic), <strong>tcpflow</strong> (extracts TCP streams for deeper analysis of session data), and <strong>Burp Suite</strong> (web proxy that can modify HTTP headers, intercept responses for session fixation testing, and detect missing Secure/HttpOnly flags). On the CEH exam, know that Ettercap is the most comprehensive single tool for demonstrating MITM-based session attacks in a lab, while Firesheep is specifically referenced for wireless SIDJACKING scenarios.</p>
+
+            <h2>How to Study Session Hijacking for the CEH v13 Exam</h2>
+            <p>To effectively study Module 11 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Memorize the 4-step TCP hijacking process: (1) Sniff traffic to capture SEQ/ACK values, (2) Predict next sequence numbers based on observed increment pattern, (3) Send RST packet with spoofed source IP to kill victim's connection, (4) Inject new packets with correct SEQ/ACK from attacker IP — the exam may ask for the specific order or what each step accomplishes</li>
+                <li>Create a comparison table: Attack Method | Required Position | Works Over HTTPS? | Primary Tool. This directly maps to exam questions asking you to identify which attack works under which conditions</li>
+                <li>Hands-on exercise: In a VirtualBox lab with two VMs (attacker + target), use Ettercap to perform ARP poisoning between them, then use its filtering module to modify an HTTP response and inject a cookie. Observe in Wireshark how the modified packet appears on the wire — this demonstrates both SIDJACKING and session fixation in one exercise</li>
+                <li>Review related modules: <a href="/ceh-v13/module-14/" style="color:var(--accent)">Module 14 (Web Application Hacking)</a> for XSS vulnerability exploitation that enables cookie theft, and <a href="/ceh-v13/module-08/" style="color:var(--accent)">Module 8 (Sniffing & Traffic Analysis)</a> for the traffic capture techniques that enable SIDJACKING</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About Session Hijacking</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">Can session hijacking work over HTTPS?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">Pure SIDJACKING (network-level cookie capture) cannot work over HTTPS because the session cookie is encrypted in transit — an on-path attacker sees only TLS-encrypted data. However, XSS-based session hijacking CAN work over HTTPS because the malicious JavaScript executes within the victim's browser context with full access to the application's data, regardless of transport encryption. The HttpOnly cookie flag prevents JavaScript from reading cookies (document.cookie returns empty for HttpOnly cookies), which specifically blocks the XSS-based vector. On the CEH exam, know that HTTPS prevents network-level interception but NOT application-level attacks — this is why HttpOnly is a critical complementary defense. The combination of HTTPS + HttpOnly + SameSite provides comprehensive session cookie protection against all common hijacking vectors.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is the role of the SameSite cookie attribute in preventing session attacks?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">The SameSite attribute (introduced by browsers in response to CSRF concerns) controls when cookies are sent with cross-origin requests. SameSite=Strict: cookie only sent for same-site requests (never on cross-origin). SameSite=Lax (browser default since 2020): cookie not sent on cross-site POST/PUT/DELETE but sent on cross-site GET for top-level navigations. SameSite=None: requires Secure flag, cookie always sent. On the CEH exam, understand that SameSite doesn't directly prevent session hijacking (the attacker still has a valid session token) but it prevents a related attack class: Cross-Site Request Forgery where an attacker's page makes requests to the victim's authenticated session. If cookies have SameSite=Strict, a cross-site attack page cannot trigger authenticated actions because the browser won't include the session cookie in cross-origin requests. The exam may ask you to match the SameSite value to its protection level.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-14/" style="color:var(--accent)">Module 14: Hacking Web Applications</a> — XSS is the primary web application vulnerability that enables session hijacking over HTTPS. Module 14 covers how to find and exploit XSS vulnerabilities (reflected, stored, DOM-based) that serve as the attack vector for cookie exfiltration. Understanding both modules together gives complete picture of session theft via web vulnerabilities</li>
+                <li><a href="/ceh-v13/module-08/" style="color:var(--accent)">Module 8: Sniffing & Traffic Analysis</a> — SIDJACKING requires the attacker to capture network traffic. Module 8 covers the sniffing techniques (ARP poisoning, MAC flooding, port mirroring) that position the attacker to observe session cookies in transit over unencrypted connections</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->

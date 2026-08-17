@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 6: Malware Attacks — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 6 malware attacks flashcards: trojans, worms, viruses, rootkits, fileless malware, IoT malware. Free study resources.">
+    <title>CEH v13 Module 6: System Hacking — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 6: System Hacking — Free study guide with flashcards covering password cracking, privilege escalation, NTFS permissions, UAC bypass, rootkits, and LM/NTLM hashes. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-06/">
 
@@ -13,22 +13,61 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 6: Malware Attacks — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 6 covering trojans, worms, viruses, rootkits, fileless malware, and IoT malware.",
+        "name": "CEH v13 Module 6: System Hacking — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 6 covering password cracking, privilege escalation, NTFS permissions, UAC bypass, rootkits, and post-exploitation.",
         "url": "https://cehstudy.com/ceh-v13/module-06/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 6: Malware Attacks", "item": "https://cehstudy.com/ceh-v13/module-06/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 6: System Hacking", "item": "https://cehstudy.com/ceh-v13/module-06/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Malware Attacks",
+            "name": "System Hacking",
             "termCode": "CEH-M06",
-            "description": "Types and techniques of malicious software including trojans, worms, viruses, rootkits, fileless malware, and IoT-specific attacks."
+            "description": "Password cracking methods, privilege escalation, NTFS permissions, UAC bypass, rootkits, alternative data streams (ADS), and post-exploitation cover-your-tracks activities."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 6: System Hacking?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 6 covers password cracking methods (brute-force, dictionary, rainbow tables, hybrid), privilege escalation techniques (token manipulation, UAC bypass, service exploitation), NTFS file system attacks, alternative data streams, rootkit installation, credential dumping from the SAM database and NTDS.dit, lateral movement, steganography, and post-exploitation cover-your-tracks activities. This domain accounts for approximately 10% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between LM and NTLM hashes on the CEH exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "LM (LAN Manager) hashes are legacy, extremely weak — passwords are split into two 7-character halves, each hashed separately with DES, making them trivially crackable with rainbow tables. NTLM hashes use MD4 on a Unicode-UTF16LE encoded password, making them significantly harder to crack but still vulnerable to dictionary attacks and pass-the-hash techniques. On the CEH exam, know that LM can be disabled via the Network Security: LAN Manager authentication level policy, while NTLM is the modern Windows default but should ideally be replaced by NTLMv2 or Kerberos."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 6: System Hacking Study Guide",
+        "description": "Free study materials for CEH v13 Module 6 covering password cracking, privilege escalation, NTFS permissions, UAC bypass, rootkits, credential dumping, and post-exploitation techniques. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "Password Cracking, Privilege Escalation, NTFS File System Attacks, UAC Bypass, Rootkit Installation, Credential Dumping"
     }
     </script>
 
@@ -46,40 +85,97 @@
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 6: Malware Attacks</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 6: System Hacking</nav>
 
-        <h1 class="page-title">CEH v13 Module 6: Malware Attacks</h1>
-        <p class="content-text">This module covers malware types, delivery mechanisms, and analysis techniques. Topics include trojans, worms, viruses, rootkits, fileless malware, IoT malware, ransomware, and advanced persistent threats.</p>
+        <h1 class="page-title">CEH v13 Module 6: System Hacking</h1>
+        <p class="content-text">System hacking involves gaining unauthorized access to target systems and maintaining that access. This module covers password cracking methods, privilege escalation techniques, file system attacks, service exploitation, malware deployment, steganography, and post-exploitation cover-your-tracks activities.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Trojans: service-based, download/inject, multi-vector delivery</li>
-            <li>Worms: self-propagating, network-based spread</li>
-            <li>Viruses: file, boot sector, macro, polymorphic</li>
-            <li>Rootkits: kernel-mode, user-mode, hypervisor-level</li>
-            <li>Fileless malware: PowerShell, WMI, memory-only attacks</li>
-            <li>Ransomware: crypto, locker, double/extortion</li>
+            <li>Password cracking methods: brute-force, dictionary, rainbow tables, hybrid attacks</li>
+            <li>Privilege escalation techniques: token manipulation, UAC bypass, service exploitation</li>
+            <li>File system attacks: NTFS permissions, alternative data streams (ADS), fileless techniques</li>
+            <li>Service exploitation and backdoor installation</li>
+            <li>Password hashing: LM hashes, NTLM hashes, SAM database</li>
+            <li>Masking access: log clearing, rootkit installation, process hiding</li>
+            <li>Steganography and stegotography techniques</li>
+            <li>Post-exploitation: credential dumping, lateral movement</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Rootkit:</strong> Stealthy malware that hides its existence and activities. Types: kernel-mode (most dangerous), user-mode, hypervisor-level, firmware/BIOS. Detection: behavior monitoring, memory analysis.</div>
-        <div class="term-box"><strong>Fileless Malware:</strong> Operates entirely in memory without writing to disk. Uses PowerShell, WMI, and LOLBins. Detection requires behavioral analysis and memory forensics.</div>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>Password Cracking:</strong> The process of recovering passwords from encrypted/hashed data using methods like brute-force (trying all combinations), dictionary (common words), rainbow tables (precomputed hashes), and hybrid attacks.</div>
+        <div class="term-box"><strong>Rainbow Table:</strong> A precomputed table of hash values for every possible password combination. Used to reverse cryptographic hash functions quickly — defeated by password salting.</div>
+        <div class="term-box"><strong>Privilege Escalation:</strong> Exploiting a bug or design flaw to gain higher access levels (e.g., standard user → Administrator). Can be vertical (more privileges) or horizontal (same level, different account).</div>
+        <div class="term-box"><strong>UAC Bypass:</strong> Techniques to bypass Windows User Account Control: DLL side-loading, job objects, replace existing process, trusted developer policies.</div>
+        <div class="term-box"><strong>LM Hash:</strong> Legacy Windows password hash — extremely weak, max 14 chars split into two 7-char halves. Easily cracked with tools like John the Ripper.</div>
+        <div class="term-box"><strong>NTDS.dit:</strong> Active Directory database file containing all domain account hashes. Extracted using tools like ntdsutil or volume shadow copy exploitation.</div>
+        <div class="term-box"><strong>Alternative Data Streams (ADS):</strong> NTFS feature allowing hidden data within files. Commonly used by malware for persistence: <code>echo secret > file.txt:hidden.txt</code></div>
+        <div class="term-box"><strong>Rootkit:</strong> Malicious software designed to hide the existence of other malware by intercepting and modifying OS calls at the kernel level.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Know malware types and their distinguishing characteristics</li>
-            <li>Understand delivery mechanisms and prevention techniques</li>
-            <li>Learn analysis methods: static vs dynamic, sandboxing</li>
+            <li>Understand each password cracking method and when to use it (brute-force vs dictionary vs rainbow tables)</li>
+            <li>Memorize privilege escalation techniques, especially UAC bypass methods</li>
+            <li>Know the difference between LM and NTLM hash formats</li>
+            <li>Understand how rootkits hide malicious processes and files at the kernel level</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What's the most dangerous malware type?</strong><br>Rootkits (especially hypervisor/firmware) — they operate at the lowest system level and are hardest to detect/remove.</p>
+        <p><strong>What is the most common password attack?</strong><br>Dictionary attacks are the most commonly used because they balance speed and effectiveness. Most users choose weak, dictionary-based passwords.</p>
+        <p><strong>How do you prevent privilege escalation?</strong><br>Apply security patches promptly, disable unnecessary services, configure proper NTFS permissions, enable LSA protection, and restrict administrator privileges.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: System Hacking</a> — system compromise enables malware deployment</li>
-            <li><a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7: Network-based Attacks</a> — network attacks often deliver malware</li>
+            <li><a href="/ceh-v13/module-04/">Module 4: Enumeration</a> — enumeration data feeds into password cracking and system access</li>
+            <li><a href="/ceh-v13/module-07/">Module 7: Malware Threats</a> — malware deployment follows successful system hacking</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is System Hacking in Ethical Hacking?</h2>
+            <p>System Hacking is a critical domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers the techniques used to gain unauthorized access to target systems, maintain that access through persistence mechanisms, and escalate privileges to maximum control. It encompasses password cracking (brute-force, dictionary, rainbow table attacks), privilege escalation via UAC bypass and token manipulation, Windows file system exploitation including NTFS permissions and alternative data streams, credential dumping from SAM and NTDS.dit, rootkit installation for stealth, and post-exploitation activities like lateral movement and cover-your-tracks. On the CEH v13 exam, questions related to Module 6 account for approximately 10% of total questions.</p>
+
+            <h2>Key Concepts in System Hacking</h2>
+            <ul>
+                <li><strong>Password Cracking Methodologies:</strong> Brute-force attacks try every possible character combination (2^length for the character set). Dictionary attacks use pre-compiled word lists, making them far faster against weak passwords. Hybrid attacks combine dictionary words with numeric suffixes or leet-speak substitutions. Rainbow tables precompute hash chains to reverse lookups in O(1) time but are defeated by salting — adding random data to each password before hashing. The CEH exam tests when to use each method and how to defend against them.</li>
+                <li><strong>Privilege Escalation & UAC Bypass:</strong> Vertical privilege escalation (user → admin) is the primary goal after initial system access. UAC bypass techniques include DLL side-loading (placing a malicious DLL with the same name as a trusted one), Job Object abuse, FOD (Files on Demand) hijacking, and exploiting unquoted service paths. On Windows, the CEH exam emphasizes understanding that UAC is not full protection — it simply requires user consent for elevation, and multiple techniques can bypass or trick this prompt.</li>
+                <li><strong>Credential Dumping & Pass-the-Hash:</strong> The SAM database (C:\Windows\System32\config\SAM) stores local account NTLM hashes. The NTDS.dit file on domain controllers stores all domain account hashes. Tools like Mimikatz extract these in memory using lsass.exe process injection. Once hashes are obtained, pass-the-hash attacks allow authentication to other systems without knowing the plaintext password — no password entry required, just the hash. This is a lateral movement technique the CEH exam heavily emphasizes.</li>
+                <li><strong>Rootkits & Process Hiding:</strong> Rootkits operate at the kernel level to intercept system calls and hide malicious processes, files, registry keys, and network connections from both the user and security software. User-mode rootkits patch specific functions in memory; kernel-mode rootkits hook the SSDT (System Service Descriptor Table) or use kernel modules. Detection involves comparing in-memory data structures with disk-based ones, using tools like RootkitRevealer or GMER.</li>
+            </ul>
+
+            <h2>Tools Used in System Hacking</h2>
+            <p>Essential system hacking tools for CEH exam preparation include <strong>Mimikatz</strong> (credential dumping, pass-the-hash, UAC bypass), <strong>John the Ripper</strong> and <strong>Hashcat</strong> (offline password cracking with GPU acceleration), <strong>Metasploit Framework</strong> (exploit development and post-exploitation module execution), <strong>Impacket</strong> library (Python-based Windows protocol attacks including wmiexec, psexec for lateral movement), and <strong>Responder</strong> (LLMNR/NBT-NS poisoning to capture NTLMv2 hashes). For privilege escalation specifically, tools like <strong>Watermelon</strong> (UAC bypass automation) and <strong>PowerUp.ps1</strong> (PowerShell privilege escalation scripts) are commonly referenced. Hands-on practice in a Windows domain environment with Metasploitable or a custom Active Directory lab is essential for exam confidence.</p>
+
+            <h2>How to Study System Hacking for the CEH v13 Exam</h2>
+            <p>To effectively study Module 6 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Memorize the password cracking attack types and their defenses: brute-force (lockout policies), dictionary (complexity requirements), rainbow table (salting), hybrid (strong complexity + length)</li>
+                <li>Understand the Windows credential storage chain: SAM → NTLM hash → lsass.exe in memory → Mimikatz extraction → pass-the-hash to other systems</li>
+                <li>Hands-on exercise: In a VirtualBox Windows 10 VM, enable Local Security Policy settings to allow anonymous SID/Name resolution, extract the SAM database with samdump2, crack NTLM hashes offline with Hashcat, and document the entire process</li>
+                <li>Review related modules: <a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5 (Vulnerability Analysis)</a> for identifying the vulnerabilities that enable system hacking, and <a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7 (Malware Threats)</a> for how malware payloads are deployed after initial access</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About System Hacking</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is pass-the-hash and why is it significant on the CEH exam?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">Pass-the-hash is a lateral movement technique where an attacker uses a stolen NTLM or NTLMv2 hash to authenticate to other systems without ever knowing the plaintext password. The Windows authentication process compares hashes — it never requires the actual password over the network. This means if you have valid admin hashes from one system, you can authenticate to any other system where that account has admin rights. On the CEH exam, pass-the-hash is a high-frequency topic: know how NTLM authentication works (challenge-response), how hashes are stored (SAM, NTDS.dit, lsass memory), and how to detect/prevent it (disable NTLM, enforce SMB signing, monitor for anomalous logon types 3).</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">How does UAC differ from a full privilege separation model?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">UAC (User Account Control) is not a true privilege separation model — it is a prompt-based system that asks for user consent when an application requests elevation to admin. The user's token contains both a filtered (standard user) and elevated (admin) portion, and UAC decides which to use based on the request. This is fundamentally different from a model where processes run as standard user by default and must explicitly request specific elevated operations. On the CEH exam, this distinction matters because UAC can be bypassed through numerous techniques (DLL hijacking, FOD abuse, COM Elevation Moniker) that trick the consent prompt or avoid it entirely. A true privilege separation model would be far more resistant to these bypass techniques.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7: Malware Threats</a> — After gaining system access, attackers often deploy malware for persistence, C2 communication, and further compromise; understanding malware deployment techniques is the logical next step after system hacking</li>
+                <li><a href="/ceh-v13/module-08/" style="color:var(--accent)">Module 8: Sniffing & Traffic Analysis</a> — Captured network credentials and hashes obtained through sniffing feed directly into system hacking attacks; the two modules are tightly coupled in real-world attack chains</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->

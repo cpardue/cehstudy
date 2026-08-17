@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 20: Cryptography — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 20 cryptography flashcards: symmetric/asymmetric encryption, hash functions, digital signatures, PKI, key management, cryptographic attacks, TLS/IPsec/SSH protocols, wireless cryptography. Free study resources.">
+    <title>CEH v13 Module 20: Cryptography — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 20: Cryptography — Free study guide with flashcards covering AES, RSA, ECC, SHA-256, PKI, digital signatures, TLS/IPsec/SSH protocols, cryptographic attacks, and wireless encryption. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-20/">
 
@@ -31,6 +31,45 @@
         }
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 20: Cryptography?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 20 covers the full spectrum of applied cryptography relevant to security professionals. Key topics include symmetric encryption algorithms (AES-128/192/256, DES, 3DES, Blowfish, ChaCha20, RC4) and their modes of operation (ECB, CBC, GCM); asymmetric encryption and key exchange (RSA 2048-4096-bit, ECC P-256/P-384, Diffie-Hellman, ECDHE); cryptographic hash functions (SHA-256/384/512, SHA-3, BLAKE2 vs broken MD5 and SHA-1); digital signatures and their role in authentication/non-repudiation; Public Key Infrastructure (CA, RA, X.509 certificates, CRL, OCSP); key management lifecycle (generation, distribution via HSM, rotation, destruction); cryptographic attacks (brute force, chosen plaintext/ciphertext, collision, side channel/timing, MITM); secure protocols combining symmetric and asymmetric crypto (TLS 1.2/1.3, IPsec AH/ESP, SSH, PGP/GPG); and wireless security evolution (WEP → WPA → WPA2/AES-CCMP → WPA3/SVP suite). This domain accounts for approximately 8% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between symmetric and asymmetric encryption on the CEH exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Symmetric encryption: A single shared key performs both encryption and decryption. Characteristics: (1) Fast — suitable for bulk data encryption (encrypting files, disk volumes, network traffic); (2) Key distribution is the challenge — both parties must possess the same secret key without it being intercepted; (3) Current standard: AES with 128/192/256-bit keys (FIPS-140 validated); (4) Modes of operation determine how block ciphers handle data longer than one block: ECB (no IV, leaks patterns), CBC (uses IV, secure), GCM (authenticated encryption with associated data). Examples tested: AES, 3DES (deprecated), Blowfish, ChaCha20 (stream cipher), RC4 (broken — biases in keystream). Asymmetric encryption: Uses a key pair — public key encrypts/verifies, private key decrypts/signs. Characteristics: (1) Slower (100-1000x slower than symmetric) — used for key exchange and digital signatures, not bulk data; (2) Solves the key distribution problem — anyone can encrypt with your public key but only you can decrypt with your private key; (3) Current standards: RSA (2048-bit minimum, 4096-bit recommended), ECC (256-bit provides equivalent security to RSA-3072); (4) Diffie-Hellman is used specifically for key agreement, not encryption. On the CEH exam, know that real-world protocols use a hybrid approach: TLS uses asymmetric crypto (RSA or ECDHE) during handshake to establish a shared secret, then switches to symmetric AES for all data transfer. This combines the security of asymmetric key exchange with the speed of symmetric bulk encryption."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 20: Cryptography Study Guide",
+        "description": "Free study materials for CEH v13 Module 20 covering symmetric and asymmetric encryption algorithms (AES, RSA, ECC), cryptographic hash functions (SHA-256, SHA-3), digital signatures, Public Key Infrastructure (PKI), key management with HSM, cryptographic attacks (brute force, collision, side channel), secure protocols (TLS, IPsec, SSH, PGP), and wireless security (WPA2/WPA3). Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "Symmetric and Asymmetric Encryption Algorithm Selection, Cryptographic Hash Function Analysis, Digital Signature and PKI Architecture, Key Management and HSM Operations, Cryptographic Attack Vectors and Mitigation, Secure Protocol Implementation (TLS/IPsec/SSH)"
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +82,7 @@
     <!-- Header -->
     <header><div class="container" style="padding:0"><div class="header-row">
         <a href="/" class="logo">CEHStudy</a>
+        <a href="/?module=20" class="flashcard-link" style="margin:0;font-size:.82rem;padding:6px 14px">&#127891; Study Module 20 Flashcards</a>
     </div></div></header>
 
     <div class="container">
@@ -65,7 +105,7 @@
             <li>Wireless cryptography: WEP, WPA, WPA2, WPA3</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
         <div class="term-box"><strong>Symmetric Encryption:</strong> Uses the same key for encryption and decryption. Fast and efficient for bulk data. Examples: AES (128/192/256-bit), DES (56-bit, broken), 3DES, Blowfish, ChaCha20. Modes of operation: ECB, CBC, CFB, OFB, GCM.</div>
         <div class="term-box"><strong>Asymmetric Encryption:</strong> Uses a public/private key pair. Public key encrypts, private key decrypts. Slower than symmetric but solves key distribution. Examples: RSA (2048-4096-bit), ECC (256-521-bit), DSA (signatures only), Diffie-Hellman (key exchange).</div>
         <div class="term-box"><strong>Cryptographic Hash Functions:</strong> One-way functions producing fixed-size digests. Properties: deterministic, pre-image resistant, collision resistant, avalanche effect. Secure: SHA-256, SHA-384, SHA-512, BLAKE2. Broken: MD5 (collisions), SHA-1 (SHAttered).</div>
@@ -95,8 +135,55 @@
         <ul class="content-list">
             <li><a href="/ceh-v13/module-06/">Module 6: System Hacking</a> — cryptography used in password cracking and encryption</li>
             <li><a href="/ceh-v13/module-16/">Module 16: Hacking Wireless Networks</a> — wireless cryptography (WEP/WPA/WPA2/WPA3)</li>
-            <li><a href="/ceh-v13/module-12/">Module 12: Evading IDS, Firewalls &amp; Honeypots</a> — encryption used to evade detection</li>
+            <li><a href="/ceh-v13/module-12/">Module 12: Evading IDS, Firewalls & Honeypots</a> — encryption used to evade detection</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is Cryptography in Ethical Hacking?</h2>
+            <p>Cryptography (Module 20) is arguably the most foundational domain on the Certified Ethical Hacker v13 (CEH v13) exam — it underpins virtually every other security control. On this exam, you're not expected to implement cryptographic algorithms from scratch, but you must be able to: identify which algorithm is in use, evaluate its strength against current attack capabilities, recognize when an algorithm is considered broken or deprecated, and understand how cryptographic protocols combine symmetric and asymmetric techniques in practice. Cryptography appears explicitly in Module 20 questions (approximately 8% of exam) but also appears implicitly throughout other domains — password hashing (Modules 5-7), wireless security (Module 16), protocol security (Modules 12-13), and digital signatures/certificates (throughout). On the CEH v13 exam, approximately 10-12 questions directly test cryptographic knowledge.</p>
+
+            <h2>Key Concepts in Cryptography</h2>
+            <ul>
+                <li><strong>Symmetric Encryption & AES:</strong> Symmetric ciphers use one key for both encryption and decryption. The exam focuses on AES (Advanced Encryption Standard) as the current standard: AES-128, AES-192, AES-256 variants with 128-bit block size. On the CEH exam, know the critical distinctions: (1) ECB mode is insecure for most use cases because identical plaintext blocks produce identical ciphertext blocks (reveals patterns — the famous "ECB penguin" example); (2) CBC mode adds an IV (Initialization Vector) for randomness but requires padding and is vulnerable to padding oracle attacks; (3) GCM (Galois/Counter Mode) provides both confidentiality AND integrity (authenticated encryption) in one operation — this is what TLS 1.3 uses by default. The exam also tests knowledge of deprecated algorithms: DES (56-bit key, broken by brute force since 1999), RC4 (keystream biases discovered, used in WEP and early TLS), and 3DES (still secure but being phased out due to 64-bit block size — Sweet32 birthday attack). For the exam: if a question mentions "bulk data encryption" the answer is almost always AES; if it mentions "deprecated but still found in legacy systems" think RC4 or DES.</li>
+                <li><strong>Asymmetric Encryption & Key Exchange:</strong> Asymmetric algorithms use mathematically related key pairs. On the CEH exam, you must know: (1) RSA — most widely deployed asymmetric algorithm; used for both encryption (RSA-OAEP padding) and signatures (RSA-PSS or PKCS#1 v1.5); minimum 2048-bit keys recommended (NIST SP 800-57); 3072-bit for long-term security through 2030; (2) ECC (Elliptic Curve Cryptography) — provides equivalent security with much smaller keys: P-256 (256-bit curve) ≈ RSA-3072 security, P-384 ≈ RSA-7680; critical for IoT/mobile where key size matters; (3) Diffie-Hellman (DH) — key AGREEMENT protocol, not encryption; two parties derive shared secret without transmitting it; ECDHE (Elliptic Curve DHE) is the modern variant providing forward secrecy in TLS; (4) DSA (Digital Signature Algorithm) — signature-only algorithm (cannot encrypt); ECDSA is its elliptic curve equivalent. The exam frequently tests: "Which algorithm provides forward secrecy?" (Answer: ECDHE/DHE — not RSA, because RSA key exchange uses the server's long-term private key and a compromised key decrypts all past sessions). Forward secrecy means each session's keys are derived fresh and cannot be retroactively decrypted even if the long-term key is later compromised.</li>
+                <li><strong>Cryptographic Hash Functions:</strong> Hash functions produce a fixed-size digest from variable-length input. The CEH exam tests properties: (1) Deterministic — same input always produces same output; (2) Pre-image resistance — given hash H, cannot find input M such that hash(M)=H; (3) Collision resistance — cannot find two different inputs M1≠M2 where hash(M1)=hash(M2); (4) Avalanche effect — 1-bit change in input should change ~50% of output bits. Secure algorithms: SHA-256 (256-bit), SHA-384, SHA-512, SHA-3 (Keccak-based), BLAKE2, BLAKE3. Broken/deprecated: MD5 (practical collision attacks since 2004 — MD Collide tool), SHA-1 (SHAttered proof-of-concept in 2017; NIST deprecated for digital signatures in 2013). On the CEH exam, know that MD5 and SHA-1 are STILL found in legacy systems and can be exploited: MD5 collision attacks can forge code signing certificates, and SHA-1 collisions have been demonstrated in certificate forgery. The practical implication: any system still accepting SHA-1 signatures is vulnerable to a chosen-prefix collision attack where an attacker creates a malicious certificate with the same hash as a legitimate one.</li>
+                <li><strong>Digital Signatures & PKI:</strong> Digital signatures provide three security properties simultaneously: (1) Authentication — proves who signed; (2) Integrity — any modification invalidates the signature; (3) Non-repudiation — signer cannot deny having signed. The signing process: Hash(message) → Encrypt(hash, sender's PRIVATE key) → append signature. Verification: Decrypt(signature, sender's PUBLIC key) → Hash(received message) → compare. PKI components tested on CEH: (1) CA (Certificate Authority) — signs certificates, has root key; (2) RA (Registration Authority) — verifies identity before CA issues cert; (3) X.509 Certificate format — contains public key, subject/issuer DNs, validity period, serial number, signature algorithm; (4) CRL (Certificate Revocation List) — periodic file listing revoked serial numbers; (5) OCSP (Online Certificate Status Protocol) — real-time revocation checking (faster than CRL but introduces availability dependency); (6) AIA (Authority Information Access) — URLs for fetching issuer certs and CRLs. On the exam, know that certificate validation follows the chain: leaf cert → intermediate CA(s) → root CA, with each level verifying the signature of the next. A broken link at any point invalidates the entire chain.</li>
+            </ul>
+
+            <h2>Tools Used in Cryptographic Analysis</h2>
+            <p>Cryptographic tools referenced on the CEH exam include <strong>OpenSSL</strong> (the definitive open-source cryptography toolkit: command-line interface for key generation [openssl genrsa, openssl ecparam], certificate operations [openssl req, openssl verify, openssl x509 -text], encryption/decryption [openssl enc -aes-256-cbc], and protocol testing [openssl s_client for TLS analysis]; the CEH exam expects you to recognize that OpenSSL is available on virtually all Unix/Linux systems and can be used to generate test keys/certs in authorized assessments); <strong>Wireshark</strong> (network protocol analyzer with built-in decryption capability: can decrypt TLS sessions if you provide the session key [Log → Export Session Keys from browser], decrypt IPsec ESP, analyze SSH handshake; essential for identifying weak cipher suites in use and detecting protocol downgrade attacks); <strong>hashcat</strong> (GPU-accelerated hash cracking tool supporting 300+ hash types: SHA-256/512 password hashes, NTLM, Kerberos (AES-128/256-CTS-HMAC-SHA1-96), WPA/WPA2 PSK (802.11 PMKID), and encrypted disk volumes; relevant to CEH because understanding hash strength informs password policy recommendations); <strong>TestSSL.sh</strong> (automated TLS configuration scanner checking for: weak cipher suites, protocol version support [TLS 1.0/1.1 deprecated], certificate chain validation, HSTS header presence, key size adequacy, and known vulnerabilities like Heartbleed/Logjam/BEAST); and <strong>FIDO2/WebAuthn security modules</strong> (hardware-based cryptographic key storage: TPM (Trusted Platform Module) on Windows for device attestation and BitLocker keys, Secure Enclave on Apple devices, FIDO2 tokens for passwordless authentication; relevant to CEH because understanding hardware-rooted key protection is part of modern key management strategy). On the CEH exam, know that OpenSSL is associated with key/certificate generation and Wireshark with protocol analysis.</p>
+
+            <h2>How to Study Cryptography for the CEH v13 Exam</h2>
+            <p>To effectively study Module 20 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Create an algorithm reference table: Algorithm | Type (sym/asym/hash) | Key Size | Status (current/deprecated/broken) | Common Use. Include: AES-128/256 (sym, current, bulk encryption), RSA-2048/4096 (asym, current, key exchange + signatures), ECC P-256/P-384 (asym, current, IoT/mobile), ECDHE (key agreement, forward secrecy), SHA-256/384/512 (hash, current), SHA-3 (hash, current), BLAKE2/3 (hash, current), MD5 (hash, BROKEN), SHA-1 (hash, BROKEN for signatures), DES (sym, broken), 3DES (sym, deprecated), RC4 (sym/stream, broken), WPA2-AES (wireless, current standard), WPA3-SAE (wireless, forward secrecy). The exam frequently presents a scenario and asks which algorithm is being described or which one is appropriate</li>
+                <li>Hands-on exercise: Use OpenSSL to generate an RSA key pair (openssl genrsa -out private.pem 2048), extract the public key (openssl rsa -in private.pem -pubout -out public.pem), create a self-signed certificate (openssl req -x509 -key private.pem -out cert.pem -days 365), and encrypt/decrypt a test file (openssl rsautl -encrypt / -decrypt). Then use openssl s_client to connect to a website and examine its TLS handshake: which cipher suite is negotiated? Which certificate chain is presented? Are any deprecated protocols (TLS 1.0/1.1) still offered? This directly mirrors exam questions about evaluating TLS configurations</li>
+                <li>Memorize the "broken algorithms" list and why each is broken: MD5 — collision attacks (two different files with same hash → can forge signed files); SHA-1 — SHAttered chosen-prefix collision (can create malicious certificate matching legitimate one's hash); DES — 56-bit key space brute-forced in hours with modern hardware; RC4 — statistical biases in keystream allow plaintext recovery after observing sufficient ciphertext; WEP — IV reuse + weak CRC32 integrity check allows key recovery from ~40,000 packets. Know the specific attack name for each: MD Collide (MD5), SHAttered (SHA-1), Rainbow tables/distributed computing (DES/RC4), Flask/d4 protocol (WEP)</li>
+                <li>Review related modules: <a href="/ceh-v13/module-06/" style="color:var(--accent)">Module 6 (System Hacking)</a> for how cryptographic hashes are used in password storage and cracking (NTLM, Kerberos AES), <a href="/ceh-v13/module-16/" style="color:var(--accent)">Module 16 (Wireless Networks)</a> for the full WEP→WPA→WPA2→WPA3 evolution with specific attack vectors for each, and <a href="/ceh-v13/module-12/" style="color:var(--accent)">Module 12 (Evading IDS/Network Attacks)</a> for how encryption is used to hide malicious traffic from network-based detection systems. On the CEH exam, know that cryptography is a cross-cutting concern — it appears in nearly every domain</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About Cryptography</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is forward secrecy and which protocols provide it on the CEH exam?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">Forward secrecy (also called Perfect Forward Secrecy, PFS) is a property of key exchange protocols where each session's encryption keys are derived from ephemeral (temporary) key material that is destroyed after the session ends. This means that even if an attacker later obtains the server's long-term private key, they CANNOT decrypt previously captured session traffic. The key distinction on the CEH exam: Protocols WITH forward secrecy: (1) DHE (Diffie-Hellman Ephemeral) — RSA key exchange in TLS without DHE does NOT have forward secrecy because the server's RSA private key can decrypt past sessions; (2) ECDHE (Elliptic Curve DHE Ephemeral) — the modern standard providing forward secrecy with smaller keys; used in TLS 1.2 (ECDHE-RSA, ECDHE-ECDSA) and is the default in TLS 1.3 (which provides forward secrecy by design since RSA key exchange was removed entirely). Protocols WITHOUT forward secrecy: (1) RSA key transport in TLS — server's long-term RSA key encrypts the session master secret; compromise of this key decrypts ALL past sessions; (2) Static DH (non-ephemeral) — same shared secret used across all sessions with same parameters. On the CEH exam, know that TLS 1.3 mandates forward secrecy by removing static RSA key exchange — this is a significant security improvement over TLS 1.2 where non-forward-secret cipher suites were still negotiable. WPA3 also provides forward secrecy through its SAE (Simultaneous Authentication of Equals) mechanism, which uses ephemeral Diffie-Hellman for each association. The practical implication: an organization recording all network traffic (for compliance or malware analysis) is at risk if using non-forward-secret protocols — future key compromise reveals all recorded sessions.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">How does a Man-in-the-Middle (MITM) attack exploit cryptographic protocols?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">A MITM attack intercepts and optionally alters communication between two parties who believe they are directly communicating. On the CEH exam, know the specific cryptographic attack vectors: (1) Protocol downgrade — attacker forces both parties to use weaker protocol versions: SSLv3/TLS 1.0 instead of TLS 1.2/1.3 (enables POODLE/BEAST attacks), or CBC instead of GCM mode; detected by HSTS (HTTP Strict Transport Security) header and protocol version enforcement; (2) Certificate spoofing — attacker presents a self-signed or fake certificate; if the client does not properly validate the chain (or has the attacker's CA in its trust store), it accepts the connection; exploited via ARP spoofing on local networks to redirect traffic; (3) Key substitution in DH — attacker establishes separate key exchanges with each party (A↔M and M↔B), decrypting and re-encrypting all traffic; prevented by authenticated DH (where the DH public keys are signed, as in TLS); (4) Rogue CA attack — if an organization's trust store includes a compromised or unauthorized CA, any certificate from that CA is accepted; mitigated by certificate pinning (hardcoding expected public key hash in application). Detection methods: monitoring for unexpected certificate changes, certificate transparency logs (publicly searchable records of all issued certificates), HSTS preload lists, and network segmentation preventing rogue access points. On the CEH exam, the most commonly tested MITM scenario is ARP spoofing on a local network combined with TLS interception using a rogue CA — testing whether the organization properly validates certificates and uses HSTS.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-06/" style="color:var(--accent)">Module 6: System Hacking</a> — Cryptography (Module 20) is the theoretical foundation for password cracking in Module 6. When you crack NTLM hashes or Kerberos tickets, you're exploiting the cryptographic design of Windows authentication: NTLM's reliance on MD4-based NTOWFv1 hash (which allows offline brute force), Kerberos' use of AES-CTS-HMAC for ticket encryption (where key length determines cracking difficulty — AES-128 vs AES-256), and the fundamental property that hashes are one-way but finite in search space. On the CEH exam, know that understanding hash function properties (deterministic, fixed output length, avalanche effect) is what enables systematic password attacks: rainbow tables exploit determinism (same input → same output, precompute mappings), while GPU-based brute force exploits the finite key space</li>
+                <li><a href="/ceh-v13/module-16/" style="color:var(--accent)">Module 16: Hacking Wireless Networks</a> — The wireless security evolution is a direct application of cryptographic concepts to the 802.11 standard: WEP used RC4 with a 24-bit IV (insufficient for collision resistance — birthday paradox means IV reuse occurs after ~5,000 packets), WPA introduced TKIP as a stopgap (per-packet MIC but same RC4 core), WPA2 standardized AES-CCMP (Counter Mode + Cipher Block Chaining Message Authentication Code) providing both confidentiality and integrity, and WPA3 adds SAE (Simultaneous Authentication of Equals using Dragonfly key exchange) for forward secrecy and resistance to offline dictionary attacks. On the CEH exam, know that each wireless standard upgrade was driven by a specific cryptographic weakness in the previous generation</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->

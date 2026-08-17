@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 3: Scanning Networks — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 3 flashcards: port scanning, TCP/UDP scanning, banner grabbing, SNMP enumeration, firewall bypass techniques. Free study resources.">
+    <title>CEH v13 Module 3: Scanning Networks — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 3: Scanning Networks — Free study guide with flashcards, Nmap scan types, port scanning, vulnerability scanning, banner grabbing, and IDS evasion. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-03/">
 
@@ -14,7 +14,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "CEH v13 Module 3: Scanning Networks — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 3 covering port scanning, TCP/UDP scanning, banner grabbing, SNMP enumeration, and firewall bypass techniques.",
+        "description": "Free flashcards for CEH v13 Module 3 covering network scanning, nmap techniques, port scanning, vulnerability scanning, and IDS evasion.",
         "url": "https://cehstudy.com/ceh-v13/module-03/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -25,10 +25,49 @@
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Network and System Scanning",
+            "name": "Scanning Networks",
             "termCode": "CEH-M03",
-            "description": "Network and system scanning techniques including port scanning, TCP/UDP scanning, banner grabbing, SNMP enumeration, and firewall bypass techniques."
+            "description": "Network scanning techniques including TCP SYN, connect, FIN, Xmas scans, nmap options, vulnerability scanning, banner grabbing, and IDS/firewall evasion."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 3: Scanning Networks?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 3 covers TCP and UDP scanning techniques, Nmap scan types (SYN, connect, FIN, Xmas, NULL), ping sweeps, version detection, banner grabbing, vulnerability scanning with Nessus and OpenVAS, and IDS/firewall evasion techniques. This domain accounts for approximately 8% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which Nmap scan type is most commonly used on the CEH exam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The TCP SYN scan (-sS) is the most commonly referenced Nmap scan on the CEH exam. It is a half-open scan that does not complete the TCP three-way handshake, making it stealthier than the connect() scan (-sT) while remaining fast and reliable. Understanding the packet-level differences between all scan types is essential for exam questions."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 3: Scanning Networks Study Guide",
+        "description": "Free study materials for CEH v13 Module 3 covering network scanning techniques, Nmap flags, port scanning methods, vulnerability scanning, banner grabbing, and IDS evasion. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "TCP Scan Types, Nmap Flags and Options, Port Scanning, Vulnerability Scanning, Banner Grabbing, IDS Evasion"
     }
     </script>
 
@@ -49,69 +88,105 @@
         <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 3: Scanning Networks</nav>
 
         <h1 class="page-title">CEH v13 Module 3: Scanning Networks</h1>
-        <p class="content-text">This module covers network and system scanning — the second phase of ethical hacking. Learn port scanning techniques, TCP/UDP scanning, banner grabbing, SNMP enumeration, firewall bypass methods, and tools like Nmap, Netcat, and Metasploit.</p>
+        <p class="content-text">This module covers active network scanning techniques used to discover live hosts, open ports, and services on a target network. You will learn nmap scan types, port scanning methods, vulnerability scanning, banner grabbing, and techniques for bypassing IDS and firewalls.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Scanning vs footprinting: differences and relationships</li>
-            <li>TCP connections: three-way handshake, SYN, ACK, FIN flags</li>
-            <li>Port scanning techniques: SYN, connect, UDP, XMAS, NULL, FIN, ACK scan</li>
-            <li>Network mapping and topology discovery</li>
-            <li>Banner grabbing and service identification</li>
-            <li>SNMP enumeration and community strings</li>
-            <li>Firewall and IDS evasion techniques</li>
-            <li>Scanning tools: Nmap, Netcat, Metasploit, Masscan</li>
+            <li>Scanning vs footprinting: active vs passive information gathering</li>
+            <li>Vulnerability scanning and network discovery procedures</li>
+            <li>TCP scan types: SYN (-sS), connect (-sT), FIN (-sF), Xmas (-sX), NULL scans</li>
+            <li>Discovery scans: Ping sweep (-sP), TCP ping (-PT), SYN ping (-PS)</li>
+            <li>Specialized scans: Version detection (-sV), UDP (-sU), ACK (-sA), Window, Idle (-sI)</li>
+            <li>nmap timing options: -T0 through -T5</li>
+            <li>nmap output formats: Normal, XML, Grepable, All (-oA)</li>
+            <li>Banner grabbing and TCP/IP fundamentals</li>
+            <li>Bypassing IDS and firewalls during scanning</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Port Scanning:</strong> The process of identifying which ports are open on a target system. Common techniques include SYN scan (stealthy), connect scan (full connection), and UDP scan.</div>
-        <div class="term-box"><strong>SYN Scan (Half-Open):</strong> Sends a SYN packet, reads the response, and immediately disconnects without completing the three-way handshake. Faster and less detectable than full connect scans.</div>
-        <div class="term-box"><strong>XMAS Scan:</strong> Sends a TCP packet with FIN, PSH, and URG flags set. Named after how the packet looks like it's decorated for Christmas. Probes ports without completing connection.</div>
-        <div class="term-box"><strong>NULL Scan:</strong> Sends a TCP packet with no flags set. Only works on UNIX-like systems where closed ports respond with RST.</div>
-        <div class="term-box"><strong>Banner Grabbing:</strong> Connecting to an open port and reading the service's response banner to identify the application and version.</div>
-        <div class="term-box"><strong>SNMP Enumeration:</strong> Using Simple Network Management Protocol to extract network information from devices. Common default community strings: "public" (read-only) and "private" (read-write).</div>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>TCP SYN scan (-sS):</strong> Half-open scan — sends SYN packets and analyzes responses without completing the TCP handshake. Most common stealth scan.</div>
+        <div class="term-box"><strong>TCP connect() scan (-sT):</strong> Completes the full TCP three-way handshake. More reliable but easier to detect than SYN scan.</div>
+        <div class="term-box"><strong>FIN scan (-sF):</strong> Sends a FIN packet — non-listening ports respond with RST. Can bypass some firewalls.</div>
+        <div class="term-box"><strong>Xmas Tree scan (-sX):</strong> Sets FIN, PSH, and URG flags like a Christmas tree. Named for the combination of flags set.</div>
+        <div class="term-box"><strong>Ping scan (-sP):</strong> ICMP ping sweep to discover live hosts on a network range.</div>
+        <div class="term-box"><strong>Version detection (-sV):</strong> Probes open ports to determine service and version information beyond just port status.</div>
+        <div class="term-box"><strong>Idlescan (-sI):</strong> Zombie-based stealthy port scan that uses a third-party system to avoid sending packets from your own IP.</div>
+        <div class="term-box"><strong>FTP Bounce attack (-b):</strong> Uses a proxy FTP server to scan a target through the relay, hiding the true source.</div>
 
-        <h2 class="section-heading">TCP Port States</h2>
+        <h2 class="section-heading">nmap Timing Options</h2>
         <ul class="content-list">
-            <li><strong>Open:</strong> Application is listening on this port</li>
-            <li><strong>Closed:</strong> Port is reachable but no service is listening</li>
-            <li><strong>Filtered:</strong> Firewall or packet filter is blocking the probe</li>
-            <li><strong>Unfiltered:</strong> Port accessibility unknown, but firewall rules are not active</li>
-            <li><strong>Open|Filtered:</strong> Cannot determine if open or filtered</li>
-            <li><strong>Closed|Filtered:</strong> Cannot determine if closed or filtered</li>
-        </ul>
-
-        <h2 class="section-heading">Common Port Numbers</h2>
-        <ul class="content-list">
-            <li><code>21</code> FTP &mdash; File Transfer Protocol</li>
-            <li><code>22</code> SSH &mdash; Secure Shell</li>
-            <li><code>23</code> Telnet &mdash; Unencrypted remote access</li>
-            <li><code>25</code> SMTP &mdash; Simple Mail Transfer Protocol</li>
-            <li><code>53</code> DNS &mdash; Domain Name System</li>
-            <li><code>80</code> HTTP &mdash; Hypertext Transfer Protocol</li>
-            <li><code>110</code> POP3 &mdash; Post Office Protocol</li>
-            <li><code>143</code> IMAP &mdash; Internet Message Access Protocol</li>
-            <li><code>443</code> HTTPS &mdash; HTTP Secure</li>
-            <li><code>445</code> SMB &mdahl; Server Message Block</li>
+            <li><code>-T0</code> Paranoid (300s wait) — IDS evasion</li>
+            <li><code>-T1</code> Sneaky (15s wait) — slow and stealthy</li>
+            <li><code>-T2</code> Polite (0.4s wait) — reduces network congestion</li>
+            <li><code>-T3</code> Normal — default timing</li>
+            <li><code>-T4</code> Aggressive (300s timeout, 1.25s per probe)</li>
+            <li><code>-T5</code> Insane (75s timeout, 0.3s per probe) — fastest</li>
         </ul>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Understand TCP three-way handshake and how different scan types interact with it</li>
-            <li>Memorize common port numbers and their associated services</li>
-            <li>Know the differences between Nmap scan types (SYN, connect, UDP, XMAS, NULL)</li>
-            <li>Understand banner grabbing and SNMP enumeration techniques</li>
+            <li>Memorize each nmap scan type flag and its mechanism (-sS, -sT, -sF, -sX, etc.)</li>
+            <li>Understand when to use each scan type (stealth vs reliability)</li>
+            <li>Know the timing options and their trade-offs between speed and stealth</li>
+            <li>Practice with nmap in a lab environment if possible</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>Is Module 3 important for the CEH exam?</strong><br>Yes. Network scanning is a core skill that accounts for approximately 15% of the CEH v13 exam.</p>
-        <p><strong>How many cards are in this module?</strong><br>Module 3 contains flashcards covering all sections: Overview, TCP/IP Basics, Scanning Techniques, Port Scanning Tools (Nmap), Banner Grabbing, Bypassing IDS/Firewall, and Network Mapping.</p>
+        <p><strong>Which nmap scan is most commonly used?</strong><br>SYN scan (-sS) is the most popular because it is fast, widely available (requires root), and stealthy since it does not complete the TCP handshake.</p>
+        <p><strong>What is the difference between a vulnerability assessment and port scanning?</strong><br>Port scanning identifies open ports and services. Vulnerability assessment goes further by identifying known CVEs and weaknesses in those services.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-02/" style="color:var(--accent)">Module 2: Footprinting & Reconnaissance</a> — scanning builds on information gathered during footprinting</li>
-            <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> — enumeration uses data from scanning to extract detailed system information</li>
+            <li><a href="/ceh-v13/module-02/">Module 2: Footprinting & Reconnaissance</a> — passive info gathering precedes active scanning</li>
+            <li><a href="/ceh-v13/module-04/">Module 4: Enumeration</a> — enumeration follows scanning to extract specific data</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is Scanning Networks in Ethical Hacking?</h2>
+            <p>Scanning Networks is a core domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers active network scanning techniques for discovering live hosts, open ports, running services, and vulnerabilities on target systems. The primary tool — Nmap — provides dozens of scan types from half-open SYN scans to UDP sweeps, each with different trade-offs between speed, accuracy, and stealth. Understanding packet-level mechanics of each scan type is essential because the CEH exam frequently asks scenario-based questions about which scan to use in a given situation. On the CEH v13 exam, questions related to Module 3 account for approximately 8% of total questions.</p>
+
+            <h2>Key Concepts in Scanning Networks</h2>
+            <ul>
+                <li><strong>TCP Three-Way Handshake & Half-Open Scanning:</strong> The foundation of all TCP scans. A full handshake (SYN → SYN-ACK → ACK) identifies open ports but is easily logged. Half-open SYN scanning sends only the initial SYN and reads the response — SYN-ACK means open, RST means closed — without ever completing the connection. This is why -sS is both faster and stealthier than -sT.</li>
+                <li><strong>Stealth Scan Variants (FIN, Xmas, NULL):</strong> These scans exploit a gap in older TCP/IP implementations where filtered firewalls only check for SYN packets. A FIN scan (-sF) sends a packet with only the FIN flag set; if no response comes, the port is likely filtered. Xmas (-sX) sets FIN, PSH, and URG flags; NULL sends no flags at all. Modern operating systems respond with RST to all closed ports regardless of flags, but these techniques can still bypass poorly configured stateless firewalls.</li>
+                <li><strong>Nmap Timing & Performance Options:</strong> The -T0 through -T5 timing templates control how aggressively Nmap sends packets and waits for responses. -T3 is the default; -T4 is recommended for most engagements with modern networks; -T5 is fastest but may trigger IDS alerts. Understanding when to use slower settings (paranoid/sneaky) versus faster ones is a common exam question type.</li>
+                <li><strong>Vulnerability Scanning vs Port Scanning:</strong> Port scanning identifies which ports are open and what services run on them. Vulnerability scanning (Nessus, OpenVAS, Qualys) goes further by matching running services against databases of known CVEs to identify specific exploitable weaknesses. The CEH exam distinguishes these two activities and expects you to know which tools perform each function.</li>
+            </ul>
+
+            <h2>Tools Used in Network Scanning</h2>
+            <p>Nmap remains the industry-standard scanning tool, with its NSE (Nmap Scripting Engine) extending capabilities to vulnerability detection. For dedicated vulnerability scanning, Nessus (Tenable) and OpenVAS (Greenbone) provide comprehensive CVE databases and compliance reporting. Masscan is used for large-scale Internet-wide port scanning at extreme speed. For banner grabbing, telnet and Netcat (nc) connect directly to open ports to capture service banners without specialized tooling. Hands-on practice in a VirtualBox lab environment with intentionally vulnerable targets like Metasploitable or DVWA is strongly recommended before the exam.</p>
+
+            <h2>How to Study Scanning Networks for the CEH v13 Exam</h2>
+            <p>To effectively study Module 3 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Memorize each Nmap scan flag and the specific packet it sends — the CEH exam asks you to identify scans from packet traces</li>
+                <li>Understand the TCP/IP response for each scan type against open, closed, and filtered ports (use a matrix: scan type × port state)</li>
+                <li>Hands-on exercise: Set up a Metasploitable 2 VM in VirtualBox and run a full Nmap scan with -sV -sC -oA. Document what each scan flag reveals and compare SYN vs connect results.</li>
+                <li>Review related modules: <a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4 (Enumeration)</a> for protocol-specific discovery that builds on scanning, and <a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5 (Vulnerability Analysis)</a> for the next step after identifying open services</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About Scanning Networks</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">Why is a SYN scan called a half-open scan?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">A SYN scan is called "half-open" because it only completes the first step of the TCP three-way handshake. The scanner sends a SYN packet and receives either a SYN-ACK (port open) or RST (port closed), but never sends the final ACK to complete the connection. Because the full connection is never established, many target systems do not log the attempt — making it stealthier than a connect() scan. However, it requires raw socket access (root/administrator privileges), which is why it cannot be run in non-privileged mode.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is the difference between a filtered and a closed port?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">A closed port actively rejects the connection — it sends back a RST (reset) packet, indicating no service is listening there. A filtered port provides no response at all — a firewall is silently dropping the packets before they reach the target. On the CEH exam, this distinction matters: a closed port means the host is up and the service is stopped, while a filtered port means a firewall or security device is blocking access. The Nmap output explicitly labels ports as "open," "closed," or "filtered" based on these different responses.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> — After discovering open ports and services, enumeration digs deeper into protocols like SMB, SNMP, and LDAP to extract user lists, shares, and group memberships</li>
+                <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: Vulnerability Analysis</a> — Applies the service and version information discovered through scanning to identify specific known vulnerabilities and CVEs</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->
