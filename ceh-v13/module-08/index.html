@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 8: Sniffing — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 8 sniffing flashcards: protocol analysis, packet capture, Wireshark, ARP/DNS/RARP sniffing. Free study resources.">
+    <title>CEH v13 Module 8: Sniffing & Traffic Analysis — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 8: Sniffing & Traffic Analysis — Free study guide with flashcards covering Wireshark packet analysis, ARP spoofing, MAC flooding, DHCP starvation, and network interception techniques. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-08/">
 
@@ -14,7 +14,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "CEH v13 Module 8: Sniffing — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 8 covering protocol analysis, packet capture with Wireshark, and ARP/DNS/RARP sniffing.",
+        "description": "Free flashcards for CEH v13 Module 8 covering passive/active sniffing, Wireshark, ARP poisoning, MAC flooding, and DHCP starvation.",
         "url": "https://cehstudy.com/ceh-v13/module-08/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
@@ -27,8 +27,47 @@
             "@type": "DefinedTerm",
             "name": "Sniffing",
             "termCode": "CEH-M08",
-            "description": "Network protocol analysis and packet capture techniques including Wireshark, ARP/DNS/RARP sniffing for ethical hacking."
+            "description": "Intercepting and analyzing network traffic including passive vs active sniffing, ARP poisoning, MAC flooding, DHCP starvation, and packet capture tools."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 8: Sniffing and Traffic Analysis?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 8 covers passive and active network sniffing techniques, packet capture tools (Wireshark, tcpdump, EtherPeek), ARP poisoning/spoofing attacks, CAM table overflow (MAC flooding), DHCP starvation/exhaustion attacks, session hijacking fundamentals, protocol analysis for credential extraction, SSL/TLS inspection challenges, and defensive countermeasures including port security, DAI (Dynamic ARP Inspection), and 802.1X authentication. This domain accounts for approximately 10% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why can't you sniff traffic on a switched network the same way as a hub?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "On a hub, all frames are broadcast to every connected port — any device on the segment sees all traffic. On a switch, frames are forwarded only to the specific port associated with the destination MAC address, so a sniffer on one port only sees traffic destined for it plus broadcast/multicast. To sniff on a switched network, an attacker must use active techniques: ARP poisoning (redirecting traffic through their machine), CAM table flooding (overwhelming the switch's MAC table to force fail-open broadcast mode), or DHCP starvation (taking over as the gateway). On the CEH exam, know that passive sniffing only works on hubs or with SPAN/mirror ports."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 8: Sniffing and Traffic Analysis Study Guide",
+        "description": "Free study materials for CEH v13 Module 8 covering passive/active sniffing, Wireshark packet analysis, ARP spoofing, MAC flooding, DHCP starvation, credential extraction from traffic, and defensive countermeasures. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "Passive and Active Sniffing, Wireshark Packet Analysis, ARP Poisoning Attacks, MAC Flooding, DHCP Starvation, Credential Extraction from Traffic, Network Defense Countermeasures"
     }
     </script>
 
@@ -49,36 +88,93 @@
         <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 8: Sniffing</nav>
 
         <h1 class="page-title">CEH v13 Module 8: Sniffing</h1>
-        <p class="content-text">This module covers network sniffing techniques — capturing and analyzing network traffic. Topics include protocol analysis, packet capture with Wireshark, ARP/DNS/RARP sniffing, switch evasion, and defense mechanisms.</p>
+        <p class="content-text">Sniffing is the act of intercepting and analyzing traffic on a network. This module covers passive vs active sniffing, packet capture tools like Wireshark and tcpdump, ARP poisoning attacks, MAC address table overflow, DHCP starvation, and techniques for evading switched networks.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>Protocol analysis: TCP/IP stack, common protocols</li>
-            <li>Packet capture: Wireshark, tcpdump, Nmap scripts</li>
-            <li>ARP sniffing: intercepting ARP traffic</li>
-            <li>DNS/RARP sniffing techniques</li>
-            <li>Switch evasion: port mirroring, MAC flooding</li>
+            <li>Passive vs active sniffing techniques</li>
+            <li>Packet capture tools: Wireshark, tcpdump, Cain & Abel, EtherPeek</li>
+            <li>ARP poisoning/ARP spoofing attacks</li>
+            <li>MAC address table overflow (CAM table flooding)</li>
+            <li>DHCP starvation attacks</li>
+            <li>Switched network evasion techniques</li>
+            <li>Protocol analysis and payload extraction</li>
+            <li>Network monitoring countermeasures</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>Promiscuous Mode:</strong> Network interface configured to capture all traffic on the segment, not just traffic addressed to it. Required for sniffing.</div>
-        <div class="term-box"><strong>MAC Flooding:</strong> Overwhelming switch CAM table with fake MAC addresses forces switch into hub mode, broadcasting all traffic. Defenses: port security, BPDU guard.</div>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>Passive Sniffing:</strong> Simply listening to network traffic without sending packets. Works on hubs where all traffic is broadcast to every port. Cannot work on switches without additional attacks.</div>
+        <div class="term-box"><strong>Active Sniffing:</strong> Injecting packets into the network to redirect traffic toward the attacker. Includes ARP poisoning, MAC flooding, and DHCP starvation attacks.</div>
+        <div class="term-box"><strong>ARP Poisoning (ARP Spoofing):</strong> Sending fake ARP replies to associate the attacker's MAC address with the target's IP. Creates a Man-in-the-Middle position.</div>
+        <div class="term-box"><strong>CAM Table Overflow:</strong> Flooding a switch's MAC address table until it enters "fail-open" mode, broadcasting all traffic like a hub. Tools: Macof, Cain & Abel.</div>
+        <div class="term-box"><strong>DHCP Starvation:</strong> Creating fake DHCP requests with random MACs to exhaust the DHCP pool (DHCP exhaustion). Also called a DHCP starvation attack. Tools: Yersinia.</div>
+        <div class="term-box"><strong>Wireshark:</strong> The world's most popular network protocol analyzer. GUI-based, supports hundreds of protocols, captures and displays packet-level data in real-time.</div>
+        <div class="term-box"><strong>tcpdump:</strong> Command-line packet capture tool for Linux/Unix. Uses BPF (Berkeley Packet Filter) syntax for filtering captured packets.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Practice Wireshark capture and filtering</li>
-            <li>Understand common protocol headers</li>
-            <li>Learn switch evasion techniques</li>
+            <li>Understand the difference between passive and active sniffing with examples</li>
+            <li>Know how ARP poisoning creates a Man-in-the-Middle position</li>
+            <li>Memorize how MAC flooding forces switches into hub-like behavior</li>
+            <li>Practice using Wireshark to analyze captured traffic</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>What is the best tool for sniffing?</strong><br>Wireshark for analysis, tcpdump for CLI. Both are essential tools.</p>
+        <p><strong>What is the difference between hub and switch sniffing?</strong><br>On a hub, all traffic goes to every port — passive sniffing works easily. On a switch, traffic is sent only to the destination MAC, so active attacks (ARP poisoning, MAC flooding) are required.</p>
+        <p><strong>How does ARP poisoning work?</strong><br>The attacker sends unsolicited fake ARP replies telling the gateway that the attacker's MAC is the target's IP. All traffic for the target now goes through the attacker's machine.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7: Network-based Attacks</a> — sniffing supports MITM attacks</li>
-            <li><a href="/ceh-v13/module-09/" style="color:var(--accent)">Module 9: Social Engineering</a> — social engineering enables physical sniffing access</li>
+            <li><a href="/ceh-v13/module-07/">Module 7: Malware Threats</a> — malware can be used to sniff traffic on compromised hosts</li>
+            <li><a href="/ceh-v13/module-09/">Module 9: Social Engineering</a> — sniffed credentials can fuel phishing attacks</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What is Network Sniffing and Traffic Analysis in Ethical Hacking?</h2>
+            <p>Network Sniffing and Traffic Analysis is a core domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers both the offensive techniques for intercepting network traffic (ARP poisoning, MAC flooding, DHCP starvation) and the defensive skill of analyzing captured packets to identify threats, extract credentials, and understand protocol behavior. The CEH v13 exam emphasizes understanding Layer 2 attacks on switched networks, as modern environments eliminated the simple hub-based sniffing that was once trivial. On the CEH v13 exam, questions related to Module 8 account for approximately 10% of total questions.</p>
+
+            <h2>Key Concepts in Sniffing and Traffic Analysis</h2>
+            <ul>
+                <li><strong>ARP Poisoning & Man-in-the-Middle:</strong> The ARP protocol has no authentication mechanism — any host can claim to be any IP address. An attacker sends forged ARP replies associating their MAC with the gateway's IP (or the target's IP), intercepting all traffic through their machine. Tools like Ettercap automate this with built-in MiTM capabilities including HTTP injection, credential capture, and SSL stripping. The CEH exam tests understanding of how ARP cache tables work and why they make this attack possible on any flat LAN segment.</li>
+                <li><strong>CAM Table Flooding (MAC Overflow):</strong> Switches maintain a MAC address table (CAM table) mapping MAC addresses to ports. When flooded with millions of fake MAC addresses, the table overflows and the switch enters "fail-open" mode — forwarding all frames to all ports like a hub. Tools: Macof (Kali), Cain & Abel. On the CEH exam, know that this is a temporary DoS that enables sniffing only while flooding continues. Defense: port security with maximum MAC limit per port.</li>
+                <li><strong>DHCP Starvation Attack:</strong> The attacker floods the network with DHCP Discover requests using randomized MAC addresses, exhausting the DHCP server's address pool. Once the pool is exhausted, the attacker can run their own rogue DHCP server, becoming the gateway for all new clients — enabling both sniffing and man-in-the-middle attacks. Tools: Yersinia, DHCPig. On the CEH exam, distinguish this from simple DoS (the goal is traffic redirection, not just denial of service). Defense: DHCP snooping on managed switches.</li>
+                <li><strong>Credential Extraction from Traffic:</strong> Many protocols transmit credentials in cleartext or with weak protection: HTTP Basic Auth (base64-encoded = trivially decoded), FTP (cleartext username/password), Telnet (cleartext), SMTP/POP3 without STARTTLS, and legacy SMB (NTLM hashes). Wireshark's "Follow TCP Stream" feature reconstructs entire conversations. On the CEH exam, know which protocols are inherently insecure and which require additional encryption to protect credentials.</li>
+            </ul>
+
+            <h2>Tools Used in Sniffing and Traffic Analysis</h2>
+            <p>Essential sniffing tools for CEH exam preparation include <strong>Wireshark</strong> (GUI packet analyzer supporting 500+ protocols with BPF/Wireshark display filters), <strong>tcpdump</strong> (command-line equivalent using BPF syntax — `tcpdump -i eth0 port 80`), <strong>Ettercap</strong> (automated ARP poisoning and MiTM framework with plugin architecture), <strong>Cain & Abel</strong> (Windows-based: password recovery, network monitoring, protocol analysis), and <strong>Yersinia</strong> (multi-protocol attack tool supporting DHCP, OSPF, VTP attacks). For analysis specifically, understanding Wireshark display filters is exam-critical: `ip.addr == 192.168.1.1`, `http.request.method == GET`, `tcp.flags.syn == 1`. Hands-on practice: capture your own network traffic in VirtualBox with a host-only adapter, identify at least 5 cleartext protocols, and document the specific filter expressions used to isolate them.</p>
+
+            <h2>How to Study Sniffing for the CEH v13 Exam</h2>
+            <p>To effectively study Module 8 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Memorize the three main switched network attacks and their specific goals: ARP poisoning (redirect traffic), MAC flooding (force broadcast mode), DHCP starvation (become gateway) — the CEH exam presents scenarios asking which attack is being described</li>
+                <li>Learn Wireshark display filter syntax: know how to filter by IP, port, protocol, HTTP method, and TCP flags — practical questions may ask you to identify the correct filter for a given scenario</li>
+                <li>Hands-on exercise: Set up a VirtualBox network with two VMs (attacker + victim) using a host-only adapter. Install Kali on attacker, Windows on victim. Perform ARP poisoning with Ettercap, capture HTTP login credentials in Wireshark, and document the complete attack chain from initiation to credential capture</li>
+                <li>Review related modules: <a href="/ceh-v13/module-11/" style="color:var(--accent)">Module 11 (Session Hijacking)</a> for how sniffed session tokens are exploited, and <a href="/ceh-v13/module-06/" style="color:var(--accent)">Module 6 (System Hacking)</a> for how captured credentials enable lateral movement</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About Sniffing and Traffic Analysis</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">How does ARP poisoning create a Man-in-the-Middle position?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">ARP works on the principle that any host can send an unsolicited ARP reply claiming "IP X has MAC Y." The attacker sends two forged replies: (1) to the victim saying "the gateway's IP is now MY MAC" and (2) to the gateway saying "the victim's IP is now MY MAC." Both devices update their ARP caches and route traffic through the attacker. All traffic between victim and gateway now passes through the attacker's machine, which can pass it along (transparent MiTM) or modify it. On the CEH exam, know that ARP poisoning works because: (a) ARP has no authentication, (b) hosts accept unsolicited ARP replies without verification, and (c) the ARP cache is updated immediately without timeout waiting for the previous entry to expire.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What defensive measures prevent network sniffing on a LAN?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">The primary defenses against LAN sniffing attacks are: (1) Port Security — limit the number of MAC addresses per switch port, disabling the port on violation; (2) Dynamic ARP Inspection (DAI) — validates ARP packets against a DHCP snooping binding table, dropping spoofed replies; (3) DHCP Snooping — builds a trusted binding table of IP-MAC associations from legitimate DHCP exchanges, blocking rogue DHCP servers; (4) 802.1X Port-Based Authentication — requires device authentication before network access, limiting exposure to authorized devices only; (5) Network Segmentation (VLANs) — limits broadcast domain size so a single attacker cannot see traffic across the entire network; (6) Encryption (HTTPS, TLS) — even if traffic is intercepted, encrypted payloads are unreadable. On the CEH exam, know that no single defense is sufficient — defense in depth requires multiple layers.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-11/" style="color:var(--accent)">Module 11: Session Hijacking</a> — Sniffed session tokens (JSESSIONID, ASP.NET_SessionId) and authentication cookies are the primary inputs for session hijacking attacks; understanding how packets carry session state is the bridge between sniffing and active session takeover</li>
+                <li><a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3: Scanning Networks</a> — Network scanning identifies the hosts, services, and network topology that a sniffer would target; scan results determine which segments are most valuable to intercept and what protocols to watch for in traffic captures</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->
