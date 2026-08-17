@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEH v13 Module 10: Attacks on Web Applications — Flashcards | CEHStudy</title>
-    <meta name="description" content="CEH v13 Module 10 web application attacks flashcards: SQLi, XSS, CSRF, HTTP splitting, open redirection. Free study resources.">
+    <title>CEH v13 Module 10: Denial-of-Service Attacks — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <meta name="description" content="CEH v13 Module 10: Denial-of-Service Attacks — Free study guide with flashcards covering SYN flood, Smurf, DDoS amplification, botnet-based attacks, Layer 7 DoS (Slowloris), and mitigation. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-10/">
 
@@ -13,22 +13,61 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "CEH v13 Module 10: Attacks on Web Applications — Study Flashcards",
-        "description": "Free flashcards for CEH v13 Module 10 covering SQL injection, XSS, CSRF, HTTP splitting, and open redirection.",
+        "name": "CEH v13 Module 10: Denial-of-Service — Study Flashcards",
+        "description": "Free flashcards for CEH v13 Module 10 covering DoS vs DDoS, SYN flood, Smurf attack, Ping of Death, Teardrop, buffer overflow, and botnet attacks.",
         "url": "https://cehstudy.com/ceh-v13/module-10/",
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "CEH v13", "item": "https://cehstudy.com/ceh-v13/"},
-                {"@type": "ListItem", "position": 2, "name": "Module 10: Attacks on Web Applications", "item": "https://cehstudy.com/ceh-v13/module-10/"}
+                {"@type": "ListItem", "position": 2, "name": "Module 10: Denial-of-Service", "item": "https://cehstudy.com/ceh-v13/module-10/"}
             ]
         },
         "about": {
             "@type": "DefinedTerm",
-            "name": "Attacks on Web Applications",
+            "name": "Denial-of-Service",
             "termCode": "CEH-M10",
-            "description": "Web application attacks including SQL injection, cross-site scripting (XSS), CSRF, HTTP splitting, and open redirection."
+            "description": "DoS and DDoS attack types including SYN flood, Smurf attack, Ping of Death, Teardrop, buffer overflow, application layer attacks, and botnet-based distributed attacks."
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is covered in CEH v13 Module 10: Denial-of-Service Attacks?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "CEH v13 Module 10 covers the full spectrum of DoS and DDoS attack techniques including volumetric attacks (SYN flood, Smurf/ICMP amplification, UDP flood), protocol attacks (Ping of Death, Teardrop/fragments, NTP amplification, DNS amplification, Memcached amplification), application-layer/Layer 7 attacks (HTTP flood, Slowloris, R.U.D.Y., LOIT), botnet-based distributed attacks with C2 architecture, reflection/amplification attack multipliers, and mitigation strategies including SYN cookies, rate limiting, traffic filtering, BCP38/BCP84, anycast routing, and DDoS scrubbing services. This domain accounts for approximately 10% of the CEH v13 exam questions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is an amplification attack and why is it so effective in DDoS?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "An amplification attack exploits services that return much more data than they receive, using the victim's IP as a spoofed source. Common amplification vectors include: DNS (up to 54x amplification — small query returns large DNS response), NTP (up to 556x — monlist command returns massive data for tiny request), Memcached (up to 51,000x — small UDP request can return huge cached object), and SSDP/UPnP (up to 30x). On the CEH exam, know that amplification attacks are effective because: (1) the attacker sends a tiny packet but the victim receives a huge one, (2) thousands of unwitting servers can be recruited as reflectors, (3) spoofing makes the attack appear to come from the victim's own network. The 2016 Dyn attack (affecting major internet services) used Mirai botnet with DNS amplification, demonstrating real-world impact."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "CEH v13 Module 10: Denial-of-Service Attacks Study Guide",
+        "description": "Free study materials for CEH v13 Module 10 covering volumetric DoS (SYN flood, Smurf), protocol attacks (Ping of Death, Teardrop), amplification attacks (DNS, NTP, Memcached), Layer 7 attacks (Slowloris, HTTP flood), botnet DDoS, and mitigation strategies. Includes flashcards, practice questions, and exam preparation tips.",
+        "provider": {
+            "@type": "Organization",
+            "name": "CEHStudy",
+            "url": "https://cehstudy.com"
+        },
+        "educationalLevel": "Professional",
+        "teaches": "Volumetric DoS Attack Types, Protocol Exploitation Attacks, Amplification and Reflection Attacks, Layer 7 Application DoS, Botnet DDoS Architecture, DDoS Mitigation Strategies"
     }
     </script>
 
@@ -46,41 +85,97 @@
     </div></div></header>
 
     <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 10: Attacks on Web Applications</nav>
+        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-v13/">CEH v13</a> &rsaquo; Module 10: Denial-of-Service</nav>
 
-        <h1 class="page-title">CEH v13 Module 10: Attacks on Web Applications</h1>
-        <p class="content-text">This module covers web application attacks targeting vulnerabilities in code and configuration. Topics include SQL injection, cross-site scripting (XSS), CSRF, HTTP splitting/smuggling, open redirection, and XML injection.</p>
+        <h1 class="page-title">CEH v13 Module 10: Denial-of-Service</h1>
+        <p class="content-text">Denial-of-Service (DoS) attacks aim to make a system or network unavailable to legitimate users by overwhelming resources. This module covers DoS vs DDoS attacks, SYN flood, Smurf attack, Ping of Death, Teardrop, buffer overflow attacks, application layer DoS, botnet-based distributed attacks, and mitigation techniques.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
-            <li>SQL Injection (SQLi): UNION, blind, time-based, stacked queries</li>
-            <li>Cross-Site Scripting (XSS): reflected, stored, DOM-based</li>
-            <li>Cross-Site Request Forgery (CSRF): forced actions on authenticated users</li>
-            <li>HTTP splitting/smuggling: CRLF injection and request desync</li>
-            <li>Open redirection attacks</li>
-            <li>XML injection and XXE attacks</li>
+            <li>DoS vs DDoS: single-source vs distributed attacks</li>
+            <li>SYN flood attack: overwhelming TCP connection tables with half-open connections</li>
+            <li>Smurf attack: ICMP amplification using broadcast addresses</li>
+            <li>Ping of Death: oversized or fragmented ICMP packets crashing systems</li>
+            <li>Teardrop attack: overlapping IP fragments causing system crash</li>
+            <li>Buffer overflow attacks on network services</li>
+            <li>Application layer DoS (Layer 7): HTTP flood, Slowloris, RUDY</li>
+            <li>Distributed Denial-of-Service (DDoS) via botnets</li>
+            <li>DoS mitigation and prevention strategies</li>
         </ul>
 
-        <h2 class="section-heading">Important Terms &amp; Concepts</h2>
-        <div class="term-box"><strong>SQL Injection (SQLi):</strong> Injecting malicious SQL into input fields. Types: UNION-based, blind (boolean/time-based), stacked queries. Tools: sqlmap. Defenses: parameterized queries, input validation.</div>
-        <div class="term-box"><strong>Cross-Site Scripting (XSS):</strong> Injecting client-side scripts into web pages. Types: reflected (URL-based), stored (database-persistent), DOM-based. Tools: Burp Suite. Defenses: output encoding, Content Security Policy.</div>
+        <h2 class="section-heading">Important Terms & Concepts</h2>
+        <div class="term-box"><strong>DoS (Denial-of-Service):</strong> An attack from a single source that overwhelms a target's resources, making it unavailable to legitimate users.</div>
+        <div class="term-box"><strong>DDoS (Distributed Denial-of-Service):</strong> A DoS attack launched from multiple sources (typically a botnet), making it harder to mitigate through simple IP blocking.</div>
+        <div class="term-box"><strong>SYN Flood:</strong> Attacker sends rapid TCP SYN requests but never completes the handshake. Target's connection table fills with half-open connections, exhausting resources.</div>
+        <div class="term-box"><strong>Smurf Attack:</strong> ICMP-based amplification attack. Attacker sends ping (ICMP echo) to a broadcast address with spoofed source IP (victim). All hosts on the network reply to the victim simultaneously.</div>
+        <div class="term-box"><strong>Ping of Death:</strong> Sends malformed or oversized ICMP packets (>65,535 bytes) that overflow buffers when reassembled, causing system crashes.</div>
+        <div class="term-box"><strong>Teardrop:</strong> Sends IP fragments with overlapping offset values. When the target tries to reassemble them, the system crashes due to the malformed fragment data.</div>
+        <div class="term-box"><strong>Botnet:</strong> A network of infected computers (zombies) controlled by a command-and-control (C2) server. Used to launch massive DDoS attacks from thousands of sources simultaneously.</div>
 
         <h2 class="section-heading">How to Study This Module</h2>
         <ul class="content-list">
-            <li>Understand each attack type and its variants</li>
-            <li>Know the difference between reflected/stored XSS</li>
-            <li>Learn SQL injection techniques and sqlmap usage</li>
-            <li>Understand OWASP Top 10 vulnerabilities</li>
+            <li>Understand the difference between DoS and DDoS attacks</li>
+            <li>Memorize each attack type and its specific mechanism (SYN flood, Smurf, Ping of Death, Teardrop)</li>
+            <li>Know mitigation techniques: SYN cookies, rate limiting, traffic filtering, blackholing</li>
+            <li>Understand how botnets enable distributed attacks at massive scale</li>
         </ul>
 
         <h2 class="section-heading">Frequently Asked Questions</h2>
-        <p><strong>Which web attack is most critical?</strong><br>SQL injection — it can lead to full database compromise, data exfiltration, and administrative access.</p>
+        <p><strong>What is the difference between DoS and DDoS?</strong><br>DoS comes from one source. DDoS comes from many sources simultaneously (a botnet), making it much harder to mitigate since you can't simply block one IP address.</p>
+        <p><strong>What is a SYN flood attack?</strong><br>The attacker sends thousands of TCP SYN packets but never responds with the final ACK. The target's TCP connection table fills up with half-open connections, preventing new legitimate connections.</p>
 
         <h2 class="section-heading">Related Modules</h2>
         <ul class="content-list">
-            <li><a href="/ceh-v13/module-09/" style="color:var(--accent)">Module 9: Social Engineering</a> — phishing often delivers web attack payloads</li>
-            <li><a href="/ceh-v13/module-11/" style="color:var(--accent)">Module 11: Denial of Service</a> — DoS can accompany web attacks</li>
+            <li><a href="/ceh-v13/module-09/">Module 9: Social Engineering</a> — DoS attacks often accompany phishing to create urgency/distraction</li>
+            <li><a href="/ceh-v13/module-11/">Module 11: Session Hijacking</a> — DoS can be used as a distraction for other attacks</li>
         </ul>
+
+        <!-- LLM Optimization Content -->
+        <div class="llm-seo-content">
+            <h2>What are Denial-of-Service Attacks in Ethical Hacking?</h2>
+            <p>Denial-of-Service (DoS) and Distributed Denial-of-Service (DDoS) attacks are a critical domain on the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers attacks that target availability — one of the three pillars of the CIA triad (Confidentiality, Integrity, Availability). DoS attacks range from simple volumetric floods to sophisticated amplification attacks that can bring down entire internet infrastructure. The CEH v13 exam emphasizes understanding attack classification by OSI layer (volumetric at L3/L4 vs protocol exploitation vs application-layer at L7) and the specific mechanism each attack uses to exhaust target resources. On the CEH v13 exam, questions related to Module 10 account for approximately 10% of total questions.</p>
+
+            <h2>Key Concepts in Denial-of-Service Attacks</h2>
+            <ul>
+                <li><strong>Volumetric vs Protocol vs Application DoS:</strong> The CEH exam categorizes DoS by how they exhaust resources: Volumetric attacks (SYN flood, UDP flood, ICMP flood) consume bandwidth and connection table space at L3/L4; Protocol attacks (Teardrop, Ping of Death) exploit implementation flaws in stack processing to cause crashes; Application-layer attacks (Slowloris, HTTP flood, R.U.D.Y.) target L7 services by consuming application resources (threads, connections, CPU for processing). On the exam, identify the attack type from the description: if it mentions 'half-open connections' = SYN flood, 'broadcast address with spoofed source' = Smurf/amplification, 'open but incomplete HTTP requests' = Slowloris.</li>
+                <li><strong>Amplification & Reflection Attacks:</strong> The most effective modern DDoS technique. The attacker sends small requests to open servers (DNS, NTP, Memcached, SSDP) with a spoofed source IP (victim). The server responds to the victim with a response much larger than the original request. Amplification factors: DNS ~54x, NTP monlist ~556x, Memcached ~51,000x, SSDP ~30x. On the CEH exam, know that amplification requires: (a) open/accessible service on internet-facing servers, (b) source IP spoofing capability, (c) a protocol where response is disproportionately larger than request. The 2016 Dyn attack and 2017 Mirai botnet attacks are real-world examples the exam may reference.</li>
+                <li><strong>Layer 7 DoS (Slowloris & HTTP Flood):</strong> Slowloris opens many TCP connections to a web server but sends only partial HTTP headers, keeping each connection open and consuming worker threads without completing requests. The server exhausts its thread pool while each connection appears legitimate. HTTP flood (different from volumetric) sends valid but resource-intensive HTTP GET/POST requests at high rates, consuming CPU/memory for processing rather than bandwidth. R.U.D.Y. (R-U-Dead-Yet) is a Slowloris variant that slowly trickles POST body data to keep connections alive. On the CEH exam, distinguish: SYN flood = L4 TCP handshake exhaustion; Slowloris = L7 thread pool exhaustion with incomplete requests; HTTP flood = L7 resource exhaustion with complete but numerous requests.</li>
+                <li><strong>DDoS Mitigation Strategy:</strong> The CEH exam tests layered defense approaches: (1) BCP38/BCP84 — source address validation at network edge to prevent spoofing (prerequisite for amplification defense); (2) SYN cookies — allow connections without reserving table space until handshake completes; (3) Rate limiting — cap requests per IP on specific endpoints; (4) AnyCast routing — distribute traffic across global PoPs so no single point is overwhelmed; (5) DDoS scrubbing (CDN services like Cloudflare, Akamai) — filter attack traffic before it reaches origin; (6) Blackholing/Null routing — drop all traffic to attacked IP as last resort. On the exam, know that no single technique mitigates all DDoS types — defense must be layered by attack vector.</li>
+            </ul>
+
+            <h2>Tools Used in DoS/DOS Attacks</h2>
+            <p>DoS tools referenced on the CEH exam include <strong>HOIC (High Orbit Ion Cannon)</strong> and <strong>LOIC (Low Orbit Ion Cannon)</strong> (graphical/CLI tools for HTTP/UDP flood attacks — LOIC uses simple TCP/UDP/HTTP flood, HOIC supports more protocol options), <strong>Slowloris</strong> (Python-based Layer 7 attack tool that opens incomplete HTTP connections to exhaust web server threads), <strong>hping3</strong> (powerful packet generation tool supporting SYN flood, UDP flood, ping of death, teardrop — `hping3 -S --flood` for SYN flood), and <strong>Mirai source code</strong> (real-world botnet malware that was leaked publicly — demonstrates IoT DDoS at scale with UDP amplification). For monitoring and detection: <strong>ntopng</strong> (traffic analysis), <strong>Zeek/Bro</strong> (network security monitoring identifying anomaly patterns), and cloud-based DDoS dashboards. On the CEH exam, know that hping3 is the most versatile single tool for demonstrating L3/L4 DoS techniques in a lab environment.</p>
+
+            <h2>How to Study DoS Attacks for the CEH v13 Exam</h2>
+            <p>To effectively study Module 10 for the Certified Ethical Hacker exam:</p>
+            <ol>
+                <li>Create a comparison table of all DoS attack types: Attack Name | OSI Layer | Mechanism (what it exhausts) | Key Indicator in description. The CEH exam presents attack descriptions and asks you to identify which type it is — the distinguishing details are the mechanism and the resource being exhausted</li>
+                <li>Memorize amplification factors for each protocol: DNS (~54x), NTP (~556x), Memcached (~51,000x), SSDP (~30x) — the exam may ask which has the highest multiplier or which service is most dangerous</li>
+                <li>Hands-on exercise: In a VirtualBox lab with a web server VM, use hping3 to demonstrate SYN flood (watch the connection table fill via `ss -tan` on the target), then use Slowloris to show thread pool exhaustion. Document the specific metrics that change for each attack type — this directly maps to exam questions about detection indicators</li>
+                <li>Review related modules: <a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7 (Malware Threats)</a> for botnet C2 architecture that powers DDoS attacks, and <a href="/ceh-v13/module-12/" style="color:var(--accent)">Module 12 (Evading IDS)</a> for how attackers shape DoS traffic to avoid triggering rate-based detection signatures</li>
+            </ol>
+
+            <h2>Frequently Asked Questions About DoS Attacks</h2>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">What is the difference between a SYN flood and an HTTP flood on the CEH exam?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">SYN flood operates at Layer 4 (Transport): the attacker sends TCP SYN packets but never completes the three-way handshake with an ACK. The target's kernel maintains half-open connection entries in a limited-size table, and once full, it cannot accept new legitimate connections. Mitigation: SYN cookies (assign stateless identifier instead of reserving table space). HTTP flood operates at Layer 7 (Application): the attacker sends complete, valid HTTP GET or POST requests at high volume. Each request is processed by the web application — consuming CPU for business logic, database queries, template rendering. The connections are fully established and legitimate-looking. Mitigation: rate limiting per IP/endpoint, CDN-based challenge mechanisms, request fingerprinting to identify bot patterns. On the CEH exam, the key distinction is: SYN flood = connection table exhaustion at kernel level; HTTP flood = application resource exhaustion at process level.</p>
+                </div>
+            </div>
+            <div itemscope itemtype="https://schema.org/Question">
+                <p><strong itemprop="name">Why are IoT devices so effective in DDoS attacks?</strong></p>
+                <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
+                    <p itemprop="text">IoT devices (webcams, IP cameras, smart TVs, routers) make ideal DDoS zombies because: (1) they run on Linux with default/weak credentials that are never changed, (2) they have persistent network connectivity (always on), (3) they have limited processing power so they don't run security software, (4) many have exposed UPnP/SSDP services that enable amplification, and (5) their firmware rarely receives security patches. The Mirai botnet (2016) demonstrated this by compromising ~600,000 IoT devices in its first 20 hours, launching a 1 Tbps DDoS against Dyn DNS that took down Twitter, Netflix, GitHub, and many other major services. On the CEH exam, know that IoT DDoS is a growing threat because the attack surface expands with every connected device, and the primary defense is network-level filtering (blocking unauthorized outbound UDP) rather than endpoint security which doesn't exist on these devices.</p>
+                </div>
+            </div>
+
+            <h2>Related CEH v13 Modules</h2>
+            <ul>
+                <li><a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7: Malware Threats</a> — Botnets are the infrastructure behind most modern DDoS attacks; Module 7 covers the malware propagation and C2 architecture that creates the zombie networks used for distributed attacks. Understanding how Mirai spread (targeting specific IoT vulnerabilities) explains how botnets achieve scale</li>
+                <li><a href="/ceh-v13/module-12/" style="color:var(--accent)">Module 12: Evading IDS, Firewalls & Honeypots</a> — Advanced DoS attackers shape their traffic to avoid triggering signature-based and rate-based detection. Module 12 covers the specific techniques (traffic fragmentation, rate normalization, protocol manipulation) that make DoS attacks harder for defensive systems to distinguish from legitimate traffic spikes</li>
+            </ul>
+            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
+        </div>
     </div>
 
     <!-- Footer -->
