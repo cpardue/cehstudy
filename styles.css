@@ -999,8 +999,8 @@ blockquote {
 /* === Responsive === */
 @media (max-width: 600px) {
     .fc-card {
-        padding: 30px 8px;
-        margin: 0 6px;
+        padding: 30px 24px;
+        margin: 0 18px;
         min-height: 220px;
     }
 
@@ -1258,5 +1258,37 @@ blockquote {
 
     .reviewed-badge {
         white-space: nowrap;
+    }
+}
+
+/* === Ad Slot (Google AdSense) === */
+.ad-slot {
+    max-width: 728px;
+    min-height: 90px;
+    margin: 24px auto;
+    padding: 12px;
+    text-align: center;
+    background: var(--bg2);
+    border: 1px dashed var(--border);
+    overflow: hidden;
+}
+
+.ad-slot .adsbygoogle {
+    display: block;
+    width: 100%;
+}
+
+.ad-slot-label {
+    font-size: .65rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-bottom: 6px;
+}
+
+@media (max-width: 728px) {
+    .ad-slot {
+        max-width: 100%;
+        min-height: 0;
     }
 }
