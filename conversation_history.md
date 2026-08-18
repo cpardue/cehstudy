@@ -3,7 +3,9 @@
 ## [2026-08-18 08:30] AdSense Integration (One Ad Per Page)
 - Files modified/created: 29 HTML pages (index + 20 modules + ceh-v13/ + study-guide + practice-questions + faq + 4 Phase-4 pages) — publisher snippet in <head> + one .ad-slot before footer (index.html: directly below flashcard area); styles.css (.ad-slot rules appended); 4 Phase-4 inline-CSS pages got .ad-slot CSS injected into their <style> blocks; new scripts: adsense-insert.js (idempotent, re-runnable), adsense-css-fix.js, adsense-verify.js
 - Key decisions: Ad client ca-pub-4948135636372064 (account pending review). Placeholder data-ad-slot="1111111111" — MUST replace with real ad unit number after AdSense approval via adsense-insert.js constant. Skipped low-value pages: about, contact, disclaimer, changelog, glossary + 20 glossary-terms pages (reversible by re-running script). Verify: node adsense-verify.js → 29 OK / 26 clean-skipped / 0 problems
-- Pending: push to github.com/cpardue/cehstudy main (via API/MCP), browser verify
+- [09:11 COMPLETE] Pushed all 34 changed files to github.com/cpardue/cehstudy main via Contents API using deploy-adsense.js (node). Token source: token from MCP_Servers/Github_MCP.md was EXPIRED (401); working token found in C:\Users\cpard\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\settings\cline_mcp_settings.json — deploy-adsense.js reads tokens from that settings file first, falls back to the doc. Upload count: 34/34, verified ceh-v13/module-01 on GitHub (snippet in head + .ad-slot before footer).
+- NOTE: MCP_Servers/Github_MCP.md contains a stale/expired PAT — regenerate and update that doc when convenient.
+- Remaining: after AdSense approval, replace placeholder data-ad-slot="1111111111" with real ad unit number (edit AD_SLOT constant in adsense-insert.js, re-run, re-deploy)
 - Rollback ref: remove .ad-slot divs + publisher snippet (grep "adsbygoogle")
 
 ## [2026-08-17 08:21] CEHStudy LLM Optimization: Phases 3 & 4 Complete
