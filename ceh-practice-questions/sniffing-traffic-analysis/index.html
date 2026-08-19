@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
+  <title>CEH v13 Sniffing Practice Questions 2026 | CEHStudy</title>
+  <meta name="description" content="Free CEH v13 Module 8 Sniffing &amp; Traffic Analysis practice questions with detailed explanations. 10 original multiple-choice questions. Test your knowledge for the CEH 312-50 exam — no sign-up needed.">
+  <meta name="keywords" content="CEH v13 module 8 practice questions, Sniffing &amp; Traffic Analysis practice test, free CEH practice questions, CEH 312-50 practice, CEH module 8 quiz, CEH exam prep 2026">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cehstudy.com/ceh-practice-questions/sniffing-traffic-analysis/">
+
+  <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/ceh-practice-questions/sniffing-traffic-analysis/">
+  <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "CEH v13 Sniffing & Traffic Analysis Practice Questions (10 Questions with Explanations)",
+      "description": "Free CEH v13 Module 8 Sniffing & Traffic Analysis practice questions with detailed explanations. 10 original multiple-choice questions. Test your knowledge for the CEH 312-50 exam — no sign-up needed.",
+      "author": {
+          "@type": "Organization",
+          "name": "CEHStudy"
+      },
+      "datePublished": "2026-08-18",
+      "dateModified": "2026-08-18",
+      "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://cehstudy.com/ceh-practice-questions/sniffing-traffic-analysis/"
+      }
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "CEH v13 Module 8 Sniffing & Traffic Analysis Practice Quiz",
+      "description": "10 original practice questions for CEH v13 Module 8 (Sniffing & Traffic Analysis) with detailed explanations.",
+      "question": [
+          {
+              "@type": "Question",
+              "name": "Network sniffing is:",
+              "answerValue": "B) Capturing and analyzing traffic flowing across a network"
+          },
+          {
+              "@type": "Question",
+              "name": "ARP poisoning enables sniffing on switched networks by:",
+              "answerValue": "C) Associating the attacker's MAC address with the IP of a legitimate device, so victim traffic flows through the attacker"
+          },
+          {
+              "@type": "Question",
+              "name": "A MAC flooding attack causes a network switch to:",
+              "answerValue": "D) Fail open and broadcast all frames like a hub once its CAM table overflows"
+          },
+          {
+              "@type": "Question",
+              "name": "In a DHCP starvation attack, the attacker:",
+              "answerValue": "B) Exhausts the pool of available IP addresses and then runs a rogue DHCP server to hand out malicious configuration"
+          },
+          {
+              "@type": "Question",
+              "name": "Which tool is a command-line packet capture utility for Linux and macOS?",
+              "answerValue": "A) tcpdump"
+          },
+          {
+              "@type": "Question",
+              "name": "Traffic analysis differs from reading packet contents because it:",
+              "answerValue": "D) Infers communication patterns — volume, frequency, and who talks to whom — without decrypting the payload"
+          },
+          {
+              "@type": "Question",
+              "name": "SSLStrip is used to:",
+              "answerValue": "D) Downgrade HTTPS requests to HTTP in a Man-in-the-Middle position, exposing credentials in clear text"
+          },
+          {
+              "@type": "Question",
+              "name": "Why is sniffing more difficult on switched networks than on hubs?",
+              "answerValue": "C) Switches forward frames only to the destination MAC address, not out every port"
+          },
+          {
+              "@type": "Question",
+              "name": "Bettercap is best described as:",
+              "answerValue": "D) A network attack and monitoring toolkit for sniffing and Man-in-the-Middle attacks"
+          },
+          {
+              "@type": "Question",
+              "name": "Port mirroring (SPAN) enables sniffing by:",
+              "answerValue": "A) Configuring a switch to copy all monitored traffic to a designated monitor port"
+          }
+      ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+          {
+              "@type": "Question",
+              "name": "How many CEH v13 Sniffing & Traffic Analysis practice questions are on this page?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "This page includes 10 original multiple-choice practice questions for CEH v13 Module 8 (Sniffing & Traffic Analysis). Each question includes a detailed explanation of the correct answer and why the other options are wrong. The full CEHStudy question bank covers all 20 modules with 200+ questions — see the practice hub at https://cehstudy.com/ceh-practice-questions/ for every module."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "What does CEH v13 Module 8 (Sniffing & Traffic Analysis) cover?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Network interception: ARP spoofing, DNS poisoning, SSL stripping, packet capture, and traffic analysis techniques. These are the same topics tested under this module on the EC-Council 312-50 exam. Pair this quiz with our free Module 8 flashcards at https://cehstudy.com/ceh-v13/module-08/ to close any gaps."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Are these real CEH exam questions?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Every question on CEHStudy is original study material written for exam preparation. They match the style, difficulty, and domain coverage of the actual CEH v13 exam but are not leaked or reproduced EC-Council questions."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "How should I use this Sniffing & Traffic Analysis quiz for exam prep?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Answer all 10 questions without peeking at explanations, then click \"Show My Score\". Review every explanation — especially the ones you missed — and re-test those topics with our free CEH flashcards. Aim for 80% or higher on module quizzes before scheduling the exam."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Where do I find CEH Sniffing & Traffic Analysis flashcards?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our free flashcard app covers all 20 CEH v13 modules including Module 8 (Sniffing & Traffic Analysis). Visit the CEH flashcards page at https://cehstudy.com/ceh-flashcards/ or the Module 8 page at https://cehstudy.com/ceh-v13/module-08/. No account or sign-up required."
+              }
+          }
+      ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+          {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://cehstudy.com/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Practice Questions",
+              "item": "https://cehstudy.com/ceh-practice-questions/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Module 8: Sniffing & Traffic Analysis",
+              "item": "https://cehstudy.com/ceh-practice-questions/sniffing-traffic-analysis/"
+          }
+      ]
+  }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4948135636372064" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="header-sticky">
+  <div class="header-nav-inner">
+    <a href="/" class="header-nav-logo">CEHStudy</a>
+    <nav class="header-nav-links">
+      <a href="/ceh-v13/">Modules</a>
+      <a href="/ceh-flashcards/">Flashcards</a>
+      <a href="/ceh-practice-questions/">Practice Questions</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-practice-questions/">Practice Questions</a> &rsaquo; Module 8</p>
+
+  <h1 class="page-title">CEH v13 Module 8: Sniffing &amp; Traffic Analysis — Free Practice Questions with Explanations</h1>
+
+  <p style="color:var(--accent);font-size:.9rem;margin-bottom:16px;">Last updated August 2026 · 10 questions · Module 8 of 20</p>
+
+  <p class="content-text">Network interception: ARP spoofing, DNS poisoning, SSL stripping, packet capture, and traffic analysis techniques. Below are 10 original multiple-choice practice questions for this module, each with a detailed explanation. They follow the style and difficulty of the EC-Council Certified Ethical Hacker v13 exam (312-50).</p>
+
+  <div class="disclaimer-box">
+    <strong style="color:var(--orange);">⚠️ Important Disclaimer:</strong> These practice questions are <strong>original study material</strong> created by CEHStudy for educational purposes. They are NOT EC-Council exam questions and do NOT replicate the actual exam. CEHStudy is not affiliated with or endorsed by EC-Council.
+  </div>
+
+  <div class="question-card" data-correct="B">
+    <h3 class="section-heading" style="margin-top:0;">Question 1: Network sniffing is:</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q1" value="A"> A) Cracking wireless pre-shared keys</label>
+      <label><input type="radio" name="m8q1" value="B"> B) Capturing and analyzing traffic flowing across a network</label>
+      <label><input type="radio" name="m8q1" value="C"> C) Scanning for open ports on a host</label>
+      <label><input type="radio" name="m8q1" value="D"> D) Fuzzing web application inputs</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: B</strong> — Sniffers (Wireshark, tcpdump) capture packets for legitimate troubleshooting or malicious credential theft.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 2: ARP poisoning enables sniffing on switched networks by:</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q2" value="A"> A) Requesting port mirroring from the core switch</label>
+      <label><input type="radio" name="m8q2" value="B"> B) Flooding the switch CAM table until it fails open</label>
+      <label><input type="radio" name="m8q2" value="C"> C) Associating the attacker's MAC address with the IP of a legitimate device, so victim traffic flows through the attacker</label>
+      <label><input type="radio" name="m8q2" value="D"> D) Sending forged DHCP offers to all clients</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Fake ARP replies convince hosts to send frames to the attacker's MAC — establishing a Man-in-the-Middle position.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 3: A MAC flooding attack causes a network switch to:</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q3" value="A"> A) Power off completely for safety</label>
+      <label><input type="radio" name="m8q3" value="B"> B) Increase its forwarding bandwidth</label>
+      <label><input type="radio" name="m8q3" value="C"> C) Permanently block all unknown MACs</label>
+      <label><input type="radio" name="m8q3" value="D"> D) Fail open and broadcast all frames like a hub once its CAM table overflows</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — Thousands of fake MAC addresses exhaust the address table; the switch then floods everything out all ports, enabling sniffing.</div>
+  </div>
+
+  <div class="question-card" data-correct="B">
+    <h3 class="section-heading" style="margin-top:0;">Question 4: In a DHCP starvation attack, the attacker:</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q4" value="A"> A) Disconnects clients using deauthentication frames</label>
+      <label><input type="radio" name="m8q4" value="B"> B) Exhausts the pool of available IP addresses and then runs a rogue DHCP server to hand out malicious configuration</label>
+      <label><input type="radio" name="m8q4" value="C"> C) Spoofs DNS responses at the resolver</label>
+      <label><input type="radio" name="m8q4" value="D"> D) Captures the WPA four-way handshake</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: B</strong> — Once the real DHCP server has no addresses left, the rogue server can point victims at attacker-controlled IPs/DNS.</div>
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 5: Which tool is a command-line packet capture utility for Linux and macOS?</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q5" value="A"> A) tcpdump</label>
+      <label><input type="radio" name="m8q5" value="B"> B) Wireshark (GUI analyzer)</label>
+      <label><input type="radio" name="m8q5" value="C"> C) Aircrack-ng</label>
+      <label><input type="radio" name="m8q5" value="D"> D) nmap</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — tcpdump captures packets from the CLI; Wireshark offers the graphical deep-analysis environment.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 6: Traffic analysis differs from reading packet contents because it:</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q6" value="A"> A) Requires the target's private keys to work</label>
+      <label><input type="radio" name="m8q6" value="B"> B) Only functions on unencrypted links</label>
+      <label><input type="radio" name="m8q6" value="C"> C) Needs administrative access to the switch</label>
+      <label><input type="radio" name="m8q6" value="D"> D) Infers communication patterns — volume, frequency, and who talks to whom — without decrypting the payload</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — Even fully encrypted traffic leaks metadata: timing, sizes, and counterparties can reveal sensitive relationships.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 7: SSLStrip is used to:</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q7" value="A"> A) Fuzz web forms for injection bugs</label>
+      <label><input type="radio" name="m8q7" value="B"> B) Crack WPA2 handshakes with wordlists</label>
+      <label><input type="radio" name="m8q7" value="C"> C) Perform DNS zone transfers</label>
+      <label><input type="radio" name="m8q7" value="D"> D) Downgrade HTTPS requests to HTTP in a Man-in-the-Middle position, exposing credentials in clear text</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — A passive MITM rewrites links and intercepts the first HTTP request before the browser negotiates TLS.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 8: Why is sniffing more difficult on switched networks than on hubs?</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q8" value="A"> A) Both devices broadcast identically</label>
+      <label><input type="radio" name="m8q8" value="B"> B) Hubs encrypt all traffic by default</label>
+      <label><input type="radio" name="m8q8" value="C"> C) Switches forward frames only to the destination MAC address, not out every port</label>
+      <label><input type="radio" name="m8q8" value="D"> D) Switches block ICMP echo requests</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Hubs flood everything; switches use MAC tables — so attackers need ARP poisoning, MAC flooding, or mirroring to capture others' traffic.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 9: Bettercap is best described as:</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q9" value="A"> A) An offline password cracker</label>
+      <label><input type="radio" name="m8q9" value="B"> B) A stateful packet-filtering firewall</label>
+      <label><input type="radio" name="m8q9" value="C"> C) A Wi-Fi Protected Setup (WPS) cracker</label>
+      <label><input type="radio" name="m8q9" value="D"> D) A network attack and monitoring toolkit for sniffing and Man-in-the-Middle attacks</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — Bettercap bundles ARP spoofing, MITM modules, session hijacking, and traffic analysis into one framework (like Cain &amp; Abel on Windows).</div>
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 10: Port mirroring (SPAN) enables sniffing by:</h3>
+    <div class="options">
+      <label><input type="radio" name="m8q10" value="A"> A) Configuring a switch to copy all monitored traffic to a designated monitor port</label>
+      <label><input type="radio" name="m8q10" value="B"> B) Broadcasting forged ARP replies</label>
+      <label><input type="radio" name="m8q10" value="C"> C) Spoofing DNS resolver records</label>
+      <label><input type="radio" name="m8q10" value="D"> D) Disabling the switch's MAC address table</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — A legitimate admin feature — abused when access to the switch config is obtained, it quietly duplicates any conversation for capture.</div>
+  </div>
+
+  <div class="score-display" id="scoreDisplay"></div>
+
+  <div style="text-align:center; margin:30px 0;">
+    <button class="btn btn-primary" onclick="showScore()" style="font-size:1.1em; padding:12px 30px;">Show My Score</button>
+  </div>
+
+  <h2 class="section-heading">Related Glossary Terms</h2>
+  <ul class="content-list">
+    <li><a href="/glossary-terms/man-in-the-middle/">Man-in-the-Middle Attack</a> — The goal of most sniffing techniques</li>
+    <li><a href="/glossary-terms/arp-spoofing/">ARP Spoofing</a> — Primary Layer 2 interception method</li>
+    <li><a href="/glossary-terms/denial-of-service/">Denial of Service</a> — Deauth floods are a wireless DoS vector</li>
+  </ul>
+
+  <h2 class="section-heading">Continue Your CEH v13 Prep</h2>
+  <ul class="content-list">
+    <li><strong>Previous: Module 7 — Malware Threats practice questions</strong>: <a href="/ceh-practice-questions/malware-threats/">Module 7 quiz →</a></li>
+    <li><strong>Next: Module 9 — Social Engineering practice questions</strong>: <a href="/ceh-practice-questions/social-engineering/">Module 9 quiz →</a></li>
+    <li><strong>Practice hub:</strong> <a href="/ceh-practice-questions/">All 20 module quizzes — 200+ questions →</a></li>
+    <li><strong>Flashcards:</strong> <a href="/ceh-flashcards/">Free CEH flashcards for all 20 modules →</a></li>
+    <li><strong>Home:</strong> <a href="/">CEHStudy homepage →</a></li>
+  </ul>
+
+  <h2 class="section-heading">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">How many CEH v13 Sniffing &amp; Traffic Analysis practice questions are on this page?</h3>
+    <p class="content-text">This page includes 10 original multiple-choice practice questions for CEH v13 Module 8 (Sniffing & Traffic Analysis). Each question includes a detailed explanation of the correct answer and why the other options are wrong. The full CEHStudy question bank covers all 20 modules with 200+ questions — see the practice hub at https://cehstudy.com/ceh-practice-questions/ for every module.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">What does CEH v13 Module 8 (Sniffing &amp; Traffic Analysis) cover?</h3>
+    <p class="content-text">Network interception: ARP spoofing, DNS poisoning, SSL stripping, packet capture, and traffic analysis techniques. These are the same topics tested under this module on the EC-Council 312-50 exam. Pair this quiz with our free Module 8 flashcards at https://cehstudy.com/ceh-v13/module-08/ to close any gaps.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">Are these real CEH exam questions?</h3>
+    <p class="content-text">No. Every question on CEHStudy is original study material written for exam preparation. They match the style, difficulty, and domain coverage of the actual CEH v13 exam but are not leaked or reproduced EC-Council questions.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">How should I use this Sniffing &amp; Traffic Analysis quiz for exam prep?</h3>
+    <p class="content-text">Answer all 10 questions without peeking at explanations, then click "Show My Score". Review every explanation — especially the ones you missed — and re-test those topics with our free CEH flashcards. Aim for 80% or higher on module quizzes before scheduling the exam.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">Where do I find CEH Sniffing &amp; Traffic Analysis flashcards?</h3>
+    <p class="content-text">Our free flashcard app covers all 20 CEH v13 modules including Module 8 (Sniffing & Traffic Analysis). Visit the CEH flashcards page at https://cehstudy.com/ceh-flashcards/ or the Module 8 page at https://cehstudy.com/ceh-v13/module-08/. No account or sign-up required.</p>
+  </div>
+
+</div>
+
+  <!-- AdSense -->
+  <div class="ad-slot">
+      <span class="ad-slot-label">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4948135636372064" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+<footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/">Flashcards</a>
+        <a href="/ceh-flashcards/">CEH Flashcards</a>
+        <a href="/ceh-v13/">CEH v13 Modules</a>
+        <a href="/ceh-v13-study-guide/">Study Guide</a>
+        <a href="/ceh-practice-questions/">Practice Questions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/disclaimer/">Disclaimer</a>
+    </nav>
+    <p class="footer-copy">CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
+</footer>
+
+<script>
+function checkAnswer(btn) {
+  var card = btn.closest('.question-card');
+  if (card.dataset.checked) return;
+  var selected = card.querySelector('input[type="radio"]:checked');
+  if (!selected) { alert('Please select an answer first.'); return; }
+  card.dataset.checked = '1';
+  var correct = card.getAttribute('data-correct');
+  var explanation = card.querySelector('.explanation');
+  var text = explanation.textContent.replace(/^Answer: [A-D] — /, '');
+  if (selected.value === correct) {
+    explanation.innerHTML = '<strong style="color:var(--accent);">✅ Correct!</strong> ' + escText(text);
+  } else {
+    explanation.innerHTML = '<strong style="color:var(--red);">❌ Incorrect.</strong> The correct answer is <strong>' + correct + '</strong> — ' + escText(text);
+  }
+  card.querySelectorAll('input[type="radio"]').forEach(function (r) { r.disabled = true; });
+  explanation.classList.add('show');
+  btn.style.display = 'none';
+}
+function escText(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function showScore() {
+  var cards = document.querySelectorAll('.question-card');
+  var answered = 0, correctCount = 0;
+  cards.forEach(function (card) {
+    var selected = card.querySelector('input[type="radio"]:checked');
+    if (selected) {
+      answered++;
+      if (selected.value === card.getAttribute('data-correct')) correctCount++;
+    }
+  });
+  var display = document.getElementById('scoreDisplay');
+  display.style.display = 'block';
+  display.innerHTML = '<strong>Your Score: ' + correctCount + '/' + answered + '</strong> (' + (answered > 0 ? Math.round(correctCount / answered * 100) : 0) + '% of answered · ' + (cards.length - answered) + ' unanswered)';
+  display.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
