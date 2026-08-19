@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
+  <title>CEH v13 Denial-of-Service Practice Questions 2026 | CEHStudy</title>
+  <meta name="description" content="Free CEH v13 Module 10 Denial-of-Service Attacks practice questions with detailed explanations. 10 original multiple-choice questions. Test your knowledge for the CEH 312-50 exam — no sign-up needed.">
+  <meta name="keywords" content="CEH v13 module 10 practice questions, Denial-of-Service Attacks practice test, free CEH practice questions, CEH 312-50 practice, CEH module 10 quiz, CEH exam prep 2026">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cehstudy.com/ceh-practice-questions/denial-of-service/">
+
+  <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/ceh-practice-questions/denial-of-service/">
+  <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "CEH v13 Denial-of-Service Attacks Practice Questions (10 Questions with Explanations)",
+      "description": "Free CEH v13 Module 10 Denial-of-Service Attacks practice questions with detailed explanations. 10 original multiple-choice questions. Test your knowledge for the CEH 312-50 exam — no sign-up needed.",
+      "author": {
+          "@type": "Organization",
+          "name": "CEHStudy"
+      },
+      "datePublished": "2026-08-18",
+      "dateModified": "2026-08-18",
+      "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://cehstudy.com/ceh-practice-questions/denial-of-service/"
+      }
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "CEH v13 Module 10 Denial-of-Service Attacks Practice Quiz",
+      "description": "10 original practice questions for CEH v13 Module 10 (Denial-of-Service Attacks) with detailed explanations.",
+      "question": [
+          {
+              "@type": "Question",
+              "name": "The primary difference between a DoS and a DDoS attack is:",
+              "answerValue": "A) DDoS originates from many compromised systems (botnet) while DoS comes from a single source"
+          },
+          {
+              "@type": "Question",
+              "name": "A SYN flood fills the target's connection table with:",
+              "answerValue": "D) Half-open connections that never complete the three-way handshake"
+          },
+          {
+              "@type": "Question",
+              "name": "A Smurf attack sends:",
+              "answerValue": "B) ICMP echo requests to a broadcast address with a spoofed victim source IP"
+          },
+          {
+              "@type": "Question",
+              "name": "Slowloris is a Layer 7 attack because it:",
+              "answerValue": "C) Holds many HTTP connections open with partial requests until the server's connection slots are exhausted"
+          },
+          {
+              "@type": "Question",
+              "name": "DNS amplification attacks work by:",
+              "answerValue": "A) Sending small queries with a spoofed victim source IP to open resolvers, whose much larger responses all hit the victim (amplification ~30x)"
+          },
+          {
+              "@type": "Question",
+              "name": "Which category of DDoS attack includes SYN floods and Smurf?",
+              "answerValue": "A) Protocol (state-exhaustion) attacks"
+          },
+          {
+              "@type": "Question",
+              "name": "A 'Ping of Death' attack:",
+              "answerValue": "C) Sends oversized or malformed ICMP packets (>65,535 bytes) that crash systems reassembling them"
+          },
+          {
+              "@type": "Question",
+              "name": "LOIC and HOIC are examples of:",
+              "answerValue": "A) Basic traffic-flood (stresser) tools"
+          },
+          {
+              "@type": "Question",
+              "name": "Anycast networking helps mitigate DDoS by:",
+              "answerValue": "D) Distributing incoming traffic across multiple geographically dispersed data centers sharing one address"
+          },
+          {
+              "@type": "Question",
+              "name": "Fraggle attacks are similar to Smurf but use:",
+              "answerValue": "C) UDP echo requests instead of ICMP"
+          }
+      ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+          {
+              "@type": "Question",
+              "name": "How many CEH v13 Denial-of-Service Attacks practice questions are on this page?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "This page includes 10 original multiple-choice practice questions for CEH v13 Module 10 (Denial-of-Service Attacks). Each question includes a detailed explanation of the correct answer and why the other options are wrong. The full CEHStudy question bank covers all 20 modules with 200+ questions — see the practice hub at https://cehstudy.com/ceh-practice-questions/ for every module."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "What does CEH v13 Module 10 (Denial-of-Service Attacks) cover?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Volume, protocol, and application-layer attacks: SYN floods, amplification, botnets, and DDoS mitigation strategies. These are the same topics tested under this module on the EC-Council 312-50 exam. Pair this quiz with our free Module 10 flashcards at https://cehstudy.com/ceh-v13/module-10/ to close any gaps."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Are these real CEH exam questions?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Every question on CEHStudy is original study material written for exam preparation. They match the style, difficulty, and domain coverage of the actual CEH v13 exam but are not leaked or reproduced EC-Council questions."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "How should I use this Denial-of-Service Attacks quiz for exam prep?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Answer all 10 questions without peeking at explanations, then click \"Show My Score\". Review every explanation — especially the ones you missed — and re-test those topics with our free CEH flashcards. Aim for 80% or higher on module quizzes before scheduling the exam."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Where do I find CEH Denial-of-Service Attacks flashcards?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our free flashcard app covers all 20 CEH v13 modules including Module 10 (Denial-of-Service Attacks). Visit the CEH flashcards page at https://cehstudy.com/ceh-flashcards/ or the Module 10 page at https://cehstudy.com/ceh-v13/module-10/. No account or sign-up required."
+              }
+          }
+      ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+          {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://cehstudy.com/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Practice Questions",
+              "item": "https://cehstudy.com/ceh-practice-questions/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Module 10: Denial-of-Service Attacks",
+              "item": "https://cehstudy.com/ceh-practice-questions/denial-of-service/"
+          }
+      ]
+  }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4948135636372064" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="header-sticky">
+  <div class="header-nav-inner">
+    <a href="/" class="header-nav-logo">CEHStudy</a>
+    <nav class="header-nav-links">
+      <a href="/ceh-v13/">Modules</a>
+      <a href="/ceh-flashcards/">Flashcards</a>
+      <a href="/ceh-practice-questions/">Practice Questions</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-practice-questions/">Practice Questions</a> &rsaquo; Module 10</p>
+
+  <h1 class="page-title">CEH v13 Module 10: Denial-of-Service Attacks — Free Practice Questions with Explanations</h1>
+
+  <p style="color:var(--accent);font-size:.9rem;margin-bottom:16px;">Last updated August 2026 · 10 questions · Module 10 of 20</p>
+
+  <p class="content-text">Volume, protocol, and application-layer attacks: SYN floods, amplification, botnets, and DDoS mitigation strategies. Below are 10 original multiple-choice practice questions for this module, each with a detailed explanation. They follow the style and difficulty of the EC-Council Certified Ethical Hacker v13 exam (312-50).</p>
+
+  <div class="disclaimer-box">
+    <strong style="color:var(--orange);">⚠️ Important Disclaimer:</strong> These practice questions are <strong>original study material</strong> created by CEHStudy for educational purposes. They are NOT EC-Council exam questions and do NOT replicate the actual exam. CEHStudy is not affiliated with or endorsed by EC-Council.
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 1: The primary difference between a DoS and a DDoS attack is:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q1" value="A"> A) DDoS originates from many compromised systems (botnet) while DoS comes from a single source</label>
+      <label><input type="radio" name="m10q1" value="B"> B) DoS is always legal and DDoS is not</label>
+      <label><input type="radio" name="m10q1" value="C"> C) DDoS requires no traffic at all</label>
+      <label><input type="radio" name="m10q1" value="D"> D) DDoS uses only UDP traffic</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — Many distributed sources make DDoS far harder to block — blocking one IP stops a DoS, not a DDoS.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 2: A SYN flood fills the target's connection table with:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q2" value="A"> A) Fully established TCP sessions</label>
+      <label><input type="radio" name="m10q2" value="B"> B) ICMP echo replies</label>
+      <label><input type="radio" name="m10q2" value="C"> C) DNS lookups</label>
+      <label><input type="radio" name="m10q2" value="D"> D) Half-open connections that never complete the three-way handshake</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — SYNs are sent but never acknowledged, so slots sit waiting until legitimate users can't connect — mitigated by SYN cookies and rate limiting.</div>
+  </div>
+
+  <div class="question-card" data-correct="B">
+    <h3 class="section-heading" style="margin-top:0;">Question 3: A Smurf attack sends:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q3" value="A"> A) TCP SYN packets from one machine</label>
+      <label><input type="radio" name="m10q3" value="B"> B) ICMP echo requests to a broadcast address with a spoofed victim source IP</label>
+      <label><input type="radio" name="m10q3" value="C"> C) UDP fragments toward port 19</label>
+      <label><input type="radio" name="m10q3" value="D"> D) ARP queries across subnets</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: B</strong> — Every host on the broadcast domain replies to the 'victim' — amplification equals the number of hosts; modern networks block directed broadcast.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 4: Slowloris is a Layer 7 attack because it:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q4" value="A"> A) Floods the link with raw bandwidth</label>
+      <label><input type="radio" name="m10q4" value="B"> B) Hijacks DNS resolution</label>
+      <label><input type="radio" name="m10q4" value="C"> C) Holds many HTTP connections open with partial requests until the server's connection slots are exhausted</label>
+      <label><input type="radio" name="m10q4" value="D"> D) Corrupts packet checksums in transit</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — It consumes application-level resources (connections), not bandwidth — so it needs little traffic and evades volumetric defenses.</div>
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 5: DNS amplification attacks work by:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q5" value="A"> A) Sending small queries with a spoofed victim source IP to open resolvers, whose much larger responses all hit the victim (amplification ~30x)</label>
+      <label><input type="radio" name="m10q5" value="B"> B) Reflecting TCP SYN packets off the victim</label>
+      <label><input type="radio" name="m10q5" value="C"> C) Poisoning BGP routes to the victim's ASN</label>
+      <label><input type="radio" name="m10q5" value="D"> D) Fragmenting packets until they crash the NIC</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — Mitigations: disable open resolvers, source validation (BCP38/BCP84), and upstream scrubbing.</div>
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 6: Which category of DDoS attack includes SYN floods and Smurf?</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q6" value="A"> A) Protocol (state-exhaustion) attacks</label>
+      <label><input type="radio" name="m10q6" value="B"> B) Zero-day protocol attacks</label>
+      <label><input type="radio" name="m10q6" value="C"> C) Application-layer (Layer 7) attacks</label>
+      <label><input type="radio" name="m10q6" value="D"> D) Volumetric (bandwidth) attacks</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — Protocol attacks exhaust connection state and resources (SYN flood, Smurf, Ping of Death); volumetric uses bandwidth floods; L7 targets app logic (Slowloris).</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 7: A 'Ping of Death' attack:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q7" value="A"> A) Physically disables network interface cards</label>
+      <label><input type="radio" name="m10q7" value="B"> B) Spoofs every MAC address on the LAN</label>
+      <label><input type="radio" name="m10q7" value="C"> C) Sends oversized or malformed ICMP packets (&gt;65,535 bytes) that crash systems reassembling them</label>
+      <label><input type="radio" name="m10q7" value="D"> D) Floods the target with minimal-size pings</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Legacy and IoT stacks still mishandle reassembly of giant fragmented echoes — mostly patched in modern OSes.</div>
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 8: LOIC and HOIC are examples of:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q8" value="A"> A) Basic traffic-flood (stresser) tools</label>
+      <label><input type="radio" name="m10q8" value="B"> B) Intrusion prevention system signature packs</label>
+      <label><input type="radio" name="m10q8" value="C"> C) Anti-DDoS appliances from cloud providers</label>
+      <label><input type="radio" name="m10q8" value="D"> D) Content delivery networks</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — 'Low/High Orbit Ion Cannon' generate simple floods — the same engines behind commercial 'booter/stresser' abuse services.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 9: Anycast networking helps mitigate DDoS by:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q9" value="A"> A) Blocking all ICMP protocol traffic</label>
+      <label><input type="radio" name="m10q9" value="B"> B) Running a single hardened server with the biggest firewall</label>
+      <label><input type="radio" name="m10q9" value="C"> C) Disabling DNS for the protected site</label>
+      <label><input type="radio" name="m10q9" value="D"> D) Distributing incoming traffic across multiple geographically dispersed data centers sharing one address</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — Attack volume is spread thin across the anycast footprint, and nearby edge locations absorb regional floods.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 10: Fraggle attacks are similar to Smurf but use:</h3>
+    <div class="options">
+      <label><input type="radio" name="m10q10" value="A"> A) TCP ACK packets</label>
+      <label><input type="radio" name="m10q10" value="B"> B) BGP route updates</label>
+      <label><input type="radio" name="m10q10" value="C"> C) UDP echo requests instead of ICMP</label>
+      <label><input type="radio" name="m10q10" value="D"> D) ARP broadcast frames</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Fraggle = the UDP variant of Smurf: broadcast UDP echo with spoofed victim source, amplifying replies at the target.</div>
+  </div>
+
+  <div class="score-display" id="scoreDisplay"></div>
+
+  <div style="text-align:center; margin:30px 0;">
+    <button class="btn btn-primary" onclick="showScore()" style="font-size:1.1em; padding:12px 30px;">Show My Score</button>
+  </div>
+
+  <h2 class="section-heading">Related Glossary Terms</h2>
+  <ul class="content-list">
+    <li><a href="/glossary-terms/denial-of-service/">Denial of Service</a> — Volume, protocol, and Layer 7 attacks</li>
+    <li><a href="/glossary-terms/man-in-the-middle/">Man-in-the-Middle Attack</a> — Combined attack chains on the exam</li>
+    <li><a href="/glossary-terms/advanced-persistent-threat/">Advanced Persistent Threat</a> — APTs use DDoS for disruption phases</li>
+  </ul>
+
+  <h2 class="section-heading">Continue Your CEH v13 Prep</h2>
+  <ul class="content-list">
+    <li><strong>Previous: Module 9 — Social Engineering practice questions</strong>: <a href="/ceh-practice-questions/social-engineering/">Module 9 quiz →</a></li>
+    <li><strong>Next: Module 11 — Session Hijacking practice questions</strong>: <a href="/ceh-practice-questions/session-hijacking/">Module 11 quiz →</a></li>
+    <li><strong>Practice hub:</strong> <a href="/ceh-practice-questions/">All 20 module quizzes — 200+ questions →</a></li>
+    <li><strong>Flashcards:</strong> <a href="/ceh-flashcards/">Free CEH flashcards for all 20 modules →</a></li>
+    <li><strong>Home:</strong> <a href="/">CEHStudy homepage →</a></li>
+  </ul>
+
+  <h2 class="section-heading">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">How many CEH v13 Denial-of-Service Attacks practice questions are on this page?</h3>
+    <p class="content-text">This page includes 10 original multiple-choice practice questions for CEH v13 Module 10 (Denial-of-Service Attacks). Each question includes a detailed explanation of the correct answer and why the other options are wrong. The full CEHStudy question bank covers all 20 modules with 200+ questions — see the practice hub at https://cehstudy.com/ceh-practice-questions/ for every module.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">What does CEH v13 Module 10 (Denial-of-Service Attacks) cover?</h3>
+    <p class="content-text">Volume, protocol, and application-layer attacks: SYN floods, amplification, botnets, and DDoS mitigation strategies. These are the same topics tested under this module on the EC-Council 312-50 exam. Pair this quiz with our free Module 10 flashcards at https://cehstudy.com/ceh-v13/module-10/ to close any gaps.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">Are these real CEH exam questions?</h3>
+    <p class="content-text">No. Every question on CEHStudy is original study material written for exam preparation. They match the style, difficulty, and domain coverage of the actual CEH v13 exam but are not leaked or reproduced EC-Council questions.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">How should I use this Denial-of-Service Attacks quiz for exam prep?</h3>
+    <p class="content-text">Answer all 10 questions without peeking at explanations, then click "Show My Score". Review every explanation — especially the ones you missed — and re-test those topics with our free CEH flashcards. Aim for 80% or higher on module quizzes before scheduling the exam.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">Where do I find CEH Denial-of-Service Attacks flashcards?</h3>
+    <p class="content-text">Our free flashcard app covers all 20 CEH v13 modules including Module 10 (Denial-of-Service Attacks). Visit the CEH flashcards page at https://cehstudy.com/ceh-flashcards/ or the Module 10 page at https://cehstudy.com/ceh-v13/module-10/. No account or sign-up required.</p>
+  </div>
+
+</div>
+
+  <!-- AdSense -->
+  <div class="ad-slot">
+      <span class="ad-slot-label">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4948135636372064" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+<footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/">Flashcards</a>
+        <a href="/ceh-flashcards/">CEH Flashcards</a>
+        <a href="/ceh-v13/">CEH v13 Modules</a>
+        <a href="/ceh-v13-study-guide/">Study Guide</a>
+        <a href="/ceh-practice-questions/">Practice Questions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/disclaimer/">Disclaimer</a>
+    </nav>
+    <p class="footer-copy">CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
+</footer>
+
+<script>
+function checkAnswer(btn) {
+  var card = btn.closest('.question-card');
+  if (card.dataset.checked) return;
+  var selected = card.querySelector('input[type="radio"]:checked');
+  if (!selected) { alert('Please select an answer first.'); return; }
+  card.dataset.checked = '1';
+  var correct = card.getAttribute('data-correct');
+  var explanation = card.querySelector('.explanation');
+  var text = explanation.textContent.replace(/^Answer: [A-D] — /, '');
+  if (selected.value === correct) {
+    explanation.innerHTML = '<strong style="color:var(--accent);">✅ Correct!</strong> ' + escText(text);
+  } else {
+    explanation.innerHTML = '<strong style="color:var(--red);">❌ Incorrect.</strong> The correct answer is <strong>' + correct + '</strong> — ' + escText(text);
+  }
+  card.querySelectorAll('input[type="radio"]').forEach(function (r) { r.disabled = true; });
+  explanation.classList.add('show');
+  btn.style.display = 'none';
+}
+function escText(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function showScore() {
+  var cards = document.querySelectorAll('.question-card');
+  var answered = 0, correctCount = 0;
+  cards.forEach(function (card) {
+    var selected = card.querySelector('input[type="radio"]:checked');
+    if (selected) {
+      answered++;
+      if (selected.value === card.getAttribute('data-correct')) correctCount++;
+    }
+  });
+  var display = document.getElementById('scoreDisplay');
+  display.style.display = 'block';
+  display.innerHTML = '<strong>Your Score: ' + correctCount + '/' + answered + '</strong> (' + (answered > 0 ? Math.round(correctCount / answered * 100) : 0) + '% of answered · ' + (cards.length - answered) + ' unanswered)';
+  display.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
