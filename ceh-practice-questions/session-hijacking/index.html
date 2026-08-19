@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
+  <title>CEH v13 Session Hijacking Practice Questions 2026 | CEHStudy</title>
+  <meta name="description" content="Free CEH v13 Module 11 Session Hijacking practice questions with detailed explanations. 10 original multiple-choice questions. Test your knowledge for the CEH 312-50 exam — no sign-up needed.">
+  <meta name="keywords" content="CEH v13 module 11 practice questions, Session Hijacking practice test, free CEH practice questions, CEH 312-50 practice, CEH module 11 quiz, CEH exam prep 2026">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cehstudy.com/ceh-practice-questions/session-hijacking/">
+
+  <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/ceh-practice-questions/session-hijacking/">
+  <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "CEH v13 Session Hijacking Practice Questions (10 Questions with Explanations)",
+      "description": "Free CEH v13 Module 11 Session Hijacking practice questions with detailed explanations. 10 original multiple-choice questions. Test your knowledge for the CEH 312-50 exam — no sign-up needed.",
+      "author": {
+          "@type": "Organization",
+          "name": "CEHStudy"
+      },
+      "datePublished": "2026-08-18",
+      "dateModified": "2026-08-18",
+      "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://cehstudy.com/ceh-practice-questions/session-hijacking/"
+      }
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "CEH v13 Module 11 Session Hijacking Practice Quiz",
+      "description": "10 original practice questions for CEH v13 Module 11 (Session Hijacking) with detailed explanations.",
+      "question": [
+          {
+              "@type": "Question",
+              "name": "Session hijacking is:",
+              "answerValue": "C) Taking over a valid TCP or web session by stealing or predicting its session identifier"
+          },
+          {
+              "@type": "Question",
+              "name": "The classic phases of TCP session hijacking are:",
+              "answerValue": "C) Tracking the connection, desynchronizing it, then injecting packets"
+          },
+          {
+              "@type": "Question",
+              "name": "Passive session hijacking differs from active hijacking because it:",
+              "answerValue": "C) Only observes and records traffic without disturbing the session"
+          },
+          {
+              "@type": "Question",
+              "name": "In session fixation, the attacker:",
+              "answerValue": "B) Plants a known session ID (via link or cookie) and waits for the victim to log in with it"
+          },
+          {
+              "@type": "Question",
+              "name": "The CRIME attack exploits:",
+              "answerValue": "C) TLS/HTTP compression ratio leaks to infer secret data such as cookies"
+          },
+          {
+              "@type": "Question",
+              "name": "Cross-Site Request Forgery (CSRF) works because:",
+              "answerValue": "B) The victim's browser automatically attaches session cookies to a forged request the application accepts without verifying its origin"
+          },
+          {
+              "@type": "Question",
+              "name": "A Man-in-the-Browser attack typically:",
+              "answerValue": "A) Installs a malicious extension or handler that tampers with form fields in the browser before they are submitted at login"
+          },
+          {
+              "@type": "Question",
+              "name": "RST injection (RST hijacking) is used to:",
+              "answerValue": "C) Forcibly terminate an active session by injecting a spoofed TCP RST packet"
+          },
+          {
+              "@type": "Question",
+              "name": "In blind session hijacking, the attacker:",
+              "answerValue": "C) Cannot see the server's responses and must predict sequence numbers to inject data"
+          },
+          {
+              "@type": "Question",
+              "name": "Which cookie-flag combination best protects against client-side session theft?",
+              "answerValue": "D) Secure + HttpOnly (plus SameSite where supported)"
+          }
+      ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+          {
+              "@type": "Question",
+              "name": "How many CEH v13 Session Hijacking practice questions are on this page?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "This page includes 10 original multiple-choice practice questions for CEH v13 Module 11 (Session Hijacking). Each question includes a detailed explanation of the correct answer and why the other options are wrong. The full CEHStudy question bank covers all 20 modules with 200+ questions — see the practice hub at https://cehstudy.com/ceh-practice-questions/ for every module."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "What does CEH v13 Module 11 (Session Hijacking) cover?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Stealing active sessions: session sniffing, session fixation, cookies and tokens, and defenses like HTTPS and re-authentication. These are the same topics tested under this module on the EC-Council 312-50 exam. Pair this quiz with our free Module 11 flashcards at https://cehstudy.com/ceh-v13/module-11/ to close any gaps."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Are these real CEH exam questions?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Every question on CEHStudy is original study material written for exam preparation. They match the style, difficulty, and domain coverage of the actual CEH v13 exam but are not leaked or reproduced EC-Council questions."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "How should I use this Session Hijacking quiz for exam prep?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Answer all 10 questions without peeking at explanations, then click \"Show My Score\". Review every explanation — especially the ones you missed — and re-test those topics with our free CEH flashcards. Aim for 80% or higher on module quizzes before scheduling the exam."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Where do I find CEH Session Hijacking flashcards?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our free flashcard app covers all 20 CEH v13 modules including Module 11 (Session Hijacking). Visit the CEH flashcards page at https://cehstudy.com/ceh-flashcards/ or the Module 11 page at https://cehstudy.com/ceh-v13/module-11/. No account or sign-up required."
+              }
+          }
+      ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+          {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://cehstudy.com/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Practice Questions",
+              "item": "https://cehstudy.com/ceh-practice-questions/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Module 11: Session Hijacking",
+              "item": "https://cehstudy.com/ceh-practice-questions/session-hijacking/"
+          }
+      ]
+  }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4948135636372064" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="header-sticky">
+  <div class="header-nav-inner">
+    <a href="/" class="header-nav-logo">CEHStudy</a>
+    <nav class="header-nav-links">
+      <a href="/ceh-v13/">Modules</a>
+      <a href="/ceh-flashcards/">Flashcards</a>
+      <a href="/ceh-practice-questions/">Practice Questions</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-practice-questions/">Practice Questions</a> &rsaquo; Module 11</p>
+
+  <h1 class="page-title">CEH v13 Module 11: Session Hijacking — Free Practice Questions with Explanations</h1>
+
+  <p style="color:var(--accent);font-size:.9rem;margin-bottom:16px;">Last updated August 2026 · 10 questions · Module 11 of 20</p>
+
+  <p class="content-text">Stealing active sessions: session sniffing, session fixation, cookies and tokens, and defenses like HTTPS and re-authentication. Below are 10 original multiple-choice practice questions for this module, each with a detailed explanation. They follow the style and difficulty of the EC-Council Certified Ethical Hacker v13 exam (312-50).</p>
+
+  <div class="disclaimer-box">
+    <strong style="color:var(--orange);">⚠️ Important Disclaimer:</strong> These practice questions are <strong>original study material</strong> created by CEHStudy for educational purposes. They are NOT EC-Council exam questions and do NOT replicate the actual exam. CEHStudy is not affiliated with or endorsed by EC-Council.
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 1: Session hijacking is:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q1" value="A"> A) Resetting another user's password</label>
+      <label><input type="radio" name="m11q1" value="B"> B) Scanning for open ports on a host</label>
+      <label><input type="radio" name="m11q1" value="C"> C) Taking over a valid TCP or web session by stealing or predicting its session identifier</label>
+      <label><input type="radio" name="m11q1" value="D"> D) Forging a TLS certificate</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Most authentication happens once at session start — seize the session ID and the server trusts you.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 2: The classic phases of TCP session hijacking are:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q2" value="A"> A) Port scanning, exploiting, patching</label>
+      <label><input type="radio" name="m11q2" value="B"> B) Sniffing, cracking, logging in</label>
+      <label><input type="radio" name="m11q2" value="C"> C) Tracking the connection, desynchronizing it, then injecting packets</label>
+      <label><input type="radio" name="m11q2" value="D"> D) Encrypting, signing, hashing</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — 1) Track with a sniffer to learn sequence numbers, 2) desync (e.g., RST or null data) so the victim's state drifts, 3) inject attacker packets that the server accepts.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 3: Passive session hijacking differs from active hijacking because it:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q3" value="A"> A) Always requires IP spoofing</label>
+      <label><input type="radio" name="m11q3" value="B"> B) Is completely undetectable by any means</label>
+      <label><input type="radio" name="m11q3" value="C"> C) Only observes and records traffic without disturbing the session</label>
+      <label><input type="radio" name="m11q3" value="D"> D) Uses RST packets to kill connections</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Active hijacking takes over the live conversation — desync, spoof, inject — and must win a race against the victim's sequence numbers.</div>
+  </div>
+
+  <div class="question-card" data-correct="B">
+    <h3 class="section-heading" style="margin-top:0;">Question 4: In session fixation, the attacker:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q4" value="A"> A) Steals cookies only after the victim has logged in</label>
+      <label><input type="radio" name="m11q4" value="B"> B) Plants a known session ID (via link or cookie) and waits for the victim to log in with it</label>
+      <label><input type="radio" name="m11q4" value="C"> C) Spoofs the server's certificate to capture passwords</label>
+      <label><input type="radio" name="m11q4" value="D"> D) Brute-forces random session IDs at high speed</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: B</strong> — If the app doesn't regenerate the ID at login, the attacker's pre-known ID becomes the authenticated session — fix: rotate session ID on authentication.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 5: The CRIME attack exploits:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q5" value="A"> A) Weak hash functions like MD5</label>
+      <label><input type="radio" name="m11q5" value="B"> B) DNS rebinding in browsers</label>
+      <label><input type="radio" name="m11q5" value="C"> C) TLS/HTTP compression ratio leaks to infer secret data such as cookies</label>
+      <label><input type="radio" name="m11q5" value="D"> D) ARP tables on the local segment</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Compression shrinks repeated secrets (cookies) more than random bytes — measuring compressed sizes reveals them. Mitigation: disable TLS compression.</div>
+  </div>
+
+  <div class="question-card" data-correct="B">
+    <h3 class="section-heading" style="margin-top:0;">Question 6: Cross-Site Request Forgery (CSRF) works because:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q6" value="A"> A) Passwords travel in clear text over the network</label>
+      <label><input type="radio" name="m11q6" value="B"> B) The victim's browser automatically attaches session cookies to a forged request the application accepts without verifying its origin</label>
+      <label><input type="radio" name="m11q6" value="C"> C) TLS handshakes are intercepted on-path</label>
+      <label><input type="radio" name="m11q6" value="D"> D) DNS caches never expire</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: B</strong> — Prevention: per-session anti-CSRF tokens, SameSite cookie attributes, and re-authentication for sensitive actions.</div>
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 7: A Man-in-the-Browser attack typically:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q7" value="A"> A) Installs a malicious extension or handler that tampers with form fields in the browser before they are submitted at login</label>
+      <label><input type="radio" name="m11q7" value="B"> B) Steals the KRBTGT account hash from a domain controller</label>
+      <label><input type="radio" name="m11q7" value="C"> C) Floods the target web server with SYN packets</label>
+      <label><input type="radio" name="m11q7" value="D"> D) Cracks the network's WPA pre-shared key</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — The trojan registers for targeted sites and rewrites DOM field values on submission — the server receives altered data while the user sees normal.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 8: RST injection (RST hijacking) is used to:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q8" value="A"> A) Discover which ports are open</label>
+      <label><input type="radio" name="m11q8" value="B"> B) Capture WPA handshakes</label>
+      <label><input type="radio" name="m11q8" value="C"> C) Forcibly terminate an active session by injecting a spoofed TCP RST packet</label>
+      <label><input type="radio" name="m11q8" value="D"> D) Encrypt traffic between two hosts</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — A single well-formed RST (correct IP/ports/sequence) tears the connection down — used to desynchronize victims before takeover.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 9: In blind session hijacking, the attacker:</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q9" value="A"> A) Has visibility of both client and server traffic</label>
+      <label><input type="radio" name="m11q9" value="B"> B) Exploits only stateless UDP protocols</label>
+      <label><input type="radio" name="m11q9" value="C"> C) Cannot see the server's responses and must predict sequence numbers to inject data</label>
+      <label><input type="radio" name="m11q9" value="D"> D) Uses an on-link sniffer with full visibility</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Without seeing replies, the attacker fires candidate packets hoping the predicted sequence number is accepted — low success rate but functional.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 10: Which cookie-flag combination best protects against client-side session theft?</h3>
+    <div class="options">
+      <label><input type="radio" name="m11q10" value="A"> A) Setting Path=/ on all cookies</label>
+      <label><input type="radio" name="m11q10" value="B"> B) No flags needed — cookies are safe by default</label>
+      <label><input type="radio" name="m11q10" value="C"> C) Using long cookie expiration times</label>
+      <label><input type="radio" name="m11q10" value="D"> D) Secure + HttpOnly (plus SameSite where supported)</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — Secure forces HTTPS, HttpOnly blocks document.cookie access via XSS, and SameSite restricts cross-site cookie sending.</div>
+  </div>
+
+  <div class="score-display" id="scoreDisplay"></div>
+
+  <div style="text-align:center; margin:30px 0;">
+    <button class="btn btn-primary" onclick="showScore()" style="font-size:1.1em; padding:12px 30px;">Show My Score</button>
+  </div>
+
+  <h2 class="section-heading">Related Glossary Terms</h2>
+  <ul class="content-list">
+    <li><a href="/glossary-terms/man-in-the-middle/">Man-in-the-Middle Attack</a> — Session theft rides on MitM positions</li>
+    <li><a href="/glossary-terms/csrf/">CSRF</a> — Abuses the victim session</li>
+    <li><a href="/glossary-terms/cross-site-scripting/">Cross-Site Scripting</a> — XSS can lift session cookies directly</li>
+  </ul>
+
+  <h2 class="section-heading">Continue Your CEH v13 Prep</h2>
+  <ul class="content-list">
+    <li><strong>Previous: Module 10 — Denial-of-Service Attacks practice questions</strong>: <a href="/ceh-practice-questions/denial-of-service/">Module 10 quiz →</a></li>
+    <li><strong>Next: Module 12 — Evading IDS, Firewalls &amp; Honeypots practice questions</strong>: <a href="/ceh-practice-questions/evading-ids-firewalls-honeypots/">Module 12 quiz →</a></li>
+    <li><strong>Practice hub:</strong> <a href="/ceh-practice-questions/">All 20 module quizzes — 200+ questions →</a></li>
+    <li><strong>Flashcards:</strong> <a href="/ceh-flashcards/">Free CEH flashcards for all 20 modules →</a></li>
+    <li><strong>Home:</strong> <a href="/">CEHStudy homepage →</a></li>
+  </ul>
+
+  <h2 class="section-heading">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">How many CEH v13 Session Hijacking practice questions are on this page?</h3>
+    <p class="content-text">This page includes 10 original multiple-choice practice questions for CEH v13 Module 11 (Session Hijacking). Each question includes a detailed explanation of the correct answer and why the other options are wrong. The full CEHStudy question bank covers all 20 modules with 200+ questions — see the practice hub at https://cehstudy.com/ceh-practice-questions/ for every module.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">What does CEH v13 Module 11 (Session Hijacking) cover?</h3>
+    <p class="content-text">Stealing active sessions: session sniffing, session fixation, cookies and tokens, and defenses like HTTPS and re-authentication. These are the same topics tested under this module on the EC-Council 312-50 exam. Pair this quiz with our free Module 11 flashcards at https://cehstudy.com/ceh-v13/module-11/ to close any gaps.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">Are these real CEH exam questions?</h3>
+    <p class="content-text">No. Every question on CEHStudy is original study material written for exam preparation. They match the style, difficulty, and domain coverage of the actual CEH v13 exam but are not leaked or reproduced EC-Council questions.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">How should I use this Session Hijacking quiz for exam prep?</h3>
+    <p class="content-text">Answer all 10 questions without peeking at explanations, then click "Show My Score". Review every explanation — especially the ones you missed — and re-test those topics with our free CEH flashcards. Aim for 80% or higher on module quizzes before scheduling the exam.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">Where do I find CEH Session Hijacking flashcards?</h3>
+    <p class="content-text">Our free flashcard app covers all 20 CEH v13 modules including Module 11 (Session Hijacking). Visit the CEH flashcards page at https://cehstudy.com/ceh-flashcards/ or the Module 11 page at https://cehstudy.com/ceh-v13/module-11/. No account or sign-up required.</p>
+  </div>
+
+</div>
+
+  <!-- AdSense -->
+  <div class="ad-slot">
+      <span class="ad-slot-label">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4948135636372064" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+<footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/">Flashcards</a>
+        <a href="/ceh-flashcards/">CEH Flashcards</a>
+        <a href="/ceh-v13/">CEH v13 Modules</a>
+        <a href="/ceh-v13-study-guide/">Study Guide</a>
+        <a href="/ceh-practice-questions/">Practice Questions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/disclaimer/">Disclaimer</a>
+    </nav>
+    <p class="footer-copy">CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
+</footer>
+
+<script>
+function checkAnswer(btn) {
+  var card = btn.closest('.question-card');
+  if (card.dataset.checked) return;
+  var selected = card.querySelector('input[type="radio"]:checked');
+  if (!selected) { alert('Please select an answer first.'); return; }
+  card.dataset.checked = '1';
+  var correct = card.getAttribute('data-correct');
+  var explanation = card.querySelector('.explanation');
+  var text = explanation.textContent.replace(/^Answer: [A-D] — /, '');
+  if (selected.value === correct) {
+    explanation.innerHTML = '<strong style="color:var(--accent);">✅ Correct!</strong> ' + escText(text);
+  } else {
+    explanation.innerHTML = '<strong style="color:var(--red);">❌ Incorrect.</strong> The correct answer is <strong>' + correct + '</strong> — ' + escText(text);
+  }
+  card.querySelectorAll('input[type="radio"]').forEach(function (r) { r.disabled = true; });
+  explanation.classList.add('show');
+  btn.style.display = 'none';
+}
+function escText(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function showScore() {
+  var cards = document.querySelectorAll('.question-card');
+  var answered = 0, correctCount = 0;
+  cards.forEach(function (card) {
+    var selected = card.querySelector('input[type="radio"]:checked');
+    if (selected) {
+      answered++;
+      if (selected.value === card.getAttribute('data-correct')) correctCount++;
+    }
+  });
+  var display = document.getElementById('scoreDisplay');
+  display.style.display = 'block';
+  display.innerHTML = '<strong>Your Score: ' + correctCount + '/' + answered + '</strong> (' + (answered > 0 ? Math.round(correctCount / answered * 100) : 0) + '% of answered · ' + (cards.length - answered) + ' unanswered)';
+  display.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
