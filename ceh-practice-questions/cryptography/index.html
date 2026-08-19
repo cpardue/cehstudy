@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
+  <title>CEH v13 Cryptography Practice Questions 2026 | CEHStudy</title>
+  <meta name="description" content="Free CEH v13 Module 20 Cryptography practice questions with detailed explanations. 10 original multiple-choice questions. Test your knowledge for the CEH 312-50 exam — no sign-up needed.">
+  <meta name="keywords" content="CEH v13 module 20 practice questions, Cryptography practice test, free CEH practice questions, CEH 312-50 practice, CEH module 20 quiz, CEH exam prep 2026">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cehstudy.com/ceh-practice-questions/cryptography/">
+
+  <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/ceh-practice-questions/cryptography/">
+  <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "CEH v13 Cryptography Practice Questions (10 Questions with Explanations)",
+      "description": "Free CEH v13 Module 20 Cryptography practice questions with detailed explanations. 10 original multiple-choice questions. Test your knowledge for the CEH 312-50 exam — no sign-up needed.",
+      "author": {
+          "@type": "Organization",
+          "name": "CEHStudy"
+      },
+      "datePublished": "2026-08-18",
+      "dateModified": "2026-08-18",
+      "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://cehstudy.com/ceh-practice-questions/cryptography/"
+      }
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "CEH v13 Module 20 Cryptography Practice Quiz",
+      "description": "10 original practice questions for CEH v13 Module 20 (Cryptography) with detailed explanations.",
+      "question": [
+          {
+              "@type": "Question",
+              "name": "Symmetric encryption is characterized by:",
+              "answerValue": "A) Using the same key for both encryption and decryption (e.g., AES)"
+          },
+          {
+              "@type": "Question",
+              "name": "Which of the following is an asymmetric algorithm?",
+              "answerValue": "A) RSA"
+          },
+          {
+              "@type": "Question",
+              "name": "A cryptographic hash function such as SHA-256 is:",
+              "answerValue": "D) One-way — it maps arbitrary data to a fixed-size digest that cannot be reversed"
+          },
+          {
+              "@type": "Question",
+              "name": "The core components of PKI include:",
+              "answerValue": "A) Certificate Authority (CA), Registration Authority (RA), digital certificates, and revocation lists (CRL)"
+          },
+          {
+              "@type": "Question",
+              "name": "In a digital signature, the sender:",
+              "answerValue": "B) Encrypts (signs) a hash of the message with their private key"
+          },
+          {
+              "@type": "Question",
+              "name": "MD5 and SHA-1 are considered unsuitable for new security designs because:",
+              "answerValue": "D) Practical collision attacks have broken their one-collision-resistance property (SHAttered for SHA-1, long-known collisions for MD5)"
+          },
+          {
+              "@type": "Question",
+              "name": "Steganography differs from cryptography in that it hides:",
+              "answerValue": "B) The very existence of the message (inside images, audio, or video) rather than its content"
+          },
+          {
+              "@type": "Question",
+              "name": "HMAC (Hash-based Message Authentication Code) combines a hash function with a secret key to provide:",
+              "answerValue": "C) Both integrity and authentication of a message"
+          },
+          {
+              "@type": "Question",
+              "name": "Perfect Forward Secrecy (e.g., via ECDHE) ensures that:",
+              "answerValue": "C) Compromise of a long-term private key does not expose previously captured session traffic"
+          },
+          {
+              "@type": "Question",
+              "name": "Shor's algorithm on a large quantum computer would break:",
+              "answerValue": "D) RSA and ECC, because it efficiently solves factoring and discrete-log problems — driving post-quantum standards (e.g., lattice-based crypto)"
+          }
+      ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+          {
+              "@type": "Question",
+              "name": "How many CEH v13 Cryptography practice questions are on this page?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "This page includes 10 original multiple-choice practice questions for CEH v13 Module 20 (Cryptography). Each question includes a detailed explanation of the correct answer and why the other options are wrong. The full CEHStudy question bank covers all 20 modules with 200+ questions — see the practice hub at https://cehstudy.com/ceh-practice-questions/ for every module."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "What does CEH v13 Module 20 (Cryptography) cover?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cryptography: symmetric vs. asymmetric encryption, hashing, digital signatures, PKI, TLS, and hash attacks like rainbow tables. These are the same topics tested under this module on the EC-Council 312-50 exam. Pair this quiz with our free Module 20 flashcards at https://cehstudy.com/ceh-v13/module-20/ to close any gaps."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Are these real CEH exam questions?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Every question on CEHStudy is original study material written for exam preparation. They match the style, difficulty, and domain coverage of the actual CEH v13 exam but are not leaked or reproduced EC-Council questions."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "How should I use this Cryptography quiz for exam prep?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Answer all 10 questions without peeking at explanations, then click \"Show My Score\". Review every explanation — especially the ones you missed — and re-test those topics with our free CEH flashcards. Aim for 80% or higher on module quizzes before scheduling the exam."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Where do I find CEH Cryptography flashcards?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our free flashcard app covers all 20 CEH v13 modules including Module 20 (Cryptography). Visit the CEH flashcards page at https://cehstudy.com/ceh-flashcards/ or the Module 20 page at https://cehstudy.com/ceh-v13/module-20/. No account or sign-up required."
+              }
+          }
+      ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+          {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://cehstudy.com/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Practice Questions",
+              "item": "https://cehstudy.com/ceh-practice-questions/"
+          },
+          {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Module 20: Cryptography",
+              "item": "https://cehstudy.com/ceh-practice-questions/cryptography/"
+          }
+      ]
+  }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4948135636372064" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="header-sticky">
+  <div class="header-nav-inner">
+    <a href="/" class="header-nav-logo">CEHStudy</a>
+    <nav class="header-nav-links">
+      <a href="/ceh-v13/">Modules</a>
+      <a href="/ceh-flashcards/">Flashcards</a>
+      <a href="/ceh-practice-questions/">Practice Questions</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <p class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/ceh-practice-questions/">Practice Questions</a> &rsaquo; Module 20</p>
+
+  <h1 class="page-title">CEH v13 Module 20: Cryptography — Free Practice Questions with Explanations</h1>
+
+  <p style="color:var(--accent);font-size:.9rem;margin-bottom:16px;">Last updated August 2026 · 10 questions · Module 20 of 20</p>
+
+  <p class="content-text">Cryptography: symmetric vs. asymmetric encryption, hashing, digital signatures, PKI, TLS, and hash attacks like rainbow tables. Below are 10 original multiple-choice practice questions for this module, each with a detailed explanation. They follow the style and difficulty of the EC-Council Certified Ethical Hacker v13 exam (312-50).</p>
+
+  <div class="disclaimer-box">
+    <strong style="color:var(--orange);">⚠️ Important Disclaimer:</strong> These practice questions are <strong>original study material</strong> created by CEHStudy for educational purposes. They are NOT EC-Council exam questions and do NOT replicate the actual exam. CEHStudy is not affiliated with or endorsed by EC-Council.
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 1: Symmetric encryption is characterized by:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q1" value="A"> A) Using the same key for both encryption and decryption (e.g., AES)</label>
+      <label><input type="radio" name="m20q1" value="B"> B) Using a public/private key pair per user</label>
+      <label><input type="radio" name="m20q1" value="C"> C) Requiring no keys of any kind</label>
+      <label><input type="radio" name="m20q1" value="D"> D) Always being one-way and irreversible</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — AES, 3DES, RC4, and Blowfish are symmetric — fast but requiring secure key distribution; asymmetric solves the distribution problem.</div>
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 2: Which of the following is an asymmetric algorithm?</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q2" value="A"> A) RSA</label>
+      <label><input type="radio" name="m20q2" value="B"> B) Blowfish</label>
+      <label><input type="radio" name="m20q2" value="C"> C) 3DES</label>
+      <label><input type="radio" name="m20q2" value="D"> D) AES</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — RSA (and ECC, Diffie-Hellman) use key pairs; AES/3DES/Blowfish are all symmetric block or stream ciphers.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 3: A cryptographic hash function such as SHA-256 is:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q3" value="A"> A) A symmetric cipher used for TLS record encryption</label>
+      <label><input type="radio" name="m20q3" value="B"> B) A standard for compressing files</label>
+      <label><input type="radio" name="m20q3" value="C"> C) Reversible with the correct decryption key</label>
+      <label><input type="radio" name="m20q3" value="D"> D) One-way — it maps arbitrary data to a fixed-size digest that cannot be reversed</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — Small input changes alter the whole digest (avalanche effect) — hashes underpin integrity checks, password storage, and digital signatures.</div>
+  </div>
+
+  <div class="question-card" data-correct="A">
+    <h3 class="section-heading" style="margin-top:0;">Question 4: The core components of PKI include:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q4" value="A"> A) Certificate Authority (CA), Registration Authority (RA), digital certificates, and revocation lists (CRL)</label>
+      <label><input type="radio" name="m20q4" value="B"> B) DNS, DHCP, and WINS services</label>
+      <label><input type="radio" name="m20q4" value="C"> C) SAM, Active Directory, and GPOs</label>
+      <label><input type="radio" name="m20q4" value="D"> D) Routers, switches, and firewalls</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: A</strong> — The CA signs X.509 certificates binding identities to public keys; the RA vets applicants; CRLs/OCSP keep revoked certs out of trust.</div>
+  </div>
+
+  <div class="question-card" data-correct="B">
+    <h3 class="section-heading" style="margin-top:0;">Question 5: In a digital signature, the sender:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q5" value="A"> A) Compresses the file before sending it</label>
+      <label><input type="radio" name="m20q5" value="B"> B) Encrypts (signs) a hash of the message with their private key</label>
+      <label><input type="radio" name="m20q5" value="C"> C) Decrypts the message with the recipient's public key</label>
+      <label><input type="radio" name="m20q5" value="D"> D) Attaches their private key to the document in clear text</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: B</strong> — The recipient verifies with the sender's public key — proving authenticity and integrity (and non-repudiation), without exposing the private key.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 6: MD5 and SHA-1 are considered unsuitable for new security designs because:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q6" value="A"> A) They are asymmetric algorithms by design</label>
+      <label><input type="radio" name="m20q6" value="B"> B) They require secret keys to operate</label>
+      <label><input type="radio" name="m20q6" value="C"> C) They are too slow for modern hardware</label>
+      <label><input type="radio" name="m20q6" value="D"> D) Practical collision attacks have broken their one-collision-resistance property (SHAttered for SHA-1, long-known collisions for MD5)</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — If two inputs can share a hash, forged files/certificates become possible — use SHA-2 (or BLAKE3) and memory-hard password hashing (bcrypt, Argon2).</div>
+  </div>
+
+  <div class="question-card" data-correct="B">
+    <h3 class="section-heading" style="margin-top:0;">Question 7: Steganography differs from cryptography in that it hides:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q7" value="A"> A) Network routing paths between hosts</label>
+      <label><input type="radio" name="m20q7" value="B"> B) The very existence of the message (inside images, audio, or video) rather than its content</label>
+      <label><input type="radio" name="m20q7" value="C"> C) Only the sender's identity from recipients</label>
+      <label><input type="radio" name="m20q7" value="D"> D) File permission settings on disk</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: B</strong> — Cryptography says 'this is secret'; steganography says 'there is no secret at all' — often layered together in the field.</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 8: HMAC (Hash-based Message Authentication Code) combines a hash function with a secret key to provide:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q8" value="A"> A) Compression for efficient transmission</label>
+      <label><input type="radio" name="m20q8" value="B"> B) Digital non-repudiation via public-key signatures</label>
+      <label><input type="radio" name="m20q8" value="C"> C) Both integrity and authentication of a message</label>
+      <label><input type="radio" name="m20q8" value="D"> D) Confidentiality only — it fully encrypts the payload</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Anyone with the shared key can verify the tag; it's used in IPsec, TLS MACs, and API auth (e.g., AWS request signing).</div>
+  </div>
+
+  <div class="question-card" data-correct="C">
+    <h3 class="section-heading" style="margin-top:0;">Question 9: Perfect Forward Secrecy (e.g., via ECDHE) ensures that:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q9" value="A"> A) TLS handshakes complete faster only</label>
+      <label><input type="radio" name="m20q9" value="B"> B) Each user receives a permanent, never-changing key</label>
+      <label><input type="radio" name="m20q9" value="C"> C) Compromise of a long-term private key does not expose previously captured session traffic</label>
+      <label><input type="radio" name="m20q9" value="D"> D) Digital certificates never expire</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: C</strong> — Ephemeral per-session keys mean bulk-captured (harvest-now-decrypt-later) data stays safe even if the server's long-term key later leaks.</div>
+  </div>
+
+  <div class="question-card" data-correct="D">
+    <h3 class="section-heading" style="margin-top:0;">Question 10: Shor's algorithm on a large quantum computer would break:</h3>
+    <div class="options">
+      <label><input type="radio" name="m20q10" value="A"> A) Steganographic carriers inside image files</label>
+      <label><input type="radio" name="m20q10" value="B"> B) SHA-256 by inverting arbitrary digests</label>
+      <label><input type="radio" name="m20q10" value="C"> C) AES-256 by directly recovering its key</label>
+      <label><input type="radio" name="m20q10" value="D"> D) RSA and ECC, because it efficiently solves factoring and discrete-log problems — driving post-quantum standards (e.g., lattice-based crypto)</label>
+    </div>
+    <button class="btn btn-secondary" onclick="checkAnswer(this)">Check Answer</button>
+    <div class="explanation"><strong style="color:var(--accent);">Answer: D</strong> — Grover's algorithm only halves symmetric key strength (mitigated by longer keys), but Shor breaks the math behind RSA/ECC/DH — hence NIST's post-quantum standardization.</div>
+  </div>
+
+  <div class="score-display" id="scoreDisplay"></div>
+
+  <div style="text-align:center; margin:30px 0;">
+    <button class="btn btn-primary" onclick="showScore()" style="font-size:1.1em; padding:12px 30px;">Show My Score</button>
+  </div>
+
+  <h2 class="section-heading">Related Glossary Terms</h2>
+  <ul class="content-list">
+    <li><a href="/glossary-terms/rainbow-table-attack/">Rainbow Table Attack</a> — Hash attacks and the salt countermeasure</li>
+    <li><a href="/glossary-terms/man-in-the-middle/">Man-in-the-Middle Attack</a> — TLS downgrades and interception</li>
+    <li><a href="/glossary-terms/zero-day-vulnerability/">Zero-Day Vulnerability</a> — Crypto library flaws exploited pre-patch</li>
+  </ul>
+
+  <h2 class="section-heading">Continue Your CEH v13 Prep</h2>
+  <ul class="content-list">
+    <li><strong>Previous: Module 19 — Post-Exploitation &amp; Incident Response practice questions</strong>: <a href="/ceh-practice-questions/post-exploitation-incident-response/">Module 19 quiz →</a></li>
+    <li><strong>You reached the final module</strong>: <a href="/ceh-v13-study-guide/">Full study guide →</a></li>
+    <li><strong>Practice hub:</strong> <a href="/ceh-practice-questions/">All 20 module quizzes — 200+ questions →</a></li>
+    <li><strong>Flashcards:</strong> <a href="/ceh-flashcards/">Free CEH flashcards for all 20 modules →</a></li>
+    <li><strong>Home:</strong> <a href="/">CEHStudy homepage →</a></li>
+  </ul>
+
+  <h2 class="section-heading">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">How many CEH v13 Cryptography practice questions are on this page?</h3>
+    <p class="content-text">This page includes 10 original multiple-choice practice questions for CEH v13 Module 20 (Cryptography). Each question includes a detailed explanation of the correct answer and why the other options are wrong. The full CEHStudy question bank covers all 20 modules with 200+ questions — see the practice hub at https://cehstudy.com/ceh-practice-questions/ for every module.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">What does CEH v13 Module 20 (Cryptography) cover?</h3>
+    <p class="content-text">Cryptography: symmetric vs. asymmetric encryption, hashing, digital signatures, PKI, TLS, and hash attacks like rainbow tables. These are the same topics tested under this module on the EC-Council 312-50 exam. Pair this quiz with our free Module 20 flashcards at https://cehstudy.com/ceh-v13/module-20/ to close any gaps.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">Are these real CEH exam questions?</h3>
+    <p class="content-text">No. Every question on CEHStudy is original study material written for exam preparation. They match the style, difficulty, and domain coverage of the actual CEH v13 exam but are not leaked or reproduced EC-Council questions.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">How should I use this Cryptography quiz for exam prep?</h3>
+    <p class="content-text">Answer all 10 questions without peeking at explanations, then click "Show My Score". Review every explanation — especially the ones you missed — and re-test those topics with our free CEH flashcards. Aim for 80% or higher on module quizzes before scheduling the exam.</p>
+  </div>
+  <div class="faq-item">
+    <h3 class="section-heading" style="margin-top:0;">Where do I find CEH Cryptography flashcards?</h3>
+    <p class="content-text">Our free flashcard app covers all 20 CEH v13 modules including Module 20 (Cryptography). Visit the CEH flashcards page at https://cehstudy.com/ceh-flashcards/ or the Module 20 page at https://cehstudy.com/ceh-v13/module-20/. No account or sign-up required.</p>
+  </div>
+
+</div>
+
+  <!-- AdSense -->
+  <div class="ad-slot">
+      <span class="ad-slot-label">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4948135636372064" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+<footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/">Flashcards</a>
+        <a href="/ceh-flashcards/">CEH Flashcards</a>
+        <a href="/ceh-v13/">CEH v13 Modules</a>
+        <a href="/ceh-v13-study-guide/">Study Guide</a>
+        <a href="/ceh-practice-questions/">Practice Questions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/disclaimer/">Disclaimer</a>
+    </nav>
+    <p class="footer-copy">CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
+</footer>
+
+<script>
+function checkAnswer(btn) {
+  var card = btn.closest('.question-card');
+  if (card.dataset.checked) return;
+  var selected = card.querySelector('input[type="radio"]:checked');
+  if (!selected) { alert('Please select an answer first.'); return; }
+  card.dataset.checked = '1';
+  var correct = card.getAttribute('data-correct');
+  var explanation = card.querySelector('.explanation');
+  var text = explanation.textContent.replace(/^Answer: [A-D] — /, '');
+  if (selected.value === correct) {
+    explanation.innerHTML = '<strong style="color:var(--accent);">✅ Correct!</strong> ' + escText(text);
+  } else {
+    explanation.innerHTML = '<strong style="color:var(--red);">❌ Incorrect.</strong> The correct answer is <strong>' + correct + '</strong> — ' + escText(text);
+  }
+  card.querySelectorAll('input[type="radio"]').forEach(function (r) { r.disabled = true; });
+  explanation.classList.add('show');
+  btn.style.display = 'none';
+}
+function escText(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function showScore() {
+  var cards = document.querySelectorAll('.question-card');
+  var answered = 0, correctCount = 0;
+  cards.forEach(function (card) {
+    var selected = card.querySelector('input[type="radio"]:checked');
+    if (selected) {
+      answered++;
+      if (selected.value === card.getAttribute('data-correct')) correctCount++;
+    }
+  });
+  var display = document.getElementById('scoreDisplay');
+  display.style.display = 'block';
+  display.innerHTML = '<strong>Your Score: ' + correctCount + '/' + answered + '</strong> (' + (answered > 0 ? Math.round(correctCount / answered * 100) : 0) + '% of answered · ' + (cards.length - answered) + ' unanswered)';
+  display.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
