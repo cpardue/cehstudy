@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
-    <title>CEH Glossary Terms — Key Cybersecurity Definitions | CEHStudy</title>
-    <meta name="description" content="Comprehensive glossary of 20 key cybersecurity terms tested on the CEH v13 exam. Each term includes definition, types, tools, real-world examples, and exam relevance.">
+    <title>CEH Glossary Terms — 263 Cybersecurity Definitions | CEHStudy</title>
+    <meta name="description" content="Complete glossary of 263 cybersecurity terms tested on the CEH v13 exam. Each term includes definition, types, tools, real-world examples, and exam relevance.">
     <meta name="keywords" content="CEH glossary, cybersecurity terms, CEH vocabulary, security definitions, penetration testing terms, ethical hacking glossary">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/glossary-terms/">
@@ -19,7 +19,7 @@
         "@type": "DefinedTermSet",
         "name": "CEH Study Glossary",
         "url": "https://cehstudy.com/glossary-terms/",
-        "description": "Glossary of key cybersecurity terms tested on the Certified Ethical Hacker v13 exam, including definitions, examples, and exam relevance."
+        "description": "Glossary of 263 cybersecurity terms tested on the CEH v13 exam."
     }
     </script>
     <script type="application/ld+json">
@@ -45,27 +45,24 @@
         .nav-links{display:flex;gap:16px}
         .nav-links a{color:var(--text2);font-size:.8rem;transition:color .2s}
         .nav-links a:hover{color:var(--accent)}
-        .container{max-width:850px;margin:0 auto;padding:30px 20px;flex:1}
-        h1{font-size:1.4rem;color:var(--accent);margin-bottom:16px;line-height:1.4}
-        h2{font-size:1.1rem;color:var(--accent);margin-top:32px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+        .container{max-width:900px;margin:0 auto;padding:30px 20px;flex:1}
+        h1{font-size:1.4rem;color:var(--accent);margin-bottom:8px;line-height:1.4}
+        .subtitle{color:var(--text2);font-size:.85rem;margin-bottom:24px}
         p{margin-bottom:14px;font-size:.92rem}
-        ul{margin-bottom:14px;padding-left:20px}
-        li{margin-bottom:8px;font-size:.9rem}
         a{color:var(--accent);text-decoration:none}
         a:hover{text-decoration:underline}
-        .term-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+        .term-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;margin:20px 0}
         .term-card{background:var(--bg2);border:1px solid var(--border);padding:14px 16px;border-radius:4px;text-decoration:none;display:block;transition:border-color .2s}
         .term-card:hover{border-color:var(--accent);text-decoration:none}
         .term-card h3{font-size:.9rem;color:var(--accent);margin-bottom:6px}
-        .term-card p{font-size:.78rem;color:var(--text2);margin:0}
+        .term-card p{font-size:.78rem;color:var(--text2);margin:0;line-height:1.5}
         footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.75rem;color:var(--text2)}
         footer a{color:var(--text2)}
-        @media(max-width:600px){.term-grid{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
     <header>
-        <a href="/"></> CEHStudy</a>
+        <a href="/">CEHStudy</a>
         <nav class="nav-links">
             <a href="/glossary-terms/">Glossary</a>
             <a href="/ceh-v13-study-guide/">Study Guide</a>
@@ -75,121 +72,272 @@
     </header>
 
     <div class="container">
-        <h1>CEH v13 Glossary — Key Security Terms</h1>
-        <p>A comprehensive glossary of the most important cybersecurity terms tested on the CEH v13 exam. Each term page includes a definition, types/variants, common tools, real-world examples, prevention strategies, and how the topic appears on the exam.</p>
+        <h1>CEH v13 Glossary — 263 Security Terms</h1>
+        <p class="subtitle">Complete alphabetical list of cybersecurity terms tested on the CEH v13 exam. Each term includes definition, types/variants, common tools, real-world examples, and exam relevance.</p>
 
-        <h2>Attack Techniques</h2>
         <div class="term-grid">
-            <a class="term-card" href="/glossary-terms/sql-injection/">
-                <h3>SQL Injection</h3>
-                <p>Code injection into database queries via unsanitized input</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/cross-site-scripting/">
-                <h3>Cross-Site Scripting (XSS)</h3>
-                <p>Malicious script injection into web pages viewed by users</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/command-injection/">
-                <h3>Command Injection</h3>
-                <p>OS command execution via unsanitized application parameters</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/directory-traversal/">
-                <h3>Directory Traversal</h3>
-                <p>Path manipulation to access files outside web root</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/phishing-attack/">
-                <h3>Phishing Attack</h3>
-                <p>Social engineering via fake communications to steal credentials</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/social-engineering/">
-                <h3>Social Engineering</h3>
-                <p>Psychological manipulation to bypass technical security controls</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/man-in-the-middle/">
-                <h3>Man-in-the-Middle (MitM)</h3>
-                <p>Intercepting and altering communication between two parties</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/arp-spoofing/">
-                <h3>ARP Spoofing</h3>
-                <p>Layer 2 attack poisoning ARP cache for traffic interception</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/csrf/">
-                <h3>CSRF</h3>
-                <p>Forcing authenticated users to submit unintended requests</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/denial-of-service/">
-                <h3>Denial of Service (DoS/DDoS)</h3>
-                <p>Overwhelming systems to make them unavailable to users</p>
-            </a>
+            <a class="term-card" href="/glossary-terms/active-directory-attacks/"><h3>Active Directory Attack Techniques</h3><p>Kerberoasting, AS-REP Roasting, Pass-the-Hash, DCSync, Golden/Silver Ticket, BloodHound enumeration, Shadow Credentials, ACL abuse, GPP (Group Policy Preference...</p></a>
+            <a class="term-card" href="/glossary-terms/active-directory-persistence/"><h3>Active Directory Persistence Attacks</h3><p>Skeleton Key (Mimikatz), Overpass the Hash, Malicious Replication, WMI Event Subscription persistence (PowerLurk), AdminSDHolder abuse. Methods to maintain acce...</p></a>
+            <a class="term-card" href="/glossary-terms/active-reconnaissance/"><h3>Active Reconnaissance</h3><p>Directly interacting with the target system to gather information. Examples: network scanning, ping sweeps, DNS zone transfers, enumeration. More likely to be d...</p></a>
+            <a class="term-card" href="/glossary-terms/active-session-hijacking/"><h3>Active Session Hijacking</h3><p>Takes over active session by breaking connection or actively participating as MITM. Must guess sequence number before target responds....</p></a>
+            <a class="term-card" href="/glossary-terms/acunetix/"><h3>Acunetix Scanner</h3><p>Automated web application vulnerability scanner with deep Vulnerability Detection technology. Detects SQL injection, XSS, CSRF, and other OWASP Top 10 vulnerabi...</p></a>
+            <a class="term-card" href="/glossary-terms/advanced-persistent-threat/"><h3>Advanced Persistent Threat (APT)</h3><p>What is an APT? Complete guide to Advanced Persistent Threat lifecycle, characteristics, famous examples (Equation Group, Stuxnet), and detection strategies for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/amsi-bypass/"><h3>AMSI Bypass</h3><p>Antimalware Scan Interface bypass to prevent PowerShell scripts from being scanned by antivirus. Common technique: patching amsi.dll AmsiScanBuffer function in ...</p></a>
+            <a class="term-card" href="/glossary-terms/android-security/"><h3>Android Security Vulnerabilities</h3><p>APK reverse engineering, insecure data storage (SQLite, shared preferences), insufficient transport layer encryption, weak server-side API controls, code obfusc...</p></a>
+            <a class="term-card" href="/glossary-terms/api-security/"><h3>API Security</h3><p>Securing application programming interfaces: authentication/authorization, rate limiting, input validation, encryption in transit, monitoring for abuse, OWASP A...</p></a>
+            <a class="term-card" href="/glossary-terms/arp-spoofing/"><h3>ARP Spoofing</h3><p>What is ARP spoofing? Complete guide to ARP cache poisoning, gratuitous ARP, dynamic ARP inspection, and detection methods. Learn ARP spoofing for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/as-rep-roasting/"><h3>AS-REP Roasting</h3><p>Cracking Kerberos TGT ticket targeting users who do NOT have Kerberos pre-authentication required. Extract AS-REP ticket → crack offline for user password....</p></a>
+            <a class="term-card" href="/glossary-terms/asymmetric-encryption/"><h3>Asymmetric Encryption</h3><p>Mathematically related public/private key pair. Public key encrypts, private key decrypts (and vice versa for signatures). Algorithms: RSA, ECC, Diffie-Hellman....</p></a>
+            <a class="term-card" href="/glossary-terms/narrative-attack-tree/"><h3>Attack Trees</h3><p>Hierarchical model of possible attacks against a system. Root = attacker goal. Branches = methods. Leaves = specific techniques. Used for threat modeling and ri...</p></a>
+            <a class="term-card" href="/glossary-terms/authenticated-scanning/"><h3>Authenticated vs Unauthenticated Scanning</h3><p>Authenticated scanning uses valid credentials to log into targets for deeper assessment including configuration review and patch level. Unauthenticated scanning...</p></a>
+            <a class="term-card" href="/glossary-terms/baiting/"><h3>Baiting</h3><p>Offering something enticing to the victim to lure them into a trap. Examples: leaving infected USB drives in parking lots, offering free downloads, promising ex...</p></a>
+            <a class="term-card" href="/glossary-terms/bettercap/"><h3>Bettercap</h3><p>Advanced network attack and monitoring framework for Linux. Capabilities: ARP spoofing, DNS spoofing, HTTP proxying, Bluetooth attacks, WiFi deauth detection. M...</p></a>
+            <a class="term-card" href="/glossary-terms/black-hat-hacker/"><h3>Black Hat Hacker</h3><p>A malicious hacker who exploits system vulnerabilities for personal gain, financial profit, or unauthorized access. Operates without permission and violates com...</p></a>
+            <a class="term-card" href="/glossary-terms/blockchain-security/"><h3>Blockchain Security Concepts</h3><p>Distributed ledger technology security: 51% attack, double-spending, smart contract vulnerabilities, private key management, consensus mechanism attacks (PoW, P...</p></a>
+            <a class="term-card" href="/glossary-terms/bloodhound/"><h3>BloodHound Tool</h3><p>Powerful Active Directory enumeration tool using Neo4j graph database. Maps relationships between users, computers, groups, and GPOs to find attack paths for pr...</p></a>
+            <a class="term-card" href="/glossary-terms/blue-team/"><h3>Blue Team (Defensive Security)</h3><p>Defensive security professionals responsible for detecting, responding to, and recovering from cyberattacks. Activities: monitoring SIEM, incident response, thr...</p></a>
+            <a class="term-card" href="/glossary-terms/brute-force-attack/"><h3>Brute Force Attack</h3><p>Password cracking method systematically trying every possible character combination until the correct one is found. Effective against short/simple passwords but...</p></a>
+            <a class="term-card" href="/glossary-terms/buffer-overflow/"><h3>Buffer Overflow</h3><p>What is a buffer overflow? Complete guide to stack-based, heap-based, and integer overflow vulnerabilities. Learn exploitation techniques, ASLR/DEP/stack canaries, and CEH v13 exam prep.</p></a>
+            <a class="term-card" href="/glossary-terms/bug-bounty-program/"><h3>Bug Bounty Program</h3><p>Incentive program where organizations reward ethical hackers for discovering and reporting vulnerabilities. Platforms: HackerOne, Bugcrowd, Intigriti. Ranges fr...</p></a>
+            <a class="term-card" href="/glossary-terms/burp-suite/"><h3>Burp Suite</h3><p>Integrated platform for web application security testing. Features: proxy, scanner, intruder, repeater, repeater, sequencer, decoder, comparer. Community (free)...</p></a>
+            <a class="term-card" href="/glossary-terms/business-continuity-plan/"><h3>Business Continuity Plan (BCP)</h3><p>A documented process to ensure that essential business functions can continue during and after a disaster. Includes incident response procedures, backup systems...</p></a>
+            <a class="term-card" href="/glossary-terms/ceo-fraud/"><h3>CEO Fraud / Business Email Compromise</h3><p>Impersonating executive to request wire transfers or sensitive information from employees, particularly finance departments. Also called Business Email Compromi...</p></a>
+            <a class="term-card" href="/glossary-terms/certificate-pinning/"><h3>Certificate Pinning</h3><p>Mobile security technique locking an app to specific certificate or public key, preventing MITM attacks even if device's trusted CA store is compromised. Bypass...</p></a>
+            <a class="term-card" href="/glossary-terms/chain-of-custody/"><h3>Chain of Custody</h3><p>Documented chronological record of evidence handling from collection through court presentation. Ensures evidence integrity and admissibility in legal proceedin...</p></a>
+            <a class="term-card" href="/glossary-terms/cia-triad/"><h3>CIA Triad</h3><p>The foundational information security model consisting of three pillars: Confidentiality (data not disclosed), Integrity (data not tampered with), Availability ...</p></a>
+            <a class="term-card" href="/glossary-terms/clickjacking/"><h3>Clickjacking Attack</h3><p>Tricks user into clicking hidden/misleading elements using invisible iframe overlaying legitimate content. Prevention: X-Frame-Options DENY/SAMEORIGIN, CSP fram...</p></a>
+            <a class="term-card" href="/glossary-terms/clone-phishing/"><h3>Clone Phishing</h3><p>Resending a legitimate email with a malicious link or attachment replacing the original. Uses the credibility of the previous communication to trick the recipie...</p></a>
+            <a class="term-card" href="/glossary-terms/cloud-cryptojacking/"><h3>Cloud Cryptojacking</h3><p>Unauthorized use of cloud resources for cryptocurrency mining. Detected via unusual CPU/billing patterns. Prevention: Resource monitoring alerts, IAM least priv...</p></a>
+            <a class="term-card" href="/glossary-terms/cloud-deployment-models/"><h3>Cloud Deployment Models</h3><p>Public Cloud (shared infrastructure), Private Cloud (dedicated), Hybrid Cloud (combination), Multi-Cloud (multiple providers), Community Cloud (shared by organi...</p></a>
+            <a class="term-card" href="/glossary-terms/cloud-forensics/"><h3>Cloud Forensics Challenges</h3><p>Challenges: multi-tenancy, data location jurisdiction, volatile evidence, reliance on provider APIs, lack of physical access. Techniques: snapshot analysis, log...</p></a>
+            <a class="term-card" href="/glossary-terms/cloud-misconfiguration/"><h3>Cloud Misconfiguration Risks</h3><p>Public S3 buckets, insecure APIs, weak IAM policies, cross-account permission issues, data exposure from encryption misconfiguration, insufficient audit logging...</p></a>
+            <a class="term-card" href="/glossary-terms/cloud-service-models/"><h3>Cloud Service Models</h3><p>IaaS (Infrastructure as a Service — EC2, VMs), PaaS (Platform as a Service — Heroku, App Engine), SaaS (Software as a Service — Office 365, Salesforce), FaaS (F...</p></a>
+            <a class="term-card" href="/glossary-terms/shared-responsibility/"><h3>Cloud Shared Responsibility Model</h3><p>Provider secures: Infrastructure, physical security, hypervisor. Customer secures: Data, access management, OS configuration, applications. Different for each s...</p></a>
+            <a class="term-card" href="/glossary-terms/cobalt-strike/"><h3>Cobalt Strike</h3><p>Commercial adversary simulation platform used by red teams. Features: Beacon (payload), Malleable C2 (traffic obfuscation), resource editor, payload generation,...</p></a>
+            <a class="term-card" href="/glossary-terms/command-injection/"><h3>Command Injection</h3><p>What is command injection? Complete guide to OS command injection, shell metacharacters, blind command injection, and prevention. Learn how to detect and prevent command injection for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/container-security/"><h3>Container Security</h3><p>Security for Docker/Kubernetes environments: image scanning, runtime protection, network policies, secrets management, least privilege, vulnerability assessment...</p></a>
+            <a class="term-card" href="/glossary-terms/crime-attack/"><h3>CRIME Attack</h3><p>Compression Ratio Leak Made Easy. Client-side attack exploiting TLS/HTTP compression ratio to infer cookies by analyzing compressed packet sizes. Applies to SSL...</p></a>
+            <a class="term-card" href="/glossary-terms/cross-site-scripting/"><h3>Cross-Site Scripting (XSS)</h3><p>What is XSS? Complete guide to reflected, stored, and DOM-based cross-site scripting attacks. Learn XSS payloads, prevention techniques, and how it appears on the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/hash-functions/"><h3>Cryptographic Hash Functions</h3><p>One-way functions producing fixed-size digest: MD5 (128-bit, broken), SHA-1 (160-bit, deprecated), SHA-256 (256-bit, secure), SHA-512 (512-bit, secure), BLAKE3 ...</p></a>
+            <a class="term-card" href="/glossary-terms/cryptomining-malware/"><h3>Cryptomining Malware</h3><p>Hijacks victim system resources to mine cryptocurrency without consent. Uses Proof-of-Work algorithms. Also called 'Cryptojacking.' Can be inline (web-based) or...</p></a>
+            <a class="term-card" href="/glossary-terms/csrf/"><h3>CSRF (Cross-Site Request Forgery)</h3><p>What is CSRF? Complete guide to cross-site request forgery attacks, anti-CSRF tokens, SameSite cookies, and how CSRF differs from XSS. Prepare for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/cve-database/"><h3>CVE (Common Vulnerabilities and Exposures)</h3><p>A dictionary of publicly disclosed information security vulnerabilities. Each entry has a unique identifier (e.g., CVE-2024-1234) and description. Maintained by...</p></a>
+            <a class="term-card" href="/glossary-terms/cvss-scoring/"><h3>CVSS Scoring</h3><p>Common Vulnerability Scoring System rates vulnerabilities from 0.0 to 10.0: 0.0 None, 0.1-3.9 Low, 4.0-6.9 Medium, 7.0-8.9 High, 9.0-10.0 Critical. Base metrics...</p></a>
+            <a class="term-card" href="/glossary-terms/cyber-kill-chain/"><h3>Cyber Kill Chain</h3><p>A Lockheed Martin framework identifying seven phases of a cyber attack: Reconnaissance, Weaponization, Delivery, Exploitation, Installation, Command and Control...</p></a>
+            <a class="term-card" href="/glossary-terms/cyber-threat-intelligence/"><h3>Cyber Threat Intelligence (CTI)</h3><p>Evidence-based knowledge about threats that helps organizations make better security decisions. Types: Strategic (for executives), Tactical (for security teams)...</p></a>
+            <a class="term-card" href="/glossary-terms/dark-web-investigation/"><h3>Dark Web Investigation</h3><p>Investigating hidden services on Tor/I2P networks where stolen data, exploits, and malware are traded. Tools: Tor Browser, Ahmia (search engine), dark web monit...</p></a>
+            <a class="term-card" href="/glossary-terms/dcsync-attack/"><h3>DCSync Attack</h3><p>Attacker obtains privileged account with domain replication rights, creates virtual DC similar to original AD, extracts NTLM hashes enabling Golden Ticket attac...</p></a>
+            <a class="term-card" href="/glossary-terms/ddos-mitigation/"><h3>DDoS Mitigation Strategies</h3><p>Rate limiting, traffic filtering with ACLs, blackhole routing (RFC 3896), CDN (Cloudflare, Akamai), Anycast distribution, IPS, redundant infrastructure across d...</p></a>
+            <a class="term-card" href="/glossary-terms/decoy-scanning/"><h3>Decoy Scanning</h3><p>Nmap -D flag sends packets from multiple fake source IPs simultaneously. Example: nmap -D decoy1,decoy2,yourIP target. IDS sees traffic from all decoys, making ...</p></a>
+            <a class="term-card" href="/glossary-terms/denial-of-service/"><h3>Denial of Service (DoS/DDoS)</h3><p>What is a DoS attack? Complete guide to SYN floods, DDoS amplification, application-layer attacks, and mitigation strategies. Prepare for CEH v13 exam with DoS prevention techniques.</p></a>
+            <a class="term-card" href="/glossary-terms/devsecops/"><h3>DevSecOps</h3><p>Integrating security into DevOps pipeline. Shift-left security: SAST/DAST scanning in CI/CD, infrastructure as code security, automated compliance checks, conta...</p></a>
+            <a class="term-card" href="/glossary-terms/dhcp-starvation/"><h3>DHCP Starvation Attack</h3><p>Creating a massive number of DHCP requests to exhaust the available IP pool. Combined with a rogue DHCP server, allows Man-in-the-Middle attacks on switched net...</p></a>
+            <a class="term-card" href="/glossary-terms/diamond-model/"><h3>Diamond Model of Intrusion Analysis</h3><p>A model for describing cyber intrusions with four core components: Adversary (WHO), Capability (WHAT), Infrastructure (WHERE), Victim (WHO TARGETED). Used to an...</p></a>
+            <a class="term-card" href="/glossary-terms/dictionary-attack/"><h3>Dictionary Attack</h3><p>Password cracking method using a pre-compiled word list to guess passwords. Significantly faster than brute-force for dictionary-based passwords. Tools: Hydra, ...</p></a>
+            <a class="term-card" href="/glossary-terms/diffie-hellman/"><h3>Diffie-Hellman Key Exchange</h3><p>Method of securely exchanging cryptographic keys over public channel. Allows two parties to jointly agree upon shared secret key without prior shared secrets. B...</p></a>
+            <a class="term-card" href="/glossary-terms/digital-signature/"><h3>Digital Signature</h3><p>Mathematical scheme verifying authenticity and integrity of digital messages. Uses asymmetric cryptography — sender encrypts hash with private key, receiver dec...</p></a>
+            <a class="term-card" href="/glossary-terms/stenography/"><h3>Digital Stenography</h3><p>Hiding data within images, audio, or video files. Tools: OpenStego, StegoOnline, DeepSound. Used by attackers to hide C2 communications and exfiltrated data....</p></a>
+            <a class="term-card" href="/glossary-terms/directory-traversal/"><h3>Directory Traversal</h3><p>What is directory traversal? Complete guide to path traversal attacks, null byte injection, URL encoding bypasses, and prevention. Learn how to test for LFI/RFI for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/disk-forensics/"><h3>Disk/File System Forensics</h3><p>Analysis of disk images to recover deleted files, examine file system metadata, identify timestamps (MACBT), and detect tampering. Tools: Autopsy, FTK, EnCase....</p></a>
+            <a class="term-card" href="/glossary-terms/dll-injection/"><h3>DLL Injection</h3><p>Inserting malicious DLL into another process's address space to execute code within its context. Used for privilege escalation, persistence, and evasion....</p></a>
+            <a class="term-card" href="/glossary-terms/dll-hijacking/"><h3>DLL/Dylib Hijacking</h3><p>Placing malicious DLL in application library path on Windows, or dynamic library on macOS. Tool: Spartacus (Windows), Dylib Hijack Scanner (macOS). Exploits app...</p></a>
+            <a class="term-card" href="/glossary-terms/data-loss-prevention/"><h3>DLP (Data Loss Prevention)</h3><p>Technologies and policies to detect and prevent unauthorized data exfiltration. Monitors email, web uploads, USB transfers, network traffic for sensitive data p...</p></a>
+            <a class="term-card" href="/glossary-terms/dns-amplification/"><h3>DNS Amplification Attack</h3><p>Type of volumetric amplification attack. Attacker sends DNS queries with spoofed source IP (victim) to open DNS resolvers. DNS response is much larger than quer...</p></a>
+            <a class="term-card" href="/glossary-terms/dns-records/"><h3>DNS Record Types</h3><p>Types of DNS records: A (IPv4 address), AAAA (IPv6 address), MX (mail exchange), NS (name server), CNAME (alias), SOA (start of authority), SRV (service record)...</p></a>
+            <a class="term-card" href="/glossary-terms/dns-tunneling/"><h3>DNS Tunneling</h3><p>Encode data in DNS queries to bypass firewalls. Domain: encoded-data.evil.com. DNS server acts as relay for exfiltrated/stolen data. Tools: iodine, dnscat2, dns...</p></a>
+            <a class="term-card" href="/glossary-terms/dns-zone-transfer/"><h3>DNS Zone Transfer (AXFR)</h3><p>A DNS protocol mechanism (type 256) that copies an entire zone file from primary to secondary servers. If misconfigured, attackers can harvest all subdomains an...</p></a>
+            <a class="term-card" href="/glossary-terms/domain-spoofing/"><h3>Domain Spoofing</h3><p>Registering domain similar to legitimate one: missing letter (microsof.com), double letter (companny.com), extra TLD (company.com.co). Used in phishing emails a...</p></a>
+            <a class="term-card" href="/glossary-terms/dumpster-diving/"><h3>Dumpster Diving</h3><p>Searching through discarded materials (paper documents, storage media) to find sensitive information such as credentials, network diagrams, or business plans. A...</p></a>
+            <a class="term-card" href="/glossary-terms/eavesdropping-se/"><h3>Eavesdropping (Social Engineering)</h3><p>Listening to unauthorized conversations to gather sensitive information. Can be performed in person near office spaces or via network sniffing of unencrypted co...</p></a>
+            <a class="term-card" href="/glossary-terms/endpoint-detection-response/"><h3>EDR (Endpoint Detection and Response)</h3><p>Security solution monitoring and responding to threats on endpoints (computers, servers, mobile). Provides continuous visibility, behavioral analysis, threat hu...</p></a>
+            <a class="term-card" href="/glossary-terms/error-based-sqli/"><h3>Error-Based SQL Injection</h3><p>Uses database error messages to extract schema information. When injection causes SQL syntax errors, the error message reveals table names, column names, or dat...</p></a>
+            <a class="term-card" href="/glossary-terms/ethical-hacking/"><h3>Ethical Hacking</h3><p>The authorized practice of circumventing computer systems to identify potential security breaches. Ethical hackers use the same tools and techniques as maliciou...</p></a>
+            <a class="term-card" href="/glossary-terms/evidence-removal/"><h3>Evidence Removal Techniques</h3><p>Disabling auditing, clearing logs (Metasploit meterpreter), manipulating logs, covering tracks on network/OS, deleting files, hiding artifacts, disabling Window...</p></a>
+            <a class="term-card" href="/glossary-terms/firewall-types/"><h3>Firewall Types</h3><p>Stateless (filters packets based on rules), Stateful (tracks connection state), Application-layer/Next-Gen (inspects content), WAF (web-specific), NGFW (integra...</p></a>
+            <a class="term-card" href="/glossary-terms/foca-metadata/"><h3>FOCA Tool</h3><p>Tool to find metadata and hidden information in scanned documents. Extracts author names, company info, timestamps, hidden comments, tracked changes, network pa...</p></a>
+            <a class="term-card" href="/glossary-terms/forward-secrecy/"><h3>Forward Secrecy</h3><p>Property where compromise of long-term keys does not compromise past session keys. Implemented via ECDHE (Elliptic Curve Diffie-Hellman Key Exchange). Ensures p...</p></a>
+            <a class="term-card" href="/glossary-terms/freak-attack/"><h3>FREAK / Forbidden Attack</h3><p>FREAK (Factoring RSA Export Keys): Forces downgrade to weak export-grade crypto. Forbidden Attack: MITM exploiting reuse of cryptographic nonce during TLS hands...</p></a>
+            <a class="term-card" href="/glossary-terms/golden-ticket/"><h3>Golden Ticket Attack</h3><p>Forge Ticket Granting Ticket (TGT) by compromising KRBTGT account password hash. Grants access to ANY service in the domain indefinitely. Tool: Mimikatz....</p></a>
+            <a class="term-card" href="/glossary-terms/google-hacking-operators/"><h3>Google Hacking / Advanced Search Operators</h3><p>Special operators used to find sensitive information exposed on the web. Key operators: cache:, link:, related:, info, site:, allintitle:, intitle:, allinurl:, ...</p></a>
+            <a class="term-card" href="/glossary-terms/hacktivist/"><h3>Hacktivist</h3><p>A threat actor who conducts cyberattacks for political, social, or ideological causes, targeting organizations to draw attention to their agenda through defacem...</p></a>
+            <a class="term-card" href="/glossary-terms/heap-spraying/"><h3>Heap Spraying</h3><p>Floods free space of process memory by writing multiple copies of malicious code. Used with buffer overflow exploits to increase chance of code execution....</p></a>
+            <a class="term-card" href="/glossary-terms/hmac/"><h3>HMAC (Hash-based Message Authentication Code)</h3><p>Combines cryptographic hash function with secret key to provide both integrity and authentication. Used in IPsec, TLS, and API authentication....</p></a>
+            <a class="term-card" href="/glossary-terms/honeypot-types/"><h3>Honeypot Types</h3><p>Production Honeypot (used by organizations for defense), Research Honeypot (used for security research), Threat Intelligence Honeypot (collects attacker TTPs). ...</p></a>
+            <a class="term-card" href="/glossary-terms/http-get-flood/"><h3>HTTP GET Flood</h3><p>Application-layer DDoS attack sending HTTP GET requests to overwhelm web server resources. Targets specific URLs that require database queries or expensive pro...</p></a>
+            <a class="term-card" href="/glossary-terms/http-request-smuggling/"><h3>HTTP Request Smuggling</h3><p>Exploiting differences in how front-end and back-end servers interpret HTTP request boundaries to send malicious requests that bypass security controls or gain ...</p></a>
+            <a class="term-card" href="/glossary-terms/identity-access-management/"><h3>IAM (Identity and Access Management)</h3><p>Framework for managing digital identities and their access to resources. Includes authentication, authorization, provisioning, deprovisioning, and access review...</p></a>
+            <a class="term-card" href="/glossary-terms/icmp-protocol/"><h3>ICMP (Internet Control Message Protocol)</h3><p>Network layer protocol used for diagnostics and error reporting. Types: Type 0 (Echo Reply), Type 3 (Destination Unreachable), Type 8 (Echo Request/ping), Type ...</p></a>
+            <a class="term-card" href="/glossary-terms/ids-evasion-techniques/"><h3>IDS Evasion Techniques</h3><p>Fragmentation, Junk Data Injection, Timing Manipulation, Decoy Scanning (Nmap -D), OS Fingerprint Evasion, Packet Reordering, TCP Wrapping....</p></a>
+            <a class="term-card" href="/glossary-terms/ids-types/"><h3>IDS Types</h3><p>NIDS (Network-based): Monitors network traffic. HIDS (Host-based): Monitors system activity. Signature-based: Matches known patterns. Anomaly-based: Detects dev...</p></a>
+            <a class="term-card" href="/glossary-terms/impacket/"><h3>Impacket Toolkit</h3><p>Collection of Python classes for working with network protocols. Tools: secretsdump.py (LSASS/SAM/NTDS), psexec.py, wmiexec.py, atexec.py, smbexec.py — essentia...</p></a>
+            <a class="term-card" href="/glossary-terms/impersonation-se/"><h3>Impersonation (Social Engineering)</h3><p>Pretending to be a legitimate or authorized person, often wearing uniforms, using fake IDs, or spoofing phone numbers and email addresses to gain access to rest...</p></a>
+            <a class="term-card" href="/glossary-terms/incident-response/"><h3>Incident Response (IR)</h3><p>A structured approach to handling and managing security breaches. Phases: Preparation, Recording and Assignment, Triage, Notification, Containment, Evidence Gat...</p></a>
+            <a class="term-card" href="/glossary-terms/information-assurance/"><h3>Information Assurance (IA)</h3><p>A framework for ensuring information security. Process: Plan → Design → Find Problems → Get Resources → Plan Fixes → Apply Controls → Verify → Train People. Cov...</p></a>
+            <a class="term-card" href="/glossary-terms/information-security-principles/"><h3>Information Security Principles</h3><p>The five core pillars: Confidentiality, Integrity, Availability, Authenticity (ensuring files, communications, and identities are genuine), and Non-repudiation ...</p></a>
+            <a class="term-card" href="/glossary-terms/insecure-deserialization/"><h3>Insecure Deserialization</h3><p>Exploiting unsafe deserialization of user-supplied data to execute arbitrary code, cause DoS, or bypass authentication. Common in Java, PHP, Python, Ruby applic...</p></a>
+            <a class="term-card" href="/glossary-terms/insider-threat/"><h3>Insider Threat</h3><p>A security risk originating from within the organization by trusted users with legitimate access who carry out attacks from inside the network perimeter. Can be...</p></a>
+            <a class="term-card" href="/glossary-terms/ios-security/"><h3>iOS Security Vulnerabilities</h3><p>Jailbreaking removes Apple restrictions exposing system files. Insecure data storage (Keychain misuse), backup encryption disabled, SSL pinning bypass, ClassKit...</p></a>
+            <a class="term-card" href="/glossary-terms/iot-firmware-analysis/"><h3>IoT Firmware Analysis</h3><p>Extract firmware from flash chip for offline analysis. Tools: binwalk, firmware-mod-kit, QEMU. Look for hardcoded credentials, backdoors, update mechanisms, ser...</p></a>
+            <a class="term-card" href="/glossary-terms/iot-protocols/"><h3>IoT Protocols</h3><p>MQTT (pub/sub telemetry), CoAP (constrained HTTP-like), Zigbee (low-power mesh), Z-Wave (home automation), BLE (short-range), LoRaWAN (long-range low-power)....</p></a>
+            <a class="term-card" href="/glossary-terms/iot-security-testing/"><h3>IoT Security Testing Methodology</h3><p>Physical access (UART/USB serial console), firmware extraction (binwalk), hardware analysis (logic analyzer), network protocol testing, API security assessment,...</p></a>
+            <a class="term-card" href="/glossary-terms/ip-geolocation/"><h3>IP Geolocation</h3><p>The process of mapping IP addresses to physical locations including country, region, city, latitude/longitude. Tools like IP2Location provide geographic data as...</p></a>
+            <a class="term-card" href="/glossary-terms/ips-bypass/"><h3>IPS Bypass Techniques</h3><p>Exploit blind spots, use encryption to hide payload, slow down attacks to stay below thresholds, fragment traffic across multiple sessions, target application-l...</p></a>
+            <a class="term-card" href="/glossary-terms/kerberoasting/"><h3>Kerberoasting Attack</h3><p>Request service ticket for any service account (SPN), extract encrypted TGS offline and crack for password. Works against any domain-joined user. Tool: Rubeus, ...</p></a>
+            <a class="term-card" href="/glossary-terms/kerberos-authentication/"><h3>Kerberos Authentication</h3><p>Secret key cryptography authentication protocol. Components: KDC, AS (Authentication Server), TGS (Ticket Granting Server). Process: Login → Request ticket → Re...</p></a>
+            <a class="term-card" href="/glossary-terms/keylogger/"><h3>Keylogger</h3><p>What is a keylogger? Complete guide to hardware and software keyloggers, API hooking, driver-level logging, detection methods, and ethical considerations for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/ldap-enumeration/"><h3>LDAP Enumeration</h3><p>Lightweight Directory Access Protocol — extract user lists, group memberships, organizational structure. Ports: 389 (unencrypted), 636 (LDAPS). Tools: ldapsearc...</p></a>
+            <a class="term-card" href="/glossary-terms/legal-ethical-hacking/"><h3>Legal and Ethical Considerations</h3><p>Rules of engagement, written authorization requirements, scope boundaries, reporting obligations, data privacy laws (GDPR, CCPA), Computer Fraud and Abuse Act (...</p></a>
+            <a class="term-card" href="/glossary-terms/live-forensics/"><h3>Live Forensics</h3><p>Collecting volatile evidence from running systems: memory dumps, network connections, running processes, open files, logged-in users. Performed before powering ...</p></a>
+            <a class="term-card" href="/glossary-terms/living-off-the-land/"><h3>Living off the Land (LotL)</h3><p>Using built-in OS tools (PowerShell, WMI, PsExec, rundll32) for attack operations instead of custom malware. Evades signature-based detection by using legitimat...</p></a>
+            <a class="term-card" href="/glossary-terms/llmnr-poisoning/"><h3>LLMNR/NBT-NS Poisoning</h3><p>Windows name resolution methods for hosts on same link. Attacker spoofs responses to intercept authentication. Tool: Responder detects and performs poisoning. D...</p></a>
+            <a class="term-card" href="/glossary-terms/logic-bomb/"><h3>Logic Bomb</h3><p>Malicious code triggered by specific conditions (date, event, password). Lies dormant until trigger condition is met. Often used by disgruntled employees with i...</p></a>
+            <a class="term-card" href="/glossary-terms/loic-hoic/"><h3>LOIC / HOIC Tools</h3><p>LOIC (Low Orbit Ion Cannon): Basic traffic flood tool for DoS testing. HOIC (High Orbit Ion Cannon): Enhanced LOIC with presets and multiple attack profiles. Bo...</p></a>
+            <a class="term-card" href="/glossary-terms/mac-flooding/"><h3>MAC Flooding Attack</h3><p>Flood switch CAM table with thousands of fake MAC addresses. When table overflows, switch enters 'fail-open' mode and behaves like a hub, broadcasting all traff...</p></a>
+            <a class="term-card" href="/glossary-terms/maltego/"><h3>Maltego Tool</h3><p>Visual link analysis tool for open-source intelligence and forensics. Visualizes relationships between people, domains, IPs, URLs, social media accounts, compan...</p></a>
+            <a class="term-card" href="/glossary-terms/malware/"><h3>Malware</h3><p>What is malware? Complete guide to viruses, worms, trojans, ransomware, rootkits, spyware, and APT tools. Learn malware lifecycle, detection, and removal for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/malware-analysis-methods/"><h3>Malware Analysis Methods</h3><p>Static Analysis (examining code without running it — disassembly, strings extraction, header analysis) and Dynamic Analysis (running malware in controlled envir...</p></a>
+            <a class="term-card" href="/glossary-terms/malware-analysis-tools/"><h3>Malware Analysis Tools</h3><p>Static: IDA Pro, Ghidra, PEiD, strings, exiftool. Dynamic: Cuckoo Sandbox, ANY.RUN, Joe Sandbox. Debuggers: OllyDbg, x64dbg, GDB. Network: Wireshark, TCPView. S...</p></a>
+            <a class="term-card" href="/glossary-terms/man-in-the-browser/"><h3>Man-in-the-Browser</h3><p>Trojan infects computer, installs malicious code that loads after browser restart. Handler registered for every webpage visit. Extension matches URL with known ...</p></a>
+            <a class="term-card" href="/glossary-terms/man-in-the-middle/"><h3>Man-in-the-Middle (MitM) Attack</h3><p>What is a Man-in-the-Middle attack? Complete guide to ARP spoofing, DNS poisoning, SSL stripping, and session hijacking. Learn MitM prevention for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/masscan/"><h3>Masscan</h3><p>Internet-scale port scanner capable of scanning all 65535 ports in under a minute. Sends SYN packets at extremely high rates. Can scan the entire internet in un...</p></a>
+            <a class="term-card" href="/glossary-terms/meltdown-spectre/"><h3>Meltdown and Spectre</h3><p>Spectre: Found in AMD, Apple, ARM, Intel. Tricks speculative execution to read restricted data. Meltdown: All ARM and Intel CPUs. Tricks processors into accessi...</p></a>
+            <a class="term-card" href="/glossary-terms/memcached-amplification/"><h3>Memcached Amplification</h3><p>Most powerful DNS-like amplification attack. Open Memcached servers can achieve up to 51,000x amplification factor when queried with ANY command and spoofed sou...</p></a>
+            <a class="term-card" href="/glossary-terms/memory-forensics/"><h3>Memory Forensics</h3><p>Analysis of volatile RAM content to find malware artifacts, encryption keys, network connections, and running processes not visible through normal means. Tool: ...</p></a>
+            <a class="term-card" href="/glossary-terms/metamorphic-malware/"><h3>Metamorphic Malware</h3><p>Rewrites its entire code structure each time it infects a system, performing the same function with completely different code. More advanced than polymorphic — ...</p></a>
+            <a class="term-card" href="/glossary-terms/metasploit-modules/"><h3>Metasploit Framework Modules</h3><p>Module types: Exploit (configure active exploit), Payload (establishes communication — singles, stagers, stages), Auxiliary (one-time actions like scanning), NO...</p></a>
+            <a class="term-card" href="/glossary-terms/mirai-botnet/"><h3>Mirai Botnet</h3><p>IoT botnet that infected millions of devices (cameras, routers) scanning for default credentials on Telnet/SSH. Used for massive DDoS attacks (Dyn DNS attack: 1...</p></a>
+            <a class="term-card" href="/glossary-terms/mitre-attack-framework/"><h3>MITRE ATT&CK Framework</h3><p>A knowledge base of adversary tactics and techniques based on real-world observations. Structure: Tactics (WHY hacker acts), Techniques (HOW they achieve goals)...</p></a>
+            <a class="term-card" href="/glossary-terms/mobile-mdm/"><h3>Mobile Device Management (MDM)</h3><p>System for managing mobile devices in enterprise: Remote wipe, enforce encryption and password policies, app whitelisting/blacklisting, VPN configuration, certi...</p></a>
+            <a class="term-card" href="/glossary-terms/mobile-forensics/"><h3>Mobile Forensics</h3><p>Recovery of digital evidence from mobile devices. Covers physical extraction (bit-for-bit), logical extraction (file system), and file-based methods. Tools: Cel...</p></a>
+            <a class="term-card" href="/glossary-terms/mobile-malware/"><h3>Mobile Malware Types</h3><p>Trojans (appear legitimate), Spyware (track location, contacts), Ransomware (lock device), Adware (inject ads), Rootkits (gain root access), Banking Trojans (in...</p></a>
+            <a class="term-card" href="/glossary-terms/multi-factor-authentication/"><h3>Multi-Factor Authentication (MFA)</h3><p>Requiring two or more independent credentials for authentication: something you know (password), something you have (token/phone), something you are (biometric)...</p></a>
+            <a class="term-card" href="/glossary-terms/named-pipe-impersonation/"><h3>Named Pipe Impersonation</h3><p>Privilege escalation technique using Windows named pipes for process impersonation. Metasploit module available for exploitation....</p></a>
+            <a class="term-card" href="/glossary-terms/nessus/"><h3>Nessus Scanner</h3><p>Industry-standard vulnerability scanner with extensive plugin library. Identifies vulnerabilities, misconfigurations, compliance violations. Commercial product ...</p></a>
+            <a class="term-card" href="/glossary-terms/netbios-enumeration/"><h3>NetBIOS Enumeration</h3><p>Enumerate computer names, user names, domains via NetBIOS Session Service (port 139) and Name Service (ports 137/138). Tools: nbtscan, enum4linux, rpcclient....</p></a>
+            <a class="term-card" href="/glossary-terms/netstat-commands/"><h3>Netstat Commands</h3><p>Network statistics tool. Commands: netstat -an (all connections and listening ports), netstat -b (executable tied to each port), netstat -n (numeric only, no DN...</p></a>
+            <a class="term-card" href="/glossary-terms/network-enumeration/"><h3>Network Enumeration</h3><p>What is network enumeration? Complete guide to SMB, LDAP, SNMP, NetBIOS, and NIS enumeration. Learn enumeration techniques, tools, and detection for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/network-forensics/"><h3>Network Forensics</h3><p>Capture and analysis of network traffic for investigation. Uses packet captures (PCAP), NetFlow data, and firewall logs to reconstruct attack timeline and ident...</p></a>
+            <a class="term-card" href="/glossary-terms/network-segmentation/"><h3>Network Segmentation</h3><p>Dividing network into smaller subnets to limit lateral movement during a breach. Reduces attack surface and contains compromise within specific zones....</p></a>
+            <a class="term-card" href="/glossary-terms/nis-enumeration/"><h3>NIS Enumeration</h3><p>Network Information Service enumeration for Unix systems. Retrieves passwd/group database entries via UDP 751....</p></a>
+            <a class="term-card" href="/glossary-terms/nist-sp-800-115/"><h3>NIST SP 800-115</h3><p>A guide to information technology security testing published by NIST that provides guidelines for conducting security testing including planning, testing, and d...</p></a>
+            <a class="term-card" href="/glossary-terms/nmap-os-detection/"><h3>Nmap OS Detection</h3><p>-O flag enables OS detection by analyzing TCP/IP stack fingerprints. Analyzes TCP Initial TTL values, window size, IP ID sequence generation, TCP options orderi...</p></a>
+            <a class="term-card" href="/glossary-terms/nmap-scan-types/"><h3>Nmap Scan Types</h3><p>Multiple scanning techniques in Nmap: SYN Scan (-sS), Connect Scan (-sT), UDP Scan (-sU), XMAS Scan (-sX), NULL Scan (-sN), FIN Scan (-sF), ACK Scan (-sA), Idle...</p></a>
+            <a class="term-card" href="/glossary-terms/zombie-scan/"><h3>Nmap Zombie/Idle Scan</h3><p>-sI option uses an idle 'zombie' host to scan the target, making the scan appear to come from the zombie. Requires an idle zombie with predictable IP ID sequenc...</p></a>
+            <a class="term-card" href="/glossary-terms/ntfs-ads/"><h3>NTFS Alternate Data Streams (ADS)</h3><p>Hidden data streams within files on NTFS filesystem. Attackers hide malicious content in alternate streams. Tools: StreamArmor, GMER, ADS Scanner....</p></a>
+            <a class="term-card" href="/glossary-terms/ntlm-authentication/"><h3>NTLM Authentication</h3><p>NT LAN Manager — default Windows authentication scheme using challenge-response. Process: Client requests access → Server sends challenge → Client computes resp...</p></a>
+            <a class="term-card" href="/glossary-terms/open-redirect/"><h3>Open Redirect</h3><p>Web vulnerability where application redirects users to a URL derived from user input without proper validation, enabling phishing attacks that appear to origina...</p></a>
+            <a class="term-card" href="/glossary-terms/openvas/"><h3>OpenVAS Scanner</h3><p>Open-source alternative to Nessus. Full-featured vulnerability scanner with regular feed updates. Part of Greenbone network....</p></a>
+            <a class="term-card" href="/glossary-terms/osint-framework/"><h3>OSINT Framework</h3><p>Collection of open-source intelligence tools organized by category. Covers reconnaissance, domain research, IP address research, social media investigation, and...</p></a>
+            <a class="term-card" href="/glossary-terms/osstmm/"><h3>OSSTMM</h3><p>Open Source Security Testing Methodology Manual. A free and open framework for security testing that provides standardized metrics and measurements for penetrat...</p></a>
+            <a class="term-card" href="/glossary-terms/ot-security/"><h3>OT Security Principles</h3><p>Safety-first approach to industrial control systems. Network segmentation (Purdue Model), passive monitoring, disable unnecessary services, physical security, i...</p></a>
+            <a class="term-card" href="/glossary-terms/out-of-band-sqli/"><h3>Out-of-Band SQL Injection</h3><p>Uses different channel to exfiltrate data — DNS lookups or HTTP requests from the database server. Requires specific DB configuration but works when in-band met...</p></a>
+            <a class="term-card" href="/glossary-terms/fragmentation-ids-evasion/"><h3>Packet Fragmentation for IDS Evasion</h3><p>Split malicious payload into smaller fragments. Each fragment individually appears harmless. IDS may not reassemble before inspection. Target system reassembles...</p></a>
+            <a class="term-card" href="/glossary-terms/pass-the-hash/"><h3>Pass the Hash (PtH)</h3><p>Injecting compromised hash into local session to authenticate to network resources without cracking password to plaintext. Uses logged-in user hash to log into ...</p></a>
+            <a class="term-card" href="/glossary-terms/passive-reconnaissance/"><h3>Passive Reconnaissance</h3><p>Gathering information about a target without directly interacting with their systems. Examples: searching search engines, checking social media, WHOIS lookups, ...</p></a>
+            <a class="term-card" href="/glossary-terms/passive-session-hijacking/"><h3>Passive Session Hijacking</h3><p>Only observe and record traffic, capture IDs/passwords without disturbing the session. Uses packet sniffers to intercept unencrypted session tokens....</p></a>
+            <a class="term-card" href="/glossary-terms/password-dumping/"><h3>Password Dumping Methods</h3><p>Methods to extract credentials: dumping from memory, stealing SAM database, stealing AD file ntds.dit, extracting SYSKEY boot key, intercepting credentials on n...</p></a>
+            <a class="term-card" href="/glossary-terms/password-spraying/"><h3>Password Spraying</h3><p>Targets multiple accounts simultaneously with the same common password to avoid account lockout that single-password brute force would trigger. Example: Try 'Pa...</p></a>
+            <a class="term-card" href="/glossary-terms/penetration-testing-phases/"><h3>Penetration Testing Phases</h3><p>Structured methodology for authorized simulated cyberattacks. Phases: Preparation (define scope, rules of engagement), Assessment (actual penetration testing in...</p></a>
+            <a class="term-card" href="/glossary-terms/reporting-findings/"><h3>Penetration Testing Reporting</h3><p>Documenting findings with executive summary, technical details, risk ratings, evidence (screenshots), and remediation recommendations. Key to demonstrating valu...</p></a>
+            <a class="term-card" href="/glossary-terms/pharming/"><h3>Pharming</h3><p>Redirecting traffic to fake websites via DNS poisoning or manipulating hosts file. Users visit legitimate sites but are directed to fraudulent lookalike sites....</p></a>
+            <a class="term-card" href="/glossary-terms/phishing-attack/"><h3>Phishing Attack</h3><p>What is a phishing attack? Complete guide to spear phishing, whaling, smishing, and vishing. Learn social engineering techniques, detection methods, and CEH v13 exam preparation.</p></a>
+            <a class="term-card" href="/glossary-terms/ping-of-death/"><h3>Ping of Death</h3><p>Sends malformed or oversized ICMP packets (>65,535 bytes). Target system crashes trying to reassemble fragmented packets. Mostly patched in modern systems but s...</p></a>
+            <a class="term-card" href="/glossary-terms/ping-sweep/"><h3>Ping Sweep</h3><p>Method to find active machines on a network by sending ICMP Echo Requests. Tools: Angry IP Scanner, Superscan, Nmap (-sn), Advanced IP Scanner, PingPlotter....</p></a>
+            <a class="term-card" href="/glossary-terms/pmkid-attack/"><h3>PMKID Attack</h3><p>Targets WPA2-Personal networks. Captures PMKID from first handshake message. Faster than full handshake capture. Tool: aircrack-ng with hashcat. Requires statio...</p></a>
+            <a class="term-card" href="/glossary-terms/polymorphic-malware/"><h3>Polymorphic Malware</h3><p>Changes its code signature each time it replicates while keeping the original algorithm intact. Uses mutation engines to evade signature-based AV detection. Dif...</p></a>
+            <a class="term-card" href="/glossary-terms/port-number-ranges/"><h3>Port Number Ranges</h3><p>Well Known Ports: 0-1023 (reserved), Registered Ports: 1024-49151 (assigned), Dynamic/Private Ports: 49152-65535 (temporary). Common ports: 21/FTP, 22/SSH, 23/T...</p></a>
+            <a class="term-card" href="/glossary-terms/port-scanning/"><h3>Port Scanning</h3><p>What is port scanning? Complete guide to SYN, connect, FIN, NULL, XMAS scans and Nmap techniques. Learn port scanning detection and evasion for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/powershell-attacks/"><h3>PowerShell in Attacks</h3><p>Living-off-the-land technique using PowerShell for fileless malware, credential theft, lateral movement. Techniques: -encodedcommand, IEX (Invoke-Expression), I...</p></a>
+            <a class="term-card" href="/glossary-terms/predicting-session-tokens/"><h3>Predicting Session Tokens</h3><p>Sequential tokens (easily predictable), timestamp-based tokens, small token space (brute force possible), weak RNG algorithms, lack of rate limiting allows rapi...</p></a>
+            <a class="term-card" href="/glossary-terms/prep-framework/"><h3>PREP Framework</h3><p>Social engineering methodology: Positioning (establish credibility and role), Rapport (build trust and connection), Extraction (gather information gradually), P...</p></a>
+            <a class="term-card" href="/glossary-terms/pretexting/"><h3>Pretexting</h3><p>Creating a fabricated scenario (pretext) to engage the victim and extract information. The attacker researches the target beforehand to create a believable stor...</p></a>
+            <a class="term-card" href="/glossary-terms/privilege-escalation/"><h3>Privilege Escalation</h3><p>What is privilege escalation? Complete guide to vertical and horizontal escalation on Linux and Windows. Learn misconfigurations, SUID binaries, kernel exploits, and CEH v13 exam preparation.</p></a>
+            <a class="term-card" href="/glossary-terms/process-hollowing/"><h3>Process Hollowing</h3><p>Technique where a running process is suspended, its memory is unmapped, and replaced with malicious code. The original process resumes execution but runs attack...</p></a>
+            <a class="term-card" href="/glossary-terms/psychological-principles-se/"><h3>Psychological Principles of SE</h3><p>Principles exploited in social engineering: Authority (people obey figures of authority), Scarcity (limited availability creates urgency), Urgency (time pressur...</p></a>
+            <a class="term-card" href="/glossary-terms/ptes/"><h3>PTES</h3><p>Penetration Testing Execution Standard. Provides a comprehensive taxonomy including pre-engagement, intelligence gathering, threat modeling, vulnerability analy...</p></a>
+            <a class="term-card" href="/glossary-terms/pki-system/"><h3>Public Key Infrastructure (PKI)</h3><p>System for managing digital certificates and public-key encryption. Components: Certificate Authority (CA), Registration Authority (RA), Digital Certificates, C...</p></a>
+            <a class="term-card" href="/glossary-terms/purple-team/"><h3>Purple Team</h3><p>Collaborative approach combining red team (attack) and blue team (defense) in real-time to improve detection capabilities and security posture through continuou...</p></a>
+            <a class="term-card" href="/glossary-terms/qr-code-phishing/"><h3>QR Code Phishing (Quishing)</h3><p>QR codes used as attack vector in phishing. Directs victim to malicious URLs without showing URL until after scan. Bypasses email security filters that cannot s...</p></a>
+            <a class="term-card" href="/glossary-terms/qualys/"><h3>Qualys Scanner</h3><p>Cloud-based vulnerability management solution. Provides continuous monitoring, compliance scanning, and asset discovery without requiring on-premise hardware....</p></a>
+            <a class="term-card" href="/glossary-terms/quantum-cryptography/"><h3>Quantum Computing Threat to Crypto</h3><p>Quantum computers could break RSA and ECC encryption. Shor's algorithm factors large numbers efficiently. NIST standardizing post-quantum cryptography (lattice-...</p></a>
+            <a class="term-card" href="/glossary-terms/quid-pro-quo-se/"><h3>Quid Pro Quo (Social Engineering)</h3><p>A social engineering technique where the attacker promises a benefit in exchange for information (</p></a>
+            <a class="term-card" href="/glossary-terms/rainbow-table-attack/"><h3>Rainbow Table Attack</h3><p>What is a rainbow table attack? Complete guide to precomputed hash tables, salt as countermeasure, and password hash cracking. Learn about SHA-256/NTLM/Md5 for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/ransomware-types/"><h3>Ransomware Types</h3><p>Crypto-ransomware (encrypts files), Locker-ransomware (locks device/screen), Double Extortion (steals data THEN encrypts, threatens to leak). Examples: WannaCry...</p></a>
+            <a class="term-card" href="/glossary-terms/rapid7-nexpose/"><h3>Rapid7 Nexpose/InsightVM</h3><p>Enterprise vulnerability management platform providing comprehensive scanning, risk-based prioritization, and remediation guidance....</p></a>
+            <a class="term-card" href="/glossary-terms/recon-ng/"><h3>Recon-ng Framework</h3><p>Web-based reconnaissance framework (open-source, modular) for gathering information from public sources. Features modules for WHOIS, DNS, Google hacking, Shodan...</p></a>
+            <a class="term-card" href="/glossary-terms/recon-dog/"><h3>ReconDog Tool</h3><p>All-in-one reconnaissance tool providing DNS lookup, whois information, port scanning, and more. Usage: recondog footprint, recondog scanner....</p></a>
+            <a class="term-card" href="/glossary-terms/red-team-vs-penetration-test/"><h3>Red Team vs Penetration Testing</h3><p>Pen test: Find and report vulnerabilities within scope. Red team: Simulate real adversary TTPs to test detection and response. Broader, more stealthy, objective...</p></a>
+            <a class="term-card" href="/glossary-terms/rir-registries/"><h3>Regional Internet Registries (RIRs)</h3><p>Organizations managing IP address allocation by region: ARIN (Americas), AFRINIC (Africa), APNIC (Asia-Pacific), RIPE NCC (Europe/Middle East/Central Asia), LAC...</p></a>
+            <a class="term-card" href="/glossary-terms/remote-code-execution-techniques/"><h3>Remote Code Execution Techniques</h3><p>Methods for executing code remotely: Web-browser exploitation (spear phishing), Office-application exploitation, WMI (Windows Management Instrumentation), WinRM...</p></a>
+            <a class="term-card" href="/glossary-terms/responder-tool/"><h3>Responder Tool</h3><p>LLMNR/NBT-NS/mDNS poisoner and credential harvester. Captures Windows name resolution requests and returns malicious responses, harvesting NTLM hashes from the ...</p></a>
+            <a class="term-card" href="/glossary-terms/responsible-disclosure/"><h3>Responsible Vulnerability Disclosure</h3><p>Process of privately notifying vendor of vulnerability before public disclosure, allowing time for patch development. Timeline: 90 days initial, 180 days max be...</p></a>
+            <a class="term-card" href="/glossary-terms/return-oriented-programming/"><h3>Return Oriented Programming (ROP)</h3><p>Reusing code snippets already existing in the binary, usually in libc or kernel32.dll. Chains small code 'gadgets' ending in RET instruction to build arbitrary ...</p></a>
+            <a class="term-card" href="/glossary-terms/risk-analysis/"><h3>Risk Analysis</h3><p>The process of identifying, estimating, and prioritizing threats to information assets. Formula: Risk = Threats × Vulnerabilities × Impact. Key metrics include ...</p></a>
+            <a class="term-card" href="/glossary-terms/risk-treatment/"><h3>Risk Treatment Options</h3><p>Four approaches: Mitigation (reduce risk), Transfer (insurance/outsourcing), Accept (tolerate residual risk), Avoid (eliminate activity causing risk)....</p></a>
+            <a class="term-card" href="/glossary-terms/rogue-access-point/"><h3>Rogue Access Point</h3><p>Unauthorized AP connected to secure network. Can be installed by employees without IT knowledge providing backdoor for attackers. Detection: Wireless intrusion ...</p></a>
+            <a class="term-card" href="/glossary-terms/rootkit-detection/"><h3>Rootkit Detection</h3><p>Detection methods: Integrity-based detection (Tripwire, AIDE baseline), analyzing memory dumps, comparing process lists (rootkit vs OS view). Anti-Rootkit tools...</p></a>
+            <a class="term-card" href="/glossary-terms/rst-flood/"><h3>RST Flood Attack</h3><p>Sending TCP RST packets to established connections to forcibly terminate them. Can disrupt legitimate communications and cause application-level denial of servi...</p></a>
+            <a class="term-card" href="/glossary-terms/rules-of-engagement/"><h3>Rules of Engagement (RoE)</h3><p>Written agreement defining scope, timing, techniques allowed, target systems, communication procedures, and emergency contacts for a penetration test. Protects ...</p></a>
+            <a class="term-card" href="/glossary-terms/scada-attack-surface/"><h3>SCADA/ICS Attack Surface</h3><p>Legacy systems not designed for connectivity, proprietary protocols with weak authentication, long lifecycle without updates, physical safety implications. Comm...</p></a>
+            <a class="term-card" href="/glossary-terms/scada-protocols/"><h3>SCADA/ICS Protocols</h3><p>Modbus (no authentication), DNP3 (utilities), BACnet (building automation), PROFINET (industrial Ethernet), OPC UA (more secure), S7comm (Siemens PLC)....</p></a>
+            <a class="term-card" href="/glossary-terms/script-kiddie/"><h3>Script Kiddie</h3><p>An inexperienced attacker who uses pre-made exploit tools, scripts, or automated attack tools without understanding the underlying concepts, often causing more ...</p></a>
+            <a class="term-card" href="/glossary-terms/compliance-frameworks/"><h3>Security Compliance Frameworks</h3><p>Standards and frameworks for organizational security: ISO 27001, NIST CSF, PCI DSS, HIPAA, SOC 2, GDPR, COBIT. Provide structured approach to managing security ...</p></a>
+            <a class="term-card" href="/glossary-terms/session-donation/"><h3>Session Donation Attack</h3><p>Attacker logs into shared session, victim clicks link, victim authenticates attacker's session, attacker gains victim's data. Prevention: Bind session to user/I...</p></a>
+            <a class="term-card" href="/glossary-terms/session-fixation/"><h3>Session Fixation</h3><p>Attacker sets session ID in advance (via link, cookie). Victim logs in using attacker-known session ID. Prevention: Regenerate session ID after login....</p></a>
+            <a class="term-card" href="/glossary-terms/shodan/"><h3>Shodan Search Engine</h3><p>Search engine for internet-connected devices. Indexes banners from all connected devices including webcams, routers, servers, IoT devices. Used for discovering ...</p></a>
+            <a class="term-card" href="/glossary-terms/shoulder-surfing/"><h3>Shoulder Surfing</h3><p>A physical social engineering technique observing a target's screen, keyboard, or password entry by standing nearby. Can be performed in person or via surveilla...</p></a>
+            <a class="term-card" href="/glossary-terms/siem-system/"><h3>SIEM (Security Information and Event Management)</h3><p>Centralized platform for collecting, analyzing, and correlating security logs and events from multiple sources. Enables real-time threat detection, compliance r...</p></a>
+            <a class="term-card" href="/glossary-terms/silver-ticket/"><h3>Silver Ticket Attack</h3><p>Steal user credentials and create fake Service Ticket (TGS, not TGT). Grants access to a specific service, not entire domain. Tool: Mimikatz....</p></a>
+            <a class="term-card" href="/glossary-terms/slowloris-attack/"><h3>Slowloris Attack</h3><p>Application Layer (Layer 7) attack opening multiple connections to web server and keeping them open. Sends partial HTTP requests with slow intervals. Uses very ...</p></a>
+            <a class="term-card" href="/glossary-terms/smishing/"><h3>SMS Phishing (Smishing)</h3><p>Fake text messages with malicious links. Mobile-optimized phishing using SMS as the delivery vector. Often includes urgency to prompt immediate action....</p></a>
+            <a class="term-card" href="/glossary-terms/smtp-enumeration/"><h3>SMTP Enumeration</h3><p>Using SMTP VRFY, EXPN, or RCPT TO commands to verify email addresses and enumerate users. Tools: smtp-user-enum, Nmap scripts (smtp-enum), Swaks....</p></a>
+            <a class="term-card" href="/glossary-terms/smurf-attack/"><h3>Smurf Attack</h3><p>Sends ICMP echo requests (pings) to broadcast addresses with spoofed source IP of victim. All hosts on network reply to victim simultaneously, overwhelming it w...</p></a>
+            <a class="term-card" href="/glossary-terms/snmp-enumeration/"><h3>SNMP Enumeration</h3><p>Using community strings to extract system info, interface stats, routing tables, connected devices. Common defaults: 'public' (read-only), 'private' (read-write...</p></a>
+            <a class="term-card" href="/glossary-terms/social-engineering/"><h3>Social Engineering</h3><p>What is social engineering? Complete guide to pretexting, baiting, tailgating, and manipulation psychology. Learn the 15 classic social engineering techniques for CEH v13 exam prep.</p></a>
+            <a class="term-card" href="/glossary-terms/social-media-recon/"><h3>Social Media Reconnaissance</h3><p>Gathering information from social media platforms for OSINT. LinkedIn reveals organizational structure and employee roles. Facebook/Twitter reveal personal deta...</p></a>
+            <a class="term-card" href="/glossary-terms/spear-phishing/"><h3>Spear Phishing</h3><p>Targeted phishing attack directed at specific individual or organization. Uses personalized information gathered through reconnaissance to make the attack more ...</p></a>
+            <a class="term-card" href="/glossary-terms/sql-injection/"><h3>SQL Injection (SQLi)</h3><p>What is SQL Injection? Complete guide to SQLi attacks including union-based, boolean blind, and time-based techniques. Learn how to detect and prevent SQL injection for the CEH v13 exam.</p></a>
+            <a class="term-card" href="/glossary-terms/sqlmap-usage/"><h3>SQLmap Usage</h3><p>Automated SQL injection tool. Commands: sqlmap -u </p></a>
+            <a class="term-card" href="/glossary-terms/ssl-strip/"><h3>SSL Strip</h3><p>Downgrades HTTPS connections to HTTP before TLS negotiation begins, enabling plaintext interception. Tool by Moxie Marlinspike. Exploits the transition period b...</p></a>
+            <a class="term-card" href="/glossary-terms/ssrf-attack/"><h3>SSRF (Server-Side Request Forgery)</h3><p>Attacker induces the server to make HTTP requests to an arbitrary domain of their choosing. Can be used to access internal resources, cloud metadata services, o...</p></a>
+            <a class="term-card" href="/glossary-terms/state-sponsored-actor/"><h3>State-Sponsored Threat Actor</h3><p>A government-backed adversary conducting sophisticated cyber operations for intelligence gathering, strategic disruption, or economic espionage. Resources and s...</p></a>
+            <a class="term-card" href="/glossary-terms/steganography/"><h3>Steganography</h3><p>Hiding secret data within non-secret files (images, audio, video). Unlike cryptography which hides content, steganography hides the existence of the message its...</p></a>
+            <a class="term-card" href="/glossary-terms/stride-model/"><h3>STRIDE Threat Model</h3><p>A threat categorization model: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege. Used during threat modeling ...</p></a>
+            <a class="term-card" href="/glossary-terms/stuxnet/"><h3>Stuxnet Worm</h3><p>Discovered in 2010, targeted Iranian nuclear facilities. Specifically attacked Siemens SCADA systems to disrupt centrifuge operations. Used multiple zero-day ex...</p></a>
+            <a class="term-card" href="/glossary-terms/subfinder/"><h3>Subfinder Tool</h3><p>Fast subdomain discovery tool using passive online sources. Finds subdomains belonging to target domains for attack surface mapping and reconnaissance....</p></a>
+            <a class="term-card" href="/glossary-terms/symmetric-encryption/"><h3>Symmetric Encryption</h3><p>Same key for encryption and decryption. Algorithms: AES (128/192/256-bit), DES (broken), 3DES, RC4 (broken), Blowfish, Twofish, ChaCha20. Faster than asymmetric...</p></a>
+            <a class="term-card" href="/glossary-terms/syn-flood/"><h3>SYN Flood Attack</h3><p>Most common DDoS technique. Attacker sends rapid TCP SYN packets with spoofed source IP addresses. Server responds with SYN-ACK and waits for ACK, exhausting re...</p></a>
+            <a class="term-card" href="/glossary-terms/tailgating/"><h3>Tailgating (Piggybacking)</h3><p>Following an authorized person into a restricted area without presenting credentials. Can be physical (following someone through a door) or logical (using someo...</p></a>
+            <a class="term-card" href="/glossary-terms/tcp-protocol/"><h3>TCP (Transmission Control Protocol)</h3><p>Connection-oriented protocol ensuring reliable data delivery. Provides error checking, flow control, and sequence numbering. Used by HTTP, FTP, SMTP, SSH....</p></a>
+            <a class="term-card" href="/glossary-terms/tcp-connection-states/"><h3>TCP Connection States (State Table)</h3><p>States: NEW (initiating), ESTABLISHED (active communication), RELATED (associated with existing connection), INVALID (no matching state). Used by firewalls to...</p></a>
+            <a class="term-card" href="/glossary-terms/tcp-flags/"><h3>TCP Flags</h3><p>Control bits in TCP header: SYN (synchronize), ACK (acknowledge), PSH (push data), RST (reset connection), FIN (close connection), URG (urgent data). Used to d...</p></a>
+            <a class="term-card" href="/glossary-terms/tcp-three-way-handshake/"><h3>TCP Three-Way Handshake</h3><p>Process to establish TCP connection: 1) Client sends SYN, 2) Server responds with SYN-ACK, 3) Client replies with ACK. Used in port scanning (SYN scan completes...</p></a>
+            <a class="term-card" href="/glossary-terms/theharvester/"><h3>TheHarvester Tool</h3><p>OSINT tool for gathering emails, subdomains, hosts, employee names, and open ports from public sources (search engines, PGP key servers, Shodan). Usage: theharv...</p></a>
+            <a class="term-card" href="/glossary-terms/threat-modeling/"><h3>Threat Modeling</h3><p>Structured approach to identifying and mitigating security threats. Methods: STRIDE (Microsoft), PASTA (Risk-Centric), Attack Trees, DREAD (risk scoring). Beg...</p></a>
+            <a class="term-card" href="/glossary-terms/token-impersonation/"><h3>Token Impersonation</h3><p>Attacker obtains valid session token and impersonates the legitimate user. Can be achieved through XSS, network sniffing, or token prediction....</p></a>
+            <a class="term-card" href="/glossary-terms/traffic-analysis/"><h3>Traffic Analysis</h3><p>Intercepting and analyzing communication patterns to extract information without necessarily decrypting content. Analyzes timing, length, frequency of packets....</p></a>
+            <a class="term-card" href="/glossary-terms/trojan-types/"><h3>Trojan Types</h3><p>Backdoor Trojans (remote access), RAT (Remote Access Trojan), DDoS Trojans, InfoGrabber, Banking Trojans, Webbot. Unlike viruses/worms, Trojans don't self-repl...</p></a>
+            <a class="term-card" href="/glossary-terms/uac-bypass/"><h3>UAC Bypass</h3><p>User Account Control bypass techniques to gain elevated privileges without admin password. Methods: fodhelper.exe, eventvwr.exe, iekiesetup.dll, bcdedit (perma...</p></a>
+            <a class="term-card" href="/glossary-terms/udp-protocol/"><h3>UDP (User Datagram Protocol)</h3><p>Connectionless protocol — no handshake or guaranteed delivery. Used by DNS, DHCP, SNMP, syslog, VoIP. Faster than TCP but unreliable. Commonly exploited in UDP ...</p></a>
+            <a class="term-card" href="/glossary-terms/vpn-protocols/"><h3>VPN Protocols</h3><p>PPTP (deprecated), L2TP/IPsec, SSTP (Microsoft), OpenVPN (open-source, SSL/TLS), WireGuard (modern, lightweight), IKEv2. Used for secure remote access and tun...</p></a>
+            <a class="term-card" href="/glossary-terms/vulnerability-scanner/"><h3>Vulnerability Scanner</h3><p>Automated tools that identify known vulnerabilities in systems, networks, or applications. Examples: Nessus, OpenVAS, Qualys, Nmap scripts (NSE), Nikto, Dirb/Di...</p></a>
+            <a class="term-card" href="/glossary-terms/web-application-firewall/"><h3>Web Application Firewall (WAF)</h3><p>Filters HTTP traffic based on rulesets. Types: Browser-side (Cloudflare), Network-based (FortiWAF), Host-based (ModSecurity). Detects SQLi, XSS, directory trave...</p></a>
+            <a class="term-card" href="/glossary-terms/war-driving/"><h3>War Driving</h3><p>Driving around to discover wireless networks using a vehicle, laptop/phone, and WiFi scanner. Tools: NetSpot, inSSIDer, Airodump-ng. Used for assessing physical...</p></a>
+            <a class="term-card" href="/glossary-terms/waterholing/"><h3>Water Hol</h3><p></p></a>
         </div>
 
-        <h2>Vulnerabilities & Exploitation</h2>
-        <div class="term-grid">
-            <a class="term-card" href="/glossary-terms/buffer-overflow/">
-                <h3>Buffer Overflow</h3>
-                <p>Memory corruption by writing beyond allocated buffer boundaries</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/privilege-escalation/">
-                <h3>Privilege Escalation</h3>
-                <p>Gaining higher permissions via exploits or misconfigurations</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/zero-day-vulnerability/">
-                <h3>Zero-Day Vulnerability</h3>
-                <p>Unknown software flaw with no available patch or mitigation</p>
-            </a>
-        </div>
-
-        <h2>Threats & Malware</h2>
-        <div class="term-grid">
-            <a class="term-card" href="/glossary-terms/advanced-persistent-threat/">
-                <h3>Advanced Persistent Threat (APT)</h3>
-                <p>Prolonged targeted attacks for espionage or sabotage</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/malware/">
-                <h3>Malware</h3>
-                <p>Software designed to harm, spy on, or compromise systems</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/keylogger/">
-                <h3>Keylogger</h3>
-                <p>Surveillance tool recording keystrokes and user activity</p>
-            </a>
-        </div>
-
-        <h2>Reconnaissance & Scanning</h2>
-        <div class="term-grid">
-            <a class="term-card" href="/glossary-terms/port-scanning/">
-                <h3>Port Scanning</h3>
-                <p>Identifying open ports and services on target systems</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/network-enumeration/">
-                <h3>Network Enumeration</h3>
-                <p>Extracting usernames, shares, and config details from networks</p>
-            </a>
-        </div>
-
-        <h2>Password & Wireless Attacks</h2>
-        <div class="term-grid">
-            <a class="term-card" href="/glossary-terms/rainbow-table-attack/">
-                <h3>Rainbow Table Attack</h3>
-                <p>Precomputed hash tables for rapid password cracking</p>
-            </a>
-            <a class="term-card" href="/glossary-terms/wpa2-cracking/">
-                <h3>WPA2/WPA3 Cracking</h3>
-                <p>Recovering Wi-Fi pre-shared keys via handshake capture</p>
-            </a>
-        </div>
-
-        <h2>Study Resources</h2>
-        <ul>
-            <li><a href="/ceh-v13/">CEH v13 Module Flashcards (all 20 modules)</a></li>
-            <li><a href="/ceh-practice-questions/">Practice Exam Questions</a></li>
-            <li><a href="/ceh-exam-domains/">CEH v13 Exam Domains & Blueprint</a></li>
-            <li><a href="/ceh-study-plan/">6-Week CEH v13 Study Plan</a></li>
+        <h2 style="margin-top:40px;">Study Resources</h2>
+        <ul style="margin-bottom:14px;padding-left:20px;">
+            <li style="margin-bottom:8px;"><a href="/ceh-v13/">CEH v13 Module Flashcards (all 20 modules)</a></li>
+            <li style="margin-bottom:8px;"><a href="/ceh-practice-questions/">Practice Exam Questions</a></li>
+            <li style="margin-bottom:8px;"><a href="/ceh-exam-domains/">CEH v13 Exam Domains & Blueprint</a></li>
+            <li style="margin-bottom:8px;"><a href="/ceh-study-plan/">6-Week CEH v13 Study Plan</a></li>
         </ul>
     </div>
 
     <footer>
         <p>CEHStudy — Free CEH v13 exam preparation resources. Not affiliated with EC-Council.</p>
-        <p><a href="/about/">About</a> · <a href="/faq/">FAQ</a> · <a href="/changelog/">Changelog</a> · <a href="/disclaimer/">Disclaimer</a></p>
+        <p><a href="/about/">About</a> &middot; <a href="/faq/">FAQ</a> &middot; <a href="/changelog/">Changelog</a> &middot; <a href="/disclaimer/">Disclaimer</a></p>
     </footer>
 </body>
 </html>
