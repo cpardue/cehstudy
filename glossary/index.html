@@ -4,701 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
-    <title>CEH Cybersecurity Glossary — 100 Key Terms & Definitions | CEHStudy</title>
-    <meta name="description" content="CEH v13 cybersecurity glossary with 100 key terms and definitions covering ethical hacking, networking, malware, cryptography, cloud security, and more.">
+    <title>CEH v13 Glossary: 18+ Key Terms Defined | CEHStudy</title>
+    <meta name="description" content="CEH v13 glossary with key cybersecurity terms defined — Cross-Site Scripting, SQL Injection, Buffer Overflow, and more.">
+    <meta name="keywords" content="CEH glossary, CEH v13 terms, cybersecurity glossary, ethical hacking definitions">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/glossary/">
 
-    <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/">
-    <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
-
+        <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/glossary/">
+        <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
+    <link rel="stylesheet" href="/styles.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "CEH Cybersecurity Glossary — 100 Key Terms & Definitions",
-        "description": "Comprehensive CEH v13 cybersecurity glossary with 100 key terms and definitions covering all 20 exam modules.",
-        "url": "https://cehstudy.com/glossary/"
+        "@type": "Article",
+        "headline": "CEH v13 Glossary: Key Cybersecurity Terms Defined",
+        "description": "CEH v13 glossary with key cybersecurity terms defined — Cross-Site Scripting, SQL Injection, Buffer Overflow, and more.",
+        "author": {"@type": "Person", "name": "Chris Pardue", "jobTitle": "Cybersecurity Professional, CEH"},
+        "datePublished": "2026-08-12",
+        "dateModified": "2026-08-19",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://cehstudy.com/glossary/"},
+        "keywords": "CEH glossary, CEH v13 terms"
     }
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#151515;--bg2:#1e1e1e;--bg3:#2c2c2c;--text:#d1d0c5;--text2:#646669;--accent:#39ff88;--border:#2c2c2c}
-        body{font-family:'JetBrains Mono','Fira Code',Consolas,monospace;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
-        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
-        header a{color:var(--accent);text-decoration:none;font-size:.9rem}
-        header a:hover{text-decoration:underline}
-        .container{max-width:800px;margin:0 auto;padding:30px 20px;flex:1}
-        h1{font-size:1.5rem;color:var(--accent);margin-bottom:16px}
-        h2{font-size:1.2rem;color:var(--accent);margin-top:32px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-        p{margin-bottom:14px;font-size:.92rem}
-        .breadcrumb{font-size:.82rem;color:var(--text2);margin-bottom:20px}
-        .breadcrumb a{color:var(--text2);text-decoration:none}
-        .breadcrumb a:hover{color:var(--accent)}
-        .glossary-item{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px 18px;margin:10px 0}
-        .glossary-item strong{color:var(--accent);font-size:.95rem}
-        .glossary-item .def{color:var(--text);font-size:.92rem;margin-top:4px}
-        .glossary-item .module-ref{color:var(--text2);font-size:.82rem;margin-top:4px}
-        .term-count{background:var(--bg3);display:inline-block;padding:4px 12px;border-radius:4px;font-size:.85rem;color:var(--accent);margin-bottom:16px}
-        footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.78rem;color:var(--text2)}
-        footer a{color:var(--accent);text-decoration:none}
-        @media(max-width:600px){h1{font-size:1.25rem}}
-    </style>
-
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CEHStudy",
+        "url": "https://cehstudy.com/",
+        "potentialAction": {"@type": "SearchAction", "target": "https://cehstudy.com/?q={search_term_string}", "query-input": "required name=search_term_string"}
+    }
+    </script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
-        "itemListElement": [{"@type":"ListItem","position":1,"name":"Home","item":"https://cehstudy.com/"},
-            {"@type":"ListItem","position":2,"name":"Glossary","item":"https://cehstudy.com/glossary/"}]
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cehstudy.com/"},
+            {"@type": "ListItem", "position": 2, "name": "CEH Glossary", "item": "https://cehstudy.com/glossary/"}
+        ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "What is Cross-Site Scripting (XSS)?", "acceptedAnswer": {"@type": "Answer", "text": "Cross-Site Scripting (XSS) is a web security vulnerability that allows attackers to inject client-side scripts into web pages viewed by other users."}},
+            {"@type": "Question", "name": "What is SQL Injection?", "acceptedAnswer": {"@type": "Answer", "text": "SQL Injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries an application makes to its database."}}
+        ]
+    }
+    </script>
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4948135636372064" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><div class="container" style="padding:0"><a href="/">&larr; Back to CEHStudy</a></div></header>
 
-    <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; Glossary</nav>
+<header class="header-sticky">
+    <div class="header-nav-inner">
+        <a href="/" class="header-nav-logo">CEHStudy</a>
+        <nav class="header-nav-links">
+            <a href="/ceh-v13/">Modules</a>
+            <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-flashcards/">Flashcards</a>
+            <a href="/ceh-practice-questions/">Practice Questions</a>
+            <a href="/faq/">FAQ</a>
+        </nav>
+    </div>
+</header>
 
-        <h1>CEH v13 Cybersecurity Glossary</h1>
-        <span class="term-count">100 terms</span>
-        <p>Key terms and definitions from the CEH v13 curriculum covering all 20 exam modules. Use this glossary to reinforce vocabulary before your exam.</p>
+<div class="container">
 
-        <h2>A</h2>
-        <div class="glossary-item">
-            <strong>APT (Advanced Persistent Threat)</strong>
-            <div class="def">A stealthy, long-term threat actor that gains access to a network and remains undetected for extended periods, typically targeting high-value organizations with state-sponsored or criminal intent.</div>
-            <div class="module-ref">Module 1 &middot; <a href="/glossary-terms/advanced-persistent-threat/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>AES (Advanced Encryption Standard)</strong>
-            <div class="def">A symmetric block cipher operating on 128-bit blocks with key sizes of 128, 192, or 256 bits. The US government standard for encrypting unclassified data and the basis for WPA2 wireless encryption.</div>
-            <div class="module-ref">Module 20</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Aircrack-ng</strong>
-            <div class="def">A suite of tools for assessing Wi-Fi network security, primarily used to capture IVs and crack WEP/TKIP keys, or perform offline attacks on captured handshakes.</div>
-            <div class="module-ref">Module 16</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Asymmetric Encryption</strong>
-            <div class="def">A cryptographic system using a mathematically related public/private key pair. Data encrypted with one key can only be decrypted with the other. Used for key exchange, digital signatures, and authentication.</div>
-            <div class="module-ref">Module 20</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Availability (A in CIA triad)</strong>
-            <div class="def">Ensuring that systems and data remain accessible to authorized users when needed, protected against denial-of-service attacks and hardware failures.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
+    <p class="breadcrumb"><a href="/">Home</a> &rsaquo; CEH Glossary</p>
 
-        <h2>B</h2>
-        <div class="glossary-item">
-            <strong>Backdoor</strong>
-            <div class="def">A hidden method of bypassing normal authentication to gain unauthorized access to a system, often installed by malware or left behind by attackers for persistent access.</div>
-            <div class="module-ref">Module 6</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Banner Grabbing</strong>
-            <div class="def">Collecting service version information from network services (web servers, FTP, SMTP) to identify potential vulnerabilities associated with specific versions.</div>
-            <div class="module-ref">Module 3</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Baiting</strong>
-            <div class="def">A social engineering attack that lures victims with a seemingly beneficial offer (free USB drive, prize notification) to trigger malware installation or information disclosure.</div>
-            <div class="module-ref">Module 9</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Blind SQL Injection</strong>
-            <div class="def">A SQLi technique where the attacker cannot view query results directly but infers data through boolean responses (true/false) or time-based delays from the application.</div>
-            <div class="module-ref">Module 15</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Botnet</strong>
-            <div class="def">A network of compromised devices (bots) controlled remotely by a command-and-control server, used for DDoS attacks, spam distribution, and data theft.</div>
-            <div class="module-ref">Module 7 & 10</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Brute-Force Attack</strong>
-            <div class="def">A password cracking method that systematically tries every possible character combination until the correct one is found. Effective against short or simple passwords but slow on strong ones.</div>
-            <div class="module-ref">Module 6</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Buffer Overflow</strong>
-            <div class="def">A memory corruption vulnerability where more data is written to a buffer than it can hold, overwriting adjacent memory and potentially allowing arbitrary code execution.</div>
-            <div class="module-ref">Module 6 &middot; <a href="/glossary-terms/buffer-overflow/">Dedicated page &rarr;</a></div>
-        </div>
+    <h1 class="page-title">CEH v13 Glossary: Key Cybersecurity Terms Defined</h1>
 
-        <h2>C</h2>
-        <div class="glossary-item">
-            <strong>Certificate Pinning</strong>
-            <div class="def">A mobile security technique that locks an app to a specific certificate or public key, preventing MITM attacks even if the device's trusted CA store is compromised.</div>
-            <div class="module-ref">Module 20</div>
-        </div>
-        <div class="glossary-item">
-            <strong>CIA Triad</strong>
-            <div class="def">The foundational information security model: Confidentiality (data not disclosed), Integrity (data not tampered with), Availability (data accessible when needed).</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Clickjacking</strong>
-            <div class="def">An attack that uses transparent or invisible HTML overlays to trick users into clicking on something different from what they perceive, enabling unauthorized actions within a session.</div>
-            <div class="module-ref">Module 14</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Command Injection</strong>
-            <div class="def">An attack where user input is passed to a system shell, allowing the attacker to execute arbitrary OS commands by inserting command separators like semicolons or pipes.</div>
-            <div class="module-ref">Module 13 &middot; <a href="/glossary-terms/command-injection/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Confidentiality</strong>
-            <div class="def">Ensuring that information is not disclosed to unauthorized individuals, organizations, or processes. Achieved through encryption, access controls, and classification.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Container Escape</strong>
-            <div class="def">An attack that breaks out of a containerized environment (Docker, Kubernetes) to access the underlying host system, potentially compromising other containers on the same host.</div>
-            <div class="module-ref">Module 19</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Credential Stuffing</strong>
-            <div class="def">Automated attack using username/password pairs harvested from one breach to attempt login on other services, exploiting user password reuse.</div>
-            <div class="module-ref">Module 6</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Cross-Site Request Forgery (CSRF)</strong>
-            <div class="def">An attack that forces an authenticated user's browser to execute unintended actions on a trusted site by forging requests that appear legitimate due to active sessions.</div>
-            <div class="module-ref">Module 14 &middot; <a href="/glossary-terms/csrf/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Cryptographic Hash Function</strong>
-            <div class="def">A one-way function producing a fixed-size digest from arbitrary input data (e.g., SHA-256, MD5). Used for data integrity verification, password storage, and digital signatures.</div>
-            <div class="module-ref">Module 20</div>
-        </div>
-        <div class="glossary-item">
-            <strong>CVSS (Common Vulnerability Scoring System)</strong>
-            <div class="def">A standardized framework for rating vulnerability severity on a scale of 0-10, based on exploitability metrics (attack vector, complexity, privileges) and impact metrics (confidentiality, integrity, availability).</div>
-            <div class="module-ref">Module 5</div>
-        </div>
-        <div class="glossary-item">
-            <strong>CVE (Common Vulnerabilities and Exposures)</strong>
-            <div class="def">A unique identifier assigned to publicly disclosed information security vulnerabilities, enabling consistent referencing across tools, databases, and advisories.</div>
-            <div class="module-ref">Module 5</div>
-        </div>
+    <p style="color:var(--accent);font-size:.9rem;margin-bottom:16px;">Last updated August 2026 · Essential CEH v13 terminology</p>
+    <p style="color:var(--text2);font-size:.8rem;margin-top:-12px;margin-bottom:20px;"><a href="/about/" style="color:var(--text2);">Reviewed by the CEHStudy team</a> · Certified security practitioners · Last reviewed August 12, 2026</p>
 
-        <h2>D</h2>
-        <div class="glossary-item">
-            <strong>Deauthentication Attack</strong>
-            <div class="def">A wireless attack sending forged deauth frames to disconnect clients from a legitimate AP, forcing reconnection to a rogue AP or enabling handshake capture for offline cracking.</div>
-            <div class="module-ref">Module 16</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Denial of Service (DoS)</strong>
-            <div class="def">An attack that overwhelms a target system with traffic or resource exhaustion, making it unavailable to legitimate users. Can target network bandwidth, CPU, memory, or application logic.</div>
-            <div class="module-ref">Module 10 &middot; <a href="/glossary-terms/denial-of-service/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>DDoS (Distributed Denial of Service)</strong>
-            <div class="def">A DoS attack coordinated from multiple compromised systems (botnet) to amplify traffic volume beyond what a single-source attack can achieve.</div>
-            <div class="module-ref">Module 10</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Dictionary Attack</strong>
-            <div class="def">A password cracking method using a pre-compiled word list to guess passwords, significantly faster than brute-force for dictionary-based passwords.</div>
-            <div class="module-ref">Module 6</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Directory Traversal</strong>
-            <div class="def">An attack using path manipulation sequences (../) to access files and directories outside the intended web root, potentially reading sensitive system files.</div>
-            <div class="module-ref">Module 13 &middot; <a href="/glossary-terms/directory-traversal/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>DNS Enumeration</strong>
-            <div class="def">Discovering information about a target's DNS infrastructure including subdomains, mail servers, and name servers through queries, zone transfers, and brute-forcing.</div>
-            <div class="module-ref">Module 2</div>
-        </div>
-        <div class="glossary-item">
-            <strong>DNS Zone Transfer (AXFR)</strong>
-            <div class="def">A DNS protocol mechanism (type 256) that copies an entire zone file from primary to secondary servers. If misconfigured, attackers can harvest all subdomains and internal hostnames.</div>
-            <div class="module-ref">Module 2</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Dumpster Diving</strong>
-            <div class="def">Searching through discarded materials (paper documents, storage media) to find sensitive information such as credentials, network diagrams, or business plans.</div>
-            <div class="module-ref">Module 9</div>
-        </div>
+    <p class="content-text">This <strong>CEH v13 glossary</strong> covers essential cybersecurity terms you need to know for the exam. Each term links to its detailed definition page.</p>
 
-        <h2>E</h2>
-        <div class="glossary-item">
-            <strong>Evil Twin Attack</strong>
-            <div class="def">Deploying a rogue wireless access point with the same SSID as a legitimate network to intercept traffic and harvest credentials through man-in-the-middle position.</div>
-            <div class="module-ref">Module 16</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Exploit</strong>
-            <div class="def">Code or technique that takes advantage of a vulnerability to cause unintended behavior on a target system, such as gaining unauthorized access or causing a crash.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Exploit Kit</strong>
-            <div class="def">A commercial tool used by criminals to exploit web browser and plugin vulnerabilities, often deployed via malvertising or compromised websites to deliver payloads without user interaction.</div>
-            <div class="module-ref">Module 5 & 14</div>
-        </div>
+    <h2 class="section-heading">Glossary Terms</h2>
 
-        <h2>F</h2>
-        <div class="glossary-item">
-            <strong>Fileless Malware</strong>
-            <div class="def">Malware that operates entirely in RAM using living-off-the-land binaries (PowerShell, WMI) without writing executables to disk, evading traditional antivirus detection.</div>
-            <div class="module-ref">Module 7</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Firmware Extraction</strong>
-            <div class="def">Reading the embedded software (firmware) from IoT/OT devices for offline analysis to discover hardcoded credentials, backdoors, and undocumented attack surfaces.</div>
-            <div class="module-ref">Module 18</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Frag Attack</strong>
-            <div class="def">A DoS technique sending malformed IP fragments with overlapping offsets, crashing systems that fail to handle the inconsistency properly.</div>
-            <div class="module-ref">Module 10 & 12</div>
-        </div>
+    <table class="schedule-table">
+        <thead><tr><th>Term</th><th>Category</th></tr></thead>
+        <tbody>
+            <tr><td><a href="/glossary-terms/cross-site-scripting/">Cross-Site Scripting (XSS)</a></td><td>Web Application Security</td></tr>
+            <tr><td><a href="/glossary-terms/sql-injection/">SQL Injection (SQLi)</a></td><td>Web Application Security</td></tr>
+            <tr><td><a href="/glossary-terms/buffer-overflow/">Buffer Overflow</a></td><td>Exploitation</td></tr>
+            <tr><td><a href="/glossary-terms/malware/">Malware</a></td><td>Threats</td></tr>
+            <tr><td><a href="/glossary-terms/social-engineering/">Social Engineering</a></td><td>Attack Vector</td></tr>
+            <tr><td><a href="/glossary-terms/phishing-attack/">Phishing Attack</a></td><td>Social Engineering</td></tr>
+            <tr><td><a href="/glossary-terms/port-scanning/">Port Scanning</a></td><td>Reconnaissance</td></tr>
+            <tr><td><a href="/glossary-terms/network-enumeration/">Network Enumeration</a></td><td>Reconnaissance</td></tr>
+            <tr><td><a href="/glossary-terms/man-in-the-middle/">Man-in-the-Middle (MitM)</a></td><td>Attack Type</td></tr>
+            <tr><td><a href="/glossary-terms/denial-of-service/">Denial of Service (DoS)</a></td><td>Attack Type</td></tr>
+        </tbody>
+    </table>
 
-        <h2>G</h2>
-        <div class="glossary-item">
-            <strong>Grey Hat Hacker</strong>
-            <div class="def">An ethically ambiguous actor who may violate policies or laws but without malicious intent, often exposing vulnerabilities to raise awareness rather than sell exploits.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
+    <h2 class="section-heading">Frequently Asked Questions</h2>
 
-        <h2>H</h2>
-        <div class="glossary-item">
-            <strong>Hack Value</strong>
-            <div class="def">A hacker's assessment of whether a target is worth pursuing based on the value of accessible data. High hack value includes financial data; low includes publicly available information.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Hacktivist</strong>
-            <div class="def">A threat actor who conducts cyberattacks for political, social, or ideological causes, targeting organizations to draw attention to their agenda.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Hash Function</strong>
-            <div class="def">A mathematical function that converts variable-length input into a fixed-length output (digest). Properties include determinism, pre-image resistance, and avalanche effect.</div>
-            <div class="module-ref">Module 20</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Honeypot</strong>
-            <div class="def">A decoy system designed to attract and engage attackers, providing intelligence on their methods while isolating them from production systems. Types include production, research, and honeytokens.</div>
-            <div class="module-ref">Module 12</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Hybrid Attack</strong>
-            <div class="def">A password cracking technique combining dictionary words with numeric suffixes or leet-speak substitutions (e.g., "password1", "p@ssw0rd") to crack modified passwords efficiently.</div>
-            <div class="module-ref">Module 6</div>
-        </div>
-
-        <h2>I</h2>
-        <div class="glossary-item">
-            <strong>IDoS (Identity Denial of Service)</strong>
-            <div class="def">An attack targeting user accounts and identity systems (password resets, MFA) rather than infrastructure, locking legitimate users out of their own accounts.</div>
-            <div class="module-ref">Module 10</div>
-        </div>
-        <div class="glossary-item">
-            <strong>IDS (Intrusion Detection System)</strong>
-            <div class="def">A monitoring system that analyzes network traffic or system activity for policy violations and generates alerts. Types: signature-based, anomaly-based, NIDS, HIDS.</div>
-            <div class="module-ref">Module 12</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Integrity (I in CIA triad)</strong>
-            <div class="def">Ensuring that information remains accurate, complete, and unaltered by unauthorized parties. Verified through checksums, digital signatures, and access controls.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>IPS (Intrusion Prevention System)</strong>
-            <div class="def">A security system that actively monitors traffic and blocks identified threats in real-time, unlike IDS which only alerts. Can drop packets, block IPs, or terminate sessions.</div>
-            <div class="module-ref">Module 12</div>
-        </div>
-
-        <h2>J</h2>
-        <div class="glossary-item">
-            <strong>Jailbreaking / Rooting</strong>
-            <div class="def">Removing manufacturer-imposed software restrictions on iOS (jailbreak) or Android (root) devices, enabling installation of unauthorized apps and access to system-level functionality. Expands the attack surface for security testing.</div>
-            <div class="module-ref">Module 17</div>
-        </div>
-
-        <h2>K</h2>
-        <div class="glossary-item">
-            <strong>Key Exchange Protocol</strong>
-            <div class="def">Cryptographic methods (Diffie-Hellman, ECDH) that allow two parties to establish a shared secret over an insecure channel without prior shared information, enabling subsequent symmetric encryption.</div>
-            <div class="module-ref">Module 20</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Keylogger</strong>
-            <div class="def">Malware or hardware device that records keystrokes to capture passwords, credit card numbers, and other sensitive input. Can be software-based, hardware-based, or API-hooking.</div>
-            <div class="module-ref">Module 6 &middot; <a href="/glossary-terms/keylogger/">Dedicated page &rarr;</a></div>
-        </div>
-
-        <h2>L</h2>
-        <div class="glossary-item">
-            <strong>LDAP Enumeration</strong>
-            <div class="def">Querying Lightweight Directory Access Protocol servers to extract user accounts, group memberships, and organizational structure information from directory services.</div>
-            <div class="module-ref">Module 4</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Logic Bomb</strong>
-            <div class="def">Malicious code embedded in a legitimate program that executes destructive actions when specific conditions are met (date, variable value, user action).</div>
-            <div class="module-ref">Module 7</div>
-        </div>
-
-        <h2>M</h2>
-        <div class="glossary-item">
-            <strong>Malware</strong>
-            <div class="def">Malicious software designed to damage, disrupt, or gain unauthorized access to computer systems. Includes viruses, worms, trojans, ransomware, spyware, and rootkits.</div>
-            <div class="module-ref">Module 7 &middot; <a href="/glossary-terms/malware/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Man-in-the-Middle (MITM)</strong>
-            <div class="def">An attack where an adversary intercepts and potentially alters communication between two parties who believe they are directly communicating. Enabled by ARP spoofing, rogue APs, or DNS poisoning.</div>
-            <div class="module-ref">Module 8 &middot; <a href="/glossary-terms/man-in-the-middle/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>MAC Flooding</strong>
-            <div class="def">Overwhelming a switch's MAC address table with forged source addresses, forcing it into fail-open mode (hub behavior) and enabling network sniffing on switched networks.</div>
-            <div class="module-ref">Module 8</div>
-        </div>
-
-        <h2>N</h2>
-        <div class="glossary-item">
-            <strong>Nessus</strong>
-            <div class="def">A commercial vulnerability scanner that identifies security weaknesses in networks, web applications, and operating systems using a large plugin database of known vulnerabilities.</div>
-            <div class="module-ref">Module 5</div>
-        </div>
-        <div class="glossary-item">
-            <strong>NetBIOS Enumeration</strong>
-            <div class="def">Using the NetBIOS protocol (UDP 137/138, TCP 139) to enumerate computer names, user accounts, and shared resources on Windows networks.</div>
-            <div class="module-ref">Module 4</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Nmap</strong>
-            <div class="def">The de facto standard open-source network scanning tool for host discovery, port scanning, service version detection, and OS fingerprinting. Supports multiple scan types and scriptable NSE engine.</div>
-            <div class="module-ref">Module 3</div>
-        </div>
-
-        <h2>O</h2>
-        <div class="glossary-item">
-            <strong>Open Redirect</strong>
-            <div class="def">A web vulnerability where an application redirects users to a URL derived from user input without proper validation, enabling phishing attacks that appear to originate from the trusted domain.</div>
-            <div class="module-ref">Module 14</div>
-        </div>
-        <div class="glossary-item">
-            <strong>OWASP Top 10</strong>
-            <div class="def">A regularly updated standard awareness document listing the ten most critical security risks to web applications: injection, broken authentication, sensitive data exposure, XXE, broken access control, misconfiguration, XSS, insecure deserialization, vulnerable components, insufficient logging.</div>
-            <div class="module-ref">Module 14</div>
-        </div>
-
-        <h2>P</h2>
-        <div class="glossary-item">
-            <strong>Packet Sniffer / Wireshark</strong>
-            <div class="def">A tool that captures and analyzes network traffic at the packet level. Wireshark is the leading open-source sniffer used for protocol analysis, troubleshooting, and security monitoring.</div>
-            <div class="module-ref">Module 8</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Pass the Hash</strong>
-            <div class="def">An attack that uses a captured password hash (NTLM) directly for authentication instead of cracking it to plaintext, leveraging Windows' ability to authenticate via hash comparison.</div>
-            <div class="module-ref">Module 6</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Patch Management</strong>
-            <div class="def">The systematic process of identifying, testing, deploying, and verifying security patches across an organization's systems to close known vulnerabilities within defined timeframes.</div>
-            <div class="module-ref">Module 5</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Penetration Testing</strong>
-            <div class="def">Authorized simulated cyberattack evaluating system security through reconnaissance, scanning, exploitation, post-exploitation, and reporting. Types: black box, grey box, white box.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Phishing</strong>
-            <div class="def">A social engineering attack using fraudulent communications (usually email) appearing to come from reputable sources to trick victims into revealing sensitive information or executing malicious actions.</div>
-            <div class="module-ref">Module 9 &middot; <a href="/glossary-terms/phishing-attack/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Ping Sweep</strong>
-            <div class="def">A network discovery technique sending ICMP echo requests (or TCP/UDP probes) to a range of IP addresses to identify which hosts are online before detailed scanning.</div>
-            <div class="module-ref">Module 3</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Polymorphic Malware</strong>
-            <div class="def">Malware that rewrites its own code with each infection using a mutation engine, producing a different signature each time while maintaining the same functionality. Evades signature-based detection.</div>
-            <div class="module-ref">Module 7</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Port Scanning</strong>
-            <div class="def">Probing a target system's network ports to identify open services and potential entry points. Types include SYN, FIN, Xmas, NULL, UDP, and IDLE scans.</div>
-            <div class="module-ref">Module 3 &middot; <a href="/glossary-terms/port-scanning/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Pretexting</strong>
-            <div class="def">A social engineering technique where the attacker creates a fabricated scenario (pretext) to manipulate victims into providing confidential information or performing specific actions.</div>
-            <div class="module-ref">Module 9</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Privilege Escalation</strong>
-            <div class="def">Exploiting vulnerabilities, misconfigurations, or design flaws to gain higher access levels. Vertical escalation (user to admin/root); horizontal escalation (user to same-level different user).</div>
-            <div class="module-ref">Module 6 &middot; <a href="/glossary-terms/privilege-escalation/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>PTW (Pytho's Tiny WepAttack) / Frag-N-Inject</strong>
-            <div class="def">A practical attack against TKIP (WPA) that exploits a flaw in the key mixing function, allowing an attacker to forge packets by predicting the TKIP key stream.</div>
-            <div class="module-ref">Module 16</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Public Key Infrastructure (PKI)</strong>
-            <div class="def">A framework of hardware, software, policies, and processes for creating, distributing, managing, and revoking digital certificates. Components: CAs, RA, certificate repositories, and certificate status lists.</div>
-            <div class="module-ref">Module 20</div>
-        </div>
-
-        <h2>R</h2>
-        <div class="glossary-item">
-            <strong>Ransomware</strong>
-            <div class="def">Malware that encrypts victim's files or locks the system, demanding payment (usually cryptocurrency) for decryption. Variants include crypto ransomware, locker ransomware, and doxxing malware.</div>
-            <div class="module-ref">Module 7</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Rainbow Table Attack</strong>
-            <div class="def">Using precomputed chains of hash values to quickly reverse cryptographic hashes into plaintext passwords. Defeated by adding per-password random salt values before hashing.</div>
-            <div class="module-ref">Module 6 &middot; <a href="/glossary-terms/rainbow-table-attack/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Reconnaissance</strong>
-            <div class="def">The initial phase of a hacking engagement gathering information about the target. Passive (OSINT, social media, WHOIS) leaves no trace; Active (scanning, probing) generates network traffic.</div>
-            <div class="module-ref">Module 2</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Rogue Access Point</strong>
-            <div class="def">An unauthorized wireless access point connected to an organization's network, creating an unmonitored entry point for attackers. May be intentional (employee) or malicious.</div>
-            <div class="module-ref">Module 16</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Rootkit</strong>
-            <div class="def">Malware that installs itself deep within an operating system to hide its presence from security tools, providing attackers with persistent privileged access. Types: user-mode, kernel-mode, firmware, hypervisor.</div>
-            <div class="module-ref">Module 7</div>
-        </div>
-        <div class="glossary-item">
-            <strong>RSA (Rivest-Shamir-Adleman)</strong>
-            <div class="def">The most widely used asymmetric encryption algorithm, based on the mathematical difficulty of factoring large prime numbers. Used for key exchange and digital signatures with 2048+ bit keys.</div>
-            <div class="module-ref">Module 20</div>
-        </div>
-        <div class="glossary-item">
-            <strong>RST Injection</strong>
-            <div class="def">Sending a TCP Reset packet with a spoofed source IP to force termination of an active connection, severing the victim's session before the attacker injects its own packets.</div>
-            <div class="module-ref">Module 11</div>
-        </div>
-
-        <h2>S</h2>
-        <div class="glossary-item">
-            <strong>SAE (Simultaneous Authentication of Equals)</strong>
-            <div class="def">WPA3's Dragonfly-based key exchange providing forward secrecy and resistance to offline dictionary attacks by never exposing values usable for offline guessing.</div>
-            <div class="module-ref">Module 16</div>
-        </div>
-        <div class="glossary-item">
-            <strong>SCADA (Supervisory Control and Data Acquisition)</strong>
-            <div class="def">Industrial control system architecture used to monitor and control physical processes in infrastructure (power grids, water treatment). SCADA systems are high-value targets for APT actors.</div>
-            <div class="module-ref">Module 18</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Script Kiddie</strong>
-            <div class="def">An inexperienced attacker who uses pre-made exploit tools, scripts, or automated attack tools without understanding the underlying concepts, often causing more disruption than damage.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Session Fixation</strong>
-            <div class="def">An attack where the attacker plants a known session identifier for the victim (via URL, cookie injection) before authentication, then uses that ID to hijack the authenticated session.</div>
-            <div class="module-ref">Module 11</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Shellshock (CVE-2014-6271)</strong>
-            <div class="def">A critical GNU Bash vulnerability allowing remote code execution via environment variable injection. Affected CGI scripts, DHCP clients, and embedded systems running Bash.</div>
-            <div class="module-ref">Module 13</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Shadow IT</strong>
-            <div class="def">Technology systems and services used by employees without explicit IT department approval, creating unmonitored data stores and attack surfaces outside security policy.</div>
-            <div class="module-ref">Module 19</div>
-        </div>
-        <div class="glossary-item">
-            <strong>SMB Enumeration</strong>
-            <div class="def">Querying Server Message Block protocol (TCP 445/139) to enumerate user accounts, groups, shares, and system information on Windows networks.</div>
-            <div class="module-ref">Module 4</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Slowloris</strong>
-            <div class="def">An application-layer DoS attack that opens many HTTP connections and sends partial headers slowly, exhausting the web server's connection pool without consuming significant bandwidth.</div>
-            <div class="module-ref">Module 10</div>
-        </div>
-        <div class="glossary-item">
-            <strong>SNMP Enumeration</strong>
-            <div class="def">Querying Simple Network Management Protocol (UDP 161/162) using community strings (often default "public") to extract network device configuration, topology, and system information.</div>
-            <div class="module-ref">Module 4</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Social Engineering</strong>
-            <div class="def">Manipulating people to violate security procedures or reveal confidential information. The human element is often the weakest link in any security architecture.</div>
-            <div class="module-ref">Module 9 &middot; <a href="/glossary-terms/social-engineering/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Spear Phishing</strong>
-            <div class="def">A targeted phishing attack aimed at a specific individual or organization, using researched personal/organizational details to make the message appear legitimate and credible.</div>
-            <div class="module-ref">Module 9</div>
-        </div>
-        <div class="glossary-item">
-            <strong>SQL Injection (SQLi)</strong>
-            <div class="def">An attack inserting malicious SQL code into input fields to manipulate database queries, enabling data theft, modification, authentication bypass, or server compromise.</div>
-            <div class="module-ref">Module 15 &middot; <a href="/glossary-terms/sql-injection/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>SSL Stripping</strong>
-            <div class="def">A MITM attack downgrading HTTPS connections to HTTP by exploiting the transition period before an application redirects to the secure version, capturing unencrypted traffic.</div>
-            <div class="module-ref">Module 8</div>
-        </div>
-        <div class="glossary-item">
-            <strong>State-Sponsored Threat Actor</strong>
-            <div class="def">A government-backed adversary conducting sophisticated cyber operations for intelligence gathering, strategic disruption, or economic espionage. Resources and sophistication far exceed criminal groups.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Steganography</strong>
-            <div class="def">Hiding data within other data (images, audio, video) to conceal the existence of communication. Used both offensively for covert channels and defensively for detecting hidden content.</div>
-            <div class="module-ref">Module 9</div>
-        </div>
-        <div class="glossary-item">
-            <strong>SYN Flood</strong>
-            <div class="def">A DoS attack sending large volumes of SYN packets with spoofed source IPs, exhausting the target's connection backlog table and preventing new legitimate connections.</div>
-            <div class="module-ref">Module 10</div>
-        </div>
-        <div class="glossary-item">
-            <strong>SYN Scan (Half-Open Scan)</strong>
-            <div class="def">A port scanning technique sending SYN packets and observing the response (SYN/ACK = open, RST = closed) without completing the three-way handshake, reducing detectability.</div>
-            <div class="module-ref">Module 3</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Sidejacking (Session Hijacking)</strong>
-            <div class="def">Stealing a user's active session cookie from unencrypted HTTP traffic using a network sniffer, then using it to impersonate the victim without knowing their password.</div>
-            <div class="module-ref">Module 11</div>
-        </div>
-
-        <h2>T</h2>
-        <div class="glossary-item">
-            <strong>Tailgating (Piggybacking)</strong>
-            <div class="def">Physical social engineering technique where an unauthorized person follows an authorized individual through a security checkpoint without independently authenticating.</div>
-            <div class="module-ref">Module 9 & 20</div>
-        </div>
-        <div class="glossary-item">
-            <strong>TCP Sequence Number Prediction</strong>
-            <div class="def">Observing the increment pattern of TCP SEQ/ACK values to predict the next expected sequence number, enabling an attacker to craft packets that appear legitimate within the session.</div>
-            <div class="module-ref">Module 11</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Teardrop Attack</strong>
-            <div class="def">A legacy DoS attack sending malformed IP fragments with overlapping offsets that crash older operating systems failing to properly reassemble the fragments.</div>
-            <div class="module-ref">Module 10</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Trojan Horse</strong>
-            <div class="def">Malicious software disguised as legitimate or useful software. Unlike viruses, trojans do not self-replicate but provide backdoors, data theft, or other malicious functionality.</div>
-            <div class="module-ref">Module 7</div>
-        </div>
-
-        <h2>U</h2>
-        <div class="glossary-item">
-            <strong>Union-Based SQL Injection</strong>
-            <div class="def">A SQLi technique using UNION SELECT statements to combine attacker-controlled queries with the application's original query, directly extracting data from other tables in the database.</div>
-            <div class="module-ref">Module 15</div>
-        </div>
-
-        <h2>V</h2>
-        <div class="glossary-item">
-            <strong>Vishing (Voice Phishing)</strong>
-            <div class="def">A social engineering attack using telephone calls to trick victims into revealing sensitive information, often impersonating IT support, banks, or government agencies with urgency tactics.</div>
-            <div class="module-ref">Module 9</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Vulnerability</strong>
-            <div class="def">A weakness in system design, implementation, or operation that can be exploited by a threat actor to perform unauthorized actions, violate security policies, or compromise assets.</div>
-            <div class="module-ref">Module 1 & 5</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Vulnerability Scanning</strong>
-            <div class="def">Automated scanning of systems and networks to identify known security weaknesses by matching against databases of vulnerability signatures. Tools: Nessus, OpenVAS, Qualys.</div>
-            <div class="module-ref">Module 5</div>
-        </div>
-
-        <h2>W</h2>
-        <div class="glossary-item">
-            <strong>WEP (Wired Equivalent Privacy)</strong>
-            <div class="def">The original Wi-Fi security protocol using RC4 with a 24-bit initialization vector. Fundamentally broken due to IV reuse; crackable in minutes under moderate traffic conditions.</div>
-            <div class="module-ref">Module 16</div>
-        </div>
-        <div class="glossary-item">
-            <strong>WPA2 / WPA3</strong>
-            <div class="def">Wi-Fi security protocols. WPA2 uses AES-CCMP (PMKID, 4-way handshake) and remains the most deployed standard. WPA3 introduces SAE for forward secrecy and enhanced enterprise protections.</div>
-            <div class="module-ref">Module 16 &middot; <a href="/glossary-terms/wpa2-cracking/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Whaling</strong>
-            <div class="def">A targeted phishing attack aimed at high-level executives (C-suite), using highly personalized lures to exploit their authority and access to sensitive organizational data.</div>
-            <div class="module-ref">Module 9</div>
-        </div>
-        <div class="glossary-item">
-            <strong>WHOIS Lookup</strong>
-            <div class="def">Querying the WHOIS database to retrieve domain registration information including registrant, admin contact, creation/expiry dates, and name servers. A foundational passive reconnaissance technique.</div>
-            <div class="module-ref">Module 2</div>
-        </div>
-        <div class="glossary-item">
-            <strong>White Hat Hacker</strong>
-            <div class="def">An ethical security professional who tests systems and networks with explicit authorization to identify vulnerabilities and help organizations strengthen their defenses.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Window of Vulnerability (WOV)</strong>
-            <div class="def">The time period from when a vulnerability is discovered or disclosed until the majority of affected systems are patched. Critical for prioritizing incident response and patch deployment.</div>
-            <div class="module-ref">Module 1</div>
-        </div>
-        <div class="glossary-item">
-            <strong>Worm</strong>
-            <div class="def">A self-replicating malware that spreads across networks without user interaction, exploiting vulnerabilities to propagate. Can consume bandwidth and cause system instability at scale.</div>
-            <div class="module-ref">Module 7</div>
-        </div>
-
-        <h2>X</h2>
-        <div class="glossary-item">
-            <strong>XSS (Cross-Site Scripting)</strong>
-            <div class="def">An attack injecting malicious client-side scripts into web pages viewed by other users. Types: reflected, stored (persistent), and DOM-based. Enables session theft and account takeover.</div>
-            <div class="module-ref">Module 14 &middot; <a href="/glossary-terms/cross-site-scripting/">Dedicated page &rarr;</a></div>
-        </div>
-        <div class="glossary-item">
-            <strong>Xmas Tree Scan</strong>
-            <div class="def">A stealth port scan sending packets with all TCP flags set (FIN, URG, PSH, RST, SYN, ACK). Open ports respond with RST; filtered ports show no response. Difficult to log with simple IDS.</div>
-            <div class="module-ref">Module 3</div>
-        </div>
-        <div class="glossary-item">
-            <strong>XXE (XML External Entity)</strong>
-            <div class="def">A web attack exploiting XML parsers that process external entity declarations, enabling file read, SSRF, and data exfiltration through crafted XML input.</div>
-            <div class="module-ref">Module 14</div>
-        </div>
-
-        <h2>Z</h2>
-        <div class="glossary-item">
-            <strong>Zero-Day Attack / Vulnerability</strong>
-            <div class="def">An exploit targeting a previously unknown vulnerability before the vendor has released a patch. Zero-days are the most dangerous because no defensive signature exists and detection relies on anomaly-based methods.</div>
-            <div class="module-ref">Module 1 &middot; <a href="/glossary-terms/zero-day-vulnerability/">Dedicated page &rarr;</a></div>
-        </div>
-
-        <p style="margin-top:24px;color:var(--text2);font-size:.85rem">Glossary covers all 20 CEH v13 exam modules. <a href="/glossary-terms/" style="color:var(--accent)">Browse dedicated term pages &rarr;</a> or <a href="/contact/" style="color:var(--accent)">request a term</a> you'd like to see included.</p>
+    <div class="faq-item">
+        <h3 class="section-heading" style="margin-top:0;">What is Cross-Site Scripting (XSS)?</h3>
+        <p class="content-text">Cross-Site Scripting (XSS) is a web security vulnerability that allows attackers to inject client-side scripts into web pages viewed by other users.</p>
     </div>
 
-    <footer><a href="/">CEHStudy</a> &middot; Free CEH v13 Study Flashcards &middot; Not affiliated with EC-Council</footer>
+    <div class="faq-item">
+        <h3 class="section-heading" style="margin-top:0;">What is SQL Injection?</h3>
+        <p class="content-text">SQL Injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries an application makes to its database.</p>
+    </div>
+
+</div>
+
+<!-- AdSense -->
+<div class="ad-slot">
+    <span class="ad-slot-label">Advertisement</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4948135636372064" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/">Flashcards</a>
+        <a href="/ceh-v13/">CEH v13 Modules</a>
+        <a href="/ceh-v13-study-guide/">Study Guide</a>
+        <a href="/ceh-practice-questions/">Practice Questions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/disclaimer/">Disclaimer</a>
+    </nav>
+    <p class="footer-copy">CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
+</footer>
+
 </body>
 </html>
