@@ -24,6 +24,17 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://cehstudy.com/about/#author",
+        "name": "Chris Pardue",
+        "jobTitle": "Cybersecurity Professional, CEH",
+        "description": "Cybersecurity practitioner with hands-on experience in penetration testing, network security, and information assurance. Creator of CEHStudy.",
+        "url": "https://cehstudy.com/about/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
         "@type": "Organization",
         "name": "CEHStudy",
         "url": "https://cehstudy.com",
@@ -34,6 +45,11 @@
             "@type": "ContactPoint",
             "contactType": "customer support",
             "url": "https://cehstudy.com/contact/"
+        },
+        "founder": {
+            "@type": "Person",
+            "@id": "https://cehstudy.com/about/#author",
+            "name": "Chris Pardue"
         }
     }
     </script>
@@ -64,7 +80,7 @@
         p{margin-bottom:14px;font-size:.92rem}
         ul{list-style:none;padding-left:0;margin-bottom:14px}
         ul li{padding:5px 0 5px 18px;position:relative;font-size:.92rem}
-        ul li::before{content:"•";position:absolute;left:0;color:var(--text)}
+        ul li::before{content:"\2022";position:absolute;left:0;color:var(--text)}
         .breadcrumb{font-size:.82rem;color:var(--text2);margin-bottom:20px}
         .breadcrumb a{color:var(--text2);text-decoration:none}
         .breadcrumb a:hover{color:var(--accent)}
@@ -83,8 +99,8 @@
 
         <p>CEHStudy is a free, independent study resource designed to help cybersecurity students prepare for the Certified Ethical Hacker v13 (CEH v13) exam. Our mission is to make quality exam preparation accessible to everyone — no paywalls, no signup walls, no hidden costs.</p>
 
-        <h2>Who We Are</h2>
-        <p>CEHStudy was created by cybersecurity professionals with hands-on experience in penetration testing, network security, and information assurance. Our team includes certified security practitioners who have both studied for and passed multiple cybersecurity certifications, and who have taught offensive security concepts to students at various levels.</p>
+        <h2 id="author">Who We Are</h2>
+        <p>CEHStudy was created by <strong>Chris Pardue</strong>, a cybersecurity professional with hands-on experience in penetration testing, network security, and information assurance. The team includes certified security practitioners who have both studied for and passed multiple cybersecurity certifications, and who have taught offensive security concepts to students at various levels.</p>
         <p>We built this platform because we believe that quality CEH exam preparation should be free and open to all students, regardless of their financial situation. The certification landscape shouldn't require a $500+ study budget before you can begin preparing.</p>
 
         <h2>Our Credentials & Experience</h2>
