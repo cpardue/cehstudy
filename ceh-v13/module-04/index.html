@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
-    <title>CEH v13 Module 4: Enumeration — Study Guide, Flashcards & Practice | CEHStudy</title>
+    <title>CEH v13 Module 04: Enumeration | CEHStudy</title>
     <meta name="description" content="CEH v13 Module 4: Enumeration — Free study guide with flashcards covering Windows enumeration, NetBIOS, SNMP, LDAP, SMTP enumeration, SID/RID values, and Active Directory attacks. No signup required.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-v13/module-04/">
@@ -111,7 +111,7 @@
 
         <h2 class="section-heading">Important Terms & Concepts</h2>
         <div class="term-box"><strong>Enumeration:</strong> Actively engaging a system to extract user accounts, passwords, hashes, SMB info, SNMP data, and directory service information.</div>
-        <div class="term-box"><strong>Null session:</strong> An anonymous connection allowing enumeration of machine configuration: <code>net use \\target\\ipc$ "" /user: ""</code></div>
+        <div class="term-box"><strong>Null session:</strong> An anonymous connection allowing enumeration of machine configuration: <code>net use \\target\\ipc$ \"\" /user: \"\"</code></div>
         <div class="term-box"><strong>SID format:</strong> <code>S-<revision>-<authority>-<subauthorities>-<RID></code> — e.g., S-1-5-21-...-500 = Administrator</div>
         <div class="term-box"><strong>Common RIDs:</strong> 500 = Administrator, 501 = Guest, 512 = Domain Admins, 513 = Domain Users</div>
         <div class="term-box"><strong>NetBIOS:</strong> Network Basic Input/Output System — naming system for Windows machines enabling file/printer sharing via SMB.</div>
@@ -152,7 +152,7 @@
 
             <h2>Key Concepts in Enumeration</h2>
             <ul>
-                <li><strong>Windows Null Session Enumeration:</strong> By connecting to a target's IPC$ share without credentials (<code>net use \\target\\ipc$ "" /user:""</code>), an attacker can enumerate user accounts, group memberships, and machine names. The <code>enum4linux</code> tool automates this process. On the CEH exam, understanding what information null sessions expose — and how to disable them via registry or firewall rules — is a guaranteed question type.</li>
+                <li><strong>Windows Null Session Enumeration:</strong> By connecting to a target's IPC$ share without credentials (<code>net use \\target\\ipc$ \"\" /user:\"\"</code>), an attacker can enumerate user accounts, group memberships, and machine names. The <code>enum4linux</code> tool automates this process. On the CEH exam, understanding what information null sessions expose — and how to disable them via registry or firewall rules — is a guaranteed question type.</li>
                 <li><strong>SID and RID Identification:</strong> Windows Security Identifiers (SIDs) follow the format S-1-5-21-<domain>-<RID>. The RID component identifies specific accounts: 500 = local Administrator, 501 = Guest, 512 = Domain Admins group, 513 = Domain Users group. Knowing these values is essential for identifying privilege escalation targets during enumeration.</li>
                 <li><strong>SNMP Community Strings & OIDs:</strong> SNMP v1/v2 use plaintext community strings (default: public/read, private/write) that grant access to Management Information Bases (MIBs). By querying specific Object Identifiers (OIDs), an attacker can extract network topology, connected hosts, running services, and even OS versions. SNMPv3 addresses this with authentication and encryption.</li>
                 <li><strong>SMTP User Enumeration:</strong> The VRFY command asks a mail server to confirm if a user exists, while EXPN reveals mailing list members. Combined with RCPT TO, these commands allow mapping an entire organization's email infrastructure. Modern servers often disable VRFY/EXPN, but the CEH exam still tests these protocol-level techniques.</li>
@@ -192,6 +192,14 @@
             <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
         </div>
     </div>
+
+
+        <h2 class="section-heading">Related Glossary Terms</h2>
+        <ul class="content-list">
+            <li><a href="/glossary-terms/network-enumeration/">Network Enumeration</a> — Definition and CEH exam relevance</li>
+            <li><a href="/glossary-terms/privilege-escalation/">Privilege Escalation</a> — Definition and CEH exam relevance</li>
+            <li><a href="/glossary-terms/malware/">Malware</a> — Definition and CEH exam relevance</li>
+        </ul>
 
     <!-- Footer -->
     <!-- AdSense -->
