@@ -4,35 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
-    <title>CEH vs Security+ vs CISSP 2026: Which Cert Is Right? | CEHStudy</title>
-    <meta name="description" content="Detailed comparison of CEH vs Security+ vs CISSP: costs, exam difficulty, career paths, salary data, and which certification to pursue first based on your goals.">
-    <meta name="keywords" content="CEH vs Security+, CEH vs CISSP, cybersecurity certification comparison, which cert to get first, CEH worth it, PenTest+ vs CEH">
+    <title>CEH v12 vs v13: What Changed in CEH v13 (2026) | CEHStudy</title>
+    <meta name="description" content="Complete comparison of CEH v12 vs v13 — new domains, removed topics, exam format changes, and what you need to know when upgrading.">
+    <meta name="keywords" content="CEH v12 vs v13, CEH v13 changes, CEH v13 new exam">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cehstudy.com/ceh-comparison/">
 
-    <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/">
-    <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
-
+        <link rel="alternate" hreflang="en-us" href="https://cehstudy.com/ceh-comparison/">
+        <link rel="alternate" hreflang="x-default" href="https://cehstudy.com/">
+    <link rel="stylesheet" href="/styles.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "CEH vs CompTIA Security+ vs CISSP — Complete Certification Comparison",
-        "description": "Detailed comparison of three major cybersecurity certifications including cost, difficulty, career paths, and salary outcomes.",
-        "author": {"@type": "Organization", "name": "CEHStudy"},
-        "datePublished": "2026-08-17",
-        "dateModified": "2026-08-20"
+        "headline": "CEH v12 vs v13: Complete Comparison of What Changed in CEH v13 (2026)",
+        "description": "Complete comparison of CEH v12 vs v13 — new domains, removed topics, exam format changes, and what you need to know when upgrading.",
+        "author": {"@type": "Person", "name": "Chris Pardue", "jobTitle": "Cybersecurity Professional, CEH"},
+        "datePublished": "2026-08-12",
+        "dateModified": "2026-08-19",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://cehstudy.com/ceh-comparison/"},
+        "keywords": "CEH v12 vs v13, CEH v13 changes"
     }
     </script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {"@type": "Question", "name": "Should I get CEH or Security+ first?", "acceptedAnswer": {"@type": "Answer", "text": "For beginners with no security experience, start with CompTIA Security+ as it covers broader fundamentals. For those with 1-2 years of IT experience who want to move into offensive security, CEH is the better first choice as it's more specialized and directly applicable to pentesting roles."}},
-            {"@type": "Question", "name": "Is CEH harder than Security+?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, CEH is significantly harder. The CEH v13 exam covers 20 domains with 125 questions in 4 hours, while Security+ has 90 questions in 90 minutes covering 6 broader domains. CEH requires deeper technical knowledge of offensive security tools and techniques."}},
-            {"@type": "Question", "name": "Is CEH worth it in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. CEH remains one of the most recognized offensive security certifications globally. It's frequently listed as a requirement in penetration tester and security analyst job postings, and holders report average salaries of $95,000-$130,000 depending on experience level."}}
-        ]
+        "@type": "WebSite",
+        "name": "CEHStudy",
+        "url": "https://cehstudy.com/",
+        "potentialAction": {"@type": "SearchAction", "target": "https://cehstudy.com/?q={search_term_string}", "query-input": "required name=search_term_string"}
     }
     </script>
     <script type="application/ld+json">
@@ -41,190 +41,107 @@
         "@type": "BreadcrumbList",
         "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cehstudy.com/"},
-            {"@type": "ListItem", "position": 2, "name": "Certification Comparison", "item": "https://cehstudy.com/ceh-comparison/"}
+            {"@type": "ListItem", "position": 2, "name": "CEH v12 vs v13 Comparison", "item": "https://cehstudy.com/ceh-comparison/"}
         ]
     }
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#151515;--bg2:#1e1e1e;--bg3:#2c2c2c;--text:#d1d0c5;--text2:#646669;--accent:#39ff88;--border:#2c2c2c}
-        body{font-family:'JetBrains Mono','Fira Code',Consolas,monospace;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
-        header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px}
-        header a{color:var(--accent);text-decoration:none;font-size:.9rem}
-        .container{max-width:850px;margin:0 auto;padding:30px 20px;flex:1}
-        h1{font-size:1.4rem;color:var(--accent);margin-bottom:16px;line-height:1.4}
-        h2{font-size:1.1rem;color:var(--accent);margin-top:32px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-        h3{font-size:1rem;color:var(--text);margin-top:20px;margin-bottom:8px}
-        p{margin-bottom:14px;font-size:.92rem}
-        a{color:var(--accent);text-decoration:none}
-        a:hover{text-decoration:underline}
-        .breadcrumb{font-size:.82rem;color:var(--text2);margin-bottom:20px}
-        table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.85rem}
-        th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
-        th{color:var(--accent);font-weight:600;background:var(--bg3)}
-        .verdict-box{background:var(--bg3);border-left:3px solid var(--accent);padding:14px 18px;margin:16px 0;border-radius:0 6px 6px 0}
-        .verdict-box strong{color:var(--accent)}
-        ul,ol{padding-left:20px;margin-bottom:14px}
-        li{padding:4px 0;font-size:.9rem}
-        .disclaimer-box{background:var(--bg3);border:1px solid var(--text2);border-radius:6px;padding:14px 18px;margin-top:28px;font-size:.82rem;color:var(--text2)}
-        .related-links{margin-top:28px;padding-top:16px;border-top:1px solid var(--border)}
-        .related-links a{display:block;padding:6px 0;font-size:.9rem}
-        footer{border-top:1px solid var(--border);padding:20px;text-align:center;font-size:.78rem;color:var(--text2)}
-        .footer-nav{margin-bottom:10px}
-        .footer-nav a{color:var(--accent);margin:0 10px}
-        @media(max-width:600px){h1{font-size:1.15rem}table{font-size:.78rem}.container{padding:20px 16px}}
-    
-        .ad-slot{max-width:728px;min-height:90px;margin:24px auto;padding:12px;text-align:center;background:var(--bg2);border:1px dashed var(--border);overflow:hidden}
-        .ad-slot .adsbygoogle{display:block;width:100%}
-        .ad-slot-label{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:6px;display:block}
-        @media(max-width:728px){.ad-slot{max-width:100%;min-height:0}}
-    </style></style>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4948135636372064" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "What changed in CEH v13?", "acceptedAnswer": {"@type": "Answer", "text": "CEH v13 expanded from 10 to 20 modules with new content on IoT/OT security, cloud computing, and advanced malware. The exam code remains 312-50."}},
+            {"@type": "Question", "name": "Is CEH v13 harder than v12?", "acceptedAnswer": {"@type": "Answer", "text": "CEH v13 covers more domains but the passing score remains 60%. The additional content means more study material but also more opportunities to earn points."}}
+        ]
+    }
+    </script>
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4948135636372064" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><div class="container" style="padding:0"><a href="/">&larr; Back to CEHStudy</a></div></header>
 
-    <div class="container">
-        <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; Certification Comparison</nav>
-
-        <h1>CEH vs CompTIA Security+ vs CISSP — Which Cybersecurity Certification is Right for You?</h1>
-        <p style="color:var(--accent);font-size:.9rem;margin-bottom:16px;">Last updated August 2026 · Costs, difficulty, careers & salary data compared</p>
-        <p>Choosing the right cybersecurity certification can significantly impact your career trajectory. The CEH (Certified Ethical Hacker), CompTIA Security+, and CISSP (Certified Information Systems Security Professional) are three of the most sought-after credentials in the field — but they serve different career paths, experience levels, and salary ranges.</p>
-
-        <h2>Quick Comparison Table</h2>
-        <table>
-            <tr><th>Factor</th><th>CompTIA Security+</th><th>CEH v13</th><th>CISSP</th></tr>
-            <tr><td>Focus</td><td>Broad cybersecurity fundamentals</td><td>Offensive security & pentesting</td><td>Security architecture & management</td></tr>
-            <tr><td>Exam Questions</td><td>90 multiple choice</td><td>125 multiple choice</td><td>150 multiple choice</td></tr>
-            <tr><td>Time Limit</td><td>90 minutes</td><td>4 hours</td><td>6 hours</td></tr>
-            <tr><td>Passing Score</td><td>750/900</td><td>60%</td><td>700/1000</td></tr>
-            <tr><td>Cost (exam only)</td><td>$392</td><td>$1,250</td><td>$749</td></tr>
-            <tr><td>Prerequisites</td><td>Recommended: 2yr IT experience</td><td>None (self-study OK)</td><td>Required: 5yr security experience</td></tr>
-            <tr><td>Difficulty Level</td><td>Beginner/Intermediate</td><td>Intermediate</td><td>Advanced/Expert</td></tr>
-            <tr><td>Prep Time (typical)</td><td>4-8 weeks</td><td>6-12 weeks</td><td>3-6 months</td></tr>
-            <tr><td>Avg Salary (US, 2026)</td><td>$85,000-$105,000</td><td>$95,000-$130,000</td><td>$120,000-$165,000</td></tr>
-            <tr><td>Certification Expiry</td><td>3 years (40 CEUs)</td><td>Lifetime (annual CPE)</td><td>3 years (40 CPEs)</td></tr>
-        </table>
-
-        <h2>CEH vs Security+ — Detailed Comparison</h2>
-        <h3>What Each Certification Covers</h3>
-        <p><strong>CompTIA Security+</strong> covers six broad domains: cybersecurity architecture, threat management, identity and access management, cryptography, operations and incident response, and software development security. It's designed as a foundational certification for anyone entering the cybersecurity field.</p>
-
-        <p><strong>CEH v13</strong> covers 20 specific offensive security domains including footprinting, scanning, vulnerability analysis, system hacking, malware, social engineering, web application attacks, wireless hacking, mobile security, IoT/OT, cloud security, and cryptography. It's designed for professionals who will actively perform penetration testing.</p>
-
-        <h3>Career Path Differences</h3>
-        <div class="verdict-box">
-            <strong>Choose Security+ if:</strong> You're new to cybersecurity (0-1 years experience), need an entry-level certification to get your first security job, or want broad foundational knowledge across multiple security domains.
-        </div>
-        <div class="verdict-box">
-            <strong>Choose CEH if:</strong> You have 1+ years of IT/security experience and want to specialize in offensive security (penetration testing, vulnerability assessment, red teaming). CEH is the industry standard for pentester positions.
-        </div>
-
-        <h3>Which Should You Get First?</h3>
-        <p><strong>Complete beginner (no IT background):</strong> Start with CompTIA A+ → Security+ → then CEH. This builds the foundation you need.</p>
-        <p><strong>IT professional moving into security:</strong> Go straight for CEH if targeting pentesting roles, or Security+ first if targeting analyst/GRC roles.</p>
-        <p><strong>Security professional specializing in offense:</strong> Get CEH immediately. It's the most directly applicable certification to pentesting work.</p>
-
-        <h2>CEH vs CISSP — Detailed Comparison</h2>
-        <p>The CISSP is a management-level certification covering eight domains of security architecture and program management. Unlike CEH, it requires 5 years of paid experience in two or more CISSP domains. This makes it unsuitable for early-career professionals but ideal for those ready to move into leadership positions.</p>
-
-        <div class="verdict-box">
-            <strong>Choose CISSP if:</strong> You have 5+ years of security experience and want to move into CISO, security architect, or senior security manager roles. It's the gold standard for security leadership positions.
-        </div>
-
-        <h3>Salary Comparison</h3>
-        <table>
-            <tr><th>Experience Level</th><th>Security+ Holder</th><th>CEH Holder</th><th>CISSP Holder</th></tr>
-            <tr><td>Entry (0-2 yrs)</td><td>$75,000-$90,000</td><td>$80,000-$100,000</td><td>N/A (requires 5yr exp)</td></tr>
-            <tr><td>Mid (3-5 yrs)</td><td>$90,000-$110,000</td><td>$100,000-$125,000</td><td>$120,000-$145,000</td></tr>
-            <tr><td>Senior (6+ yrs)</td><td>$100,000-$120,000</td><td>$120,000-$150,000</td><td>$140,000-$175,000</td></tr>
-        </table>
-        <p>Salary ranges vary by location, industry, and specific job role. Pentesting positions with CEH certification tend to command premiums over generalist security roles.</p>
-
-        <h2>Certification Stacking Strategy</h2>
-        <h3>Offensive Security Path (Pentester/Red Team)</h3>
-        <ol>
-            <li><strong>CompTIA A+</strong> (if no IT background) — 4 weeks</li>
-            <li><strong>CompTIA Security+</strong> — 4-6 weeks</li>
-            <li><strong>CEH v13</strong> — 8-12 weeks</li>
-            <li><strong>OSCP</strong> (optional, advanced) — 3-4 months</li>
-        </ol>
-
-        <h3>Security Management Path (CISO Track)</h3>
-        <ol>
-            <li><strong>CompTIA Security+</strong> — 4-6 weeks</li>
-            <li><strong>Gain 5 years security experience</strong></li>
-            <li><strong>CISSP</strong> — 4-6 months</li>
-            <li><strong>CISM or CISA</strong> (optional, specialized) — 2-3 months</li>
-        </ol>
-
-        <h3>Cloud Security Path</h3>
-        <ol>
-            <li><strong>CompTIA Security+</strong> or <strong>AWS Certified Solutions Architect</strong></li>
-            <li><strong>CEH v13</strong> (for offensive cloud security) or <strong>AWS Security Specialty</strong></li>
-            <li><strong>CISSP</strong> (after 5 years, for leadership)</li>
-        </ol>
-
-        <h2>Is CEH Worth It in 2026?</h2>
-        <p>Yes. The CEH maintains strong industry recognition for several reasons:</p>
-        <ul>
-            <li><strong>Job requirements:</strong> Many penetration testing and red team positions list CEH as a preferred or required qualification</li>
-            <li><strong>Government contracts:</strong> FedRAMP and DoD-related security positions often require CEH or equivalent</li>
-            <li><strong>Global recognition:</strong> Unlike some certifications, CEH is widely recognized internationally</li>
-            <li><strong>Salary impact:</strong> CEH holders report 10-20% higher starting salaries than non-certified peers in pentesting roles</li>
-        </ul>
-
-        <h2>Frequently Asked Questions</h2>
-        <p><strong>Q: Can I get a job with only CEH and no other certifications?</strong><br>
-        A: Yes, but it's challenging without any prior IT/security experience. Most employers expect at minimum 1-2 years of hands-on experience or a related degree alongside the CEH. Pairing CEH with Security+ significantly improves your job prospects.</p>
-
-        <p><strong>Q: Do I need to renew the CEH certification?</strong><br>
-        A: The CEH certification itself doesn't expire, but to maintain active EC-Council membership (which is expected by employers), you must earn 40 CPE credits annually and pay a ~$195 annual renewal fee.</p>
-
-        <p><strong>Q: Is CompTIA PenTest+ a good alternative to CEH?</strong><br>
-        A: PenTest+ ($392) is a solid intermediate alternative for those who find CEH too expensive or want a CompTIA-aligned path. However, CEH has broader industry recognition, particularly in government and enterprise environments. If budget is a concern, PenTest+ + Security+ can be a strong combination.</p>
-
-        <p><strong>Q: How long should I study for each exam?</strong><br>
-        A: Security+: 4-8 weeks at 1-2 hours daily. CEH: 6-12 weeks at 1-2 hours daily (use our <a href="/ceh-v13-study-guide/">free 6-week study plan</a>). CISSP: 3-6 months at 1-2 hours daily. Adjust based on your existing experience level.</p>
-
-        <h2>Related CEH Study Resources</h2>
-        <div class="related-links">
-            <a href="/ceh-v13-study-guide/">📖 Free CEH v13 6-Week Study Plan</a>
-            <a href="/ceh-practice-questions/">❓ CEH Practice Questions</a>
-            <a href="/ceh-exam-registration/">📋 How to Register for the CEH Exam</a>
-            <a href="/ceh-v13/">📁 CEH v13 Module Flashcards</a>
-            <a href="/faq/">❔ CEH Certification FAQ</a>
-            <a href="/is-ceh-worth-it/">💰 Is CEH Worth It in 2026? — Salary, Jobs & Alternatives</a>
-        </div>
-
-        <div class="disclaimer-box">
-            <strong>Disclaimer:</strong> Salary data is based on publicly available job market information (BLS, Glassdoor, Payscale) and may vary by region and industry. Certification costs are subject to change — verify current pricing with the issuing bodies (CompTIA, EC-Council, (ISC)2).
-        </div>
-    </div>
-
-    <!-- AdSense -->
-    <div class="ad-slot">
-        <span class="ad-slot-label">Advertisement</span>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4948135636372064" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <footer>
-        <div class="footer-nav">
-            <a href="/">Flashcards</a>
-            <a href="/ceh-v13/">CEH v13 Modules</a>
+<header class="header-sticky">
+    <div class="header-nav-inner">
+        <a href="/" class="header-nav-logo">CEHStudy</a>
+        <nav class="header-nav-links">
+            <a href="/ceh-v13/">Modules</a>
             <a href="/ceh-v13-study-guide/">Study Guide</a>
+            <a href="/ceh-flashcards/">Flashcards</a>
             <a href="/ceh-practice-questions/">Practice Questions</a>
             <a href="/glossary/">Glossary</a>
             <a href="/faq/">FAQ</a>
-            <a href="/about/">About</a>
-        </div>
-        <p>CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
-    </footer>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+
+    <p class="breadcrumb"><a href="/">Home</a> &rsaquo; CEH v12 vs v13</p>
+
+    <h1 class="page-title">CEH v12 vs v13: Complete Comparison of What Changed in CEH v13 (2026)</h1>
+
+    <p style="color:var(--accent);font-size:.9rem;margin-bottom:16px;">Last updated August 2026 · Everything that changed from v12 to v13</p>
+    <p style="color:var(--text2);font-size:.8rem;margin-top:-12px;margin-bottom:20px;"><a href="/about/" style="color:var(--text2);">Reviewed by the CEHStudy team</a> · Certified security practitioners · Last reviewed August 12, 2026</p>
+
+    <p class="content-text">EC-Council released <strong>CEH v13</strong> with significant changes from v12. The exam code remains <strong>312-50</strong>, but the content has expanded from ~10 modules to <strong>20 detailed modules</strong>. This comparison covers what changed, what's new, and what was removed.</p>
+
+    <h2 class="section-heading">CEH v12 vs v13 at a Glance</h2>
+
+    <table class="schedule-table">
+        <thead><tr><th>Feature</th><th>CEH v12</th><th>CEH v13</th></tr></thead>
+        <tbody>
+            <tr><td>Exam Code</td><td>312-50</td><td>312-50 (unchanged)</td></tr>
+            <tr><td>Modules</td><td>~10 broad topics</td><td>20 detailed modules</td></tr>
+            <tr><td>Questions</td><td>125</td><td>125 (unchanged)</td></tr>
+            <tr><td>Duration</td><td>4 hours</td><td>4 hours (unchanged)</td></tr>
+            <tr><td>Passing Score</td><td>60%</td><td>60% (unchanged)</td></tr>
+        </tbody>
+    </table>
+
+    <h2 class="section-heading">New Modules in CEH v13</h2>
+
+    <ul class="content-list">
+        <li><strong>IoT/OT Security:</strong> New domain covering Industrial Control Systems and Internet of Things vulnerabilities</li>
+        <li><strong>Cloud Computing:</strong> Dedicated module on cloud security, AWS/Azure/GCP threats</li>
+        <li><strong>Advanced Malware Analysis:</strong> Expanded malware content with deep-dive into advanced persistent threats</li>
+        <li><strong>Mobile Platform Security:</strong> iOS and Android penetration testing specifics</li>
+    </ul>
+
+    <h2 class="section-heading">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <h3 class="section-heading" style="margin-top:0;">What changed in CEH v13?</h3>
+        <p class="content-text">CEH v13 expanded from 10 to 20 modules with new content on IoT/OT security, cloud computing, and advanced malware. The exam code remains 312-50.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3 class="section-heading" style="margin-top:0;">Is CEH v13 harder than v12?</h3>
+        <p class="content-text">CEH v13 covers more domains but the passing score remains 60%. The additional content means more study material but also more opportunities to earn points.</p>
+    </div>
+
+</div>
+
+<!-- AdSense -->
+<div class="ad-slot">
+    <span class="ad-slot-label">Advertisement</span>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4948135636372064" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site navigation">
+        <a href="/">Flashcards</a>
+        <a href="/ceh-v13/">CEH v13 Modules</a>
+        <a href="/ceh-v13-study-guide/">Study Guide</a>
+        <a href="/ceh-practice-questions/">Practice Questions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/disclaimer/">Disclaimer</a>
+    </nav>
+    <p class="footer-copy">CEHStudy — Free CEH v13 Study Resources. Not affiliated with EC-Council.</p>
+</footer>
+
 </body>
 </html>
