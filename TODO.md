@@ -1,69 +1,190 @@
-# CEHStudy.com Refactoring - Module Flashcard Unification
+# CEHStudy.com — AdSense LVC Remediation (Option 1: Prune, Consolidate, Prove)
 
-## Status: All tasks complete ✅
-
----
-
-### Task 1: Clean up index.html ✅ COMPLETE
-- Remove references to standalone module flashcard pages from main page
-- Update SEO content text to reflect unified flashcard experience
-- **Committed:** `9ef634ad5b017702df3ea5c9a111fd0389a1f6d0`
-
-### Task 2: Add robots.txt disallow rules ✅ COMPLETE
-- Disallow all deleted standalone module pages (module1.html - module19.html)
-- **Committed:** `7e9f4fd4cabb3644a9e09b07995560ae261f18b0`
-
-### Task 3: Add ?module=X query param support ✅ COMPLETE
-- Updated `flashcards_app.js` to handle `?module=X` URL parameter
-- When user visits `/?module=5`, only Module 5 is toggled on
-- URL sync via `history.replaceState` for bookmarking
-- **Committed:** `7018f519be9f773a6f922a4699bec4797e37c584`
-
-### Task 4: Update ceh-v13/index.html links ✅ COMPLETE
-- All module card links now point to `/?module=XX` instead of `/ceh-v13/module-XX/` for flashcard access
-- Study guide pages at `/ceh-v13/module-XX/` remain intact (separate content)
-- **Committed:** `561b27af839dbf3a2f74a87f2ac36ef573e6b9fa`
-
-### Task 5: Delete old standalone module pages ✅ COMPLETE
-- Removed locally: module1.html through module19.html (already deleted from repo)
-- No separate HTML files needed - all flashcards served from main page
-
-### Task 6: Update sitemap.xml ✅ COMPLETE
-- Sitemap only references `/ceh-v13/module-XX/` paths which still exist as study guides
-- No changes needed to sitemap.xml
-
-### Task 7: Clean up old URL references ✅ COMPLETE
-- robots.txt now disallows all old module page URLs
-- All navigation flows through unified flashcard app
+> **Why this doc exists:** Google AdSense rejected cehstudy.com on review for **"Low Value Content"**.
+> Root causes found in the 2026-08-28 audit: (1) 264 template-identical glossary pages = thin/scaled content;
+> (2) 12 overlapping keyword landing pages all funneling to one generic tool = doorway pattern;
+> (3) dev artifacts served on the public site; (4) no privacy policy (AdSense Program Policies require one).
+> **Goal of this plan:** cut ~325 pages → ~60 high-value pages so the site passes AdSense re-review AND keeps/ranks core CEH v13 keywords.
 
 ---
 
-### Bugfix: Select Modules button not working on fresh load ✅ FIXED
-- Added null checks for DOM elements in `setupEventListeners()` to prevent silent failures
-- Moved `menuList` from global const to local lookup inside `buildMenu()` to avoid race condition
-- Wrapped `init()` body in try/catch with console.error logging for debugging
-- **Committed:** `fbad9a42e1b4e6d0fa71afa8fe6ce63c21352cec`
+## How an LLM should work this doc (session protocol)
+
+1. Read this ENTIRE file first, top to bottom.
+2. Find the **first unchecked `[ ]`** item in phase order. That is the task for this session.
+3. An item is done only when its substeps are complete AND its **Verify** gate passes. Then check it off (`[x]`) and record the commit SHA in the **Session Log** at the bottom (newest first).
+4. Items marked `🐘` are sized for one session. Small items may be batched into one session.
+5. Never skip a Verify gate. GitHub Pages takes ~1–2 min to deploy after a push — wait before checking live URLs.
+6. If reality conflicts with a step (file missing, different structure, link not found): STOP, record what you found in the Session Log, make the minimal sensible adaptation, continue. Do not invent scope.
+7. After every phase that deletes files, re-run the full `_verify_site.js` gate before starting the next phase.
+
+## Access & mechanics
+
+- **Repo:** `github.com/cpardue/cehstudy`, branch `main`. GitHub Pages → cehstudy.com (`CNAME` file, do not touch).
+- **Push method:** GitHub MCP tools (`github__create_file`, `github__update_file`, `github__delete_file`) — same PAT the MCP server uses (env key `GITHUB_PERSONAL_ACCESS_TOKEN` in `cline_mcp_settings.json`).
+- **Bulk ops (10+ files changed at once):** do NOT make one commit per file. Write a local Node script that uses the same PAT with the Git Data API (`GET /repos/cpardue/cehstudy/git/trees/{sha}?recursive=1`, create tree + commit + ref update) to produce **one commit**. Keep helper scripts in `cehstudy-build` (Phase 0.3), not the public repo.
+- **Rollback:** destructive phases start by tagging current HEAD (`pre-phase-2`, `pre-phase-3` …) via Git Data API refs. Rollback = create branch at tag and force-reset `main` to it (or GitHub "Revert" per commit). Record every tag + phase SHA in the Session Log.
+
+## Key facts
+
+| Fact | Value |
+|---|---|
+| AdSense publisher client | `ca-pub-4948135636372064` (keep on all pages) |
+| Ad slot state | PLACEHOLDER `data-ad-slot="1111111111"` everywhere — stays placeholder until Phase 7.3–7.4 |
+| Homepage app | `/` serves the flashcard app; DOM driven by `flashcards_app.js` + `data.js`; module deep links use `/?module=N` |
+| Bulk generators | practice pages generated by `generate-practice-pages.js` from `questions.json`; glossary pages were generated by a local-only script (not in repo) |
+| Site age | ~2 weeks at time of rejection — most long-tail URLs have no meaningful index/traffic |
+
+## Do Not Touch
+
+- `CNAME`, `.gitignore`, `data.js`, `questions.json`, `flashcards_app.js`
+- `styles.css` (additive edits only, and only if a step explicitly says so)
+- Homepage flashcard app markup: when editing `index.html`, change ONLY text/SEO blocks. Never change element IDs/classes the app binds to, and never remove the `<!-- SEO Content Section -->` anchor (used by `adsense-insert.js`).
+- Flashcard app behavior: shuffle, progress tracking, `?module=N` param must keep working after every phase (smoke test in Verify gates).
+
+## Policy rules every change must respect (AdSense + Google Search)
+
+- **No two pages may share templated boilerplate body text.** Every remaining page targets ONE distinct search intent with content only that page has.
+- All user-visible value claims must be present in raw HTML (value must not be JS-only).
+- One H1 per page. **No `<meta name="keywords">` anywhere.** No absolute guarantees ("pass on your first attempt").
+- Footer (after Phase 3a.5) must contain: About, Contact, Privacy, Disclaimer.
+- NEVER recreate per-term glossary pages, per-keyword landing pages, or any template-generated page batch again — that is exactly what caused the rejection.
 
 ---
 
-## Summary of Changes
+## Phase 0 — Baseline & setup 🐘
 
-**Before:** Each module had its own standalone HTML page with "Launch Flashcards - Module XX" buttons that opened separate pages.
+- [ ] **0.1** Verify write access + deploy: create `_access_test.md` via MCP with trivial content, wait ~2 min, confirm it loads at `https://cehstudy.com/_access_test.md`, then delete it.
+- [ ] **0.2** Tag baseline: create tag `tag-baseline` on current `main` HEAD (Git Data API ref). Record SHA in Session Log.
+- [ ] **0.3** Create private repo `cpardue/cehstudy-build` (`github__create_repo`, private=true) to hold build scripts, generator code, and dev notes that no longer belong on the public site.
+- [ ] **0.4** `[MANUAL — ask user]` Google Search Console: confirm access for cehstudy.com (or none). If GSC exists, list any `/glossary-terms/*` URLs with impressions/clicks > 0. Paste the list (or "none"/"no GSC") into the Session Log. **This output decides redirect stubs in Phase 2.5.** If no GSC / no data: treat as "none".
+- [ ] **0.5** Write local `_verify_site.js` (keep in `cehstudy-build`, never commit to public repo). It must:
+  1. Fetch every `<loc>` in `sitemap.xml` → HTTP status must be 200.
+  2. Fetch every `index.html` remaining in the repo tree; extract all internal `href="/…"` and assert each resolves to an existing repo path (allow `/glossary/#anchor` form).
+  3. Assert: no page contains `<meta name="keywords"`, exactly one `<h1` per page, no page body shares a text run > 80 chars with another page (report, don't fail), `data-ad-slot="1111111111"` present on all monetized pages.
+  4. Print a PASS/FAIL report. Run it now and save baseline output in Session Log.
 
-**After:** All flashcards are served from the main page (`/`). Users can:
-1. Visit `/` and toggle modules manually via Select Modules menu
-2. Click a module link to go directly to `/?module=X` (only that module toggled)
-3. Bookmark specific module sessions via URL
+**Verify:** access test clean and deleted; tag exists; private repo created; GSC answer recorded; `_verify_site.js` runs end-to-end (baseline failures allowed — record them).
 
-**Files Changed:**
-- `index.html` - Cleaned up, removed standalone module references
-- `flashcards_app.js` - Added ?module=X query param support + URL sync + null safety checks
-- `robots.txt` - Added disallow rules for deleted URLs
-- `ceh-v13/index.html` - Updated description text
+---
 
-**Files Deleted:**
-- `module1.html` through `module19.html` (standalone module pages)
+## Phase 1 — Hygiene: remove dev artifacts from public root 🐘
 
-**Files Preserved:**
-- `/ceh-v13/module-XX/` - 20 study guide pages (separate from flashcards)
-- All other support pages (about, contact, faq, glossary, etc.)
+Move these from `main` to `cehstudy-build` (commit there), then delete from `main` in ONE commit:
+`_probe2.html`, `_probe3.html`, `_probe_tmp.html`, `cehstudy_seo.md`, `cehstudy_seo_plan.md`, `conversation_history.md`, `changelog.md`, `generate-practice-pages.js`, `inject-glossary-links.js`, `template.js`
+
+- Before moving any `*.js`: grep all `index.html` in the public repo for references (`adsense-insert.js|adsense-verify.js|adsense-css-fix.js|template.js`). Move ONLY unreferenced files. If a page references an `adsense-*.js`, keep that file and note it in the Session Log.
+- Keep in public root: `llms.txt` (intentional), `data.js`, `questions.json`, `flashcards_app.js`, `styles.css`, `ads.txt`, any referenced `adsense-*.js`.
+
+**Verify:** `_verify_site.js`: 0 broken internal links; root of `main` contains no `_*` files and no `.md` except `README.md` + `TODO.md`; browser smoke test: load `/`, flip 10 flashcards, toggle a module via `?module=5` — app works.
+
+---
+
+## Phase 2 — Kill the glossary long tail (264 template pages → 1 A–Z page) 🐘
+
+- [ ] **2.1** Tag `pre-phase-2`.
+- [ ] **2.2** Local script: fetch raw content of all 264 `glossary-terms/<term>/index.html`; from each, parse the JSON-LD `DefinedTerm` (`name`, `description`) and the "How … Appears on the CEH v13 Exam" paragraph (first `<p>` after that `<h2>`, if present) as a one-sentence exam note.
+- [ ] **2.3** Generate NEW `/glossary/index.html` (replaces the current 90KB card grid): A–Z grouped; each term rendered as `<h2 id="<slug>">Term</h2>` + definition `<p class="content-text">` + exam note. Same header/footer/CSS classes as other site pages. Title: `CEH Glossary: 263 Cybersecurity Terms with Exam Notes | CEHStudy`. Canonical self-link, breadcrumb, JSON-LD `WebPage` + `DefinedTermSet`. ONE ad slot before footer.
+- [ ] **2.4** Rewrite every internal link from `/glossary-terms/<slug>/` → `/glossary/#<slug>`. Affected: 20 module pages ("Related Glossary Terms" lists), practice question pages, homepage, any editorial page. Script it; assert zero remaining `/glossary-terms/` references in the repo afterward.
+- [ ] **2.5** Delete ALL 264 `glossary-terms/<term>/index.html` + `glossary-terms/placeholder.md` in ONE commit (Git Data API tree removal). Redirect stubs ONLY for term URLs listed in step 0.4 (if any): stub = `<meta name="robots" content="noindex">` + `<meta http-equiv="refresh" content="0;url=/glossary/#<slug>">` + one-line "moved" text.
+- [ ] **2.6** Fix stale glossary claims: homepage "Free CEH Study Resources" list ("18+ terms" → "263 terms") and `best-free-ceh-resources` table row ("Glossary | 18+ terms" → "263 terms").
+
+**Verify:** `_verify_site.js`: 0 links to `/glossary-terms/`; `/glossary/` loads with all 263 term anchors; sample 5 old term URLs → 404 (or stub resolves, per 0.4 list); module smoke test still passes.
+
+---
+
+## Phase 3a — Consolidate doorway pages 🐘
+
+- [ ] **3a.1** Tag `pre-phase-3`.
+- [ ] **3a.2** Merge the two study plans into `/ceh-v13-study-guide/`: move BOTH full day-by-day schedule tables (6-week from `ceh-study-plan/`, 30-day intensive from `ceh-study-plan-30-day/`) in as separate `<h2>` sections; combine resource lists; rewrite intro so it reads as ONE guide offering two schedules. Remove cross-sell lines like "available in our … comparison page".
+- [ ] **3a.3** Delete `/ceh-study-plan/`, `/ceh-study-plan-30-day/`, `/ceh-flashcards/` (one commit). Rewrite all internal links: study plans → `/ceh-v13-study-guide/`; `/ceh-flashcards/` → `/`. Affected: homepage (nav + resource list), `ceh-v13/index.html`, pages with the flashcards footer link.
+- [ ] **3a.4** Create noindex+meta-refresh redirect stubs at the 3 deleted URLs (pattern from 2.5; targets: both plans → `/ceh-v13-study-guide/`, flashcards → `/`).
+- [ ] **3a.5** Footer standardization: every remaining page's footer becomes exactly these links, in this order: `Flashcards | CEH v13 Modules | Study Guide | Practice Questions | Exam Domains | Glossary | FAQ | About | Contact | Privacy | Disclaimer` (script it; `Privacy` resolves once Phase 5.1 lands — acceptable within the same week of pushes).
+
+**Verify:** `_verify_site.js`: 0 links to deleted URLs (stubs excepted); all footers byte-identical across pages; 3 stubs refresh to correct targets; homepage app smoke test passes.
+
+---
+
+## Phase 3b — Deepen remaining editorial pages (one page per session) 🐘 each
+
+Standard for EVERY page in this phase:
+- 1,200–2,000+ words of original visible text; zero boilerplate reused from other pages (the >80-char duplicate check in `_verify_site.js` must stay clean).
+- One distinct search intent; title + H1 not interchangeable with any other page.
+- Real facts; any number (prices, salaries, weights) gets an inline named source.
+- Keep existing canonical URL and single ad slot; no `<meta name="keywords">`.
+
+- [ ] **3b.1** `/ceh-v13-study-guide/` — now the pillar: add "6-week vs 30-day: which to pick" decision section, common schedule mistakes, exam-weight rationale for ordering. Target ~2,000 words.
+- [ ] **3b.2** `/how-to-pass-ceh/` — strategy (distinct from the guide's scheduling): self-assessment checklist, week-by-week cadence rules, exam-day tactics, what "ready to schedule" looks like (quiz scores).
+- [ ] **3b.3** `/is-ceh-worth-it/` — cost math (exam fee + EC-Council membership), salary data with named sources (e.g., BLS OOH, job postings), honest ROI section including "when it is NOT worth it" and cheaper alternatives.
+- [ ] **3b.4** `/best-free-ceh-resources/` — real comparison table of ≥6 external resources (Kali Linux, TryHackMe, Hack The Box, OWASP Top 10, PortSwigger Web Security Academy, Professor Messer for Security+) with genuine pros AND cons; CEHStudy gets one honest row among them.
+- [ ] **3b.5** `/ceh-v13-vs-v12/` — module-by-module delta (added / removed / moved topics) in a table + study implications per change.
+- [ ] **3b.6** `/ceh-comparison/` — CEH vs Security+ vs CISSP: cost, exam format, experience fit; decision guide by candidate profile.
+- [ ] **3b.7** `/ceh-exam-format/` — verify every fact against the current official EC-Council page before publishing (question count, time limit, passing score, question types, voucher pricing); add test-center logistics + what to bring.
+- [ ] **3b.8** `/ceh-exam-domains/` — complete 20-domain weighting table; "≈ how many exam questions" math per domain; each row links to its module page + practice topic page.
+- [ ] **3b.9** `/ceh-exam-registration/` — step-by-step: EC-Council account, 12-month membership, voucher types, Pearson VUE scheduling, reschedule/cancel rules, cost table.
+
+**Verify (after each page):** word count ≥ 1,200 visible text; `_verify_site.js` duplicate check clean; intent distinct vs all other pages.
+
+---
+
+## Phase 4 — Homepage & module depth 🐘
+
+- [ ] **4.1** Homepage `/`: remove `<meta name="keywords">`; replace "Pass the EC-Council Certified Ethical Hacker exam on your first attempt" with factual copy (e.g., "306 flashcards, 200+ practice questions, and structured study plans for the CEH v13 (312-50) exam — free, no signup."); trim SEO filler paragraphs to only ones that say something new; add a static "What you get" block with real numbers per module (derived from `data.js`). Keep the app above the fold. DO NOT alter app DOM.
+- [ ] **4.2** Remove `<meta name="keywords">` from ALL remaining pages (script replace across repo).
+- [ ] **4.3** Module pages, batches of 5 per session (4 sessions): for each `/ceh-v13/module-NN/`, add content ONLY that module has: (a) 5–8 tool names with one line on what each does in this domain; (b) 2–3 "common exam mistakes" callouts; (c) one worked scenario/example. Source material: that module's flashcards in `data.js` + its practice topic page, so facts stay consistent. Target: no two module pages share >30% of non-list body text.
+
+**Verify:** `_verify_site.js` green; browser: app works incl. `?module=5`; spot-check 3 module pages for uniqueness by eye.
+
+---
+
+## Phase 5 — Trust & E-E-A-T pages 🐘
+
+- [ ] **5.1** Create `/privacy/index.html`: standard privacy policy disclosing use of Google AdSense and advertising cookies (Google's standard third-party disclosure language), any analytics in use, and a contact email. Add to sitemap.
+- [ ] **5.2** Rewrite `/about/`: real author page — Chris Pardue, CEH credential, hands-on background, why the site exists; photo placeholder with descriptive alt text; `Person` JSON-LD (fill `sameAs` only if real profiles exist).
+- [ ] **5.3** Audit `/contact/` (must actually reach a human: mailto or form) and `/faq/` (answers must match current reality: card counts, prices, version numbers).
+
+**Verify:** `/privacy/` and `/about/` load; footer Privacy link resolves; `_verify_site.js` green.
+
+---
+
+## Phase 6 — Sitemap, robots, final audit 🐘
+
+- [ ] **6.1** Regenerate `sitemap.xml` to EXACTLY the remaining indexable pages (~59): home · `ceh-v13/` index · 20 modules · practice index + 20 topic pages · `glossary/` (single) · 9 editorial (`ceh-v13-study-guide`, `how-to-pass-ceh`, `is-ceh-worth-it`, `best-free-ceh-resources`, `ceh-v13-vs-v12`, `ceh-comparison`, `ceh-exam-format`, `ceh-exam-domains`, `ceh-exam-registration`) · about, contact, faq, disclaimer, changelog, privacy. Fresh `lastmod`. Exclude redirect stubs (they are noindex).
+- [ ] **6.2** `robots.txt`: keep `Sitemap:` line. `[MANUAL — ask user]` AI-crawler allowlist (GPTBot, PerplexityBot, etc.) — keep or drop per user decision; record decision in Session Log.
+- [ ] **6.3** Final LVC self-audit: for EVERY page in the sitemap, answer yes/no and record in Session Log — unique intent? at least one substantial original content block? no boilerplate shared with another page? value visible without JS?
+- [ ] **6.4** Run full `_verify_site.js`; fix everything reported. Tag `ready-for-adsense`. Record SHA.
+
+**Verify:** all of the above complete; zero FAIL lines in `_verify_site.js`.
+
+---
+
+## Phase 7 — AdSense re-review & ad ops (mostly MANUAL)
+
+- [ ] **7.1** `[MANUAL user]` Wait ≥ 2–4 weeks after the `ready-for-adsense` tag so crawlers see the changed site before resubmitting.
+- [ ] **7.2** `[MANUAL user]` AdSense → Sites → re-submit cehstudy.com for review. Do NOT resubmit earlier and do NOT spam repeated submissions.
+- [ ] **7.3** `[MANUAL user]` After approval: create 1–2 responsive ad units in the AdSense UI; record real slot numbers in the Session Log.
+- [ ] **7.4** Replace placeholder `data-ad-slot="1111111111"` with the real slot number across all pages (script, one commit); update `AD_SLOT_NUMBER` in `adsense-insert.js` (now in `cehstudy-build`).
+- [ ] **7.5** Ad density check: max 1–2 slots per page; no ad inside the flashcard interaction area on `/`; glossary + support pages: 0–1 slot.
+- [ ] **7.6** `[MANUAL user]` Search Console: submit new sitemap. GA4 if set up: watch returning-visitor rate over the following months (the "reason to return" signal that supports both SEO and future AdSense health).
+
+**Verify:** approved ad unit actually serves in a real browser; `_verify_site.js` green.
+
+---
+
+## Do NOT do
+
+- Recreate per-term glossary pages, per-keyword landing pages, or any template-generated page batch — that caused the rejection.
+- Add link schemes, buy links, or "CEH cheat sheet / dump" keyword variants (also a policy risk).
+- Change flashcard app behavior (shuffle, progress tracking, `?module=N`) as part of SEO work.
+- Push placeholder ad slots to production; do not re-submit AdSense review before Phase 7.1's wait period.
+
+---
+
+## Session Log
+
+Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-28] Plan written
+- Option 1 (Prune, Consolidate, Prove) captured from the AdSense LVC audit (see conversation with user; policy sources: support.google.com/adsense/answer/10015918 and /webmasters/answer/9044175 thin-content & doorway sections).
+- This file replaces the previous TODO (module flashcard unification refactor, completed 2026-08; full details in git history and in `conversation_history.md`, which Phase 1 moves to `cehstudy-build`).
+- Baseline HEAD: `<fill in at step 0.2>`
