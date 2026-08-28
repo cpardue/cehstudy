@@ -69,7 +69,7 @@
 
 ---
 
-## Phase 1 — Hygiene: remove dev artifacts from public root 🐘
+## Phase 1 — Hygiene: remove dev artifacts from public root 🐘 [x] done 2026-08-28
 
 Move these from `main` to `cehstudy-build` (commit there), then delete from `main` in ONE commit:
 `_probe2.html`, `_probe3.html`, `_probe_tmp.html`, `cehstudy_seo.md`, `cehstudy_seo_plan.md`, `conversation_history.md`, `changelog.md`, `generate-practice-pages.js`, `inject-glossary-links.js`, `template.js`
@@ -184,6 +184,14 @@ Standard for EVERY page in this phase:
 ## Session Log
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-28 17:40] Phase 1 complete — hygiene: 15 dev artifacts archived to cehstudy-build + deleted from main in one commit; broken glossary link fixed
+- Pre-state: main HEAD `438b7fd1` (post-Phase 0). Safety tag `pre-phase-1` created at `438b7fd1` (lightweight ref, verified).
+- Scope: 15 files moved, not the listed 10 (rule 6, all recorded): (1) `website-context.md` — extra root `.md` found, gate requires "no .md except README+TODO" → moved; (2) `history/cehstudy.md` — dev session notes served on public site as `/history/cehstudy.html`, same LVC problem → moved; (3) all three `adsense-*.js` are UNREFERENCED (grep: 0 hits across all 328 html for `adsense-insert.js|adsense-verify.js|adsense-css-fix.js|template.js`) → moved per "Move ONLY unreferenced files" + Phase 7.4 expects `adsense-insert.js` in cehstudy-build.
+- Commits: A `e9ab52ee` (cehstudy-build@main — ONE commit, all 15 files at identical paths); B `b692eba3` (cehstudy main — ONE commit deleting all 15; `history/` dir removed entirely, it became empty); C `98ef0a4e` (link fix). Helper `_phase1_archive.js` committed to cehstudy-build (`294f59a0`, blob-verified); `_push_todo.js` ref update fixed POST→PUT.
+- Link fix: `glossary-terms/denial-of-service/index.html` href `/glossary-terms/session-hijacking/` (slug never existed) → `/glossary-terms/active-session-hijacking/`. Both `active-` and `passive-session-hijacking` pages exist; chose `active-` as the generic-term match; exactly 1 occurrence replaced.
+- Verify gate (`cehstudy-build/_verify_phase1_20260828.txt`): A PASS 62/62 live; **B PASS — 0 broken internal links** (325 pages, 4250 unique targets); C.2 PASS (probes were the only H1 fails); C.1 FAIL(57) keywords-metas + C.3 FAIL(267) no ad slot = pre-existing, Phases 2/4 territory; D 52,259 shared shingles (baseline 52,267). Root: 35 entries, 0 `_*` files, 0 stray `.md` → ROOT CLEAN. Live smoke (HTTP): `/`, `flashcards_app.js`, `data.js`, `styles.css`, `questions.json`, fixed page all 200; deleted URLs (`/template.js`, `/website-context.html`, `/history/cehstudy.html`) all 404. Interactive flashcard flip + `?module=5` = manual user check (no browser automation in this env).
+- Rollback: force-reset main to `pre-phase-1` (`438b7fd1`); every deleted file restorable from cehstudy-build@`e9ab52ee`.
 
 ### [2026-08-28 15:08] Phase 0 complete — baseline & setup (steps 0.1–0.5 all verified)
 - **0.1** MCP write + deploy verified. Rule-6 adaptation: `_access_test.md` never went live — repo has no `.nojekyll`, so Jekyll silently drops underscore-prefixed files from the published site. Used `access-test-phase01.md` instead: confirmed live HTTP 200, deleted it, confirmed live 404. Commits on main: cfffb6e1 (add), de188040 (drop underscore file), 53be8c15 (adapted test file), f89db626 (delete).
