@@ -5,6 +5,7 @@
 > (2) 12 overlapping keyword landing pages all funneling to one generic tool = doorway pattern;
 > (3) dev artifacts served on the public site; (4) no privacy policy (AdSense Program Policies require one).
 > **Goal of this plan:** cut ~325 pages → ~60 high-value pages so the site passes AdSense re-review AND keeps/ranks core CEH v13 keywords.
+> (note) cehstudy.com is hosted at github.com/cpardue/cehstudy repo. try using Github MCP before trying other methods.
 
 ---
 
@@ -54,11 +55,11 @@
 
 ## Phase 0 — Baseline & setup 🐘
 
-- [ ] **0.1** Verify write access + deploy: create `_access_test.md` via MCP with trivial content, wait ~2 min, confirm it loads at `https://cehstudy.com/_access_test.md`, then delete it.
-- [ ] **0.2** Tag baseline: create tag `tag-baseline` on current `main` HEAD (Git Data API ref). Record SHA in Session Log.
-- [ ] **0.3** Create private repo `cpardue/cehstudy-build` (`github__create_repo`, private=true) to hold build scripts, generator code, and dev notes that no longer belong on the public site.
-- [ ] **0.4** `[MANUAL — ask user]` Google Search Console: confirm access for cehstudy.com (or none). If GSC exists, list any `/glossary-terms/*` URLs with impressions/clicks > 0. Paste the list (or "none"/"no GSC") into the Session Log. **This output decides redirect stubs in Phase 2.5.** If no GSC / no data: treat as "none".
-- [ ] **0.5** Write local `_verify_site.js` (keep in `cehstudy-build`, never commit to public repo). It must:
+- [x] **0.1** Verify write access + deploy: create `_access_test.md` via MCP with trivial content, wait ~2 min, confirm it loads at `https://cehstudy.com/_access_test.md`, then delete it.
+- [x] **0.2** Tag baseline: create tag `tag-baseline` on current `main` HEAD (Git Data API ref). Record SHA in Session Log.
+- [x] **0.3** Create private repo `cpardue/cehstudy-build` (`github__create_repo`, private=true) to hold build scripts, generator code, and dev notes that no longer belong on the public site.
+- [x] **0.4** `[MANUAL — ask user]` Google Search Console: confirm access for cehstudy.com (or none). If GSC exists, list any `/glossary-terms/*` URLs with impressions/clicks > 0. Paste the list (or "none"/"no GSC") into the Session Log. **This output decides redirect stubs in Phase 2.5.** If no GSC / no data: treat as "none".
+- [x] **0.5** Write local `_verify_site.js` (keep in `cehstudy-build`, never commit to public repo). It must:
   1. Fetch every `<loc>` in `sitemap.xml` → HTTP status must be 200.
   2. Fetch every `index.html` remaining in the repo tree; extract all internal `href="/…"` and assert each resolves to an existing repo path (allow `/glossary/#anchor` form).
   3. Assert: no page contains `<meta name="keywords"`, exactly one `<h1` per page, no page body shares a text run > 80 chars with another page (report, don't fail), `data-ad-slot="1111111111"` present on all monetized pages.
@@ -184,7 +185,22 @@ Standard for EVERY page in this phase:
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
 
+### [2026-08-28 15:08] Phase 0 complete — baseline & setup (steps 0.1–0.5 all verified)
+- **0.1** MCP write + deploy verified. Rule-6 adaptation: `_access_test.md` never went live — repo has no `.nojekyll`, so Jekyll silently drops underscore-prefixed files from the published site. Used `access-test-phase01.md` instead: confirmed live HTTP 200, deleted it, confirmed live 404. Commits on main: cfffb6e1 (add), de188040 (drop underscore file), 53be8c15 (adapted test file), f89db626 (delete).
+- **0.2** `tag-baseline` created via Git Data API at main HEAD `f89db626a172ddd2870fad4501ed4e3d75c4d424` (post-0.1; tree identical to original baseline). Verified via GET refs/tags.
+- **0.3** Private repo `cpardue/cehstudy-build` created; holds `_verify_site.js`, `_tag_baseline.js`, `_pages_status.js`, `_check_blob.js`, and the baseline output below. All verified byte-identical to local copies (git blob SHA via `_check_blob.js`).
+- **0.4** User answer: GSC exists; **zero** `/glossary-terms/*` URLs with impressions/clicks > 0 → record "none" → **no redirect stubs in Phase 2.5**.
+- **0.5** `_verify_site.js` written + pushed (kept out of public repo). Baseline run (full output: `cehstudy-build/_verify_baseline_20260828.txt`), tree = 354 files / 328 html pages:
+  - A PASS — live sitemap 62/62 locs HTTP 200
+  - B FAIL(1) — broken link: `glossary-terms/denial-of-service/` → `/glossary-terms/session-hijacking/` (target page does not exist; fix in a later phase)
+  - C.1 FAIL(57) — `<meta name="keywords">` on 57 pages (Phase 4.2 removes all)
+  - C.2 FAIL(2) — only dev artifacts `_probe2.html`, `_probe_tmp.html` lack H1 (Phase 1 deletes them); every real page has exactly one H1
+  - C.3 FAIL(270) — no raw ad slot: all 264 glossary-terms pages + contact + disclaimer + 3 probes (glossary terms die in Phase 2; others need slots by then)
+  - D report-only — 52,267 shared >80-char text shingles across pages (template boilerplate; the LVC signal this plan removes)
+- Notes: Pages builds erratic today (one ~22 min, others ~3 min) — added `_pages_status.js <commitPrefix> --wait` for deploy polling. Baseline failures above are expected/allowed per Phase 0 Verify; they are the target state Phases 1–4 move.
+- Rollback: force-reset `main` to `tag-baseline` (`f89db626a172ddd2870fad4501ed4e3d75c4d424`).
+
 ### [2026-08-28] Plan written
 - Option 1 (Prune, Consolidate, Prove) captured from the AdSense LVC audit (see conversation with user; policy sources: support.google.com/adsense/answer/10015918 and /webmasters/answer/9044175 thin-content & doorway sections).
 - This file replaces the previous TODO (module flashcard unification refactor, completed 2026-08; full details in git history and in `conversation_history.md`, which Phase 1 moves to `cehstudy-build`).
-- Baseline HEAD: `<fill in at step 0.2>`
+- Baseline HEAD: original main HEAD `e2c2072a1badf3897d83c3155b27b724d48f657d`; `tag-baseline` = `f89db626a172ddd2870fad4501ed4e3d75c4d424` (post access-test; identical tree)
