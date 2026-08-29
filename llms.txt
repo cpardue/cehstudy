@@ -31,7 +31,7 @@ Free CEH v13 exam preparation resources: interactive flashcards, practice questi
 ## High-Intent Pages
 - /ceh-exam-registration/: How to register for the CEH v13 exam
 - /ceh-comparison/: CEH vs Security+ vs CISSP comparison
-- /ceh-study-plan/: Detailed 6-week study plan
+- /ceh-v13-study-guide/: Detailed 6-week study plan
 - /ceh-exam-domains/: CEH v13 exam domains and blueprint breakdown
 
 ## About
