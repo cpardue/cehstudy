@@ -115,7 +115,7 @@ Standard for EVERY page in this phase:
 - Keep existing canonical URL and single ad slot; no `<meta name="keywords">`.
 
 - [x] **3b.1** `/ceh-v13-study-guide/` — now the pillar: add "6-week vs 30-day: which to pick" decision section, common schedule mistakes, exam-weight rationale for ordering. Target ~2,000 words.
-- [ ] **3b.2** `/how-to-pass-ceh/` — strategy (distinct from the guide's scheduling): self-assessment checklist, week-by-week cadence rules, exam-day tactics, what "ready to schedule" looks like (quiz scores).
+- [x] **3b.2** `/how-to-pass-ceh/` — strategy (distinct from the guide's scheduling): self-assessment checklist, week-by-week cadence rules, exam-day tactics, what "ready to schedule" looks like (quiz scores).
 - [ ] **3b.3** `/is-ceh-worth-it/` — cost math (exam fee + EC-Council membership), salary data with named sources (e.g., BLS OOH, job postings), honest ROI section including "when it is NOT worth it" and cheaper alternatives.
 - [ ] **3b.4** `/best-free-ceh-resources/` — real comparison table of ≥6 external resources (Kali Linux, TryHackMe, Hack The Box, OWASP Top 10, PortSwigger Web Security Academy, Professor Messer for Security+) with genuine pros AND cons; CEHStudy gets one honest row among them.
 - [ ] **3b.5** `/ceh-v13-vs-v12/` — module-by-module delta (added / removed / moved topics) in a table + study implications per change.
@@ -184,6 +184,15 @@ Standard for EVERY page in this phase:
 ## Session Log
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-29 15:35] Phase 3b.2 complete — /how-to-pass-ceh/ deepened: self-assessment audit, six cadence rules, readiness-threshold table, exam-day tactics (visible words 120 → 2,001)
+- Pre-state: main HEAD `866f05f4` (post-3b.1). No phase tag (non-destructive single-file content edit).
+- Files: cehstudy@main — commit `fc9010b6`, one file (`how-to-pass-ceh/index.html`, 7,714 → 20,866 bytes; remote blob `2b241111` verified MATCH after push).
+- New structure (all original wording): Step 1 — six-question self-assessment audit mapping to the guide's two schedules; Step 2 — six cadence rules (daily contact over weekend volume, 80% gate before advancing a module, re-run misses after 48h, timed blocks from week 2, full mock every other week from week 3, one deep weak-module session weekly); Step 3 — weak-module drill method for the 306-card / 200-question bank; Step 4 — readiness table with four quiz-score thresholds (≥80% avg across two full-length mocks ≥7 days apart; no domain <75%; previously-weak modules re-tested ≥90%; explanation fluency on last 50 misses) → when to book; Step 5 — exam-day tactics (time math over 125 questions, two-pass/flag method, read last line first, eliminate before choosing, clock checks at 25%/50%); "If you miss it" section; five new FAQ items. Removed `<meta name="keywords">` and the Article JSON-LD `keywords` key; refreshed title/H1/meta description/FAQPage (`dateModified` 2026-08-29). Canonical, single ad slot, header + footer byte-identical to pre-push.
+- Rule-6 adaptation: external exam-spec verification still blocked from this env (eccouncil.org serves a JS shell with no spec data; DuckDuckGo captcha-blocked) → kept only numbers already published site-wide (125 questions; 60% passing line); time window phrased as "divide the published window by 125" without asserting a limit; retake wait period stated qualitatively. Full official-page verification remains 3b.7's scope.
+- Verify gate (`cehstudy-build/_verify_phase3b2_{pre,post}_20260829.txt`, VERIFY_ALLOW_MISSING=/privacy/): pre A PASS 38/38, B PASS (58 pending /privacy/), C.1 FAIL(31), C.2 PASS, C.3 FAIL(2), D 4048. Post: A PASS; **B PASS — 0 broken internal links** (962 unique targets; new /ceh-exam-format/ + /ceh-exam-registration/ links resolve); C.1 FAIL(30) — this page no longer carries a keywords meta; C.2 PASS; C.3 FAIL(2) unchanged (contact, disclaimer → Phase 7); **D 4,002 shared shingles (down from 4,048; zero shared runs involving this page in pre- or post-samples)**. Live: HTTP 200 with new H1 ~2 min after push; old "7 Proven Strategies" title gone. Visible words 2,001 (article container only, script/style/header/footer stripped).
+- Note: session clock reads 2026-08-29 while the preceding 3b.1 entry is dated 2026-08-30 (local clock skew); entries kept newest-first by session order.
+- Rollback: force-reset main to `866f05f4`; pre-push page archived at cehstudy-build/_work/cehstudy-phase3b2/how-to-pass-ceh.html; helpers `_phase3b2_{scan,sanity,push,live_check}.js` kept local (not committed to the build repo, same as 3b.1).
 
 ### [2026-08-30 16:40] Phase 3b.1 complete — study-guide pillar deepened: exam-order rationale + 6-week vs 30-day decision section + scheduling mistakes (visible words 1,689 → 2,680)
 - Pre-state: main HEAD `297c7b62`. No phase tag (non-destructive single-file content edit).
