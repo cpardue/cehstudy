@@ -81,14 +81,14 @@ Move these from `main` to `cehstudy-build` (commit there), then delete from `mai
 
 ---
 
-## Phase 2 — Kill the glossary long tail (264 template pages → 1 A–Z page) 🐘
+## Phase 2 — Kill the glossary long tail (264 template pages → 1 A–Z page) 🐘 [x] done 2026-08-28
 
-- [ ] **2.1** Tag `pre-phase-2`.
-- [ ] **2.2** Local script: fetch raw content of all 264 `glossary-terms/<term>/index.html`; from each, parse the JSON-LD `DefinedTerm` (`name`, `description`) and the "How … Appears on the CEH v13 Exam" paragraph (first `<p>` after that `<h2>`, if present) as a one-sentence exam note.
-- [ ] **2.3** Generate NEW `/glossary/index.html` (replaces the current 90KB card grid): A–Z grouped; each term rendered as `<h2 id="<slug>">Term</h2>` + definition `<p class="content-text">` + exam note. Same header/footer/CSS classes as other site pages. Title: `CEH Glossary: 263 Cybersecurity Terms with Exam Notes | CEHStudy`. Canonical self-link, breadcrumb, JSON-LD `WebPage` + `DefinedTermSet`. ONE ad slot before footer.
-- [ ] **2.4** Rewrite every internal link from `/glossary-terms/<slug>/` → `/glossary/#<slug>`. Affected: 20 module pages ("Related Glossary Terms" lists), practice question pages, homepage, any editorial page. Script it; assert zero remaining `/glossary-terms/` references in the repo afterward.
-- [ ] **2.5** Delete ALL 264 `glossary-terms/<term>/index.html` + `glossary-terms/placeholder.md` in ONE commit (Git Data API tree removal). Redirect stubs ONLY for term URLs listed in step 0.4 (if any): stub = `<meta name="robots" content="noindex">` + `<meta http-equiv="refresh" content="0;url=/glossary/#<slug>">` + one-line "moved" text.
-- [ ] **2.6** Fix stale glossary claims: homepage "Free CEH Study Resources" list ("18+ terms" → "263 terms") and `best-free-ceh-resources` table row ("Glossary | 18+ terms" → "263 terms").
+- [x] **2.1** Tag `pre-phase-2`.
+- [x] **2.2** Local script: fetch raw content of all 264 `glossary-terms/<term>/index.html`; from each, parse the JSON-LD `DefinedTerm` (`name`, `description`) and the "How … Appears on the CEH v13 Exam" paragraph (first `<p>` after that `<h2>`, if present) as a one-sentence exam note.
+- [x] **2.3** Generate NEW `/glossary/index.html` (replaces the current 90KB card grid): A–Z grouped; each term rendered as `<h2 id="<slug>">Term</h2>` + definition `<p class="content-text">` + exam note. Same header/footer/CSS classes as other site pages. Title: `CEH Glossary: 263 Cybersecurity Terms with Exam Notes | CEHStudy`. Canonical self-link, breadcrumb, JSON-LD `WebPage` + `DefinedTermSet`. ONE ad slot before footer.
+- [x] **2.4** Rewrite every internal link from `/glossary-terms/<slug>/` → `/glossary/#<slug>`. Affected: 20 module pages ("Related Glossary Terms" lists), practice question pages, homepage, any editorial page. Script it; assert zero remaining `/glossary-terms/` references in the repo afterward.
+- [x] **2.5** Delete ALL 264 `glossary-terms/<term>/index.html` + `glossary-terms/placeholder.md` in ONE commit (Git Data API tree removal). Redirect stubs ONLY for term URLs listed in step 0.4 (if any): stub = `<meta name="robots" content="noindex">` + `<meta http-equiv="refresh" content="0;url=/glossary/#<slug>">` + one-line "moved" text.
+- [x] **2.6** Fix stale glossary claims: homepage "Free CEH Study Resources" list ("18+ terms" → "263 terms") and `best-free-ceh-resources` table row ("Glossary | 18+ terms" → "263 terms").
 
 **Verify:** `_verify_site.js`: 0 links to `/glossary-terms/`; `/glossary/` loads with all 263 term anchors; sample 5 old term URLs → 404 (or stub resolves, per 0.4 list); module smoke test still passes.
 
@@ -184,6 +184,14 @@ Standard for EVERY page in this phase:
 ## Session Log
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-28 21:45] Phase 2 complete — glossary long tail killed: 263 term pages → single A–Z page; links + sitemap cleaned
+- Pre-state: main HEAD `a475df1d` (post-Phase 1). Safety tag `pre-phase-2` at `a475df1d` (verified, type commit).
+- Rule-6 adaptations (reality vs doc, all minimal): (1) "264 pages" = 263 term pages + stray `glossary-terms/index.html`; deleted the whole subtree incl. stray index + `placeholder.md` (265 files). (2) Remote sitemap held 21 `/glossary-terms/` locs — stripped in the same delete commit, else gate A would 404; Phase 6.1 regenerates the sitemap fully. (3) Only 20/263 pages had the "Appears on the CEH v13 Exam" h2 (the newer-template batch) → exam note rendered only where present, per 2.2 "if present". (4) 7 term pages have invalid JSON-LD (unescaped quotes: directory-traversal, network-enumeration, quid-pro-quo-se, sql-injection, sqlmap-usage, windows-sam, zero-day-vulnerability) → name/desc parsed from `<h1>` + definition-box `<p>` fallback. (5) 2.6: homepage had NO "18+" claim (nothing to fix); `best-free-ceh-resources` row fixed 1× ("18+ terms" → "263 terms").
+- Commits (Git Data API, one commit each; helpers in cehstudy-build): G1 `41eec30c` — new `/glossary/index.html` (196 KB; 24 A–Z letter groups, one `<h2 id=slug>` per term + `content-text` definition + conditional exam note, WebPage + DefinedTermSet(263) + BreadcrumbList JSON-LD, canonical self-link, one ad slot before footer, no keywords meta); G2 `462688b6` — 37 files: 111 link rewrites `/glossary-terms/<slug>/` → `/glossary/#<slug>` (20 practice topic pages, 15 module pages w/ term lists; homepage had no term links) + best-free claim fix; G3 `757af09d` — deleted entire `glossary-terms/` subtree (tree 663→134 entries) + stripped 21 sitemap locs (62→41). No redirect stubs (GSC "none" per 0.4).
+- Verify gate (`cehstudy-build/_verify_phase2_20260828.txt`, `_verify_phase2_gate_20260828.txt`): live `/glossary/` 200 with exactly 263 `<h2 id=` anchors, spec title, ad slot, 0 keywords metas, 0 `/glossary-terms/` refs; 5 sample old term URLs → 404; core assets (`/`, flashcards_app.js, data.js, styles.css, questions.json, sitemap.xml) all 200. `_verify_site.js`: A PASS 41/41; **B PASS — 0 broken internal links** (61 pages, 906 unique targets ⇒ zero live `/glossary-terms/` links); C.2 PASS; C.1 FAIL(35) keywords-metas + C.3 FAIL(2: contact, disclaimer) = pre-existing → Phases 4.2 / 7.3–7.4; D 5,209 shared shingles (baseline 52,267 — templated glossary boilerplate eliminated; remainder is the "reviewed by the CEHStudy team" editorial line, Phase 3b territory).
+- Note: TODO.md retains 14 historical `glossary-terms` mentions in its own phase-spec/log text (not live links; only served as the /TODO.html doc). Interactive flashcard flip + `?module=5` = manual user check (no browser automation in this env, same as Phase 1).
+- Rollback: force-reset main to `pre-phase-2` (`a475df1d`); new glossary page + all relinked files restorable from that tag; scripts archived in the cehstudy-build commit below.
 
 ### [2026-08-28 17:40] Phase 1 complete — hygiene: 15 dev artifacts archived to cehstudy-build + deleted from main in one commit; broken glossary link fixed
 - Pre-state: main HEAD `438b7fd1` (post-Phase 0). Safety tag `pre-phase-1` created at `438b7fd1` (lightweight ref, verified).
