@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 3: Scanning Networks</h1>
         <p class="content-text">This module covers active network scanning techniques used to discover live hosts, open ports, and services on a target network. You will learn nmap scan types, port scanning methods, vulnerability scanning, banner grabbing, and techniques for bypassing IDS and firewalls.</p>
+        <p class="content-text">The CEHStudy app carries <strong>10 flashcards for Module 3</strong> across 3 sections — open the <a href="/?module=3" style="color:var(--accent)">Module 3 deck</a> and memorize each nmap flag with the packet it actually sends.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -160,8 +161,27 @@
                 <li><strong>Vulnerability Scanning vs Port Scanning:</strong> Port scanning identifies which ports are open and what services run on them. Vulnerability scanning (Nessus, OpenVAS, Qualys) goes further by matching running services against databases of known CVEs to identify specific exploitable weaknesses. The CEH exam distinguishes these two activities and expects you to know which tools perform each function.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 3</h2>
+            <div class="term-box"><strong>Believing a SYN scan completes the connection:</strong> -sS is half-open by design — the scanner sends a SYN, reads the reply (SYN-ACK means open, RST means closed), then tears down with RST. Because no session is ever established, many logs record nothing, which is exactly why it is called stealth scanning.</div>
+            <div class="term-box"><strong>Reading silence as "closed":</strong> A port that answers RST is closed; a port that answers nothing may simply be filtered by a firewall. OPEN, CLOSED and FILTERED are distinct exam answers on packet-trace questions, and Nmap reports OPEN|FILTERED when it cannot decide between the two.</div>
+            <div class="term-box"><strong>Picking a TCP scan for UDP services:</strong> SYN and Connect scans only see TCP, so DNS, DHCP and SNMP need -sU with ICMP port-unreachable analysis. Separately, when the question is "is this firewall stateful or stateless," the exam answer is an ACK scan (-sA), not a version-detection run.</div>
+
             <h2>Tools Used in Network Scanning</h2>
-            <p>Nmap remains the industry-standard scanning tool, with its NSE (Nmap Scripting Engine) extending capabilities to vulnerability detection. For dedicated vulnerability scanning, Nessus (Tenable) and OpenVAS (Greenbone) provide comprehensive CVE databases and compliance reporting. Masscan is used for large-scale Internet-wide port scanning at extreme speed. For banner grabbing, telnet and Netcat (nc) connect directly to open ports to capture service banners without specialized tooling. Hands-on practice in a VirtualBox lab environment with intentionally vulnerable targets like Metasploitable or DVWA is strongly recommended before the exam.</p>
+            <p>Scanners the CEH exam references for this domain, by job:</p>
+            <ul class="content-list">
+                <li><strong>Nmap:</strong> the industry-standard scanner — SYN/Connect/FIN/Xmas/NULL/Idle flags, OS detection from TCP/IP stack fingerprints, and ping-sweep host discovery with -sn</li>
+                <li><strong>NSE (Nmap Scripting Engine):</strong> Lua-based scripts that extend Nmap beyond port status into service interrogation and quick vulnerability checks</li>
+                <li><strong>Masscan:</strong> internet-scale port scanning at extreme speed — the exam's answer for mapping a huge address space quickly</li>
+                <li><strong>ZMap:</strong> stateless high-speed scanner in the same bulk-discovery category as Masscan</li>
+                <li><strong>Angry IP Scanner / Advanced IP Scanner / Superscan:</strong> GUI ping-sweep utilities for finding live hosts on a LAN before detailed scanning; PingPlotter adds continuous path monitoring</li>
+                <li><strong>Netcat (nc):</strong> swiss-army socket tool used for banner grabbing — connect straight to an open port and read the service banner</li>
+                <li><strong>Nessus (Tenable):</strong> the commercial vulnerability scanner that takes port-scan results and matches services against CVE databases</li>
+                <li><strong>OpenVAS (Greenbone):</strong> the open-source counterpart to Nessus, commonly paired with it in exam questions about scanning tool families</li>
+            </ul>
+
+            <h2>Worked Example: Reading a Scan Result Line by Line</h2>
+            <p>You run nmap -sS against an authorized test host and read three results: port 443 replies SYN-ACK, port 80 replies RST, and port 53 gives no response at all.</p>
+            <p><strong>Translation and follow-up:</strong> 443 is open with a service running, 80 is closed because the host is reachable but nothing listens, and 53 is filtered — the probe was dropped, so you cannot conclude it is closed. Re-probe with -sU to check UDP DNS properly, add -O to fingerprint the OS from initial TTL, window size and TCP option ordering, then hand the confirmed open ports to a vulnerability scanner such as Nessus.</p>
 
             <h2>How to Study Scanning Networks for the CEH v13 Exam</h2>
             <p>To effectively study Module 3 for the Certified Ethical Hacker exam:</p>
@@ -230,7 +250,7 @@
     (function(){
         const mod = '3';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 10;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

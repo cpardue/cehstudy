@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 2: Footprinting & Reconnaissance</h1>
         <p class="content-text">Footprinting is the first phase of ethical hacking — gathering information about a target before launching an attack. This module covers passive and active techniques, OSINT tools, WHOIS lookups, DNS interrogation, Google hacking with dorks, and online intelligence services.</p>
+        <p class="content-text">The CEHStudy app carries <strong>26 flashcards for Module 2</strong> across 8 sections — open the <a href="/?module=2" style="color:var(--accent)">Module 2 deck</a> and drill the DNS record types until they are automatic.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -157,8 +158,27 @@
                 <li><strong>Shodan & Censys Internet Mapping:</strong> Unlike Google which indexes webpages, Shodan and Censys index internet-connected devices by open ports and banners. Shodan can reveal exposed IoT devices, misconfigured routers, and unpatched servers — a critical recon tool for identifying attack surface before any active scanning begins.</li>
             </ul>
 
-            <h2>Tools Used in Footprinting & Reconnaissance</h2>
-            <p>Ethical hackers use a layered toolkit for information gathering. Primary OSINT platforms include Maltego (visual relationship mapping), Shodan (IoT and port-based internet search), Censys (certificate and banner discovery), and the open-source Recon-ng framework. For DNS interrogation, dig and nslookup are standard; for WHOIS, whois command-line tools query RIR databases. Google hacking relies on advanced operators like <code>site:</code>, <code>filetype:</code>, <code>inurl:</code>, <code>intitle:</code>, and <code>intext:</code>. Hands-on practice with these tools in a legal context — using your own domain or authorized penetration testing engagements — is strongly recommended.</p>
+                        <h2>Common Exam Mistakes in Module 2</h2>
+            <div class="term-box"><strong>Classifying WHOIS lookups as active footprinting:</strong> WHOIS queries, search engines, social media, news archives and public records never touch the target, so they are passive. The moment traffic goes to the target's own infrastructure — a dig AXFR zone transfer, a port scan, a ping sweep — the technique becomes active and detectable.</div>
+            <div class="term-box"><strong>Reversing thick and thin WHOIS:</strong> Thick WHOIS stores complete registration data in one searchable database; thin WHOIS stores only the domain name and points you to the registrar's own whois server for the rest. The exam flips these definitions between question stems.</div>
+            <div class="term-box"><strong>Guessing at RIR regions:</strong> ARIN covers the Americas, APNIC the Asia-Pacific, RIPE NCC Europe/Middle East/Central Asia, AFRINIC Africa, and LACNIC Latin America and the Caribbean. When a question names a region it wants the registry — and vice versa.</div>
+
+            <h2>Tools Used in Footprinting &amp; Reconnaissance</h2>
+            <p>The recon toolkit the exam expects you to sort by passive versus active:</p>
+            <ul class="content-list">
+                <li><strong>theHarvester:</strong> aggregates email addresses, subdomains and hostnames from hundreds of public sources (search engines, SSL data, virtual hosts) for a single domain</li>
+                <li><strong>FOCA:</strong> extracts metadata from Office documents and PDFs — author names, company fields, timestamps, tracked changes, embedded network paths</li>
+                <li><strong>Maltego:</strong> graph-based link analysis that maps the relationships between people, domains, IPs, URLs and social accounts</li>
+                <li><strong>Shodan:</strong> search engine over internet-facing devices and service banners — the go-to for exposed IoT/SCADA gear; Censys and ZoomEye do the same job</li>
+                <li><strong>dig:</strong> the workhorse DNS query tool: A/MX/NS lookups, and the axfr attempt that tests whether a zone transfer is misconfigured</li>
+                <li><strong>whois:</strong> queries RIR and registrar databases for registration data — owner contacts, creation dates, nameservers</li>
+                <li><strong>Recon-ng:</strong> open-source, modular reconnaissance framework that bundles many of the sources above into one web interface</li>
+                <li><strong>DNSRecon:</strong> enumerates DNS hosts and subdomains and flags misconfigurations such as transferable zones; Fierce does similar subdomain discovery</li>
+            </ul>
+
+            <h2>Worked Example: A Passive Footprint Pass on an Authorized Domain</h2>
+            <p>You are authorized to footprint your own company's domain. Start with the sources that never touch it: whois reveals the registrar, both nameservers and the creation date; dig A and dig MX map the web and mail infrastructure; a dig axfr request tests whether the zone will transfer — a properly configured server refuses, which is itself a finding worth recording.</p>
+            <p><strong>What each step proves:</strong> Shodan, queried by IP block, shows which company devices answer with open ports and banners without the company's cooperation. FOCA over the last PDF the company published can surface embedded author names, internal hostnames and network paths. Nothing in this pass sent application traffic to the target, so detection risk stayed minimal — the defining property of passive footprinting.</p>
 
             <h2>How to Study Footprinting & Reconnaissance for the CEH v13 Exam</h2>
             <p>To effectively study Module 2 for the Certified Ethical Hacker exam:</p>
@@ -227,7 +247,7 @@
     (function(){
         const mod = '2';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 26;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

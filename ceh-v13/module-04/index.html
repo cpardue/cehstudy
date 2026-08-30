@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 4: Enumeration</h1>
         <p class="content-text">Enumeration actively engages a system to query it for information — routing tables, users, groups, machine names, network resources — to discover and exploit vulnerabilities. This module covers Windows enumeration, NetBIOS, SNMP, LDAP, NTP, SMTP enumeration, and Active Directory attacks.</p>
+        <p class="content-text">The CEHStudy app carries <strong>6 flashcards for Module 4</strong> in 1 section — open the <a href="/?module=4" style="color:var(--accent)">Module 4 deck</a> and pair every protocol with its enumeration command.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -158,8 +159,26 @@
                 <li><strong>SMTP User Enumeration:</strong> The VRFY command asks a mail server to confirm if a user exists, while EXPN reveals mailing list members. Combined with RCPT TO, these commands allow mapping an entire organization's email infrastructure. Modern servers often disable VRFY/EXPN, but the CEH exam still tests these protocol-level techniques.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 4</h2>
+            <div class="term-box"><strong>Calling port scanning "enumeration":</strong> Scanning answers which ports are listening; enumeration interrogates those services to extract usernames, shares, groups and machine names. When a question asks which technique yields valid account names, it wants the protocol-level tool — not nmap.</div>
+            <div class="term-box"><strong>Mis-assigning the enumeration ports:</strong> NetBIOS lives on 137 (Name Service), 138 (Datagram) and 139 (Session); SNMP on 161; LDAP on 389 unencrypted and 636 as LDAPS; SMTP on 25; SMB on 445. The distractors pair a service with the wrong port — know each correct pair.</div>
+            <div class="term-box"><strong>Assuming VRFY/EXPN are blocked everywhere:</strong> Many modern mail servers disable them, but VRFY confirms whether an address exists and EXPN expands mailing lists wherever left enabled — the exam tests the commands themselves. Same trap on SNMP: the default "public" community is read-only, leaking system info, interfaces and routing tables but never passwords.</div>
+
             <h2>Tools Used in Enumeration</h2>
-            <p>Key enumeration tools include <code>enum4linux</code> (comprehensive Linux-based Windows enumeration), <code>nbtstat</code> (NetBIOS name queries), <code>snmpwalk</code> and <code>snmpcheck</code> (SNMP community string testing), <code>ldapsearch</code> (LDAP directory traversal), and <code>responder</code> (Poisoning attacks against SMB/NetBIOS). For SMTP enumeration, <code>smtpuserenum</code> or manual telnet sessions to port 25 are standard. In a hands-on lab environment with a Windows domain controller and Linux targets, practicing null session enumeration and SNMP community string discovery provides direct preparation for exam scenarios.</p>
+            <p>The protocol-by-protocol enumeration toolkit from the CEH exam:</p>
+            <ul class="content-list">
+                <li><strong>enum4linux:</strong> wraps rpcclient, smbclient and nmblookup to enumerate users, groups, shares and policies on Windows/Active Directory hosts over SMB and NetBIOS</li>
+                <li><strong>nbtscan / nbtstat:</strong> NetBIOS name-table queries that return computer names, user names and workgroups from ports 137/139</li>
+                <li><strong>rpcclient:</strong> direct Remote Procedure Call client for querying Windows account and group information at the protocol level</li>
+                <li><strong>snmpwalk / snmpget:</strong> traverse the MIB tree with a community string — unchanged defaults (public/private) hand over system info, interface stats and routing tables</li>
+                <li><strong>ldapsearch:</strong> issues LDAP queries against directory servers to extract user lists, group memberships and organizational structure (Active Directory over 389/636)</li>
+                <li><strong>smtp-user-enum:</strong> automates the SMTP VRFY/EXPN/RCPT TO sequence to validate mailbox names against a wordlist</li>
+                <li><strong>Swaks:</strong> the Swiss Army Knife for SMTP — crafts custom SMTP transactions for user enumeration and mail-server misconfiguration testing</li>
+            </ul>
+
+            <h2>Worked Example: Enumerating a Windows Host End to End</h2>
+            <p>A ping sweep on an authorized internal range flags 10.20.30.4 as live. Ports 139, 161 and 445 are open — a Windows box with NetBIOS, SNMP and SMB all exposed.</p>
+            <p><strong>Why that order matters:</strong> open a null session (net use \\10.20.30.4\\ipc$ with empty credentials), read the SID and note RIDs 500, 501, 512 and 513 for Administrator, Guest, Domain Admins and Domain Users; run enum4linux to list users, groups and shares; walk SNMP with the "public" community for uptime, interfaces and routes. The output — real account names and share paths — is exactly what the exploitation phase needs next.</p>
 
             <h2>How to Study Enumeration for the CEH v13 Exam</h2>
             <p>To effectively study Module 4 for the Certified Ethical Hacker exam:</p>
@@ -228,7 +247,7 @@
     (function(){
         const mod = '4';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 6;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

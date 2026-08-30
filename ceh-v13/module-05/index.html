@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 5: Vulnerability Analysis</h1>
         <p class="content-text">Vulnerability analysis is the process of identifying, quantifying, and prioritizing vulnerabilities in systems and applications. This module covers vulnerability assessment methodologies, scanning tools like Nessus and OpenVAS, CVE/CVSS frameworks, patch management, and risk assessment strategies.</p>
+        <p class="content-text">The CEHStudy app carries <strong>5 flashcards for Module 5</strong> in 1 section — open the <a href="/?module=5" style="color:var(--accent)">Module 5 deck</a> and drill the CVSS bands until you can classify a score in seconds.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -156,8 +157,27 @@
                 <li><strong>Risk Assessment & Prioritization:</strong> Raw vulnerability lists can contain thousands of findings. Risk assessment applies context — asset criticality, exploitability (is there public exploit code?), compensating controls (WAF, IDS) — to produce a prioritized remediation plan. The CEH exam tests the concept that a 9.8 CVSS score on a segmented internal system with no public exploit may be lower priority than a 7.2 score on an internet-facing web server with active exploitation in the wild.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 5</h2>
+            <div class="term-box"><strong>Misplacing the CVSS band boundaries:</strong> 0.0–3.9 is Low, 4.0–6.9 Medium, 7.0–8.9 High, 9.0–10.0 Critical. The boundary values themselves get tested — a 7.0 score is High, not Medium, and 9.0 opens the Critical band.</div>
+            <div class="term-box"><strong>Reporting scanner output without verification:</strong> False positives come from misconfigured scanners and wrong version detection, so every finding needs manual confirmation before it enters a remediation report. The exam's opposite trap is the false negative — a vulnerability the scanner missed creates false confidence.</div>
+            <div class="term-box"><strong>Mixing up who maintains what:</strong> CVE identifiers are assigned by MITRE, not OWASP or NIST. Tool roles get swapped in distractors too: Burp Suite and Acunetix are web-application focused, Qualys is the cloud platform, Nexpose (Rapid7) prioritizes by risk, and OpenVAS is Nessus's open-source alternative.</div>
+
             <h2>Tools Used in Vulnerability Analysis</h2>
-            <p>The primary vulnerability scanning tools tested on the CEH exam include Nessus (Tenable) — the industry-standard commercial scanner with a free home-use version, OpenVAS/Greenbone Community Edition — the leading open-source alternative, QualysGuard — cloud-based continuous monitoring, and Nexpose (Rapid7) — focused on risk-based prioritization. For supplementary scanning, Nikto tests web servers for known misconfigurations, while the Nmap Scripting Engine (NSE) with vuln category scripts performs quick vulnerability checks. Hands-on practice involves running Nessus against a Metasploitable VM to generate real vulnerability reports, then interpreting CVSS scores and determining remediation priority. The CEH exam expects familiarity with scanner output interpretation rather than specific button-level knowledge.</p>
+            <p>The scanners the CEH exam sorts into network-based, host-based and web-focused categories:</p>
+            <ul class="content-list">
+                <li><strong>Nessus (Tenable):</strong> the industry-standard commercial vulnerability scanner with an extensive plugin library covering networks, web apps, databases and cloud</li>
+                <li><strong>OpenVAS (Greenbone):</strong> the leading open-source vulnerability scanner; the exam's standing alternative to Nessus in multiple-choice sets</li>
+                <li><strong>Qualys:</strong> cloud-based vulnerability management platform delivering continuous scanning and posture monitoring for enterprise fleets</li>
+                <li><strong>Nexpose (Rapid7):</strong> enterprise scanner known for risk-based prioritization of findings rather than raw vulnerability counts</li>
+                <li><strong>Burp Suite:</strong> web-application testing suite — proxies HTTP traffic and tests for XSS, SQL injection and authentication flaws</li>
+                <li><strong>Acunetix:</strong> automated web vulnerability scanner in the same application-testing category as Burp Suite</li>
+                <li><strong>Nikto:</strong> lightweight web server scanner that checks for known misconfigurations, outdated components and suspicious files</li>
+                <li><strong>NSE vuln scripts:</strong> Nmap scripting engine's vulnerability script category — quick checks layered onto an existing port scan without a dedicated scanner</li>
+            </ul>
+
+            <h2>Worked Example: Prioritizing Two Findings from One Scan</h2>
+            <p>An authenticated Nessus scan of an authorized environment returns two findings: Finding A scores 9.8 (Critical) on an air-gapped test host with no public exploit code, while Finding B scores 7.2 (High) on an internet-facing web server where a working proof-of-concept is already circulating.</p>
+            <p><strong>Ranking logic:</strong> patch Finding B first. CVSS measures inherent severity, but remediation priority adds context — exposure, available exploits and compensating controls — so the internet-facing host with active exploitation in the wild outranks the segmented test box despite its lower score. Verify both findings to rule out false positives, then schedule Finding A against the normal high-severity SLA.</p>
 
             <h2>How to Study Vulnerability Analysis for the CEH v13 Exam</h2>
             <p>To effectively study Module 5 for the Certified Ethical Hacker exam:</p>
@@ -227,7 +247,7 @@
     (function(){
         const mod = '5';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 5;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

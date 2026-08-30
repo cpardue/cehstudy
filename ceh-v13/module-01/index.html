@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 1: Introduction to Ethical Hacking</h1>
         <p class="content-text">This module covers the foundational concepts of ethical hacking, including the CIA triad, hacker classifications, penetration testing methodologies, and the five stages of hacking. These are the core principles every Certified Ethical Hacker must master.</p>
+        <p class="content-text">The CEHStudy app carries <strong>27 flashcards for Module 1</strong> across 5 sections — open the <a href="/?module=1" style="color:var(--accent)">Module 1 deck</a> alongside this page.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -159,8 +160,26 @@
                 <li><strong>Penetration Testing Engagement Models:</strong> Black box (zero knowledge), grey box (partial knowledge), and white box (full disclosure) testing define the scope and methodology of authorized security assessments. Understanding which model applies to a given scenario is a common exam question type.</li>
             </ul>
 
-            <h2>Tools & Frameworks Used in Ethical Hacking</h2>
-            <p>Ethical hacking engagements begin with structured frameworks before tool deployment. The PTES (Penetration Testing Execution Standard) and OWASP Testing Guide provide the methodological foundation for Module 1 concepts. For hands-on practice, set up a Kali Linux virtual machine using VirtualBox or VMware — even at the introductory level, navigating the Kali metapackages and understanding the ethical use of tools like Nmap and Metasploit establishes critical context for all subsequent modules.</p>
+                        <h2>Common Exam Mistakes in Module 1</h2>
+            <div class="term-box"><strong>Mixing the five stages of hacking with pentest phases:</strong> The attack's five stages run reconnaissance, scanning, gaining access, maintaining access, then covering tracks; a penetration test engagement runs preparation, assessment, and conclusion (post-assessment). The exam presents both ladders in the same section and asks which one a scenario describes.</div>
+            <div class="term-box"><strong>Adding instead of multiplying in risk math:</strong> Risk = Threats × Vulnerabilities × Impact (equivalently Consequence × Likelihood), and ALE = SLE × ARO. Any answer that adds these factors is wrong — the exam tests both formulas and their component abbreviations.</div>
+            <div class="term-box"><strong>Treating vulnerability assessment as a penetration test:</strong> VA identifies and quantifies vulnerabilities across a broad surface; PT actively exploits specific ones to demonstrate business impact. When a scenario says "prove what an attacker could actually do," the answer is penetration testing, not VA.</div>
+
+            <h2>Tools &amp; Frameworks Used in Ethical Hacking</h2>
+            <p>Module 1 is conceptual, but the exam names the frameworks and environments a tester applies those concepts with:</p>
+            <ul class="content-list">
+                <li><strong>PTES (Penetration Testing Execution Standard):</strong> seven-phase engagement taxonomy from pre-engagement through reporting — the reference model for how an assessment is organized</li>
+                <li><strong>OSSTMM:</strong> the open-source security testing methodology that adds standardized metrics so test results are measurable and comparable</li>
+                <li><strong>NIST SP 800-115:</strong> the US government guide to IT security testing, structured in planning, testing, and documentation phases</li>
+                <li><strong>OWASP Testing Guide:</strong> the methodology for web application assessment that the exam expects for application-layer scope</li>
+                <li><strong>Kali Linux:</strong> the penetration testing distribution used for hands-on practice; knowing its layout is assumed at the CEH level</li>
+                <li><strong>Metasploit:</strong> exploit framework whose modules map directly onto the gaining-access and maintaining-access stages</li>
+                <li><strong>Nmap:</strong> the first tool actually pointed at a target — introduced here, then dissected in full in Module 3</li>
+            </ul>
+
+            <h2>Worked Example: Estimating Annualized Loss Expectancy</h2>
+            <p>An internet-facing finance portal runs an outdated SSL library with a known memory-corruption bug. The CISO estimates that a single successful exploitation would cost $25,000 in incident response and card re-issuance (the SLE), and threat intelligence suggests an exploitable attempt of this kind lands twice per year (ARO = 2).</p>
+            <p><strong>Walk through:</strong> ALE = SLE × ARO = $25,000 × 2 = $50,000 per year — that figure, not a raw severity label, is what you compare against control costs. The unpatched library is the vulnerability; the corrupting code is the exploit. An attacker exploiting it would threaten confidentiality and integrity, and the discovery would sit in the assessment phase of a penetration test.</p>
 
             <h2>How to Study Introduction to Ethical Hacking for the CEH v13 Exam</h2>
             <p>To effectively study Module 1 for the Certified Ethical Hacker exam:</p>
@@ -229,7 +248,7 @@
     (function(){
         const mod = '1';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 27;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');
