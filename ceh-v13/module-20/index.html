@@ -188,7 +188,6 @@
                 <li><a href="/ceh-v13/module-06/" style="color:var(--accent)">Module 6: System Hacking</a> — Cryptography (Module 20) is the theoretical foundation for password cracking in Module 6. When you crack NTLM hashes or Kerberos tickets, you're exploiting the cryptographic design of Windows authentication: NTLM's reliance on MD4-based NTOWFv1 hash (which allows offline brute force), Kerberos' use of AES-CTS-HMAC for ticket encryption (where key length determines cracking difficulty — AES-128 vs AES-256), and the fundamental property that hashes are one-way but finite in search space. On the CEH exam, know that understanding hash function properties (deterministic, fixed output length, avalanche effect) is what enables systematic password attacks: rainbow tables exploit determinism (same input → same output, precompute mappings), while GPU-based brute force exploits the finite key space</li>
                 <li><a href="/ceh-v13/module-16/" style="color:var(--accent)">Module 16: Hacking Wireless Networks</a> — The wireless security evolution is a direct application of cryptographic concepts to the 802.11 standard: WEP used RC4 with a 24-bit IV (insufficient for collision resistance — birthday paradox means IV reuse occurs after ~5,000 packets), WPA introduced TKIP as a stopgap (per-packet MIC but same RC4 core), WPA2 standardized AES-CCMP (Counter Mode + Cipher Block Chaining Message Authentication Code) providing both confidentiality and integrity, and WPA3 adds SAE (Simultaneous Authentication of Equals using Dragonfly key exchange) for forward secrecy and resistance to offline dictionary attacks. On the CEH exam, know that each wireless standard upgrade was driven by a specific cryptographic weakness in the previous generation</li>
             </ul>
-            <p style="margin-top:1rem"><a href="/ceh-exam-domains/" style="color:var(--accent)">📋 Full Exam Domains & Blueprint →</a></p>
         </div>
     </div>
 
@@ -212,9 +211,7 @@
     <nav class="footer-nav" aria-label="Site navigation">
         <a href="/">Flashcards</a>
         <a href="/ceh-v13/">CEH v13 Modules</a>
-        <a href="/ceh-v13-study-guide/">Study Guide</a>
         <a href="/ceh-practice-questions/">Practice Questions</a>
-        <a href="/ceh-exam-domains/">Exam Domains</a>
         <a href="/glossary/">Glossary</a>
         <a href="/faq/">FAQ</a>
         <a href="/about/">About</a>

@@ -1,8 +1,7 @@
 # CEHStudy
-Free CEH v13 exam preparation resources: interactive flashcards, practice questions, and structured study guides covering all 20 CEH domains. No signup required.
+Free CEH v13 exam preparation resources: interactive flashcards and practice questions covering all 20 CEH domains. No signup required.
 
 ## Study Resources
-- /ceh-v13-study-guide/: 6-week structured CEH v13 study plan
 - /ceh-practice-questions/: Practice exam questions with explanations
 - /glossary/: Key cybersecurity terminology definitions
 
@@ -28,11 +27,6 @@ Free CEH v13 exam preparation resources: interactive flashcards, practice questi
 - /ceh-v13/module-19/: Cloud Computing Cybersecurity
 - /ceh-v13/module-20/: Cryptography and Physical Security
 
-## High-Intent Pages
-- /ceh-exam-registration/: How to register for the CEH v13 exam
-- /ceh-comparison/: CEH vs Security+ vs CISSP comparison
-- /ceh-v13-study-guide/: Detailed 6-week study plan
-- /ceh-exam-domains/: CEH v13 exam domains and blueprint breakdown
 
 ## About
 CEHStudy is a free educational resource. Not affiliated with EC-Council.

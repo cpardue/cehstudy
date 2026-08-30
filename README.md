@@ -1,13 +1,12 @@
 # CEH v13 Certification Study Site
 
-Free comprehensive CEH v13 (Certified Ethical Hacker) study resources including interactive flashcards, detailed module notes, practice questions, and a complete study guide.
+Free comprehensive CEH v13 (Certified Ethical Hacker) study resources including interactive flashcards, detailed module notes, practice questions.
 
 ## Features
 
 - **20 Complete Modules** - All CEH v13 exam topics covered in detail
 - **Interactive Flashcards** - 600+ flashcards with progress tracking and shuffle mode
 - **Practice Questions** - Exam-style questions to test your knowledge
-- **Study Guide** - Structured study plan with timelines
 - **Free Access** - No signup required, completely free
 
 ## Modules
@@ -55,7 +54,6 @@ Visit [cehstudy.com](https://cehstudy.com) to start studying immediately.
 ## Resources
 
 - [Flashcards](https://cehstudy.com) - Main interactive flashcard app
-- [Study Guide](https://cehstudy.com/ceh-v13-study-guide/) - Structured study plan
 - [Practice Questions](https://cehstudy.com/ceh-practice-questions/) - Exam prep questions
 - [Module Notes](https://cehstudy.com/ceh-v13/) - Detailed module content
 - [FAQ](https://cehstudy.com/faq/) - Frequently asked questions
