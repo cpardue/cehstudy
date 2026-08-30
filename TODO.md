@@ -4,7 +4,7 @@
 > Root causes found in the 2026-08-28 audit: (1) 264 template-identical glossary pages = thin/scaled content;
 > (2) 12 overlapping keyword landing pages all funneling to one generic tool = doorway pattern;
 > (3) dev artifacts served on the public site; (4) no privacy policy (AdSense Program Policies require one).
-> **Goal of this plan:** cut ~325 pages → ~60 high-value pages so the site passes AdSense re-review AND keeps/ranks core CEH v13 keywords.
+> **Goal of this plan:** cut ~325 pages → ~50 high-value pages so the site passes AdSense re-review AND keeps/ranks core CEH v13 keywords.
 > (note) cehstudy.com is hosted at github.com/cpardue/cehstudy repo. try using Github MCP before trying other methods.
 
 ---
@@ -48,7 +48,7 @@
 - **No two pages may share templated boilerplate body text.** Every remaining page targets ONE distinct search intent with content only that page has.
 - All user-visible value claims must be present in raw HTML (value must not be JS-only).
 - One H1 per page. **No `<meta name="keywords">` anywhere.** No absolute guarantees ("pass on your first attempt").
-- Footer (after Phase 3a.5) must contain: About, Contact, Privacy, Disclaimer.
+- Footer (after Phase 3b.3) must contain: About, Contact, Privacy, Disclaimer. No header or footer link may point to a page deleted in any phase (redirect stubs excepted).
 - NEVER recreate per-term glossary pages, per-keyword landing pages, or any template-generated page batch again — that is exactly what caused the rejection.
 
 ---
@@ -106,31 +106,44 @@ Move these from `main` to `cehstudy-build` (commit there), then delete from `mai
 
 ---
 
-## Phase 3b — Deepen remaining editorial pages (one page per session) 🐘 each
+## Phase 3b — Remove remaining editorial landing pages 🐘
 
-Standard for EVERY page in this phase:
-- 1,200–2,000+ words of original visible text; zero boilerplate reused from other pages (the >80-char duplicate check in `_verify_site.js` must stay clean).
-- One distinct search intent; title + H1 not interchangeable with any other page.
-- Real facts; any number (prices, salaries, weights) gets an inline named source.
-- Keep existing canonical URL and single ad slot; no `<meta name="keywords">`.
+> **Note (2026-08-29 user decision):** this phase SUPERSEDES the old "deepen each page" plan and REVERSES the completed old 3b.1/3b.2 deepening — all 9 editorial landing pages are deleted. It also supersedes Phase 3a's pillar decision for `/ceh-v13-study-guide/`. Pre-push copies of the two deepened pages remain archived in `cehstudy-build/_work` (restorable if ever needed). Rationale: even deepened, these single-topic keyword landings were part of the pattern behind the LVC rejection; the site's durable value lives in the module pages, practice questions, and glossary.
 
-- [x] **3b.1** `/ceh-v13-study-guide/` — now the pillar: add "6-week vs 30-day: which to pick" decision section, common schedule mistakes, exam-weight rationale for ordering. Target ~2,000 words.
-- [x] **3b.2** `/how-to-pass-ceh/` — strategy (distinct from the guide's scheduling): self-assessment checklist, week-by-week cadence rules, exam-day tactics, what "ready to schedule" looks like (quiz scores).
-- [ ] **3b.3** `/is-ceh-worth-it/` — cost math (exam fee + EC-Council membership), salary data with named sources (e.g., BLS OOH, job postings), honest ROI section including "when it is NOT worth it" and cheaper alternatives.
-- [ ] **3b.4** `/best-free-ceh-resources/` — real comparison table of ≥6 external resources (Kali Linux, TryHackMe, Hack The Box, OWASP Top 10, PortSwigger Web Security Academy, Professor Messer for Security+) with genuine pros AND cons; CEHStudy gets one honest row among them.
-- [ ] **3b.5** `/ceh-v13-vs-v12/` — module-by-module delta (added / removed / moved topics) in a table + study implications per change.
-- [ ] **3b.6** `/ceh-comparison/` — CEH vs Security+ vs CISSP: cost, exam format, experience fit; decision guide by candidate profile.
-- [ ] **3b.7** `/ceh-exam-format/` — verify every fact against the current official EC-Council page before publishing (question count, time limit, passing score, question types, voucher pricing); add test-center logistics + what to bring.
-- [ ] **3b.8** `/ceh-exam-domains/` — complete 20-domain weighting table; "≈ how many exam questions" math per domain; each row links to its module page + practice topic page.
-- [ ] **3b.9** `/ceh-exam-registration/` — step-by-step: EC-Council account, 12-month membership, voucher types, Pearson VUE scheduling, reschedule/cancel rules, cost table.
+Redirect targets for the 9 deleted URLs (noindex stubs):
 
-**Verify (after each page):** word count ≥ 1,200 visible text; `_verify_site.js` duplicate check clean; intent distinct vs all other pages.
+| Deleted URL | Stub target | Why |
+|---|---|---|
+| `/ceh-v13-study-guide/` | `/ceh-v13/` | modules index = remaining study hub |
+| `/how-to-pass-ceh/` | `/ceh-v13/` | same |
+| `/ceh-v13-vs-v12/` | `/ceh-v13/` | current-version content lives in the module pages |
+| `/ceh-exam-domains/` | `/ceh-v13/` | the module list IS the domain map |
+| `/ceh-comparison/` | `/ceh-v13/` | CEH scope is described by the modules |
+| `/ceh-exam-format/` | `/faq/` | FAQ already answers format/cost questions |
+| `/ceh-exam-registration/` | `/faq/` | FAQ covers cost + registration steps |
+| `/is-ceh-worth-it/` | `/faq/` | closest surviving decision-support page |
+| `/best-free-ceh-resources/` | `/` | homepage carries the resources list |
+
+- [ ] **3b.1** Destructive: tag `pre-phase-3b` at current main HEAD (Git Data API ref). Delete the 9 page dirs (`ceh-v13-study-guide/`, `how-to-pass-ceh/`, `is-ceh-worth-it/`, `best-free-ceh-resources/`, `ceh-v13-vs-v12/`, `ceh-comparison/`, `ceh-exam-format/`, `ceh-exam-domains/`, `ceh-exam-registration/` — 9 files, 9 trees) in ONE commit, and strip their 9 `<loc>` entries from `sitemap.xml` (38 → 29 locs) in the SAME commit (else Verify gate A 404s).
+- [ ] **3b.2** ONE commit: create 9 noindex + meta-refresh redirect stubs at the deleted URLs (pattern from 2.5/3a.4: `<meta name="robots" content="noindex">` + refresh to mapped target + H1 + one-line "moved/removed" text that does NOT promise content that no longer exists). In the same commit, re-target the two existing Phase-3a stubs `/ceh-study-plan/` and `/ceh-study-plan-30-day/`: their refresh meta and body link currently point at the now-dead `/ceh-v13-study-guide/` → change to `/ceh-v13/` and reword the "moved" sentence (the schedules no longer exist anywhere on the site).
+- [ ] **3b.3** Full internal-link sweep — ONE scripted commit over every remaining file (reference map from the 2026-08-29 repo scan):
+  - (a) **Footer, all pages:** remove the `Study Guide` and `Exam Domains` links → new canonical footer, exactly this order: `Flashcards | CEH v13 Modules | Practice Questions | Glossary | FAQ | About | Contact | Privacy | Disclaimer` — byte-identical across all pages.
+  - (b) **Header nav, all pages:** remove the `Study Guide` link; standard nav becomes `Modules | Flashcards | Practice Questions | Glossary | FAQ`.
+  - (c) **Homepage `index.html`:** delete the 9 dead rows from "Free CEH Study Resources" (keep the Flashcards + Practice Questions rows; optionally add Modules + Glossary rows); strip wording that references the deleted pages from `<title>`, meta description, and JSON-LD (mechanical fixes only — Phase 4.1 still owns the editorial homepage rewrite).
+  - (d) **`ceh-v13/index.html`, all 20 module pages, practice index + 20 topic pages:** rewrite or remove in-content cross-links to deleted pages per the mapping table; if a sentence loses its reason to exist, delete the sentence.
+  - (e) **`faq/index.html`:** reword answers that link to `/ceh-exam-registration/` and `/how-to-pass-ceh/` (keep the factual answer text, drop the dead link); fix the "study guides" mention in the free-resources answer.
+  - (f) **`llms.txt`:** delete the 4 entries for deleted pages; reword the site description (drop "structured study guides").
+  - (g) **`README.md`:** remove the Study Guide feature bullet and its resource link; adjust the intro line that claims "a complete study guide".
+  - **Sweep rule:** after this step, zero occurrences of the 9 slugs anywhere in the repo except inside the 12 stub files and TODO.md's own history text (Session Log is a record — never rewrite it).
+- [ ] **3b.4** Local mirror cleanup (this workspace only, NOT pushed): delete the 9 local page directories so no stale copy gets re-uploaded in a later phase.
+
+**Verify:** full `_verify_site.js` run: A PASS 29/29 sitemap locs HTTP-200; B PASS — 0 broken internal links (61 html files incl. all stubs, every stub target resolves); exactly ONE unique footer AND ONE unique header nav across all pages; C.2 PASS (all stubs carry an H1); the sweep rule above holds (repo-wide slug grep); live smoke after ~1–2 min: all 9 old URLs → HTTP 200 with noindex + refresh to their mapped target, `?module=5` app smoke test passes; record the new C.1/C.3/D counts in the Session Log (all expected to drop).
 
 ---
 
 ## Phase 4 — Homepage & module depth 🐘
 
-- [ ] **4.1** Homepage `/`: remove `<meta name="keywords">`; replace "Pass the EC-Council Certified Ethical Hacker exam on your first attempt" with factual copy (e.g., "306 flashcards, 200+ practice questions, and structured study plans for the CEH v13 (312-50) exam — free, no signup."); trim SEO filler paragraphs to only ones that say something new; add a static "What you get" block with real numbers per module (derived from `data.js`). Keep the app above the fold. DO NOT alter app DOM.
+- [ ] **4.1** Homepage `/`: remove `<meta name="keywords">`; replace "Pass the EC-Council Certified Ethical Hacker exam on your first attempt" with factual copy (e.g., "306 flashcards and 200+ practice questions covering all 20 CEH v13 (312-50) domains — free, no signup."); trim SEO filler paragraphs to only ones that say something new; add a static "What you get" block with real numbers per module (derived from `data.js`). Keep the app above the fold. DO NOT alter app DOM.
 - [ ] **4.2** Remove `<meta name="keywords">` from ALL remaining pages (script replace across repo).
 - [ ] **4.3** Module pages, batches of 5 per session (4 sessions): for each `/ceh-v13/module-NN/`, add content ONLY that module has: (a) 5–8 tool names with one line on what each does in this domain; (b) 2–3 "common exam mistakes" callouts; (c) one worked scenario/example. Source material: that module's flashcards in `data.js` + its practice topic page, so facts stay consistent. Target: no two module pages share >30% of non-list body text.
 
@@ -150,7 +163,7 @@ Standard for EVERY page in this phase:
 
 ## Phase 6 — Sitemap, robots, final audit 🐘
 
-- [ ] **6.1** Regenerate `sitemap.xml` to EXACTLY the remaining indexable pages (~59): home · `ceh-v13/` index · 20 modules · practice index + 20 topic pages · `glossary/` (single) · 9 editorial (`ceh-v13-study-guide`, `how-to-pass-ceh`, `is-ceh-worth-it`, `best-free-ceh-resources`, `ceh-v13-vs-v12`, `ceh-comparison`, `ceh-exam-format`, `ceh-exam-domains`, `ceh-exam-registration`) · about, contact, faq, disclaimer, changelog, privacy. Fresh `lastmod`. Exclude redirect stubs (they are noindex).
+- [ ] **6.1** Regenerate `sitemap.xml` to EXACTLY the remaining indexable pages (50): home · `ceh-v13/` index · 20 modules · practice index + 20 topic pages · `glossary/` (single) · about, contact, faq, disclaimer, changelog, privacy. Fresh `lastmod`. Exclude redirect stubs (they are noindex). Note: the former "9 editorial" pages were deleted in Phase 3b — they must not reappear in the sitemap.
 - [ ] **6.2** `robots.txt`: keep `Sitemap:` line. `[MANUAL — ask user]` AI-crawler allowlist (GPTBot, PerplexityBot, etc.) — keep or drop per user decision; record decision in Session Log.
 - [ ] **6.3** Final LVC self-audit: for EVERY page in the sitemap, answer yes/no and record in Session Log — unique intent? at least one substantial original content block? no boilerplate shared with another page? value visible without JS?
 - [ ] **6.4** Run full `_verify_site.js`; fix everything reported. Tag `ready-for-adsense`. Record SHA.
