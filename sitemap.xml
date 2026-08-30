@@ -171,14 +171,6 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- Study Guide -->
-  <url>
-    <loc>https://cehstudy.com/ceh-v13-study-guide/</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Practice Questions -->
   <url>
     <loc>https://cehstudy.com/ceh-practice-questions/</loc>
@@ -188,58 +180,6 @@
   </url>
 
   <!-- CEH Flashcards -->
-
-  <!-- Exam Info Pages -->
-  <url>
-    <loc>https://cehstudy.com/ceh-exam-registration/</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cehstudy.com/ceh-exam-domains/</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cehstudy.com/ceh-exam-format/</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cehstudy.com/ceh-v13-vs-v12/</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cehstudy.com/ceh-comparison/</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Long-form Articles (Phase 2) -->
-  <url>
-    <loc>https://cehstudy.com/how-to-pass-ceh/</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cehstudy.com/is-ceh-worth-it/</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cehstudy.com/best-free-ceh-resources/</loc>
-    <lastmod>2026-08-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
   <!-- Glossary Terms -->
   <url>
