@@ -166,7 +166,7 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 - [x] **6.1** Regenerate `sitemap.xml` to EXACTLY the remaining indexable pages (50): home · `ceh-v13/` index · 20 modules · practice index + 20 topic pages · `glossary/` (single) · about, contact, faq, disclaimer, changelog, privacy. Fresh `lastmod`. Exclude redirect stubs (they are noindex). Note: the former "9 editorial" pages were deleted in Phase 3b — they must not reappear in the sitemap.
 - [x] **6.2** `robots.txt`: keep `Sitemap:` line. `[MANUAL — ask user]` AI-crawler allowlist (GPTBot, PerplexityBot, etc.) — keep or drop per user decision; record decision in Session Log.
 - [x] **6.3** Final LVC self-audit: for EVERY page in the sitemap, answer yes/no and record in Session Log — unique intent? at least one substantial original content block? no boilerplate shared with another page? value visible without JS?
-- [ ] **6.4** Run full `_verify_site.js`; fix everything reported. Tag `ready-for-adsense`. Record SHA.
+- [x] **6.4** Run full `_verify_site.js`; fix everything reported. Tag `ready-for-adsense`. Record SHA.
 
 **Verify:** all of the above complete; zero FAIL lines in `_verify_site.js`.
 
@@ -197,6 +197,12 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 ## Session Log
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-31 12:50] Phase 6.4 complete — final full gate green + tag `ready-for-adsense` created (PHASE 6 DONE; AdSense re-review wait clock starts now)
+- Full `_verify_site.js` re-run after all Phase 6 pushes (`_verify_phase6_4_20260831.txt`): RESULT PASS, exit 0 — A 50/50 live; B 0 broken internal links (62 pages / 723 targets); C.1/C.2/C.3 PASS; D 2,220 report-only (the documented practice-topic intro-line baseline from 6.3). ZERO FAIL lines
+- Tag `ready-for-adsense` created at main HEAD `a271f8c6` (lightweight tag, Git Data API ref; read-back verified). Site-content commits beneath it: `0b6a4b73` (sitemap regeneration, 6.1) + all Phase 0–5 work; subsequent commits were TODO.md-only
+- Phase 6 complete. Next user actions are manual (Phase 7): 7.1 wait ≥ 2–4 weeks so crawlers see the changed site, then 7.2 re-submit AdSense; 7.3–7.5 after approval; 7.6 Search Console sitemap submit
+- Rollback: delete the tag (DELETE /repos/cpardue/cehstudy/git/refs/tags/ready-for-adsense) — no content change in this step
 
 ### [2026-08-31 12:44] Phase 6.3 complete — LVC self-audit of all 50 sitemap pages (4-criterion yes/no grid recorded below); one pre-existing finding documented, no scope expansion
 - Method: `_phase63_audit.js` (cehstudy-build) — tarball parse; per-page chrome-stripped body metrics (header/footer/nav/script/style/ad-ins removed): word count + unique-text ratio (distinct 80-char shingles not shared with ANY other page); H1 + title uniqueness across all 50. Artifacts: `_phase63_audit.json`, `_verify_phase6_3_20260831.txt`, `_phase63_console.txt`
