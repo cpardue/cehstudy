@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 9: Social Engineering</h1>
         <p class="content-text">Social engineering is the art of human manipulation. This module covers various social engineering attack vectors including phishing, spear phishing, whaling, vishing, smishing, pretexting, baiting, tailgating, and quid pro quo. Understanding psychological principles of influence is key to both launching and defending against these attacks.</p>
+        <p class="content-text">The CEHStudy app carries <strong>16 flashcards for Module 9</strong> across 3 sections — the overview section defines the core techniques; use the psychological-principles cards to learn why each one works.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -160,8 +161,25 @@
                 <li><strong>Watering Hole & Drive-by Download:</strong> A watering hole attack targets websites frequently visited by the victim organization's employees rather than the organization directly. The attacker compromises or creates a lookalike site that delivers malware when employees visit. This is particularly effective against organizations with niche industry interests where common sites are predictable. On the CEH exam, distinguish this from direct phishing: watering hole = indirect via third-party site, phishing = direct via targeted message.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 9</h2>
+            <div class="term-box"><strong>Scrambling the delivery-channel variants:</strong> the exam names channels, not just "phishing." Vishing is voice, smishing is SMS, quishing is QR codes (which email filters cannot scan, hiding the destination until the victim scans — parking tickets, event passes and Wi-Fi signs are the usual lures), and whaling targets C-suite executives rather than a channel at all.</div>
+            <div class="term-box"><strong>Blending baiting, pretexting, and tailgating:</strong> baiting leaves something tempting behind — the classic is an infected USB drive in a parking lot. Pretexting builds a fabricated scenario, usually a cover identity like IT support. Tailgating (piggybacking) is physical following through a secured door; dumpster diving searches trash for documents. Four distinct techniques, four distinct answers.</div>
+            <div class="term-box"><strong>Picking technology as the "most important" defense:</strong> when the question asks for the single most important control against social engineering, the answer is ongoing employee training and security awareness — people who verify requests and run regular simulations. MFA limits the damage of a successful credential grab, but it does not stop the willing click.</div>
+
             <h2>Tools Used in Social Engineering</h2>
-            <p>Social engineering tools for CEH exam preparation include <strong>Gophish</strong> (open-source phishing simulation platform used both offensively and for security awareness testing — supports template creation, campaign tracking, and click rate analytics), <strong>Social-Engineer's Framework (SEF)</strong> (Linux-based SE toolkit with modules for pretexting, email spoofing, USB malware deployment, and phone spoofing via vishing), <strong>Kaliber</strong> (open-source tool that creates fake login pages mimicking Microsoft, Google, Facebook for credential capture), and <strong>Evilginx2</strong> (real-time MITM proxy that intercepts MFA tokens in addition to credentials). For physical SE, tools include USBDriveInfection frameworks and badge cloning kits. On the CEH exam, know that Gophish is the most commonly referenced tool for phishing campaign simulation and that it's widely used by organizations for their own security awareness programs.</p>
+            <p>Tooling the CEH v13 exam references for this domain — note several serve both offense and authorized security-awareness testing:</p>
+            <ul class="content-list">
+                <li><strong>Gophish:</strong> open-source phishing simulation platform — template creation, campaign tracking and click-rate analytics, used offensively and for internal awareness programs</li>
+                <li><strong>Social-Engineer's Framework (SEF):</strong> Linux-based SE toolkit with modules for pretexting, email spoofing, USB malware deployment, and vishing through phone spoofing</li>
+                <li><strong>Kaliber:</strong> generates fake login pages imitating Microsoft, Google and Facebook services for credential capture</li>
+                <li><strong>Evilginx2:</strong> real-time MITM proxy that intercepts MFA tokens in addition to usernames and passwords — the reason "MFA means safe" is a false comfort</li>
+                <li><strong>TheHarvester / SpiderFoot:</strong> OSINT collectors pulling emails, subdomains and public records from open sources to personalize a target before any contact is made</li>
+                <li><strong>Maltego / Recon-ng:</strong> link-visualization and reconnaissance frameworks that tie the collected OSINT into a usable profile of the target organization</li>
+            </ul>
+
+            <h2>Worked Example: Building a Spear-Phish for the Finance Team</h2>
+            <p>An attacker researching acme-corp finds on LinkedIn that the new controller, "Dana R.", just joined from a rival firm — a perfect urgency hook. Using TheHarvester and SpiderFoot, they pull valid email addresses and the company's real invoice vendor name, then register a look-alike domain (one missing letter) that renders identically at a glance.</p>
+            <p><strong>The delivery:</strong> a spear-phished "urgent: payment failed" email lands in Dana's inbox during quarter close, links to a fake Microsoft login on the spoofed domain, and — because the victim types real credentials into what looks like their own portal — the harvest succeeds. The exam follow-up asks for the countermeasures: verification procedures for wire requests, DMARC/DKIM/SPF on outbound mail, and awareness training that makes "urgent executive" the exact phrase to treat with suspicion.</p>
 
             <h2>How to Study Social Engineering for the CEH v13 Exam</h2>
             <p>To effectively study Module 9 for the Certified Ethical Hacker exam:</p>
@@ -230,7 +248,7 @@
     (function(){
         const mod = '9';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 16;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

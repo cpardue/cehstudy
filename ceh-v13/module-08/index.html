@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 8: Sniffing</h1>
         <p class="content-text">Sniffing is the act of intercepting and analyzing traffic on a network. This module covers passive vs active sniffing, packet capture tools like Wireshark and tcpdump, ARP poisoning attacks, MAC address table overflow, DHCP starvation, and techniques for evading switched networks.</p>
+        <p class="content-text">The CEHStudy app carries <strong>10 flashcards for Module 8</strong> across 2 sections — start with the basics (why switches stop naive sniffing), then work the switched-network attack methods section card by card.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -148,8 +149,26 @@
                 <li><strong>Credential Extraction from Traffic:</strong> Many protocols transmit credentials in cleartext or with weak protection: HTTP Basic Auth (base64-encoded = trivially decoded), FTP (cleartext username/password), Telnet (cleartext), SMTP/POP3 without STARTTLS, and legacy SMB (NTLM hashes). Wireshark's "Follow TCP Stream" feature reconstructs entire conversations. On the CEH exam, know which protocols are inherently insecure and which require additional encryption to protect credentials.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 8</h2>
+            <div class="term-box"><strong>Assuming a plain sniffer works on a switched LAN:</strong> unlike a hub, a switch forwards each frame only to the destination MAC address, so a passively attached NIC sees almost no one else's traffic. The exam expects the four ways around that: ARP poisoning (the primary method), MAC flooding, DHCP starvation, or legitimate port mirroring (SPAN).</div>
+            <div class="term-box"><strong>Misreading how MAC flooding actually works:</strong> it is not "lots of packets slow the network down." The attack floods the switch's CAM table with thousands of fake MAC addresses until it overflows; an exhausted table forces the switch into fail-open mode, where it broadcasts every frame out all ports — behaving like a hub — and that is what makes passive capture possible.</div>
+            <div class="term-box"><strong>Equating sniffing with reading packet contents:</strong> traffic analysis draws conclusions — who talks to whom, how often, how much — without decrypting the payload at all. The exam's point is that even fully encrypted traffic leaks this metadata, so "everything is encrypted" is not a complete answer to "can an analyst learn anything?"</div>
+
             <h2>Tools Used in Sniffing and Traffic Analysis</h2>
-            <p>Essential sniffing tools for CEH exam preparation include <strong>Wireshark</strong> (GUI packet analyzer supporting 500+ protocols with BPF/Wireshark display filters), <strong>tcpdump</strong> (command-line equivalent using BPF syntax — `tcpdump -i eth0 port 80`), <strong>Ettercap</strong> (automated ARP poisoning and MiTM framework with plugin architecture), <strong>Cain & Abel</strong> (Windows-based: password recovery, network monitoring, protocol analysis), and <strong>Yersinia</strong> (multi-protocol attack tool supporting DHCP, OSPF, VTP attacks). For analysis specifically, understanding Wireshark display filters is exam-critical: `ip.addr == 192.168.1.1`, `http.request.method == GET`, `tcp.flags.syn == 1`. Hands-on practice: capture your own network traffic in VirtualBox with a host-only adapter, identify at least 5 cleartext protocols, and document the specific filter expressions used to isolate them.</p>
+            <p>Capture and interception tooling the CEH v13 exam references for this domain, by job:</p>
+            <ul class="content-list">
+                <li><strong>Wireshark:</strong> the GUI packet analyzer — 500+ protocol decoders, display filters, and statistics panels for deep post-capture analysis</li>
+                <li><strong>tcpdump:</strong> command-line capture on Linux/macOS using BPF syntax (tcpdump -i eth0 port 80), the standard answer for "CLI sniffer"</li>
+                <li><strong>Bettercap:</strong> modular network attack and monitoring framework — ARP spoofing, MITM modules, session hijacking and traffic analysis in one toolkit</li>
+                <li><strong>Cain &amp; Abel:</strong> the Windows-side bundle: password recovery, network monitoring, and protocol analysis in a single product</li>
+                <li><strong>Responder:</strong> LLMNR/NBT-NS/mDNS poisoner that harvests NTLMv2 hashes when poisoned name-resolution requests hit the wire</li>
+                <li><strong>Yersinia:</strong> multi-protocol attack tool for abuse of network protocols such as DHCP, OSPF and VTP — the DHCP-starvation answer on many exam questions</li>
+                <li><strong>Maltego / NetworkMiner:</strong> the traffic-analysis pair — Maltego maps relationships between hosts, users and services; NetworkMiner extracts files, credentials and artifacts from a capture without reading conversation contents</li>
+            </ul>
+
+            <h2>Worked Example: Finding Cleartext Credentials on a Switched Floor</h2>
+            <p>Your lab switch isolates every port by MAC address, so a simple mirror to your NIC sees only your own frames. You poison the ARP table instead: your host answers with a forged reply binding the router's IP address to your MAC, and traffic between the victim workstation and the gateway now transits your machine. Capturing with tcpdump, you filter for clear-text protocols — HTTP, FTP, telnet — and find session cookies and passwords that never should have left the LAN unencrypted.</p>
+            <p><strong>Where it stops working:</strong> once the victim uses HTTPS, your capture shows ciphertext only — the correct next moves are a downgrade attempt (SSL stripping) or pivoting to traffic analysis, where timing, volume and peer relationships still reveal who is talking to what even with a valid TLS session in place.</p>
 
             <h2>How to Study Sniffing for the CEH v13 Exam</h2>
             <p>To effectively study Module 8 for the Certified Ethical Hacker exam:</p>
@@ -218,7 +237,7 @@
     (function(){
         const mod = '8';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 10;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

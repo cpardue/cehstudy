@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 6: System Hacking</h1>
         <p class="content-text">System hacking involves gaining unauthorized access to target systems and maintaining that access. This module covers password cracking methods, privilege escalation techniques, file system attacks, service exploitation, malware deployment, steganography, and post-exploitation cover-your-tracks activities.</p>
+        <p class="content-text">The CEHStudy app carries <strong>32 flashcards for Module 6</strong> across 7 sections — work the Windows password-storage deck first, then move through cracking, buffer overflows, and privilege escalation in order.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -149,8 +150,27 @@
                 <li><strong>Rootkits & Process Hiding:</strong> Rootkits operate at the kernel level to intercept system calls and hide malicious processes, files, registry keys, and network connections from both the user and security software. User-mode rootkits patch specific functions in memory; kernel-mode rootkits hook the SSDT (System Service Descriptor Table) or use kernel modules. Detection involves comparing in-memory data structures with disk-based ones, using tools like RootkitRevealer or GMER.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 6</h2>
+            <div class="term-box"><strong>Mixing up where hashes actually live:</strong> SAM holds only the local machine's account hashes in %SystemRoot%\system32\config\SAM (registry hive HKEY_LOCAL_MACHINE\SAM), and the file cannot be copied while Windows is running — which is why memory dumping with Mimikatz is the standard move. Domain account hashes live in ntds.dit on the domain controller, not in SAM, so "dump SAM to get every user" is a wrong answer on packet- and architecture-style questions.</div>
+            <div class="term-box"><strong>Swapping Golden Ticket for Silver Ticket:</strong> a Golden Ticket forges the TGT and requires the KRBTGT account hash — it then opens every service in the domain, indefinitely. A Silver Ticket forges a single service ticket (TGS) stolen from a specific service, so its blast radius is one service. The exam pairs both with Mimikatz, and the KRBTGT detail is the usual give-away clue.</div>
+            <div class="term-box"><strong>Treating spraying as just slow brute force:</strong> password spraying tries one common password against many accounts at a time precisely to stay under per-account lockout thresholds — the opposite pattern from hammering a single account. In the same spirit, AS-REP roasting only works on users with Kerberos pre-authentication DISABLED; the negation is the part the exam tests.</div>
+
             <h2>Tools Used in System Hacking</h2>
-            <p>Essential system hacking tools for CEH exam preparation include <strong>Mimikatz</strong> (credential dumping, pass-the-hash, UAC bypass), <strong>John the Ripper</strong> and <strong>Hashcat</strong> (offline password cracking with GPU acceleration), <strong>Metasploit Framework</strong> (exploit development and post-exploitation module execution), <strong>Impacket</strong> library (Python-based Windows protocol attacks including wmiexec, psexec for lateral movement), and <strong>Responder</strong> (LLMNR/NBT-NS poisoning to capture NTLMv2 hashes). For privilege escalation specifically, tools like <strong>Watermelon</strong> (UAC bypass automation) and <strong>PowerUp.ps1</strong> (PowerShell privilege escalation scripts) are commonly referenced. Hands-on practice in a Windows domain environment with Metasploitable or a custom Active Directory lab is essential for exam confidence.</p>
+            <p>Tools the CEH v13 exam references for this domain, by job:</p>
+            <ul class="content-list">
+                <li><strong>Mimikatz:</strong> credential dumping from memory, pass-the-hash, DCSync (lsadump::dcsync), and Golden/Silver Ticket forgery — the single most cited tool in this module</li>
+                <li><strong>Hashcat / John the Ripper:</strong> offline cracking of captured LM/NTLM and Kerberos hashes; Hashcat needs the correct mode flag (for example -m 0 for MD5), while L0phtCrack and RainbowCrack cover Microsoft hash recovery and precomputed rainbow tables</li>
+                <li><strong>Responder:</strong> poisons LLMNR, NBT-NS and mDNS name-resolution requests to capture NTLMv2 hashes; Vindicate and got-responded are the detection-side counterparts</li>
+                <li><strong>Metasploit Framework:</strong> exploit, payload (stager/stage/singles), auxiliary, NOP, encoder, evasion and post-exploitation modules; pattern_create and pattern_offset locate the exact EIP-overwrite offset in a fuzzer run</li>
+                <li><strong>CrackMapExec / Rubeus / adfsbrute:</strong> domain attack utilities — Rubeus drives Kerberos operations, adfsbrute attacks ADFS, CrackMapExec sweeps for weak credentials and misconfigurations at scale</li>
+                <li><strong>THC-Hydra:</strong> online dictionary and brute-force attacks against login services with wordlist files</li>
+                <li><strong>Spartacus / Dylib Hijack Scanner:</strong> DLL hijacking (Windows) and dylib hijacking (macOS) utilities for privilege escalation; Dependency Walker helps spot the missing-library condition first</li>
+                <li><strong>WinPEAS / PEASS-ng / PowerSploit and PowerView:</strong> post-exploitation enumeration scripts that sweep a host or domain for privesc paths across Windows, Linux and PowerShell environments</li>
+            </ul>
+
+            <h2>Worked Example: From a Standard-User Shell to Domain Hashes</h2>
+            <p>You have a standard-user shell on a workstation that is joined to the corp.local domain. You start Responder on the link; a legacy application issues an LLMNR query, the poisoned response points the host at your machine, and an NTLMv2 hash lands in your capture. Rather than cracking it, you pass-the-hash directly with that captured value to authenticate against a domain resource, then — once you hold an account with replication rights — run lsadump::dcsync against the domain controller to extract NTLM hashes at scale.</p>
+            <p><strong>Why this order matters:</strong> each hop is an exam answer in itself — LLMNR poisoning for the first hash, PtH for access without cracking, DCSync for mass extraction. The follow-up question is usually persistence: with a KRBTGT hash in hand, a forged Golden Ticket gives indefinite, domain-wide access, which is why defenders rotate that account regularly.</p>
 
             <h2>How to Study System Hacking for the CEH v13 Exam</h2>
             <p>To effectively study Module 6 for the Certified Ethical Hacker exam:</p>
@@ -220,7 +240,7 @@
     (function(){
         const mod = '6';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 32;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

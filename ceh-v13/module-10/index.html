@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 10: Denial-of-Service</h1>
         <p class="content-text">Denial-of-Service (DoS) attacks aim to make a system or network unavailable to legitimate users by overwhelming resources. This module covers DoS vs DDoS attacks, SYN flood, Smurf attack, Ping of Death, Teardrop, buffer overflow attacks, application layer DoS, botnet-based distributed attacks, and mitigation techniques.</p>
+        <p class="content-text">The CEHStudy app carries <strong>17 flashcards for Module 10</strong> across 2 sections — learn the three attack classes (volumetric, protocol, application layer) first; every example card maps to exactly one of them.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -149,8 +150,26 @@
                 <li><strong>DDoS Mitigation Strategy:</strong> The CEH exam tests layered defense approaches: (1) BCP38/BCP84 — source address validation at network edge to prevent spoofing (prerequisite for amplification defense); (2) SYN cookies — allow connections without reserving table space until handshake completes; (3) Rate limiting — cap requests per IP on specific endpoints; (4) AnyCast routing — distribute traffic across global PoPs so no single point is overwhelmed; (5) DDoS scrubbing (CDN services like Cloudflare, Akamai) — filter attack traffic before it reaches origin; (6) Blackholing/Null routing — drop all traffic to attacked IP as last resort. On the exam, know that no single technique mitigates all DDoS types — defense must be layered by attack vector.</li>
             </ul>
 
-            <h2>Tools Used in DoS/DOS Attacks</h2>
-            <p>DoS tools referenced on the CEH exam include <strong>HOIC (High Orbit Ion Cannon)</strong> and <strong>LOIC (Low Orbit Ion Cannon)</strong> (graphical/CLI tools for HTTP/UDP flood attacks — LOIC uses simple TCP/UDP/HTTP flood, HOIC supports more protocol options), <strong>Slowloris</strong> (Python-based Layer 7 attack tool that opens incomplete HTTP connections to exhaust web server threads), <strong>hping3</strong> (powerful packet generation tool supporting SYN flood, UDP flood, ping of death, teardrop — `hping3 -S --flood` for SYN flood), and <strong>Mirai source code</strong> (real-world botnet malware that was leaked publicly — demonstrates IoT DDoS at scale with UDP amplification). For monitoring and detection: <strong>ntopng</strong> (traffic analysis), <strong>Zeek/Bro</strong> (network security monitoring identifying anomaly patterns), and cloud-based DDoS dashboards. On the CEH exam, know that hping3 is the most versatile single tool for demonstrating L3/L4 DoS techniques in a lab environment.</p>
+                        <h2>Common Exam Mistakes in Module 10</h2>
+            <div class="term-box"><strong>Misclassifying the attack type:</strong> the exam sorts attacks into three classes and tests the mapping. SYN floods and Smurf are protocol (state-exhaustion) attacks — they burn connection state, not bandwidth; volumetric means raw bandwidth floods (UDP/ICMP floods, amplification); Slowloris is application-layer because it exhausts HTTP connection slots with partial requests while sending almost no traffic at all.</div>
+            <div class="term-box"><strong>Mixing Smurf with Fraggle:</strong> same amplification mechanics — broadcast request with the victim's spoofed source IP, every host replies to the victim — but different protocols. Smurf uses ICMP echo requests; Fraggle is the UDP echo variant. The protocol in the stem of the question is the deciding detail.</div>
+            <div class="term-box"><strong>Blocking one IP to stop a "DDoS":</strong> filtering a single source stops a DoS, because a DoS comes from one system. A DDoS arrives from many compromised hosts (a botnet), so the defenses that matter are rate limiting and throttling, anycast distribution, CDN and scrubbing services, blackhole routing (RFC 3896) — controls that absorb distributed volume rather than drop a source.</div>
+
+            <h2>Tools Used in DoS/DDoS Attacks</h2>
+            <p>Flood tooling and mitigation services the CEH v13 exam references for this domain, by job:</p>
+            <ul class="content-list">
+                <li><strong>LOIC / HOIC:</strong> Low and High Orbit Ion Cannon — basic traffic-flood stressers; LOIC runs simple TCP/UDP/HTTP floods, HOIC adds protocol presets</li>
+                <li><strong>hping3:</strong> low-level packet generator for SYN floods (-S --flood), UDP floods, ping-of-death and teardrop-style malformed packets</li>
+                <li><strong>Slowloris:</strong> Python application-layer tool that holds many HTTP connections open with partial requests until the web server's connection slots run out — tiny bandwidth, big impact</li>
+                <li><strong>MFlood / GoldenEye:</strong> memory-efficient DDoS flooding and lightweight DoS tools in the same stresser family</li>
+                <li><strong>Mirai:</strong> the leaked IoT botnet source code — the exam's standing example of UDP amplification at scale from compromised cameras, routers and other embedded devices</li>
+                <li><strong>Cisco F5 Big-IP:</strong> hardware DDoS mitigation appliance, the on-prem answer to "which product absorbs the flood?"</li>
+                <li><strong>Cloudflare / Akamai Prolexic / AWS Shield:</strong> commercial CDN-based protection and scrubbing services; with anycast networking, attack volume is spread across geographically dispersed data centers sharing one address</li>
+            </ul>
+
+            <h2>Worked Example: Reading an Outage and Naming the Attack Class</h2>
+            <p>An e-commerce site goes slow during a sale. The edge log shows the target's connection table filling with half-open TCP sessions — SYNs arrive in volume but the final ACKs never come, so each request parks a slot until timeout. That signature is a SYN flood: a protocol-class attack, and the textbook mitigations are SYN cookies plus rate limiting at the edge, not more bandwidth.</p>
+            <p><strong>The twist:</strong> hours later the site looks "fine" on bandwidth but still times out, with hundreds of open HTTP connections each stuck mid-request. That second signature is Slowloris — an application-layer attack that survives volumetric defenses because it consumes connection state, not links. The exam answer shifts from "buy scrubbing capacity" to "enforce request timeouts and L7 connection limits," and the two outages together illustrate why DoS defense has to cover all three classes.</p>
 
             <h2>How to Study DoS Attacks for the CEH v13 Exam</h2>
             <p>To effectively study Module 10 for the Certified Ethical Hacker exam:</p>
@@ -219,7 +238,7 @@
     (function(){
         const mod = '10';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 17;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

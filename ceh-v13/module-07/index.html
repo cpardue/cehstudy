@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 7: Malware Threats</h1>
         <p class="content-text">This module covers the various types of malicious software used by attackers, including viruses, worms, trojans, ransomware, spyware, rootkits, fileless malware, and polymorphic threats. Understanding these threats is critical for both offensive and defensive security professionals.</p>
+        <p class="content-text">The CEHStudy app carries <strong>28 flashcards for Module 7</strong> across 4 sections — the malware-overview section is the largest; clear it first, then drill advanced types, APT and botnets, and finish with analysis.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -148,8 +149,27 @@
                 <li><strong>Fileless & Living-off-the-Land Malware:</strong> Fileless malware executes entirely in memory using legitimate system tools (PowerShell, WMI, CertUtil, MSHTA.exe) without dropping traditional executable files to disk. This makes signature-based antivirus nearly useless. Detection requires behavioral monitoring: anomalous PowerShell commands, encoded parameters, WMI event subscriptions, and process injection patterns. The CEH exam frequently tests identification of LOLBins (Living Off-the-Land Binaries) in attack scenarios.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 7</h2>
+            <div class="term-box"><strong>Conflating virus, worm, and trojan:</strong> the exam's pivot question is always "who does the replicating?" A virus attaches to a host file and needs human action to spread; a worm is standalone and self-replicates across networks with no user interaction; a trojan disguises itself as legitimate software but never self-replicates at all. Get that triangle right and most classification questions solve themselves.</div>
+            <div class="term-box"><strong>Calling polymorphic malware metamorphic:</strong> polymorphic strains mutate their signature through a mutation engine while keeping the same underlying algorithm. Metamorphic engines go further and rewrite the entire code structure on every infection — same function, different code — which is why the latter is the harder-to-detect answer choice.</div>
+            <div class="term-box"><strong>Assuming "fileless" means undetectable:</strong> fileless malware still leaves footprints — it just writes no files to disk. It lives in memory using legitimate binaries (PowerShell encoded commands, WMI event subscriptions), so detection moves from disk signatures to process behavior, in-memory analysis, and monitoring for encoded or script-based execution.</div>
+
             <h2>Tools Used in Malware Threats</h2>
-            <p>Malware analysis tools tested on the CEH exam include <strong>ANY.RUN</strong> and <strong>Joe Sandbox</strong> (interactive sandbox environments for safe dynamic analysis), <strong>VirusTotal</strong> (multi-engine AV scanning and threat intelligence), <strong>IDA Pro</strong> and <strong>Ghidra</strong> (disassemblers/decompilers for static analysis — Ghidra is free from NSA), <strong>x64dbg</strong> (debugger for dynamic analysis), and <strong>YARA</strong> (pattern-based malware identification using custom detection rules). For network-level malware detection, <strong>Suricata</strong> with community rules can identify C2 beaconing patterns. The CEH exam expects understanding of the analysis workflow: initial triage (hash lookup, VirusTotal) → static analysis (strings, PE headers, imports) → dynamic analysis (sandbox behavior, network connections, file system changes) → reporting and IOC extraction.</p>
+            <p>Analysis tooling the CEH v13 exam references for this domain, by job:</p>
+            <ul class="content-list">
+                <li><strong>Ghidra / IDA Pro:</strong> disassemblers and decompilers for static analysis — Ghidra is the free NSA-published option, IDA Pro the commercial workhorse</li>
+                <li><strong>PEiD / strings / exiftool:</strong> the quick static triad — packer identification, embedded string extraction, and metadata inspection before anything is executed</li>
+                <li><strong>Cuckoo / ANY.RUN / Joe Sandbox:</strong> dynamic sandboxes that run the sample in isolation and capture file drops, registry edits, process trees, and outbound network traffic</li>
+                <li><strong>OllyDbg / x64dbg / GDB:</strong> step-through debuggers for dynamic analysis — OllyDbg and x64dbg on Windows (32- and 64-bit), GDB on Linux</li>
+                <li><strong>YARA:</strong> pattern-based identification with custom detection rules, used to confirm a sample belongs to a known family</li>
+                <li><strong>VirusTotal:</strong> multi-engine scanning plus threat-intel context before you invest time in hands-on analysis</li>
+                <li><strong>Wireshark / TCPView with Process Monitor and API Monitor:</strong> the sandbox observation layer — C2 traffic on the wire plus per-process file, registry and API activity</li>
+                <li><strong>Volatility:</strong> memory-forensics framework for analyzing RAM captures — essential when the sample is fileless or a rootkit is hiding kernel objects</li>
+            </ul>
+
+            <h2>Worked Example: Triage of a Suspicious Executable</h2>
+            <p>An endpoint alert hands you an unknown .exe. First, hash it (MD5 and SHA-256) and check VirusTotal without executing anything on a production machine. Static stage: inspect the PE header, run strings for URLs and registry keys, and use PEiD to see whether it is packed — a packed binary tells you disassembly needs an unpacking step first.</p>
+            <p><strong>Then go dynamic:</strong> inside an isolated sandbox with no internet access (or a controlled lab network), let the sample run and watch what it does — dropped files, new scheduled tasks, registry persistence keys, outbound connections to an IP that resolves to nothing. Correlate with YARA rules against known families, and if behavior is purely in-memory, capture the sandbox host's RAM for a Volatility pass before you shut it down.</p>
 
             <h2>How to Study Malware Threats for the CEH v13 Exam</h2>
             <p>To effectively study Module 7 for the Certified Ethical Hacker exam:</p>
@@ -219,7 +239,7 @@
     (function(){
         const mod = '7';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 28;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');
