@@ -96,6 +96,7 @@
 
         <h1 class="page-title">CEH v13 Module 16: Hacking Wireless Networks</h1>
         <p class="content-text">This module covers wireless network attacks including WEP/WPA/WPA2 cracking, evil twin attacks, rogue access points, deauthentication attacks, Bluetooth exploits, and Wi-Fi Protected Setup (WPS) attacks. Understanding wireless protocols is essential for both attacking and securing wireless infrastructure.</p>
+        <p class="content-text">The CEHStudy app carries <strong>13 flashcards for Module 16</strong> across 2 sections — know the standard ladder cold: WEP is broken, WPA2 falls to handshake capture plus an offline dictionary attack, WPS PINs fall to Reaver in hours, and only WPA3 (SAE, plus protected management frames) removes both classic capture vectors.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -146,8 +147,26 @@
                 <li><strong>WPS PIN Brute Force & Reaver:</strong> Wi-Fi Protected Setup uses an 8-digit PIN, but the verification protocol splits it: first half (4 digits) and second half (4 digits) are verified independently with separate checksums. This reduces the attack space from 10^8 to approximately 11,111 (10^4 for first half + 9,999 for second half, accounting for checksum). Reaver automates this brute force, typically recovering the PIN in 2-12 hours. Once the WPS PIN is known, the attacker can either connect using WPS or derive the WPA PSK. On the CEH exam, know that WPS should be disabled on all production access points — the convenience of plug-and-pair vastly increases attack surface. Detection: unusual reconnection patterns, WPS LEDs blinking repeatedly, or monitoring for Reaver's characteristic request patterns (typically 3 requests per minute per PIN attempt).</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 16</h2>
+            <div class="term-box"><strong>Confusing PMKID capture with the full 4-way handshake:</strong> the PMKID is available from the initial EAPOL exchange, so it can be captured without forcing a reassociation at all — then cracked offline with hashcat. The classic handshake flow (deauth a client, capture the 4-way handshake, crack with a wordlist) is a different, slower path. Both attack WPA2-Personal and both end in the same place: the pre-shared key.</div>
+            <div class="term-box"><strong>Counting MAC filtering and hidden SSIDs as real controls:</strong> MAC addresses are trivially spoofed and a hidden SSID is still visible to any scanner — the defensible stack on the exam is WPA2-AES (or WPA3) with a long random PSK, WPS disabled entirely, firmware kept current, 802.1X/RADIUS enterprise authentication where available, guest Wi-Fi segmented, and rogue APs hunted with WIDS/WIPS.</div>
+            <div class="term-box"><strong>Forgetting why deauthentication works at all:</strong> 802.11 management frames are not encrypted or authenticated, so any device within radio range can forge a deauth frame using the victim's MAC — that single fact powers handshake capture, wireless denial of service, and evil-twin setup in one move. WPA3's PMF (Protected Management Frames, 802.11w) signs management frames, which is why the attack dies on WPA3 with PMF enabled.</div>
+
             <h2>Tools Used in Wireless Network Hacking</h2>
-            <p>Wireless attack tools referenced on the CEH exam include <strong>Aircrack-ng suite</strong> (the primary wireless attack toolkit: airodump-ng for packet capture and network enumeration, airmon-ng for monitor mode management, aireplay-ng for IV generation and deauthentication attacks, aircrack-ng for WEP/WPA key cracking, wpa_passphrase for generating hashcat-compatible hashes), <strong>Reaver</strong> (automated WPS PIN brute-forcing tool with options for background operation, lockout recovery, and PSK derivation once PIN is found), <strong>Kismet</strong> (passive wireless network discovery and client tracking — detects rogue APs, hidden SSIDs, and non-standard channels without transmitting any packets), <strong>mdk3/mdk4</strong> (multi-function wireless attack tool: deauthentication, fog attacks on WPA, fake authentication frame injection, and channel hopping attacks), <strong>Wireshark</strong> (packet analyzer for examining captured 802.11 frames — useful for analyzing handshake structure and identifying protocol anomalies), and <strong>Honeyd</strong> (transparent proxy used in evil twin setups to redirect client traffic). On the CEH exam, know that Aircrack-ng is the single most referenced tool for wireless attacks — specifically aireplay-ng for deauth/IV generation and aircrack-ng for key recovery.</p>
+            <p>Wireless attack and analysis tools the CEH v13 exam references, by job:</p>
+            <ul class="content-list">
+                <li><strong>Aircrack-ng suite:</strong> the primary wireless toolkit — airmon-ng puts the adapter in monitor mode, airodump-ng captures traffic and handshakes, aireplay-ng generates deauthentication, and aircrack-ng cracks WEP/WPA keys offline against a wordlist</li>
+                <li><strong>Reaver:</strong> automated WPS PIN brute-forcer that runs in the background, recovers the 8-digit PIN by exploiting its weak per-digit checksum (around 11,000 combinations offline), and derives the PSK once the PIN is found</li>
+                <li><strong>Kismet:</strong> passive wireless detector and sniffer — finds rogue APs, hidden SSIDs, and non-standard channels without transmitting a single packet</li>
+                <li><strong>mdk3 / mdk4:</strong> multi-function attack tool covering deauthentication, fog attacks against WPA, fake authentication frame injection, and channel hopping</li>
+                <li><strong>Cowpatty:</strong> precomputed-attack cracker for PMKID hashes — trades disk space (rainbow tables of PMKIDs) for cracking speed when a station is connected or the SSID is known</li>
+                <li><strong>Wireshark:</strong> packet analyzer for dissecting captured 802.11 frames — examining handshake structure and spotting protocol anomalies after capture</li>
+                <li><strong>Honeyd:</strong> transparent proxy used in evil twin setups to redirect client traffic so interception is invisible to the victim</li>
+            </ul>
+
+            <h2>Worked Example: From Deauth to Cracked PSK, One Network at a Time</h2>
+            <p>airmon-ng start wlan0 puts the adapter in monitor mode, where it sees every frame in range regardless of BSSID. airodump-ng then identifies the target — SSID, BSSID, channel, WPA2-PSK security — and aireplay-ng --deauth floods the legitimate AP: because management frames are unauthenticated, connected clients drop instantly and reassociate, emitting a fresh 4-way handshake into the capture file. Offline, aircrack-ng -w wordlist.txt handshake.cap tests candidates at hardware speed; a strong random PSK survives this, which is exactly why the hardening checklist leads with key entropy and killing WPS.</p>
+            <p><strong>The twist:</strong> if the same AP has WPS enabled, the faster path is Reaver against the PIN — the per-digit checksum collapses the search to roughly 11,000 offline combinations, and the recovered PIN yields the PSK without ever touching the handshake. And on WPA3 the chain breaks twice: SAE resists the offline dictionary attack on the handshake, and PMF makes the deauth frame itself unforgeable — so an exam stem that specifies WPA3 with PMF enabled has removed both the fuel and the trigger.</p>
 
             <h2>How to Study Wireless Network Hacking for the CEH v13 Exam</h2>
             <p>To effectively study Module 16 for the Certified Ethical Hacker exam:</p>
@@ -216,7 +235,7 @@
     (function(){
         const mod = '16';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 13;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');
