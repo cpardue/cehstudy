@@ -153,7 +153,7 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 
 ## Phase 5 — Trust & E-E-A-T pages 🐘
 
-- [ ] **5.1** Create `/privacy/index.html`: standard privacy policy disclosing use of Google AdSense and advertising cookies (Google's standard third-party disclosure language), any analytics in use, and a contact email. Add to sitemap.
+- [x] **5.1** Create `/privacy/index.html`: standard privacy policy disclosing use of Google AdSense and advertising cookies (Google's standard third-party disclosure language), any analytics in use, and a contact email. Add to sitemap.
 - [ ] **5.2** Rewrite `/about/`: real author page — Chris Pardue, CEH credential, hands-on background, why the site exists; photo placeholder with descriptive alt text; `Person` JSON-LD (fill `sameAs` only if real profiles exist).
 - [ ] **5.3** Audit `/contact/` (must actually reach a human: mailto or form) and `/faq/` (answers must match current reality: card counts, prices, version numbers).
 
@@ -197,6 +197,14 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 ## Session Log
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-31 08:36] Phase 5.1 complete — /privacy/ policy page created + sitemap loc; VERIFY_ALLOW_MISSING=/privacy/ now dropped
+- Commit (cehstudy@main): `a7cd672f` — ONE commit, 2 files: new `privacy/index.html` (8,953 bytes CRLF, blob `a968cfaf`) + `sitemap.xml` (5,203 → 5,364 bytes, blob `48dbd2a4`; `/privacy/` loc inserted after the faq entry, lastmod 2026-08-31, yearly/0.4). Base `0d66144a`. Both remote blobs verified MATCH post-push (`_phase51_push.js`).
+- Page: mirrors contact/disclaimer template (header + footer byte-identical, same inline style block, WebPage + BreadcrumbList JSON-LD, ONE placeholder ad slot before footer as gate C.3 requires on non-stub pages). Content (all static HTML): no accounts / no personal data collected; progress stored in browser localStorage only, never transmitted; Google's standard AdSense + DoubleClick cookie disclosure with opt-out links (google.com/settings/ads, aboutads.info); GSC note (indexing/performance monitoring only, no cookies, no visitor data); explicit "no Google Analytics or other tracking"; contact@cehstudy.com + 48h response. Analytics in use per user 2026-08-31: only AdSense and Google Search Console.
+- Gate (`_verify_site.js`, NO VERIFY_ALLOW_MISSING): PASS — A 30/30 live (privacy deployed); B 0 broken internal links (62 pages / 723 targets, /privacy/ pending allowlist dropped); C.1/C.2/C.3 PASS; D report-only value 2,219 (was 2,218 — +1 is the known FNV-32 collision artifact; `_phase51_dcheck.js`: 0 of the new page's 2,745 content windows shared with any of the other 61 pages).
+- Live (`_phase51_live.js`): 16/16 PASS — /privacy/ HTTP 200 (title, single H1, ad slot, contact email, footer self-link); live sitemap 30 locs incl. /privacy/; core assets (/, flashcards_app.js, data.js, styles.css, questions.json, /contact/, /disclaimer/) all 200.
+- Next: Phase 5.2 (rewrite /about/ as real author page). Carried open items: module-page "study guide" wording; missing og:image; stale WebSite dateModified; modules 17–19 data.js-vs-page mismatch (user decision); placeholder ad slots (Phase 7.3–7.4).
+- Rollback: revert `a7cd672f` (single commit, 2 files) or force-reset main to `0d66144a`; post-push bytes archived in cehstudy-build/_work/phase51/.
 
 ### [2026-08-31 07:30] Phase 4.3 batch 4/4 — modules 16–20 deepened per approved plan; TODO 4.3 complete (all 4 batches done)
 - Commit (cehstudy@main): `4bfc3966` — ONE commit, 5 files (`/ceh-v13/module-NN/index.html`, N=16..20), base `422f8dd3`. Per page: generic single-paragraph "Tools Used in X" section replaced with a module-specific tool list (bold tool names, one line each — 7/8/6/7/5 items); new `Common Exam Mistakes in Module N` h2 with three term-box callouts; new `Worked Example: …` h2 with scenario + breakdown. Plus the batch-1 plan adaptations: per-module flashcard count line under the intro (counts derived from data.js: M16 13 cards/2 sections, M17 12/3, M18 13/3, M19 13/3, M20 17/3) and stale hardcoded progress `const total = 50` fixed to the real card count. Facts sourced only from each module's data.js cards + its practice topic page (68 cards reviewed across M16–M20).
