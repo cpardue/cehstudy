@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 12: Evading IDS, Firewalls & Honeypots</h1>
         <p class="content-text">This module covers techniques used to bypass network security controls. Attackers use evasion methods to avoid detection by IDS/IPS systems, firewall rules, and honeypots. Understanding these techniques is essential for both offensive security testing and defensive deployment.</p>
+        <p class="content-text">The CEHStudy app carries <strong>15 flashcards for Module 12</strong> across 3 sections — pair each evasion technique with the control it defeats (signature matching, stateful inspection, rate thresholds, outbound-DNS rules); the exam grades the mapping, not the tool name.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -147,8 +148,26 @@
                 <li><strong>NIDS vs HIDS Evasion Differences:</strong> NIDS (Network IDS) monitors traffic at network layer points (span ports, TAPs) and can be evaded by encryption (SSL/TLS) or tunneling since it only sees packets on the wire. HIDS (Host IDS) monitors activity directly on the endpoint — file system changes, process creation, registry modifications, log entries. HIDS is much harder to evade because the attacker must already have access to the host before they can blind the monitoring agent. On the CEH exam, know that NIDS sees what's on the network (bypassable with encryption); HIDS sees what's happening on the system (much harder to bypass without root/admin privileges). A comprehensive defense uses both layers — what NIDS misses, HIDS may catch.</li>
             </ul>
 
-            <h2>Tools Used in IDS/IPS Evasion</h2>
-            <p>Evasion tools referenced on the CEH exam include <strong>hping3</strong> (crafts custom packets with specific flags for testing IPS response — supports fragmented packets, IP spoofing, and protocol manipulation; `hping3 -f` for fraggle attacks, `-a` for IP spoofing), <strong>Nmap</strong> (multiple evasion scan options: `-f` for fragmentation, `--mtu` to set custom MTU, `-D RND:10` for decoy scanning with 10 random IPs, `--data-length` to add random padding to packets making them look like normal traffic), <strong>crt.sh</strong> and <strong>dns2tcp/dns2tcp-ng</strong> (DNS tunneling tools that encode data in DNS queries for exfiltration over port 53), <strong>iodine</strong> (DNS-over-IPv6 tunnel creating a TCP/IP tunnel through DNS), and <strong>SpySat</strong>/honeypot detection scripts (automated checks to identify honeypot behavior patterns). For defensive testing: <strong>Suricata/Snort</strong> (open-source IDS/IPS used to verify that evasion techniques are being detected — update rule sets to test coverage). On the CEH exam, know that Nmap's `-f` (fragment) and `-D` (decoy) flags are the most commonly referenced evasion options for firewall bypass scenarios.</p>
+                        <h2>Common Exam Mistakes in Module 12</h2>
+            <div class="term-box"><strong>Swapping IDS and IPS in the stem:</strong> an IDS is passive and out-of-band — it monitors traffic or a single host (NIDS/HIDS) and raises alerts. An IPS sits inline and actively blocks: it drops packets, resets connections, bans sources. A question asking which device stops the traffic wants IPS; one asking who reports it wants IDS.</div>
+            <div class="term-box"><strong>Assuming fragmentation always defeats inspection:</strong> splitting a payload so no single fragment matches a signature only works when the sensor inspects before reassembly — the target OS then reassembles and executes the full payload. Nmap -f performs minimum fragmentation for exactly this test, and the countermeasure is reassemble-then-inspect at the sensor.</div>
+            <div class="term-box"><strong>Reading honeypot tells as production quirks:</strong> low-fidelity honeypots (the honeyd class) leak incomplete service implementations, simplified response signatures, timing oddities, and the same MAC address behind multiple IP addresses. Exams ask which observation exposes a decoy — duplicate MAC across hosts is the classic tell, not unusual traffic volume.</div>
+
+            <h2>Tools for IDS/IPS Evasion</h2>
+            <p>Evasion and detection tools the CEH v13 exam references for this domain, by job:</p>
+            <ul class="content-list">
+                <li><strong>Nmap:</strong> the evasion workhorse — -f minimum fragmentation, --mtu custom fragment size, -D decoy scans (RND:N random sources included), --data-length random padding, and -S/-g to vary source IP and port</li>
+                <li><strong>hping3:</strong> raw packet crafting with specific flag combinations to probe how an IPS responds to fragments, spoofed IPs, and unusual protocol mixes</li>
+                <li><strong>Scapy:</strong> programmatic packet construction for junk-data injection, out-of-order packets, and OS-fingerprint mimicry that canned scan flags cannot express</li>
+                <li><strong>iodine / dnscat2:</strong> DNS tunneling tools that carry exfiltrated data, or a full TCP/IP tunnel, inside port-53 queries through firewalls that only permit outbound DNS</li>
+                <li><strong>dns2tcp / dns2tcp-ng:</strong> encode traffic in DNS query names for exfiltration where DNS egress is the single allowed channel</li>
+                <li><strong>honeyd:</strong> low-interaction honeypot emulator; knowing its tells (limited services, duplicate MACs) is the detection side of this module</li>
+                <li><strong>Swiftenet:</strong> IDS/IPS evasion framework the exam lists for systematic sensor-bypass testing</li>
+            </ul>
+
+            <h2>Worked Example: One Beacon, Three Evasion Layers</h2>
+            <p>An outbound beacon to a known command-and-control address is blocked at the perimeter. The attacker re-wraps the payload in DNS queries (iodine) — the firewall allows port 53 out, so the tunnel flows. Query timing is then spread to stay below rate thresholds, and when signature alerts start firing on the tunnel pattern, the payload is fragmented across packets so no single fragment matches a rule.</p>
+            <p><strong>The twist:</strong> the sensor log is full yet traffic still gets through — the device in that position is an IDS, passive and out-of-band, capable of reporting but not blocking. Moving an IPS inline lets it drop packets and reset connections, and when the attacker encrypts the payload to hide signatures from matching, the defender's counter is TLS decryption at the inspection point plus anomaly detection. One attack, three different controls: that mapping is what the module tests.</p>
 
             <h2>How to Study IDS Evasion for the CEH v13 Exam</h2>
             <p>To effectively study Module 12 for the Certified Ethical Hacker exam:</p>
@@ -209,7 +228,7 @@
     (function(){
         const mod = '12';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 15;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

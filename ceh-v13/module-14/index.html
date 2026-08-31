@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 14: Hacking Web Applications</h1>
         <p class="content-text">This module covers attacks against web applications, focusing on the OWASP Top 10 vulnerabilities. Attackers exploit XSS (reflected, stored, DOM-based), CSRF, injection flaws, security misconfigurations, and broken authentication to compromise web application systems and data.</p>
+        <p class="content-text">The CEHStudy app carries <strong>11 flashcards for Module 14</strong> across 3 sections — resolve every question by naming the OWASP Top 10 (2021) category first; Broken Access Control leads the list, and stems about object IDs, payloads, or cookie handling all fall out from there.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -146,8 +147,25 @@
                 <li><strong>OWASP Top 10 Evolution (2017 → 2021):</strong> The CEH v13 exam references the OWASP Top 10 framework. Key changes from 2017 to 2021: Insecure Direct Object References (A05:2017) was merged into Broken Access Control (A01:2021); Security Misconfiguration (A05:2017) became Vulnerable and Outdated Components (A06:2021); Server-Side Request Forgery (SSRF) was promoted from the 2013 list back to Top 10 as A10:2021. The current 2021 list: A01 Broken Access Control, A02 Cryptographic Failures, A03 Injection, A04 Insecure Design, A05 Security Misconfiguration, A06 Vulnerable and Outdated Components, A07 Identification and Authentication Failures, A08 Software and Data Integrity Failures, A09 Security Logging and Monitoring Failures, A10 SSRF. On the CEH exam, know the category names and which specific attacks fall under each — e.g., SQL injection falls under A03 (Injection), weak TLS configuration falls under A02 (Cryptographic Failures).</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 14</h2>
+            <div class="term-box"><strong>Mixing up the three XSS flavors:</strong> reflected XSS rides in the URL and echoes back in the response; stored XSS persists on the server (a database row) and executes for every visitor who views the content; DOM-based XSS moves from an untrusted source to a sink such as innerHTML entirely inside the browser, which can keep it invisible to server-side WAFs. The data path in the stem picks the flavor — and stored is the one that reaches everyone.</div>
+            <div class="term-box"><strong>Treating CSRF and XSS as one client-side problem:</strong> XSS runs attacker script in the victim browser with stolen context; CSRF makes the victim browser send a forged request while its own cookies are attached, and the application never verifies the request origin. The defenses differ — output encoding and HttpOnly for XSS; per-request anti-CSRF tokens plus SameSite for CSRF.</div>
+            <div class="term-box"><strong>Testing access control only in the interface:</strong> IDOR (incrementing an object reference like /order/1234) and privilege escalation are server-side authorization failures; a hidden button is not a control. The exam answer is always the same: enforce authorization server-side on every request.</div>
+
             <h2>Tools Used in Web Application Hacking</h2>
-            <p>Web application attack tools referenced on the CEH exam include <strong>Burp Suite</strong> (the industry-standard web application proxy for intercepting, modifying, and replaying HTTP requests; used to test XSS by injecting payloads into parameters, test CSRF by removing anti-CSRF tokens, enumerate IDOR by incrementing object IDs, and run automated vulnerability scans with the Pro scanner), <strong>OWASP ZAP (Zed Attack Proxy)</strong> (open-source alternative to Burp Suite with automated active and passive scanning; the CEH exam references it as a free tool for web application security testing), <strong>SQLMap</strong> (automated SQL injection detection and exploitation tool that tests all input parameters for SQLi using multiple techniques — union-based, boolean blind, time-based, error-based, and out-of-band), <strong>Wapiti</strong> (command-line web application scanner detecting XSS, SQLi, command injection, and path traversal vulnerabilities), and <strong>OWASP WebGoat</strong> (deliberately vulnerable training application maintained by OWASP that demonstrates all Top 10 vulnerabilities in an interactive lab environment — ideal for hands-on practice before the CEH exam). On the CEH exam, know that Burp Suite is the most commonly referenced tool for manual web application testing, while SQLMap is specifically associated with SQL injection exploitation.</p>
+            <p>Web application testing tools the CEH v13 exam references for this domain, by job:</p>
+            <ul class="content-list">
+                <li><strong>Burp Suite:</strong> the proxy standard — intercept, modify, and replay requests to inject XSS payloads, strip anti-CSRF tokens, and walk IDOR object IDs one at a time</li>
+                <li><strong>OWASP ZAP:</strong> open-source alternative with automated active and passive scanning; the free-tool reference for web application security testing on the exam</li>
+                <li><strong>SQLMap:</strong> automated SQLi detection across parameters (union, boolean blind, time-based, error, out-of-band) — the injection workhorse in this module's toolkit</li>
+                <li><strong>Wfuzz:</strong> web fuzzer for brute-forcing parameters, files, and headers that directory tools miss</li>
+                <li><strong>Skipfish / Arachni:</strong> content-discovery and multi-framework scanning options from the same OWASP-toolbox family</li>
+                <li><strong>OWASP WebGoat:</strong> deliberately vulnerable training application demonstrating the Top 10 flaws interactively — the standard hands-on lab before exam day</li>
+            </ul>
+
+            <h2>Worked Example: One Comment Field, Two Different Flaws</h2>
+            <p>A tester posts a &lt;script&gt; tag into a comment field. If the payload only echoes back to the poster through URL parameters it is reflected XSS; once the post is saved and every visitor who reads the thread executes it, it is stored XSS — typically the most damaging flavor. A DOM-based variant never round-trips to the server at all: location.hash flows into innerHTML client-side, so a WAF watching HTTP traffic sees nothing.</p>
+            <p><strong>The twist:</strong> the same profile page serves another user's data when the tester increments its ID — broken access control, the category that tops the OWASP Top 10 (2021) list. And a fake "account suspended" screen built on an invisible iframe over the real page is clickjacking, closed by X-Frame-Options: DENY or CSP frame-ancestors. One test session, three separate categories; reporting each under the right name is what separates a passing write-up from a failing one.</p>
 
             <h2>How to Study Web Application Hacking for the CEH v13 Exam</h2>
             <p>To effectively study Module 14 for the Certified Ethical Hacker exam:</p>
@@ -208,7 +226,7 @@
     (function(){
         const mod = '14';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 11;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

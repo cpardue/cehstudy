@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 13: Hacking Web Servers</h1>
         <p class="content-text">This module covers attacks against web server platforms including IIS, Apache, and nginx. Attackers exploit misconfigurations, directory traversal vulnerabilities, default credentials, unnecessary modules, and HTTP method abuses to gain unauthorized access to web server systems.</p>
+        <p class="content-text">The CEHStudy app carries <strong>8 flashcards for Module 13</strong> across 2 sections — drill the security-header list until each maps to the attack it closes: HSTS blocks downgrades, CSP limits injection blast radius, X-Frame-Options stops clickjacking, nosniff stops MIME sniffing.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -144,8 +145,25 @@
                 <li><strong>Web Server Hardening & Attack Surface Reduction:</strong> Defense strategy: (1) Remove all unnecessary modules and handlers — every loaded module is potential attack surface, (2) Disable dangerous HTTP methods (TRACE, PUT, DELETE, OPTIONS) on production servers, (3) Remove default pages and test files (default.php, server-status), (4) Configure proper file permissions so the web server user cannot read system files, (5) Disable directory listing (Options -Indexes in Apache, Directory Browsing in IIS), (6) Use a Web Application Firewall (WAF) as defense-in-depth, (7) Keep the server OS and web platform patched. On the CEH exam, know that hardening is an ongoing process — new vulnerabilities are discovered regularly in even well-maintained platforms like Apache 2.4.x.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 13</h2>
+            <div class="term-box"><strong>Confusing server-level with application-level targets:</strong> this module attacks the web server platform — misconfigurations, outdated versions, exposed default pages, permissive HTTP methods, CGI and server-side include bugs. Script-level XSS or database payloads belong to Modules 14–15; exam stems name the software layer, and the answer key follows it.</div>
+            <div class="term-box"><strong>Skipping header reconnaissance:</strong> curl -I, WhatWeb, and Nmap read Server and X-Powered-By versions to target known CVEs, spot weak TLS, and map the stack. Stems asking for the first step against an unknown web server want banner and version discovery — not a payload.</div>
+            <div class="term-box"><strong>Answering hardening questions with patching alone:</strong> the full control set is procedural — remove default and test pages, disable directory listing, restrict HTTP methods to what the app needs (deny TRACE, PUT, DELETE), enforce modern TLS with HSTS, add the security headers, and put a WAF in front. Update-only answers miss the configuration half.</div>
+
             <h2>Tools Used in Web Server Hacking</h2>
-            <p>Web server attack tools referenced on the CEH exam include <strong>Nmap + NSE scripts</strong> (vuln detection: http-put, http-trace, http-methods scripts test for dangerous method exposure; http-apache-negotiation-check tests mod_negotiation misconfigurations), <strong>Metasploit</strong> (web server-specific exploits: multiple iis_webserver vulnerabilities, apache mod_cgi exploits, nginx off-by-one overflow), <strong>Burp Suite</strong> (proxy that intercepts HTTP requests to test directory traversal by modifying path parameters, test dangerous methods via Repeater, and identify information disclosure in response headers like Server and X-Powered-By), <strong>DirBuster/DirSearch</strong> (directory brute-forcing tools that find hidden paths, backup files, and administrative interfaces not listed in navigation — e.g., /admin/, /backup/, /config.php.bak), and <strong>Wapiti</strong> (web application scanner specifically designed to detect server-level issues like directory traversal, CORS misconfiguration, and HTTP method exposure). On the CEH exam, know that DirBuster is the most commonly referenced tool for finding hidden web server paths during reconnaissance.</p>
+            <p>Reconnaissance and attack tools the CEH v13 exam references for web server testing, by job:</p>
+            <ul class="content-list">
+                <li><strong>Nmap + NSE scripts:</strong> vuln scripts such as http-put, http-trace, http-methods, and http-apache-negotiation-check probe for dangerous method exposure and module misconfigurations</li>
+                <li><strong>WhatWeb:</strong> fingerprints web stacks at scale from response details — engine, version, and configuration traits</li>
+                <li><strong>curl -I:</strong> the quick header check; Server and X-Powered-By reveal versions for targeted CVE lookups before anything deeper runs</li>
+                <li><strong>Nikto:</strong> scans for known weak configurations and exposed test or default content across web servers</li>
+                <li><strong>DirBuster / Gobuster:</strong> brute-force hidden directories, backup files, and administrative interfaces (/admin/, *.bak) that never appear in navigation</li>
+                <li><strong>crt.sh:</strong> certificate-transparency lookups that enumerate the virtual hosts sharing one IP before host-header probing begins</li>
+            </ul>
+
+            <h2>Worked Example: From Default Page to Denied Method</h2>
+            <p>A fresh staging box answers with vendor default pages and directory listing enabled — the first reconnaissance win for anyone probing it: versions, sample files, and paths handed over for free. curl -I surfaces the server version; Nikto confirms exposed test scripts. After hardening removes the defaults and listing, testing moves to method abuse: TRACE is still accepted (the XST reflection path) and PUT writes a file into the web root.</p>
+            <p><strong>The twist:</strong> the final gate is headers. X-Frame-Options: DENY stops the page from being iframed for clickjacking, HSTS closes the SSL-stripping downgrade window, nosniff blocks content-type tricks, and CSP limits the blast radius of anything that does get injected. The exam treats those headers as the server-hardening checklist, so each header-to-attack pairing should be instant.</p>
 
             <h2>How to Study Web Server Hacking for the CEH v13 Exam</h2>
             <p>To effectively study Module 13 for the Certified Ethical Hacker exam:</p>
@@ -206,7 +224,7 @@
     (function(){
         const mod = '13';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 8;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

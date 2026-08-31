@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 15: SQL Injection</h1>
         <p class="content-text">SQL injection (SQLi) is one of the most critical web application vulnerabilities. This module covers UNION-based, blind, boolean-based, and time-based SQL injection techniques. Learn how to use sqlmap for automated exploitation, bypass WAFs, and implement prevention through parameterized queries.</p>
+        <p class="content-text">The CEHStudy app carries <strong>14 flashcards for Module 15</strong> across 3 sections — learn the type tree cold (in-band: error-based and union; blind: boolean and time; out-of-band); every payload question resolves by naming which class the technique belongs to.</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -148,8 +149,26 @@
                 <li><strong>Parameterized Queries as Primary Prevention:</strong> The single most effective SQLi prevention: parameterized queries (prepared statements). Instead of concatenating user input into SQL strings, the query structure is sent to the database first (the prepared statement), and user input is sent separately as data parameters. The database engine treats parameters strictly as data, never as executable SQL code — regardless of what characters they contain. Example: Instead of "SELECT * FROM users WHERE username='" + userInput + "'", use "SELECT * FROM users WHERE username = ?" with userInput passed as a bound parameter. On the CEH exam, know that input validation (blacklisting SQL metacharacters) is NOT sufficient as a standalone defense — it can be bypassed with encoding, comments, and alternative syntax. Parameterized queries work because they separate code from data at the protocol level, making bypass impossible regardless of input content.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 15</h2>
+            <div class="term-box"><strong>Guessing UNION column counts by trial and error:</strong> a UNION SELECT fails unless column counts match, and the disciplined step is ORDER BY n until the error flips, then padding with NULLs. Stems showing ' UNION SELECT username, password FROM users-- are in-band, because the data returns inside the same visible response.</div>
+            <div class="term-box"><strong>Calling every no-output injection time-based:</strong> blind splits two ways — boolean, where page responses differ for ' AND 1=1 versus ' AND 1=2 and leak one character at a time, and time-based, where an induced delay (MySQL SLEEP(5), SQL Server WAITFOR DELAY '0:0:5', PostgreSQL pg_sleep(5)) is the only observable channel. What you observe — page content or response latency — picks the flavor.</div>
+            <div class="term-box"><strong>Stopping the defense list at input validation:</strong> the prevention stack starts with parameterized queries (prepared statements) that separate code from data; stored procedures, least-privilege database accounts, WAF rules, ORM frameworks, and suppressing raw database errors to users all belong in the same answer. Validation alone is not the strongest primary defense.</div>
+
             <h2>Tools Used in SQL Injection</h2>
-            <p>SQL injection tools referenced on the CEH exam include <strong>sqlmap</strong> (the industry-standard automated SQLi detection and exploitation tool; key commands: sqlmap -u "http://target/page?id=1" --dbs enumerates databases, --tables enumerates tables in a database, --dump dumps table contents, --technique=BEUSTQ selects specific injection techniques, --batch runs without interactive prompts, --proxy="http://127.0.0.1:8080" for Burp integration), <strong>Burp Suite</strong> (web proxy that intercepts requests to test SQLi manually by injecting single quotes, UNION SELECT statements, and conditional time delays into parameters; the Repeater tool is essential for iterating blind SQLi payloads), <strong>OWASP ZAP</strong> (free alternative with automated SQLi scanning as part of its active scan), <strong>Nmap NSE scripts</strong> (vuln detection: mysql-empty-password, mysql-enum — identify MySQL versions and weak configurations before attempting injection), and <strong>DVWA/SQLi labs</strong> (deliberately vulnerable practice environments for hands-on SQLi exploitation). On the CEH exam, sqlmap is the most frequently referenced tool — know that it automates all major injection types and can be configured to use specific techniques when others fail.</p>
+            <p>Detection and exploitation tools the CEH v13 exam references for SQL injection testing, by job:</p>
+            <ul class="content-list">
+                <li><strong>sqlmap:</strong> the automated standard — --dbs lists databases, -D dbname --tables lists tables, -T tbl --dump extracts rows; --os-shell and --passwords extend the test, and --batch --technique=B pins a technique class such as boolean blind for scripted runs</li>
+                <li><strong>Burp Suite Repeater:</strong> manual SQLi iteration — single quotes, UNION SELECT statements, and conditional delays replayed one change at a time until response behavior flips</li>
+                <li><strong>OWASP ZAP:</strong> free alternative with automated SQLi detection built into its active scan pass</li>
+                <li><strong>Havij:</strong> GUI-based SQLi tool for Windows, the non-command-line option on the exam</li>
+                <li><strong>Mantra:</strong> automated injection tool that sweeps form fields and URLs for SQLi without manual payload crafting</li>
+                <li><strong>Modlishka:</strong> phishing plus SQLi in one package, referenced when a stem mixes credential capture with injection</li>
+                <li><strong>DVWA / SQLi labs:</strong> deliberately vulnerable practice environments for hands-on exploitation before exam day</li>
+            </ul>
+
+            <h2>Worked Example: Login Bypass to OS Shell, Class by Class</h2>
+            <p>On a login form, admin'-- in the username field comments out the password check — the same tautology logic as ' OR 1=1-- — and the app signs the tester in as administrator: first-order, in-band injection. Escalating, ' ORDER BY 3-- stops erroring while ORDER BY 4 errors, so the query has three columns; ' UNION SELECT username, password FROM users-- then dumps credentials inside the same visible response.</p>
+            <p><strong>The twist:</strong> a second endpoint renders nothing at all, so the channel becomes latency — SLEEP(5) fires only when the injected condition is true, the signature of time-based blind. Post-exploitation, the database engine sets the ceiling: xp_cmdshell on SQL Server runs operating-system commands (often disabled by default), while prepared statements from day one would have collapsed the whole chain, because injected SQL becomes inert data.</p>
 
             <h2>How to Study SQL Injection for the CEH v13 Exam</h2>
             <p>To effectively study Module 15 for the Certified Ethical Hacker exam:</p>
@@ -218,7 +237,7 @@
     (function(){
         const mod = '15';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 14;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');

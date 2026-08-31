@@ -95,6 +95,7 @@
 
         <h1 class="page-title">CEH v13 Module 11: Session Hijacking</h1>
         <p class="content-text">Session hijacking involves taking over an active user session by stealing or predicting the session token. This module covers TCP session hijacking, SIDJACKING, XSS-based attacks, cookie poisoning, session fixation, and prevention measures including HTTPS and secure cookie flags.</p>
+        <p class="content-text">The CEHStudy app carries <strong>13 flashcards for Module 11</strong> across 3 sections — learn the three hijacking flavors (network/TCP, web-session, client-side) in order; every exam question pairs one attack with its matching defense (HTTPS, ID rotation, cookie flags).</p>
 
         <h2 class="section-heading">Key Topics Covered</h2>
         <ul class="content-list">
@@ -144,8 +145,25 @@
                 <li><strong>Defense in Depth for Session Security:</strong> The CEH exam tests layered session protections: (1) HTTPS everywhere (prevents SIDJACKING), (2) HttpOnly flag (prevents JavaScript from reading cookies — blocks XSS cookie theft), (3) Secure flag (cookie only sent over HTTPS), (4) SameSite attribute (prevents cross-origin cookie sending — mitigates CSRF-driven attacks), (5) Session timeout and IP binding, (6) MFA for sensitive actions (even if session is hijacked, additional verification required), (7) Anomaly detection (geographic impossibility, rapid location changes). On the exam, know that no single control is sufficient — defense in depth requires multiple layers.</li>
             </ul>
 
+                        <h2>Common Exam Mistakes in Module 11</h2>
+            <div class="term-box"><strong>Confusing passive with active hijacking:</strong> passive work only observes and records traffic — capturing session IDs without disturbing the conversation. Active hijacking takes over a live session: desynchronize it (RST or null data), then inject spoofed packets while racing to predict the sequence number before the target answers. Stems asking which mode needs sequence prediction want active, always.</div>
+            <div class="term-box"><strong>Treating session fixation like cookie theft:</strong> in fixation the attacker plants a known session ID (via a link or cookie) before login and wins when the app fails to regenerate the ID at authentication. Sniffing steals an ID that is already in transit. The fixes differ — rotate the session ID after login for fixation; Secure + HttpOnly cookies over HTTPS for sniffing.</div>
+            <div class="term-box"><strong>Answering client-side TLS questions with network fixes:</strong> CRIME and FREAK do not live at the firewall. CRIME infers secrets from TLS/HTTP compression-ratio differences, so the fix is disabling TLS compression; FREAK forces a downgrade to weak export-grade RSA (Forbidden reuses the handshake nonce). A rate-limit or routing answer applies to neither.</div>
+
             <h2>Tools Used in Session Hijacking</h2>
-            <p>Session hijacking tools referenced on the CEH exam include <strong>Firesheep</strong> (Firefox extension that captures unencrypted session cookies from HTTPS sites — demonstrates SIDJACKING on open WiFi networks; works by parsing HTTP Referer headers and Set-Cookie responses), <strong>Ettercap</strong> (powerful MITM framework supporting ARP poisoning, TCP stream editing, and session hijacking via its built-in filter system — can modify HTTP responses in real-time to inject session fixation payloads), <strong>Wireshark</strong> (packet analysis to observe TCP sequence patterns and identify unencrypted session tokens in plaintext traffic), <strong>tcpflow</strong> (extracts TCP streams for deeper analysis of session data), and <strong>Burp Suite</strong> (web proxy that can modify HTTP headers, intercept responses for session fixation testing, and detect missing Secure/HttpOnly flags). On the CEH exam, know that Ettercap is the most comprehensive single tool for demonstrating MITM-based session attacks in a lab, while Firesheep is specifically referenced for wireless SIDJACKING scenarios.</p>
+            <p>Session-theft and testing tools the CEH v13 exam references for this domain, by job:</p>
+            <ul class="content-list">
+                <li><strong>Firesheep:</strong> browser extension that lifts unencrypted session cookies from HTTPS sites by parsing HTTP Referer headers and Set-Cookie responses; the standing example of client-side session theft on shared networks</li>
+                <li><strong>Ettercap:</strong> MITM framework covering ARP poisoning, TCP stream editing, and session hijacking through filters that rewrite live HTTP responses in real time to inject session-fixation payloads</li>
+                <li><strong>hping3:</strong> low-level packet generator for crafting spoofed TCP segments, including the well-formed RST packets used to desynchronize a victim before takeover</li>
+                <li><strong>tcpflow:</strong> reassembles captured packets into per-connection streams so the actual session data a sniffer recorded becomes readable</li>
+                <li><strong>Wireshark:</strong> packet-level view of TCP sequence and ACK numbers, the raw material for predicting sequence values in active-hijacking exercises</li>
+                <li><strong>Burp Suite:</strong> proxy for testing application-level session handling — inspect Set-Cookie flags (Secure, HttpOnly, SameSite) and replay a fixed session ID across login to check that the app regenerates it</li>
+            </ul>
+
+            <h2>Worked Example: From Sniffed Cookie to Fixed Session</h2>
+            <p>On shared WiFi, tcpflow rebuilds a web session from captured packets: the Set-Cookie response carries no Secure flag and the session ID rides in an HTTP Referer header — textbook conditions for a Firesheep-style theft. The attacker copies the identifier and replays authenticated requests; the server accepts them because authentication happened once, at session start.</p>
+            <p><strong>The twist:</strong> once the cookie flags are fixed, the next test changes shape. The tester links a victim to a page that sets a known session ID; the victim logs in through it; and because the app kept the pre-authentication ID instead of rotating one, the tester is now viewing an authenticated session. Client-side flags protect the token in transit, but regeneration on login is what makes a planted ID worthless — the exam pairs those two defenses with their attacks.</p>
 
             <h2>How to Study Session Hijacking for the CEH v13 Exam</h2>
             <p>To effectively study Module 11 for the Certified Ethical Hacker exam:</p>
@@ -206,7 +224,7 @@
     (function(){
         const mod = '11';
         const key = 'cphstudymod' + mod;
-        const total = 50;
+        const total = 13;
         let studied = parseInt(localStorage.getItem(key) || '0', 10);
         function updateBar(){
             const bar = document.getElementById('progressBar');
