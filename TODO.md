@@ -165,7 +165,7 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 
 - [x] **6.1** Regenerate `sitemap.xml` to EXACTLY the remaining indexable pages (50): home · `ceh-v13/` index · 20 modules · practice index + 20 topic pages · `glossary/` (single) · about, contact, faq, disclaimer, changelog, privacy. Fresh `lastmod`. Exclude redirect stubs (they are noindex). Note: the former "9 editorial" pages were deleted in Phase 3b — they must not reappear in the sitemap.
 - [x] **6.2** `robots.txt`: keep `Sitemap:` line. `[MANUAL — ask user]` AI-crawler allowlist (GPTBot, PerplexityBot, etc.) — keep or drop per user decision; record decision in Session Log.
-- [ ] **6.3** Final LVC self-audit: for EVERY page in the sitemap, answer yes/no and record in Session Log — unique intent? at least one substantial original content block? no boilerplate shared with another page? value visible without JS?
+- [x] **6.3** Final LVC self-audit: for EVERY page in the sitemap, answer yes/no and record in Session Log — unique intent? at least one substantial original content block? no boilerplate shared with another page? value visible without JS?
 - [ ] **6.4** Run full `_verify_site.js`; fix everything reported. Tag `ready-for-adsense`. Record SHA.
 
 **Verify:** all of the above complete; zero FAIL lines in `_verify_site.js`.
@@ -197,6 +197,18 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 ## Session Log
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-31 12:44] Phase 6.3 complete — LVC self-audit of all 50 sitemap pages (4-criterion yes/no grid recorded below); one pre-existing finding documented, no scope expansion
+- Method: `_phase63_audit.js` (cehstudy-build) — tarball parse; per-page chrome-stripped body metrics (header/footer/nav/script/style/ad-ins removed): word count + unique-text ratio (distinct 80-char shingles not shared with ANY other page); H1 + title uniqueness across all 50. Artifacts: `_phase63_audit.json`, `_verify_phase6_3_20260831.txt`, `_phase63_console.txt`
+- Result grid (Q1 unique intent · Q2 substantial original block · Q3 no shared boilerplate · Q4 value visible without JS):
+  - home: Y/Y/Y/Y (1,432 words, uniq 0.996)
+  - ceh-v13 index: Y/Y*/Y/Y — thin hub page by design (127 words; original one-line description per module × 20 + study-order guidance; uniq 1.0)
+  - 20 module pages: all Y — 1,459–3,256 words each, uniq 0.990–0.998 (Phase 4.3 tool/mistakes/scenario content intact)
+  - practice index: Y/Y/Y/Y (237 words, uniq 0.987)
+  - 20 practice topic pages: Q1=Y, Q2=Y, Q3=NO-minor, Q4=Y — 979–1,159 words each incl. 10 original MCQs + explanations (question sets unique per topic); shared text = title/breadcrumb/intro line only (uniq 0.788–0.823)
+  - glossary: Y/Y/Y/Y (9,389 words, uniq 0.999) · about: Y (404w, 1.0) · contact: Y* (thin functional page, 184w, 1.0) · faq: Y (388w, 0.99) · privacy: Y (463w, 1.0) · disclaimer: Y (282w, 0.981) · changelog: Y* (thin functional page, 99w, 1.0)
+- Finding (pre-existing, NOT new): the 20 practice topic pages share a short title/breadcrumb/intro line ("Below are 10 original multiple-choice practice questions for this module, each…") — exactly the stable baseline gate D reports (2,220 shared shingles) that has been recorded and accepted through Phases 2–5 Verify gates. Per-topic question content is unique (~79% of each body). Carried recommendation (low priority): vary the intro line per topic if desired before the 7.2 re-submission. NOT fixed this phase — 6.3 is audit-only; rewriting 20 pages after fresh lastmods is out of scope (rule 6, recorded)
+- H1 uniqueness: 50/50 unique · title uniqueness: 50/50 unique
 
 ### [2026-08-31 12:31] Phase 6.2 complete — robots.txt decision recorded (user, 2026-08-31): keep explicit AI-crawler allowlist; no file change required
 - Decision (per item `[MANUAL — ask user]`, answered by user this session): KEEP the explicit AI/LLM-crawler allowlist as-is (GPTBot, Google-Extended, CCBot, anthropic-ai, ClaudeBot, PerplexityBot) for maximum LLM citation visibility. Generic `User-agent: * / Allow: /` also covers them; the explicit blocks are a deliberate positive signal
