@@ -102,26 +102,37 @@
             <li>Scanning vs footprinting: active vs passive information gathering</li>
             <li>Vulnerability scanning and network discovery procedures</li>
             <li>TCP scan types: SYN (-sS), connect (-sT), FIN (-sF), Xmas (-sX), NULL scans</li>
-            <li>Discovery scans: Ping sweep (-sP), TCP ping (-PT), SYN ping (-PS)</li>
+            <li>Discovery scans: Ping scan (-sn, formerly -sP), TCP ping (-PT), SYN ping (-PS)</li>
             <li>Specialized scans: Version detection (-sV), UDP (-sU), ACK (-sA), Window, Idle (-sI)</li>
-            <li>nmap timing options: -T0 through -T5</li>
+            <li>nmap timing options: -T0 through -T5 (default -T3 Normal)</li>
+            <li>nmap port selection: -p &lt;range&gt; and --top-ports &lt;number&gt;</li>
             <li>nmap output formats: Normal, XML, Grepable, All (-oA)</li>
             <li>Banner grabbing and TCP/IP fundamentals</li>
             <li>Bypassing IDS and firewalls during scanning</li>
         </ul>
 
         <h2 class="section-heading">Important Terms & Concepts</h2>
-        <div class="term-box"><strong>TCP SYN scan (-sS):</strong> Half-open scan — sends SYN packets and analyzes responses without completing the TCP handshake. Most common stealth scan.</div>
-        <div class="term-box"><strong>TCP connect() scan (-sT):</strong> Completes the full TCP three-way handshake. More reliable but easier to detect than SYN scan.</div>
+        <div class="term-box"><strong>TCP SYN scan (-sS):</strong> Default and stealthiest Nmap scan — half-open scan that sends SYN packets and analyzes responses without completing the TCP three-way handshake. Requires raw socket access (root/administrator privileges).</div>
+        <div class="term-box"><strong>TCP Connect scan (-sT):</strong> Completes the full TCP three-way handshake using the OS system call. More reliable but easier to detect than SYN scan; used when raw socket privileges are missing.</div>
+        <div class="term-box"><strong>UDP scan (-sU):</strong> Scans UDP ports (DNS, DHCP, SNMP) — slower than TCP scanning because of ICMP port-unreachable analysis.</div>
+        <div class="term-box"><strong>NULL scan (-sN):</strong> Sends a packet with no TCP flags set — closed ports reply RST, filtered ports stay silent. Can bypass simple firewalls.</div>
         <div class="term-box"><strong>FIN scan (-sF):</strong> Sends a FIN packet — non-listening ports respond with RST. Can bypass some firewalls.</div>
         <div class="term-box"><strong>Xmas Tree scan (-sX):</strong> Sets FIN, PSH, and URG flags like a Christmas tree. Named for the combination of flags set.</div>
-        <div class="term-box"><strong>Ping scan (-sP):</strong> ICMP ping sweep to discover live hosts on a network range.</div>
-        <div class="term-box"><strong>Version detection (-sV):</strong> Probes open ports to determine service and version information beyond just port status.</div>
+        <p class="content-text">The -sN / -sF / -sX variants are stealth/evasion scans that manipulate TCP flags to bypass simple firewalls: a closed port must reply RST regardless of flags, while a filtered port silently drops the packet.</p>
+        <div class="term-box"><strong>Ping scan (-sn):</strong> Disables port scanning and performs host discovery only (formerly -sP) — discovers live hosts on a network range.</div>
+        <div class="term-box"><strong>No Ping / Skip Host Discovery (-Pn):</strong> Treats all targets as online and forces a port scan even when ICMP is blocked.</div>
+        <div class="term-box"><strong>ARP Ping (-PR):</strong> Fast and reliable host discovery on local Ethernet networks using ARP instead of ICMP.</div>
+        <div class="term-box"><strong>Service Version Detection (-sV):</strong> Probes open ports to determine the application name and version beyond just port status.</div>
+        <div class="term-box"><strong>OS Detection (-O):</strong> Detects the remote operating system via TCP/IP stack fingerprinting (TTL, window size, option ordering).</div>
+        <div class="term-box"><strong>Aggressive Scan (-A):</strong> Enables OS detection (-O), version detection (-sV), script scanning (-sC), and traceroute in a single flag.</div>
+        <div class="term-box"><strong>Default Script Scan (-sC):</strong> Runs standard Nmap Scripting Engine (NSE) scripts for basic vulnerability checks without naming specific scripts.</div>
         <div class="term-box"><strong>Idlescan (-sI):</strong> Zombie-based stealthy port scan that uses a third-party system to avoid sending packets from your own IP.</div>
         <div class="term-box"><strong>FTP Bounce attack (-b):</strong> Uses a proxy FTP server to scan a target through the relay, hiding the true source.</div>
 
-        <h2 class="section-heading">nmap Timing Options</h2>
+        <h2 class="section-heading">nmap Port Specification & Timing Options</h2>
         <ul class="content-list">
+            <li><code>-p &lt;range&gt;</code> Ports to scan (e.g., <code>-p 80,443</code> for specific ports, <code>-p-</code> for all 65,535 ports)</li>
+            <li><code>--top-ports &lt;number&gt;</code> Scans the most common X ports (e.g., <code>--top-ports 100</code>)</li>
             <li><code>-T0</code> Paranoid (300s wait) — IDS evasion</li>
             <li><code>-T1</code> Sneaky (15s wait) — slow and stealthy</li>
             <li><code>-T2</code> Polite (0.4s wait) — reduces network congestion</li>
