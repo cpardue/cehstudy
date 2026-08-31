@@ -159,6 +159,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://cehstudy.com/privacy/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://cehstudy.com/disclaimer/</loc>
     <lastmod>2026-08-13</lastmod>
     <changefreq>yearly</changefreq>
