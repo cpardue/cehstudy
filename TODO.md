@@ -164,7 +164,7 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 ## Phase 6 — Sitemap, robots, final audit 🐘
 
 - [x] **6.1** Regenerate `sitemap.xml` to EXACTLY the remaining indexable pages (50): home · `ceh-v13/` index · 20 modules · practice index + 20 topic pages · `glossary/` (single) · about, contact, faq, disclaimer, changelog, privacy. Fresh `lastmod`. Exclude redirect stubs (they are noindex). Note: the former "9 editorial" pages were deleted in Phase 3b — they must not reappear in the sitemap.
-- [ ] **6.2** `robots.txt`: keep `Sitemap:` line. `[MANUAL — ask user]` AI-crawler allowlist (GPTBot, PerplexityBot, etc.) — keep or drop per user decision; record decision in Session Log.
+- [x] **6.2** `robots.txt`: keep `Sitemap:` line. `[MANUAL — ask user]` AI-crawler allowlist (GPTBot, PerplexityBot, etc.) — keep or drop per user decision; record decision in Session Log.
 - [ ] **6.3** Final LVC self-audit: for EVERY page in the sitemap, answer yes/no and record in Session Log — unique intent? at least one substantial original content block? no boilerplate shared with another page? value visible without JS?
 - [ ] **6.4** Run full `_verify_site.js`; fix everything reported. Tag `ready-for-adsense`. Record SHA.
 
@@ -197,6 +197,10 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 ## Session Log
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-31 12:31] Phase 6.2 complete — robots.txt decision recorded (user, 2026-08-31): keep explicit AI-crawler allowlist; no file change required
+- Decision (per item `[MANUAL — ask user]`, answered by user this session): KEEP the explicit AI/LLM-crawler allowlist as-is (GPTBot, Google-Extended, CCBot, anthropic-ai, ClaudeBot, PerplexityBot) for maximum LLM citation visibility. Generic `User-agent: * / Allow: /` also covers them; the explicit blocks are a deliberate positive signal
+- Verified: live robots.txt byte-identical to repo blob `59545fb1` (329 B) — already contains the generic allow, all six explicit allow blocks, and `Sitemap: https://cehstudy.com/sitemap.xml`. Phase 6.2 therefore required no push; this entry is the decision record the item asks for
 
 ### [2026-08-31 12:11] Phase 6.1 complete — sitemap.xml regenerated to exactly the 50 indexable pages (+20 practice topic URLs, fresh per-page lastmod); 12 noindex stubs excluded; gate green
 - Commit (cehstudy@main): `0b6a4b73` — ONE commit, sitemap.xml only (blob `4fe271cf`, 9300 bytes, LF), base `aca38eb0`. Old blob `48dbd2a4` (5364 B, 30 locs). Post-push remote blob sha MATCH.
