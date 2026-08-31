@@ -163,7 +163,7 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 
 ## Phase 6 — Sitemap, robots, final audit 🐘
 
-- [ ] **6.1** Regenerate `sitemap.xml` to EXACTLY the remaining indexable pages (50): home · `ceh-v13/` index · 20 modules · practice index + 20 topic pages · `glossary/` (single) · about, contact, faq, disclaimer, changelog, privacy. Fresh `lastmod`. Exclude redirect stubs (they are noindex). Note: the former "9 editorial" pages were deleted in Phase 3b — they must not reappear in the sitemap.
+- [x] **6.1** Regenerate `sitemap.xml` to EXACTLY the remaining indexable pages (50): home · `ceh-v13/` index · 20 modules · practice index + 20 topic pages · `glossary/` (single) · about, contact, faq, disclaimer, changelog, privacy. Fresh `lastmod`. Exclude redirect stubs (they are noindex). Note: the former "9 editorial" pages were deleted in Phase 3b — they must not reappear in the sitemap.
 - [ ] **6.2** `robots.txt`: keep `Sitemap:` line. `[MANUAL — ask user]` AI-crawler allowlist (GPTBot, PerplexityBot, etc.) — keep or drop per user decision; record decision in Session Log.
 - [ ] **6.3** Final LVC self-audit: for EVERY page in the sitemap, answer yes/no and record in Session Log — unique intent? at least one substantial original content block? no boilerplate shared with another page? value visible without JS?
 - [ ] **6.4** Run full `_verify_site.js`; fix everything reported. Tag `ready-for-adsense`. Record SHA.
@@ -197,6 +197,13 @@ Redirect targets for the 9 deleted URLs (noindex stubs):
 ## Session Log
 
 Format (newest first): `## [YYYY-MM-DD HH:MM] Phase X.Y — <what happened>` · commit/tag SHA · notes · open questions.
+
+### [2026-08-31 12:11] Phase 6.1 complete — sitemap.xml regenerated to exactly the 50 indexable pages (+20 practice topic URLs, fresh per-page lastmod); 12 noindex stubs excluded; gate green
+- Commit (cehstudy@main): `0b6a4b73` — ONE commit, sitemap.xml only (blob `4fe271cf`, 9300 bytes, LF), base `aca38eb0`. Old blob `48dbd2a4` (5364 B, 30 locs). Post-push remote blob sha MATCH.
+- Change: added the 20 missing practice topic pages (`ceh-practice-questions/<slug>/`, alphabetical — same ordering convention as the old glossary-terms section); all 50 lastmods set to actual per-path last-commit dates from repo history (2026-08-30/31; replaced stale 2026-08-13…21 values); changefreq/priority kept exactly as-is per existing category; removed leftover empty `<!-- CEH Flashcards -->` and mislabeled `<!-- Glossary Terms -->` comments (changelog moved under a proper `Support Pages` section). NO url removals — all 30 prior locs retained.
+- Note: history 5.3 "Next" said practice index + changelog were missing from the sitemap — they were actually present in the remote 30-loc file; only the 20 topic pages were missing (rule 6: adapted, no scope change). Stub/deleted URLs verified absent from live bytes by slug regex.
+- Gate (`_verify_site.js`, NO allowlist): PASS — A 50/50 live (up from 30); B 0 broken internal links (62 pages / 723 targets); C.1/C.2/C.3 PASS; D 2,220 report-only (identical to 5.3 — practice-topic breadcrumbs + "10 questions" intro lines). Live (`_phase61_live.js`): served bytes == pushed blob sha, 50 unique locs, 50/50 HTTP 200.
+- Rollback: revert `0b6a4b73` or force-reset main to `aca38eb0`; pre-push final bytes in cehstudy-build/_work/phase61/.
 
 ### [2026-08-31 16:20] Phase 5.3 complete — contact method → GitHub issue submission (user decision supersedes "Remove /contact/"); /faq/ factual audit; gate green, TODO 5.3 checked
 - Commit (cehstudy@main): `c349f591` — ONE commit, 3 files (contact/, faq/, privacy/ index.html), base `90921e26`; all three remote blobs verified MATCH vs locally computed git-blob sha (contact 9c5c936f / faq e9df8877 / privacy d8fdff62). No empty-tree quirk this time — Data-API single-commit flow worked first try (new top tree `52e63386` read back and confirmed before the commit was created; Contents-API fallback `_phase53_push2.js` was written but not needed).
