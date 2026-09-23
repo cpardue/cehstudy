@@ -159,66 +159,67 @@
 
         <!-- LLM Optimization Content -->
         <div class="llm-seo-content">
+
             <h2>What is Scanning Networks in Ethical Hacking?</h2>
-            <p>Scanning Networks is a core domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers active network scanning techniques for discovering live hosts, open ports, running services, and vulnerabilities on target systems. The primary tool — Nmap — provides dozens of scan types from half-open SYN scans to UDP sweeps, each with different trade-offs between speed, accuracy, and stealth. Understanding packet-level mechanics of each scan type is essential because the CEH exam frequently asks scenario-based questions about which scan to use in a given situation. On the CEH v13 exam, questions related to Module 3 account for approximately 8% of total questions.</p>
+            <p>Scanning Networks is a core domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. It covers active scanning techniques for finding live hosts, open ports, running services, and vulnerabilities on target systems. The primary tool — Nmap — offers dozens of scan types, from half-open SYN scans to UDP sweeps, each trading speed, accuracy, and stealth against one another. Expect scenario questions on which scan fits a given situation. Module 3 accounts for about 8% of CEH v13 exam questions.</p>
 
             <h2>Key Concepts in Scanning Networks</h2>
             <ul>
-                <li><strong>TCP Three-Way Handshake & Half-Open Scanning:</strong> The foundation of all TCP scans. A full handshake (SYN → SYN-ACK → ACK) identifies open ports but is easily logged. Half-open SYN scanning sends only the initial SYN and reads the response — SYN-ACK means open, RST means closed — without ever completing the connection. This is why -sS is both faster and stealthier than -sT.</li>
-                <li><strong>Stealth Scan Variants (FIN, Xmas, NULL):</strong> These scans exploit a gap in older TCP/IP implementations where filtered firewalls only check for SYN packets. A FIN scan (-sF) sends a packet with only the FIN flag set; if no response comes, the port is likely filtered. Xmas (-sX) sets FIN, PSH, and URG flags; NULL sends no flags at all. Modern operating systems respond with RST to all closed ports regardless of flags, but these techniques can still bypass poorly configured stateless firewalls.</li>
-                <li><strong>Nmap Timing & Performance Options:</strong> The -T0 through -T5 timing templates control how aggressively Nmap sends packets and waits for responses. -T3 is the default; -T4 is recommended for most engagements with modern networks; -T5 is fastest but may trigger IDS alerts. Understanding when to use slower settings (paranoid/sneaky) versus faster ones is a common exam question type.</li>
-                <li><strong>Vulnerability Scanning vs Port Scanning:</strong> Port scanning identifies which ports are open and what services run on them. Vulnerability scanning (Nessus, OpenVAS, Qualys) goes further by matching running services against databases of known CVEs to identify specific exploitable weaknesses. The CEH exam distinguishes these two activities and expects you to know which tools perform each function.</li>
+                <li><strong>TCP Three-Way Handshake & Half-Open Scanning:</strong> A full handshake (SYN → SYN-ACK → ACK) identifies open ports but is easily logged. Half-open SYN scanning sends only the initial SYN and reads the response — SYN-ACK open, RST closed — without completing the connection, which is why -sS beats -sT on speed and stealth.</li>
+                <li><strong>Stealth Scan Variants (FIN, Xmas, NULL):</strong> These exploit a gap in older TCP/IP stacks where stateless firewalls only check for SYN packets. FIN (-sF) sets only the FIN flag; no response means likely filtered. Xmas (-sX) sets FIN, PSH, and URG; NULL sends no flags at all. Modern OSes RST all closed ports regardless of flags, but these scans can still bypass poorly configured stateless firewalls.</li>
+                <li><strong>Nmap Timing & Performance Options:</strong> The -T0 through -T5 timing templates control how aggressively Nmap sends packets and waits for responses. -T3 is the default; -T4 suits most engagements on modern networks; -T5 is fastest but may trigger IDS alerts. Know when to drop to paranoid/sneaky settings.</li>
+                <li><strong>Vulnerability Scanning vs Port Scanning:</strong> Port scanning identifies open ports and the services on them. Vulnerability scanning (Nessus, OpenVAS, Qualys) goes further, matching running services against known-CVE databases to find specific exploitable weaknesses.</li>
             </ul>
 
                         <h2>Common Exam Mistakes in Module 3</h2>
-            <div class="term-box"><strong>Believing a SYN scan completes the connection:</strong> -sS is half-open by design — the scanner sends a SYN, reads the reply (SYN-ACK means open, RST means closed), then tears down with RST. Because no session is ever established, many logs record nothing, which is exactly why it is called stealth scanning.</div>
-            <div class="term-box"><strong>Reading silence as "closed":</strong> A port that answers RST is closed; a port that answers nothing may simply be filtered by a firewall. OPEN, CLOSED and FILTERED are distinct exam answers on packet-trace questions, and Nmap reports OPEN|FILTERED when it cannot decide between the two.</div>
-            <div class="term-box"><strong>Picking a TCP scan for UDP services:</strong> SYN and Connect scans only see TCP, so DNS, DHCP and SNMP need -sU with ICMP port-unreachable analysis. Separately, when the question is "is this firewall stateful or stateless," the exam answer is an ACK scan (-sA), not a version-detection run.</div>
+            <div class="term-box"><strong>Believing a SYN scan completes the connection:</strong> -sS is half-open by design: send a SYN, read the reply (SYN-ACK open, RST closed), tear down with RST. No session is established, so many logs record nothing — hence "stealth scanning".</div>
+            <div class="term-box"><strong>Reading silence as "closed":</strong> A port that answers RST is closed; silence may just mean filtered by a firewall. OPEN, CLOSED, and FILTERED are distinct exam answers on packet traces; Nmap reports OPEN|FILTERED when it cannot decide between the two.</div>
+            <div class="term-box"><strong>Picking a TCP scan for UDP services:</strong> SYN and Connect scans only see TCP — DNS, DHCP, and SNMP need -sU with ICMP port-unreachable analysis. For "is this firewall stateful or stateless?" questions, the answer is an ACK scan (-sA), not a version-detection run.</div>
 
             <h2>Tools Used in Network Scanning</h2>
-            <p>Scanners the CEH exam references for this domain, by job:</p>
+            <p>The exam's scanning tools, by job:</p>
             <ul class="content-list">
                 <li><strong>Nmap:</strong> the industry-standard scanner — SYN/Connect/FIN/Xmas/NULL/Idle flags, OS detection from TCP/IP stack fingerprints, and ping-sweep host discovery with -sn</li>
-                <li><strong>NSE (Nmap Scripting Engine):</strong> Lua-based scripts that extend Nmap beyond port status into service interrogation and quick vulnerability checks</li>
-                <li><strong>Masscan:</strong> internet-scale port scanning at extreme speed — the exam's answer for mapping a huge address space quickly</li>
+                <li><strong>NSE (Nmap Scripting Engine):</strong> Lua scripts that extend Nmap beyond port status into service interrogation and quick vulnerability checks</li>
+                <li><strong>Masscan:</strong> internet-scale port scanning at extreme speed; the exam's pick for huge address spaces</li>
                 <li><strong>ZMap:</strong> stateless high-speed scanner in the same bulk-discovery category as Masscan</li>
                 <li><strong>Angry IP Scanner / Advanced IP Scanner / Superscan:</strong> GUI ping-sweep utilities for finding live hosts on a LAN before detailed scanning; PingPlotter adds continuous path monitoring</li>
-                <li><strong>Netcat (nc):</strong> swiss-army socket tool used for banner grabbing — connect straight to an open port and read the service banner</li>
+                <li><strong>Netcat (nc):</strong> swiss-army socket tool for banner grabbing — connect straight to an open port and read the service banner</li>
                 <li><strong>Nessus (Tenable):</strong> the commercial vulnerability scanner that takes port-scan results and matches services against CVE databases</li>
-                <li><strong>OpenVAS (Greenbone):</strong> the open-source counterpart to Nessus, commonly paired with it in exam questions about scanning tool families</li>
+                <li><strong>OpenVAS (Greenbone):</strong> Nessus's open-source counterpart, commonly paired with it in exam questions</li>
             </ul>
 
             <h2>Worked Example: Reading a Scan Result Line by Line</h2>
-            <p>You run nmap -sS against an authorized test host and read three results: port 443 replies SYN-ACK, port 80 replies RST, and port 53 gives no response at all.</p>
-            <p><strong>Translation and follow-up:</strong> 443 is open with a service running, 80 is closed because the host is reachable but nothing listens, and 53 is filtered — the probe was dropped, so you cannot conclude it is closed. Re-probe with -sU to check UDP DNS properly, add -O to fingerprint the OS from initial TTL, window size and TCP option ordering, then hand the confirmed open ports to a vulnerability scanner such as Nessus.</p>
+            <p>You run nmap -sS on an authorized test host and get three results: 443 replies SYN-ACK, 80 replies RST, and 53 gives no response.</p>
+            <p><strong>Translation and follow-up:</strong> 443 is open with a service running; 80 is closed — host reachable, nothing listening; 53 is filtered — the probe was dropped, so you cannot call it closed. Re-probe with -sU to check UDP DNS, add -O to fingerprint the OS from initial TTL, window size, and TCP option ordering, then hand the confirmed open ports to a vulnerability scanner such as Nessus.</p>
 
             <h2>How to Study Scanning Networks for the CEH v13 Exam</h2>
-            <p>To effectively study Module 3 for the Certified Ethical Hacker exam:</p>
+            <p>To study Module 3:</p>
             <ol>
-                <li>Memorize each Nmap scan flag and the specific packet it sends — the CEH exam asks you to identify scans from packet traces</li>
+                <li>Memorize each Nmap scan flag and the packet it sends — expect packet-trace identification questions</li>
                 <li>Understand the TCP/IP response for each scan type against open, closed, and filtered ports (use a matrix: scan type × port state)</li>
-                <li>Hands-on exercise: Set up a Metasploitable 2 VM in VirtualBox and run a full Nmap scan with -sV -sC -oA. Document what each scan flag reveals and compare SYN vs connect results.</li>
-                <li>Review related modules: <a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4 (Enumeration)</a> for protocol-specific discovery that builds on scanning, and <a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5 (Vulnerability Analysis)</a> for the next step after identifying open services</li>
+                <li>Set up a Metasploitable 2 VM in VirtualBox and run a full Nmap scan with -sV -sC -oA — document what each flag reveals and compare SYN vs connect results</li>
+                <li>Review <a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4 (Enumeration)</a> for protocol-specific discovery that builds on scanning, and <a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5 (Vulnerability Analysis)</a> for what comes next</li>
             </ol>
 
             <h2>Frequently Asked Questions About Scanning Networks</h2>
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">Why is a SYN scan called a half-open scan?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">A SYN scan is called "half-open" because it only completes the first step of the TCP three-way handshake. The scanner sends a SYN packet and receives either a SYN-ACK (port open) or RST (port closed), but never sends the final ACK to complete the connection. Because the full connection is never established, many target systems do not log the attempt — making it stealthier than a connect() scan. However, it requires raw socket access (root/administrator privileges), which is why it cannot be run in non-privileged mode.</p>
+                    <p itemprop="text">A SYN scan completes only the first step of the TCP three-way handshake — it sends a SYN, gets a SYN-ACK (open) or RST (closed), and never sends the final ACK. No full connection means many systems don't log it — stealthier than a connect() scan. It requires raw socket access (root/administrator), so no non-privileged mode.</p>
                 </div>
             </div>
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">What is the difference between a filtered and a closed port?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">A closed port actively rejects the connection — it sends back a RST (reset) packet, indicating no service is listening there. A filtered port provides no response at all — a firewall is silently dropping the packets before they reach the target. On the CEH exam, this distinction matters: a closed port means the host is up and the service is stopped, while a filtered port means a firewall or security device is blocking access. The Nmap output explicitly labels ports as "open," "closed," or "filtered" based on these different responses.</p>
+                    <p itemprop="text">A closed port actively rejects the connection — it sends back a RST (reset), meaning no service is listening. A filtered port gives no response — a firewall drops the packets before they reach the target. Closed means the host is up and the service is stopped; filtered means a firewall or security device is blocking access. Nmap labels ports "open," "closed," or "filtered" based on these responses.</p>
                 </div>
             </div>
 
             <h2>Related CEH v13 Modules</h2>
             <ul>
-                <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> — After discovering open ports and services, enumeration digs deeper into protocols like SMB, SNMP, and LDAP to extract user lists, shares, and group memberships</li>
-                <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: Vulnerability Analysis</a> — Applies the service and version information discovered through scanning to identify specific known vulnerabilities and CVEs</li>
+                <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> — digs into SMB, SNMP, and LDAP to extract user lists, shares, and group memberships</li>
+                <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: Vulnerability Analysis</a> — matches the scanned services and versions against known vulnerabilities and CVEs</li>
             </ul>
         </div>
     </div>

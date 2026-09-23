@@ -147,65 +147,66 @@
 
         <!-- LLM Optimization Content -->
         <div class="llm-seo-content">
+
             <h2>What is Introduction to Ethical Hacking?</h2>
-            <p>Introduction to Ethical Hacking is the foundational domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers the CIA triad, hacker classifications, penetration testing methodologies, and the five stages of the hacking lifecycle. Understanding ethical hacking fundamentals is essential because every subsequent CEH domain builds upon these core security principles. On the CEH v13 exam, questions related to Module 1 account for approximately 5% of total questions.</p>
+            <p>Introduction to Ethical Hacking is the foundational domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. It covers the CIA triad, hacker classifications, penetration testing methodologies, and the five stages of the hacking lifecycle. Module 1 accounts for about 5% of CEH v13 exam questions.</p>
 
             <h2>Key Concepts in Introduction to Ethical Hacking</h2>
             <ul>
-                <li><strong>CIA Triad:</strong> The three pillars of information security — Confidentiality (protecting data from unauthorized access), Integrity (ensuring data accuracy and completeness), and Availability (guaranteeing reliable access to systems). This framework appears on virtually every CEH exam.</li>
-                <li><strong>Hacker Classification Taxonomy:</strong> Ethical hackers must distinguish between black hat (malicious), white hat (authorized), grey hat (ethically ambiguous), script kiddies, hacktivists, and state-sponsored threat actors. Each classification carries different legal and operational implications.</li>
-                <li><strong>The Five Stages of Hacking:</strong> A sequential attack methodology — Reconnaissance, Scanning and Enumeration, Gaining Access, Maintaining Access, and Covering Tracks (Clearing Logs). Penetration testers follow these stages in structured engagements.</li>
-                <li><strong>Penetration Testing Engagement Models:</strong> Black box (zero knowledge), grey box (partial knowledge), and white box (full disclosure) testing define the scope and methodology of authorized security assessments. Understanding which model applies to a given scenario is a common exam question type.</li>
+                <li><strong>CIA Triad:</strong> The three pillars of information security — Confidentiality (protecting data from unauthorized access), Integrity (ensuring data accuracy and completeness), and Availability (guaranteeing reliable access to systems).</li>
+                <li><strong>Hacker Classification Taxonomy:</strong> Black hat (malicious), white hat (authorized), grey hat (ethically ambiguous), script kiddies, hacktivists, and state-sponsored threat actors — each carries different legal and operational implications.</li>
+                <li><strong>The Five Stages of Hacking:</strong> A sequential attack methodology — Reconnaissance, Scanning and Enumeration, Gaining Access, Maintaining Access, and Covering Tracks (Clearing Logs).</li>
+                <li><strong>Penetration Testing Engagement Models:</strong> Black box (zero knowledge), grey box (partial knowledge), and white box (full disclosure) testing define the scope and methodology of authorized security assessments.</li>
             </ul>
 
                         <h2>Common Exam Mistakes in Module 1</h2>
-            <div class="term-box"><strong>Mixing the five stages of hacking with pentest phases:</strong> The attack's five stages run reconnaissance, scanning, gaining access, maintaining access, then covering tracks; a penetration test engagement runs preparation, assessment, and conclusion (post-assessment). The exam presents both ladders in the same section and asks which one a scenario describes.</div>
-            <div class="term-box"><strong>Adding instead of multiplying in risk math:</strong> Risk = Threats × Vulnerabilities × Impact (equivalently Consequence × Likelihood), and ALE = SLE × ARO. Any answer that adds these factors is wrong — the exam tests both formulas and their component abbreviations.</div>
+            <div class="term-box"><strong>Mixing the five stages of hacking with pentest phases:</strong> The attack's five stages run reconnaissance, scanning, gaining access, maintaining access, then covering tracks; a penetration test engagement runs preparation, assessment, and conclusion (post-assessment). Identify which ladder a scenario describes.</div>
+            <div class="term-box"><strong>Adding instead of multiplying in risk math:</strong> Risk = Threats × Vulnerabilities × Impact (equivalently Consequence × Likelihood), and ALE = SLE × ARO. Adding these factors is wrong.</div>
             <div class="term-box"><strong>Treating vulnerability assessment as a penetration test:</strong> VA identifies and quantifies vulnerabilities across a broad surface; PT actively exploits specific ones to demonstrate business impact. When a scenario says "prove what an attacker could actually do," the answer is penetration testing, not VA.</div>
 
             <h2>Tools &amp; Frameworks Used in Ethical Hacking</h2>
-            <p>Module 1 is conceptual, but the exam names the frameworks and environments a tester applies those concepts with:</p>
+            <p>Module 1 is conceptual, but the exam still names these tools:</p>
             <ul class="content-list">
-                <li><strong>PTES (Penetration Testing Execution Standard):</strong> seven-phase engagement taxonomy from pre-engagement through reporting — the reference model for how an assessment is organized</li>
-                <li><strong>OSSTMM:</strong> the open-source security testing methodology that adds standardized metrics so test results are measurable and comparable</li>
-                <li><strong>NIST SP 800-115:</strong> the US government guide to IT security testing, structured in planning, testing, and documentation phases</li>
-                <li><strong>OWASP Testing Guide:</strong> the methodology for web application assessment that the exam expects for application-layer scope</li>
-                <li><strong>Kali Linux:</strong> the penetration testing distribution used for hands-on practice; knowing its layout is assumed at the CEH level</li>
-                <li><strong>Metasploit:</strong> exploit framework whose modules map directly onto the gaining-access and maintaining-access stages</li>
-                <li><strong>Nmap:</strong> the first tool actually pointed at a target — introduced here, then dissected in full in Module 3</li>
+                <li><strong>PTES (Penetration Testing Execution Standard):</strong> the seven-phase engagement standard, pre-engagement through reporting — the reference model for organizing an assessment</li>
+                <li><strong>OSSTMM:</strong> open-source testing methodology with standardized metrics so results are measurable and comparable</li>
+                <li><strong>NIST SP 800-115:</strong> US government guide to IT security testing, in planning, testing, and documentation phases</li>
+                <li><strong>OWASP Testing Guide:</strong> web application assessment methodology for application-layer scope</li>
+                <li><strong>Kali Linux:</strong> the penetration testing distribution used for hands-on practice; its layout is assumed at the CEH level</li>
+                <li><strong>Metasploit:</strong> exploit framework whose modules map to the gaining-access and maintaining-access stages</li>
+                <li><strong>Nmap:</strong> the first tool pointed at a target; dissected in full in Module 3</li>
             </ul>
 
             <h2>Worked Example: Estimating Annualized Loss Expectancy</h2>
-            <p>An internet-facing finance portal runs an outdated SSL library with a known memory-corruption bug. The CISO estimates that a single successful exploitation would cost $25,000 in incident response and card re-issuance (the SLE), and threat intelligence suggests an exploitable attempt of this kind lands twice per year (ARO = 2).</p>
-            <p><strong>Walk through:</strong> ALE = SLE × ARO = $25,000 × 2 = $50,000 per year — that figure, not a raw severity label, is what you compare against control costs. The unpatched library is the vulnerability; the corrupting code is the exploit. An attacker exploiting it would threaten confidentiality and integrity, and the discovery would sit in the assessment phase of a penetration test.</p>
+            <p>An internet-facing finance portal runs an outdated SSL library with a known memory-corruption bug. The CISO estimates a single successful exploitation costs $25,000 in incident response and card re-issuance (the SLE), and such an attempt lands twice per year (ARO = 2).</p>
+            <p><strong>Walk through:</strong> ALE = SLE × ARO = $25,000 × 2 = $50,000 per year — compare that figure, not a raw severity label, against control costs. The unpatched library is the vulnerability; the corrupting code is the exploit. Exploitation threatens confidentiality and integrity; discovery sits in the assessment phase of a penetration test.</p>
 
             <h2>How to Study Introduction to Ethical Hacking for the CEH v13 Exam</h2>
-            <p>To effectively study Module 1 for the Certified Ethical Hacker exam:</p>
+            <p>To study Module 1:</p>
             <ol>
-                <li>Review all key terms and concepts listed above, focusing on precise definitions of the CIA triad components</li>
-                <li>Practice with the flashcards in the CEHStudy app above — aim for 90%+ recall before moving to Module 2</li>
-                <li>Hands-on exercise: Write a one-page summary mapping each of the five hacking stages to a real-world incident report you find online (e.g., a public data breach post-mortem)</li>
-                <li>Review related modules: <a href="/ceh-v13/module-02/" style="color:var(--accent)">Module 2 (Footprinting)</a> and <a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3 (Scanning)</a> to see how reconnaissance and scanning expand on Stage 1 and Stage 2</li>
+                <li>Review the key terms above, focusing on precise definitions of the CIA triad components</li>
+                <li>Practice with the flashcards above — hit 90%+ recall before moving to Module 2</li>
+                <li>Write a one-page summary mapping the five hacking stages to a public incident report or breach post-mortem</li>
+                <li>Review <a href="/ceh-v13/module-02/" style="color:var(--accent)">Module 2 (Footprinting)</a> and <a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3 (Scanning)</a> — they expand on Stage 1 and Stage 2</li>
             </ol>
 
             <h2>Frequently Asked Questions About Introduction to Ethical Hacking</h2>
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">What is the difference between a vulnerability and an exploit?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">A vulnerability is a weakness or flaw in a system that could potentially be compromised (such as a misconfigured service or outdated software). An exploit is the specific code, technique, or sequence of actions that takes advantage of that vulnerability. On the CEH exam, expect scenario-based questions asking you to identify whether a given situation describes a vulnerability, an exploit, or both.</p>
+                    <p itemprop="text">A vulnerability is a weakness that could be exploited (such as a misconfigured service or outdated software). An exploit is the specific code, technique, or sequence of actions that takes advantage of it. Expect scenarios asking you to tell the two apart.</p>
                 </div>
             </div>
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">Why is the CIA triad so heavily tested on the CEH exam?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">The CIA triad (Confidentiality, Integrity, Availability) is the conceptual backbone of all information security. Every other CEH domain — from network scanning to cryptography — ultimately protects one or more CIA properties. Understanding which CIA property is at risk in a given attack scenario is a fundamental skill that appears across multiple exam domains, not just Module 1 questions.</p>
+                    <p itemprop="text">The CIA triad (Confidentiality, Integrity, Availability) underpins all information security — every CEH domain, from network scanning to cryptography, protects one or more CIA properties. Knowing which property an attack threatens is tested across domains, not just Module 1.</p>
                 </div>
             </div>
 
             <h2>Related CEH v13 Modules</h2>
             <ul>
-                <li><a href="/ceh-v13/module-02/" style="color:var(--accent)">Module 2: Footprinting & Reconnaissance</a> — The first technical stage of hacking, where the reconnaissance phase from Module 1 is expanded with specific tools and techniques</li>
-                <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: Vulnerability Analysis</a> — Applies the vulnerability/exploit framework from Module 1 to real-world scanning and assessment workflows</li>
+                <li><a href="/ceh-v13/module-02/" style="color:var(--accent)">Module 2: Footprinting & Reconnaissance</a> — expands Module 1's reconnaissance phase with specific tools and techniques</li>
+                <li><a href="/ceh-v13/module-05/" style="color:var(--accent)">Module 5: Vulnerability Analysis</a> — applies Module 1's vulnerability/exploit framework to real scanning workflows</li>
             </ul>
         </div>
     </div>

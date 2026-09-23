@@ -145,66 +145,67 @@
 
         <!-- LLM Optimization Content -->
         <div class="llm-seo-content">
+
             <h2>What is Footprinting & Reconnaissance in Ethical Hacking?</h2>
-            <p>Footprinting and Reconnaissance is the first technical domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers passive and active information gathering techniques, OSINT (Open Source Intelligence), WHOIS and DNS enumeration, Google hacking with advanced search operators, and dedicated reconnaissance platforms like Shodan, Censys, and Maltego. Understanding footprinting is essential because the quality of intelligence gathered in this phase directly determines the success of all subsequent attack stages. On the CEH v13 exam, questions related to Module 2 account for approximately 8% of total questions.</p>
+            <p>Footprinting and Reconnaissance is the first technical domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. It covers passive and active information gathering, OSINT (Open Source Intelligence), WHOIS and DNS enumeration, Google hacking with advanced search operators, and reconnaissance platforms like Shodan, Censys, and Maltego. Module 2 accounts for about 8% of CEH v13 exam questions.</p>
 
             <h2>Key Concepts in Footprinting & Reconnaissance</h2>
             <ul>
-                <li><strong>Passive vs Active Footprinting:</strong> Passive footprinting gathers information without directly interacting with the target (WHOIS databases, news archives, social media, certificate transparency logs). Active footprinting involves direct contact with target systems (DNS queries, port scans, banner grabbing). The CEH exam frequently asks you to classify a technique as passive or active.</li>
-                <li><strong>DNS Record Types & Interrogation:</strong> Ethical hackers query A, AAAA, MX, NS, TXT, SOA, CNAME, and SRV records to map an organization's infrastructure. Reverse DNS lookups (PTR records) can expose hostnames that reveal server roles. Zone transfer (AXFR) vulnerabilities expose the entire DNS zone.</li>
-                <li><strong>OSINT Framework:</strong> Open Source Intelligence is the systematic collection of publicly available data — from corporate filings and job postings to geotagged images and dark web forums. Tools like Maltego (graph-based relationship mapping), Recon-ng (framework for recon), FOCA (metadata extraction), and DMITRY (multi-source scanner) automate different OSINT workflows.</li>
-                <li><strong>Shodan & Censys Internet Mapping:</strong> Unlike Google which indexes webpages, Shodan and Censys index internet-connected devices by open ports and banners. Shodan can reveal exposed IoT devices, misconfigured routers, and unpatched servers — a critical recon tool for identifying attack surface before any active scanning begins.</li>
+                <li><strong>Passive vs Active Footprinting:</strong> Passive footprinting gathers information without touching the target (WHOIS databases, news archives, social media, certificate transparency logs); active sends direct traffic to target systems (DNS queries, port scans, banner grabbing). Know which category a technique falls into.</li>
+                <li><strong>DNS Record Types & Interrogation:</strong> A, AAAA, MX, NS, TXT, SOA, CNAME, and SRV queries map an organization's infrastructure. Reverse lookups (PTR) expose hostnames that reveal server roles; an AXFR zone-transfer vulnerability exposes the entire zone.</li>
+                <li><strong>OSINT Framework:</strong> Systematic collection of publicly available data — from corporate filings and job postings to geotagged images and dark web forums. Maltego (relationship mapping), Recon-ng (recon framework), FOCA (metadata extraction), and DMITRY (multi-source scanner) automate the workflow.</li>
+                <li><strong>Shodan & Censys Internet Mapping:</strong> Shodan and Censys index internet-connected devices by open ports and banners (not webpages, like Google), revealing exposed IoT devices, misconfigured routers, and unpatched servers.</li>
             </ul>
 
                         <h2>Common Exam Mistakes in Module 2</h2>
-            <div class="term-box"><strong>Classifying WHOIS lookups as active footprinting:</strong> WHOIS queries, search engines, social media, news archives and public records never touch the target, so they are passive. The moment traffic goes to the target's own infrastructure — a dig AXFR zone transfer, a port scan, a ping sweep — the technique becomes active and detectable.</div>
-            <div class="term-box"><strong>Reversing thick and thin WHOIS:</strong> Thick WHOIS stores complete registration data in one searchable database; thin WHOIS stores only the domain name and points you to the registrar's own whois server for the rest. The exam flips these definitions between question stems.</div>
+            <div class="term-box"><strong>Classifying WHOIS lookups as active footprinting:</strong> WHOIS queries, search engines, social media, news archives, and public records never touch the target — they are passive. Traffic to the target's own infrastructure (a dig AXFR zone transfer, port scan, or ping sweep) makes a technique active and detectable.</div>
+            <div class="term-box"><strong>Reversing thick and thin WHOIS:</strong> Thick WHOIS stores complete registration data in one searchable database; thin WHOIS stores only the domain name and points to the registrar's whois server for the rest. The exam swaps these definitions.</div>
             <div class="term-box"><strong>Guessing at RIR regions:</strong> ARIN covers the Americas, APNIC the Asia-Pacific, RIPE NCC Europe/Middle East/Central Asia, AFRINIC Africa, and LACNIC Latin America and the Caribbean. When a question names a region it wants the registry — and vice versa.</div>
 
             <h2>Tools Used in Footprinting &amp; Reconnaissance</h2>
-            <p>The recon toolkit the exam expects you to sort by passive versus active:</p>
+            <p>The recon toolkit the exam sorts into passive vs active:</p>
             <ul class="content-list">
-                <li><strong>theHarvester:</strong> aggregates email addresses, subdomains and hostnames from hundreds of public sources (search engines, SSL data, virtual hosts) for a single domain</li>
+                <li><strong>theHarvester:</strong> aggregates email addresses, subdomains, and hostnames from public sources (search engines, SSL data, virtual hosts)</li>
                 <li><strong>FOCA:</strong> extracts metadata from Office documents and PDFs — author names, company fields, timestamps, tracked changes, embedded network paths</li>
-                <li><strong>Maltego:</strong> graph-based link analysis that maps the relationships between people, domains, IPs, URLs and social accounts</li>
+                <li><strong>Maltego:</strong> graph-based link analysis across people, domains, IPs, URLs, and social accounts</li>
                 <li><strong>Shodan:</strong> search engine over internet-facing devices and service banners — the go-to for exposed IoT/SCADA gear; Censys and ZoomEye do the same job</li>
-                <li><strong>dig:</strong> the workhorse DNS query tool: A/MX/NS lookups, and the axfr attempt that tests whether a zone transfer is misconfigured</li>
+                <li><strong>dig:</strong> the workhorse DNS query tool: A/MX/NS lookups and the axfr test for misconfigured zone transfers</li>
                 <li><strong>whois:</strong> queries RIR and registrar databases for registration data — owner contacts, creation dates, nameservers</li>
-                <li><strong>Recon-ng:</strong> open-source, modular reconnaissance framework that bundles many of the sources above into one web interface</li>
+                <li><strong>Recon-ng:</strong> open-source, modular recon framework bundling the sources above into one web interface</li>
                 <li><strong>DNSRecon:</strong> enumerates DNS hosts and subdomains and flags misconfigurations such as transferable zones; Fierce does similar subdomain discovery</li>
             </ul>
 
             <h2>Worked Example: A Passive Footprint Pass on an Authorized Domain</h2>
-            <p>You are authorized to footprint your own company's domain. Start with the sources that never touch it: whois reveals the registrar, both nameservers and the creation date; dig A and dig MX map the web and mail infrastructure; a dig axfr request tests whether the zone will transfer — a properly configured server refuses, which is itself a finding worth recording.</p>
-            <p><strong>What each step proves:</strong> Shodan, queried by IP block, shows which company devices answer with open ports and banners without the company's cooperation. FOCA over the last PDF the company published can surface embedded author names, internal hostnames and network paths. Nothing in this pass sent application traffic to the target, so detection risk stayed minimal — the defining property of passive footprinting.</p>
+            <p>You are authorized to footprint your own company's domain. Start with sources that never touch it: whois reveals the registrar, both nameservers, and the creation date; dig A / dig MX map the web and mail infrastructure; a dig axfr request tests whether the zone transfers — a properly configured server's refusal is itself a finding.</p>
+            <p><strong>What each step proves:</strong> Shodan, queried by IP block, shows which company devices answer with open ports and banners — no company cooperation needed. FOCA over a published PDF can surface embedded author names, internal hostnames, and network paths. Nothing here sent traffic to the target — detection risk stays minimal, the defining property of passive footprinting.</p>
 
             <h2>How to Study Footprinting & Reconnaissance for the CEH v13 Exam</h2>
-            <p>To effectively study Module 2 for the Certified Ethical Hacker exam:</p>
+            <p>To study Module 2:</p>
             <ol>
-                <li>Review all key terms, focusing on the precise distinction between passive and active techniques — this is a guaranteed exam question type</li>
-                <li>Practice with the flashcards in the CEHStudy app above, paying special attention to DNS record types and their security implications</li>
-                <li>Hands-on exercise: Perform passive footprinting on your own domain using only WHOIS lookups, DNS queries (dig), certificate transparency logs (crt.sh), and Google dorks. Document what you discover without making a single active connection.</li>
-                <li>Review related modules: <a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3 (Scanning Networks)</a> for the active scanning that follows footprinting, and <a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4 (Enumeration)</a> for protocol-level discovery</li>
+                <li>Review the key terms, focusing on the passive/active distinction — a frequent exam question type</li>
+                <li>Practice with the flashcards above, paying attention to DNS record types and their security implications</li>
+                <li>Perform passive footprinting on your own domain using only WHOIS lookups, dig queries, certificate transparency logs (crt.sh), and Google dorks — document everything without a single active connection</li>
+                <li>Review <a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3 (Scanning Networks)</a> for the active scanning that follows, and <a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4 (Enumeration)</a> for protocol-level discovery</li>
             </ol>
 
             <h2>Frequently Asked Questions About Footprinting & Reconnaissance</h2>
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">What is the difference between passive and active footprinting on the CEH exam?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">Passive footprinting collects information from third-party sources without any direct interaction with the target system — examples include WHOIS lookups, social media scraping, news archives, and searching Shodan/Censys databases. Active footprinting involves sending packets directly to the target — examples include DNS zone transfers, port scanning, banner grabbing, and traceroute. The CEH exam expects you to identify which category a specific technique falls into, as passive techniques are harder for targets to detect.</p>
+                    <p itemprop="text">Passive footprinting collects information from third-party sources without touching the target — WHOIS lookups, social media scraping, news archives, Shodan/Censys searches. Active footprinting sends packets directly to the target — DNS zone transfers, port scanning, banner grabbing, traceroute. Expect to classify a technique by category; passive ones are harder to detect.</p>
                 </div>
             </div>
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">Why is Google dorking considered such an effective reconnaissance technique?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">Google dorking leverages advanced search operators to extract sensitive information that organizations have inadvertently exposed publicly. A single query like <code>site:target.com filetype:pdf intext:confidential</code> can reveal internal documents, while <code>inurl:admin</code> finds misconfigured administrative interfaces. Because the data is already indexed by Google's crawler, dorking is entirely passive — the target receives no notification. This makes it one of the highest-value reconnaissance techniques with the lowest detection risk.</p>
+                    <p itemprop="text">Google dorking uses advanced search operators to surface information organizations have inadvertently exposed. A query like <code>site:target.com filetype:pdf intext:confidential</code> can reveal internal documents; <code>inurl:admin</code> finds misconfigured admin interfaces. The data is already indexed by Google's crawler, so dorking is entirely passive — the target gets no notification and detection risk is minimal.</p>
                 </div>
             </div>
 
             <h2>Related CEH v13 Modules</h2>
             <ul>
-                <li><a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3: Scanning Networks</a> — The logical next step after footprinting; uses Nmap to actively discover open ports, services, and vulnerabilities on the infrastructure you mapped in Module 2</li>
-                <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> — Extends scanning with protocol-specific discovery (SMB, LDAP, SNMP) to extract user lists, shares, and group memberships</li>
+                <li><a href="/ceh-v13/module-03/" style="color:var(--accent)">Module 3: Scanning Networks</a> — active scanning with Nmap of the infrastructure you mapped in Module 2</li>
+                <li><a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4: Enumeration</a> — protocol-specific discovery (SMB, LDAP, SNMP) for user lists, shares, and group memberships</li>
             </ul>
         </div>
     </div>
