@@ -29,9 +29,9 @@
     const globalReviewed = document.getElementById('globalReviewed');
 
     // === localStorage Keys ===
-    const STORAGE_KEY_REVIEWED = 'cehstudy_reviewed';
+    const STORAGE_KEY_REVIEWED = 'cehstudy_reviewed_v2';
     const STORAGE_KEY_INDEX = 'cehstudy_index';
-    const STORAGE_KEY_SR = 'cehstudy_sr';
+    const STORAGE_KEY_SR = 'cehstudy_sr_v2';
     const STORAGE_KEY_STATS = 'cehstudy_stats';
 
     // === Initialize ===
