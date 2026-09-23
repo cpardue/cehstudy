@@ -210,6 +210,10 @@
     }
 
     // === Render ===
+    function htmlEscape(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
     function renderCard() {
         if (allCards.length === 0) {
             fcCard.innerHTML = '';
@@ -237,8 +241,8 @@
         fcCounter.classList.remove('hidden');
 
         fcModuleLabel.textContent = `Module ${card.moduleId}: ${card.moduleTitle}`;
-        fcTitle.innerHTML = card.q;
-        fcInfo.innerHTML = card.a;
+        fcTitle.innerHTML = htmlEscape(card.q).replace(/\n/g, '<br>');
+        fcInfo.innerHTML = htmlEscape(card.a).replace(/\n/g, '<br>');
         fcCounter.textContent = `${currentIndex + 1} / ${allCards.length}`;
         fcHint.textContent = 'Review Cards - Arrow keys or swipe to navigate';
 
