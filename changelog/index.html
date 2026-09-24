@@ -33,18 +33,42 @@
 </head>
 <body>
 
-<header class="header-sticky">
-    <div class="header-nav-inner">
-        <a href="/" class="header-nav-logo">CEHStudy</a>
-        <nav class="header-nav-links">
-      <a href="/ceh-v13/">Modules</a>
-      <a href="/">Flashcards</a>
-      <a href="/ceh-practice-questions/">Practice Questions</a>
-      <a href="/glossary/">Glossary</a>
-      <a href="/faq/">FAQ</a>
+<header><div class="container"><div class="header-row unified-header">
+        <div class="logo-block">
+            <a href="/" class="logo">>_ CEHStudy</a>
+            <span class="logo-tagline">ALL PASS, NO FAIL!</span>
+        </div>
+        <button type="button" class="hamburger-btn" id="navToggleBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="siteSlideMenu"><span></span><span></span><span></span></button>
+    </div></div></header>
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="slide-menu" id="siteSlideMenu" aria-label="Site navigation" aria-hidden="true">
+    <div class="menu-header"><h3>CEHStudy</h3><button type="button" class="menu-close" id="siteMenuClose" aria-label="Close navigation menu">&times;</button></div>
+    <nav class="menu-list" aria-label="Main navigation">
+        <a class="menu-item" href="/ceh-v13/"><span class="menu-item-label">Modules</span></a>
+        <a class="menu-item" href="/"><span class="menu-item-label">Flashcards</span></a>
+        <a class="menu-item" href="/ceh-practice-questions/"><span class="menu-item-label">Practice Questions</span></a>
+        <a class="menu-item" href="/glossary/"><span class="menu-item-label">Glossary</span></a>
+        <a class="menu-item" href="/faq/"><span class="menu-item-label">FAQ</span></a>
     </nav>
-    </div>
-</header>
+</aside>
+<script>
+(function () {
+    var btn = document.getElementById('navToggleBtn'), panel = document.getElementById('siteSlideMenu'),
+        overlay = document.getElementById('menuOverlay'), closeBtn = document.getElementById('siteMenuClose');
+    if (!btn || !panel || !overlay || !closeBtn) return;
+    function setMenu(open) {
+        panel.classList.toggle('open', open);
+        overlay.classList.toggle('open', open);
+        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', function () { setMenu(true); });
+    closeBtn.addEventListener('click', function () { setMenu(false); });
+    overlay.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+    panel.querySelectorAll('.menu-item').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+})();
+</script>
 
 <div class="container">
 

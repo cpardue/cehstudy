@@ -61,7 +61,62 @@
     </script>
 </head>
 <body>
-    <header><div class="container" style="padding:0"><a href="/">&larr; Back to CEHStudy</a></div></header>
+    <style>
+        /* unified header + hamburger nav — this page is standalone (does not load /styles.css) */
+        .header-row{display:flex;justify-content:space-between;align-items:center;gap:24px;width:100%}
+        .logo-block{display:flex;flex-direction:column;align-items:center;gap:2px}
+        .logo{color:var(--accent);font-size:1.3rem;font-weight:700;text-decoration:none}
+        .logo-tagline{font-size:.7rem;font-weight:600;color:#e2b714;text-transform:uppercase;letter-spacing:1.5px}
+        .hamburger-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:8px 9px;cursor:pointer;display:inline-flex;flex-direction:column;gap:4px;align-items:center;transition:border-color .15s ease}
+        .hamburger-btn:hover{border-color:var(--accent)}
+        .hamburger-btn span{display:block;width:20px;height:2px;background:var(--accent);border-radius:1px}
+        .menu-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:300;display:none}
+        .menu-overlay.open{display:block}
+        .slide-menu{position:fixed;top:0;left:-380px;width:360px;max-width:85vw;height:100%;background:var(--bg2);border-right:1px solid var(--border);z-index:400;transition:left .25s ease;display:flex;flex-direction:column}
+        .slide-menu.open{left:0}
+        .menu-header{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+        .menu-header h3{color:var(--text);font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+        .menu-close{background:none;border:none;color:var(--text2);font-size:1.5rem;cursor:pointer;padding:4px 8px;line-height:1}
+        .menu-list{flex:1;overflow-y:auto;padding:8px 0}
+        .menu-item{display:flex;align-items:center;padding:12px 20px;border-bottom:1px solid var(--border);font-size:.88rem;color:var(--accent);text-decoration:none}
+        .menu-item:hover{background:rgba(57,255,136,.06)}
+    </style>
+<header><div class="container"><div class="header-row unified-header">
+        <div class="logo-block">
+            <a href="/" class="logo">>_ CEHStudy</a>
+            <span class="logo-tagline">ALL PASS, NO FAIL!</span>
+        </div>
+        <button type="button" class="hamburger-btn" id="navToggleBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="siteSlideMenu"><span></span><span></span><span></span></button>
+    </div></div></header>
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="slide-menu" id="siteSlideMenu" aria-label="Site navigation" aria-hidden="true">
+    <div class="menu-header"><h3>CEHStudy</h3><button type="button" class="menu-close" id="siteMenuClose" aria-label="Close navigation menu">&times;</button></div>
+    <nav class="menu-list" aria-label="Main navigation">
+        <a class="menu-item" href="/ceh-v13/"><span class="menu-item-label">Modules</span></a>
+        <a class="menu-item" href="/"><span class="menu-item-label">Flashcards</span></a>
+        <a class="menu-item" href="/ceh-practice-questions/"><span class="menu-item-label">Practice Questions</span></a>
+        <a class="menu-item" href="/glossary/"><span class="menu-item-label">Glossary</span></a>
+        <a class="menu-item" href="/faq/"><span class="menu-item-label">FAQ</span></a>
+    </nav>
+</aside>
+<script>
+(function () {
+    var btn = document.getElementById('navToggleBtn'), panel = document.getElementById('siteSlideMenu'),
+        overlay = document.getElementById('menuOverlay'), closeBtn = document.getElementById('siteMenuClose');
+    if (!btn || !panel || !overlay || !closeBtn) return;
+    function setMenu(open) {
+        panel.classList.toggle('open', open);
+        overlay.classList.toggle('open', open);
+        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', function () { setMenu(true); });
+    closeBtn.addEventListener('click', function () { setMenu(false); });
+    overlay.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+    panel.querySelectorAll('.menu-item').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+})();
+</script>
 
     <div class="container">
         <nav class="breadcrumb"><a href="/">Home</a> &rsaquo; Contact</nav>
