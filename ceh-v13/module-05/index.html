@@ -144,66 +144,67 @@
 
         <!-- LLM Optimization Content -->
         <div class="llm-seo-content">
+
             <h2>What is Vulnerability Analysis in Ethical Hacking?</h2>
-            <p>Vulnerability Analysis is a core domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. This module covers the systematic process of identifying, quantifying, and prioritizing security weaknesses in systems before they can be exploited by attackers. Unlike scanning (which finds open ports) or enumeration (which extracts data), vulnerability analysis matches discovered services and configurations against known vulnerability databases to identify specific CVEs that could be weaponized. The CVSS scoring framework provides a standardized way to rank vulnerabilities by severity, enabling organizations to prioritize remediation. On the CEH v13 exam, questions related to Module 5 account for approximately 10% of total questions.</p>
+            <p>Vulnerability Analysis is a core domain of the Certified Ethical Hacker v13 (CEH v13) exam administered by EC-Council. Unlike scanning (which finds open ports) or enumeration (which extracts data), it matches discovered services and configurations against known vulnerability databases to identify specific CVEs that could be weaponized, with CVSS scoring ranking findings by severity for remediation priority. Module 5 accounts for approximately 10% of CEH v13 exam questions.</p>
 
             <h2>Key Concepts in Vulnerability Analysis</h2>
             <ul>
-                <li><strong>CVE and CVSS Frameworks:</strong> The Common Vulnerabilities and Exposures (CVE) database assigns unique identifiers to publicly disclosed vulnerabilities (e.g., CVE-2024-1234). The Common Vulnerability Scoring System (CVSS) provides a numerical severity score from 0.0 to 10.0 based on attack vector, complexity, privileges required, user interaction, scope, and impact on confidentiality/integrity/availability. CVSS v3.1 is the current standard. The CEH exam frequently tests CVSS metric calculations and severity classification thresholds.</li>
-                <li><strong>Network-Based vs Host-Based Scanning:</strong> Network-based vulnerability scanners (Nessus, OpenVAS) scan from a remote position to identify issues visible from the network — misconfigurations, outdated services, missing patches. Host-based scanners (Qualys Agent, CIS CAT) install on individual endpoints and perform deep analysis including registry checks, file integrity, local service configurations, and compliance posture. The CEH exam distinguishes these approaches and expects you to know when each is appropriate.</li>
-                <li><strong>Patch Management & Remediation:</strong> Vulnerability analysis is only useful if findings are remediated. Patch management involves testing patches in staging, deploying to production on a schedule aligned with risk priority (critical first), and verifying fixes. Understanding the SLA framework for patching (e.g., critical within 7 days, high within 30 days) and how to handle legacy systems that cannot be patched are common exam scenarios.</li>
-                <li><strong>Risk Assessment & Prioritization:</strong> Raw vulnerability lists can contain thousands of findings. Risk assessment applies context — asset criticality, exploitability (is there public exploit code?), compensating controls (WAF, IDS) — to produce a prioritized remediation plan. The CEH exam tests the concept that a 9.8 CVSS score on a segmented internal system with no public exploit may be lower priority than a 7.2 score on an internet-facing web server with active exploitation in the wild.</li>
+                <li><strong>CVE and CVSS Frameworks:</strong> The Common Vulnerabilities and Exposures (CVE) database assigns unique identifiers to publicly disclosed vulnerabilities (e.g., CVE-2024-1234). The Common Vulnerability Scoring System (CVSS) scores severity from 0.0 to 10.0 based on attack vector, complexity, privileges required, user interaction, scope, and impact on confidentiality/integrity/availability; CVSS v3.1 is the current standard. The exam tests CVSS metric calculations and severity thresholds.</li>
+                <li><strong>Network-Based vs Host-Based Scanning:</strong> Network-based scanners (Nessus, OpenVAS) find issues visible from the network — misconfigurations, outdated services, missing patches. Host-based agents (Qualys Agent, CIS CAT) run deep endpoint analysis: registry checks, file integrity, local service configurations, compliance posture. Know when each approach is appropriate.</li>
+                <li><strong>Patch Management & Remediation:</strong> Findings only matter once remediated: test patches in staging, deploy by risk priority (critical first), verify fixes. Common exam scenarios cover patch SLAs (e.g., critical within 7 days, high within 30 days) and legacy systems that cannot be patched.</li>
+                <li><strong>Risk Assessment & Prioritization:</strong> Risk assessment applies context — asset criticality, public exploit availability, compensating controls (WAF, IDS) — to turn raw findings into a prioritized plan. A 9.8 CVSS on a segmented internal system with no public exploit can rank below a 7.2 on an internet-facing web server under active exploitation.</li>
             </ul>
 
                         <h2>Common Exam Mistakes in Module 5</h2>
-            <div class="term-box"><strong>Misplacing the CVSS band boundaries:</strong> 0.0–3.9 is Low, 4.0–6.9 Medium, 7.0–8.9 High, 9.0–10.0 Critical. The boundary values themselves get tested — a 7.0 score is High, not Medium, and 9.0 opens the Critical band.</div>
-            <div class="term-box"><strong>Reporting scanner output without verification:</strong> False positives come from misconfigured scanners and wrong version detection, so every finding needs manual confirmation before it enters a remediation report. The exam's opposite trap is the false negative — a vulnerability the scanner missed creates false confidence.</div>
-            <div class="term-box"><strong>Mixing up who maintains what:</strong> CVE identifiers are assigned by MITRE, not OWASP or NIST. Tool roles get swapped in distractors too: Burp Suite and Acunetix are web-application focused, Qualys is the cloud platform, Nexpose (Rapid7) prioritizes by risk, and OpenVAS is Nessus's open-source alternative.</div>
+            <div class="term-box"><strong>Misplacing the CVSS band boundaries:</strong> 0.0–3.9 Low, 4.0–6.9 Medium, 7.0–8.9 High, 9.0–10.0 Critical — a 7.0 score is High, not Medium, and 9.0 opens the Critical band.</div>
+            <div class="term-box"><strong>Reporting scanner output without verification:</strong> False positives come from misconfigured scanners and wrong version detection, so confirm every finding manually before it enters a remediation report. The opposite trap — a false negative the scanner missed — creates false confidence.</div>
+            <div class="term-box"><strong>Mixing up who maintains what:</strong> CVE identifiers are assigned by MITRE, not OWASP or NIST. Distractors also swap tool roles: Burp Suite and Acunetix are web-focused, Qualys is the cloud platform, Nexpose (Rapid7) prioritizes by risk, OpenVAS is Nessus's open-source alternative.</div>
 
             <h2>Tools Used in Vulnerability Analysis</h2>
             <p>The scanners the CEH exam sorts into network-based, host-based and web-focused categories:</p>
             <ul class="content-list">
-                <li><strong>Nessus (Tenable):</strong> the industry-standard commercial vulnerability scanner with an extensive plugin library covering networks, web apps, databases and cloud</li>
-                <li><strong>OpenVAS (Greenbone):</strong> the leading open-source vulnerability scanner; the exam's standing alternative to Nessus in multiple-choice sets</li>
-                <li><strong>Qualys:</strong> cloud-based vulnerability management platform delivering continuous scanning and posture monitoring for enterprise fleets</li>
-                <li><strong>Nexpose (Rapid7):</strong> enterprise scanner known for risk-based prioritization of findings rather than raw vulnerability counts</li>
+                <li><strong>Nessus (Tenable):</strong> industry-standard commercial vulnerability scanner with a plugin library covering networks, web apps, databases and cloud</li>
+                <li><strong>OpenVAS (Greenbone):</strong> the leading open-source vulnerability scanner — Nessus's standing alternative in multiple-choice sets</li>
+                <li><strong>Qualys:</strong> cloud-based vulnerability management platform with continuous scanning and posture monitoring</li>
+                <li><strong>Nexpose (Rapid7):</strong> enterprise scanner that prioritizes findings by risk, not raw counts</li>
                 <li><strong>Burp Suite:</strong> web-application testing suite — proxies HTTP traffic and tests for XSS, SQL injection and authentication flaws</li>
                 <li><strong>Acunetix:</strong> automated web vulnerability scanner in the same application-testing category as Burp Suite</li>
                 <li><strong>Nikto:</strong> lightweight web server scanner that checks for known misconfigurations, outdated components and suspicious files</li>
-                <li><strong>NSE vuln scripts:</strong> Nmap scripting engine's vulnerability script category — quick checks layered onto an existing port scan without a dedicated scanner</li>
+                <li><strong>NSE vuln scripts:</strong> Nmap's vulnerability script category — quick checks layered onto a port scan without a dedicated scanner</li>
             </ul>
 
             <h2>Worked Example: Prioritizing Two Findings from One Scan</h2>
-            <p>An authenticated Nessus scan of an authorized environment returns two findings: Finding A scores 9.8 (Critical) on an air-gapped test host with no public exploit code, while Finding B scores 7.2 (High) on an internet-facing web server where a working proof-of-concept is already circulating.</p>
-            <p><strong>Ranking logic:</strong> patch Finding B first. CVSS measures inherent severity, but remediation priority adds context — exposure, available exploits and compensating controls — so the internet-facing host with active exploitation in the wild outranks the segmented test box despite its lower score. Verify both findings to rule out false positives, then schedule Finding A against the normal high-severity SLA.</p>
+            <p>An authenticated Nessus scan of an authorized environment returns two findings: Finding A scores 9.8 (Critical) on an air-gapped test host with no public exploit code; Finding B scores 7.2 (High) on an internet-facing web server with a circulating proof-of-concept.</p>
+            <p><strong>Ranking logic:</strong> patch Finding B first. CVSS measures inherent severity; remediation priority adds exposure, available exploits and compensating controls — so the internet-facing host outranks the segmented test box despite its lower score. Verify both findings to rule out false positives, then schedule Finding A against the normal high-severity SLA.</p>
 
             <h2>How to Study Vulnerability Analysis for the CEH v13 Exam</h2>
-            <p>To effectively study Module 5 for the Certified Ethical Hacker exam:</p>
+            <p>To study Module 5:</p>
             <ol>
-                <li>Memorize CVSS score ranges: 0.0–3.9 Low, 4.0–6.9 Medium, 7.0–8.9 High, 9.0–10.0 Critical — and understand each CVSS metric (AV, AC, PR, UI, S, C, I, A)</li>
-                <li>Understand the difference between vulnerability assessment (identifying), penetration testing (exploiting), and security auditing (compliance) — the CEH exam tests these distinctions in scenario questions</li>
-                <li>Hands-on exercise: Download Nessus Essentials (free), scan a Metasploitable 2 VM, and produce a report. Identify at least 5 vulnerabilities, look up their CVE IDs, and calculate or verify their CVSS scores. Write a one-paragraph remediation recommendation for each.</li>
-                <li>Review related modules: <a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4 (Enumeration)</a> for how service identification feeds vulnerability scanning, and <a href="/ceh-v13/module-06/" style="color:var(--accent)">Module 6 (System Hacking)</a> for how identified vulnerabilities are actively exploited</li>
+                <li>Memorize CVSS score ranges: 0.0–3.9 Low, 4.0–6.9 Medium, 7.0–8.9 High, 9.0–10.0 Critical — and each CVSS metric (AV, AC, PR, UI, S, C, I, A)</li>
+                <li>Distinguish vulnerability assessment (identifying), penetration testing (exploiting) and security auditing (compliance)</li>
+                <li>Hands-on: download Nessus Essentials (free), scan a Metasploitable 2 VM, find at least 5 vulnerabilities, look up their CVE IDs, verify their CVSS scores, and write a one-paragraph remediation recommendation for each</li>
+                <li>Review <a href="/ceh-v13/module-04/" style="color:var(--accent)">Module 4 (Enumeration)</a> — service identification feeds scanning — and <a href="/ceh-v13/module-06/" style="color:var(--accent)">Module 6 (System Hacking)</a> — identified vulnerabilities get exploited</li>
             </ol>
 
             <h2>Frequently Asked Questions About Vulnerability Analysis</h2>
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">What is the difference between vulnerability assessment and penetration testing?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">Vulnerability assessment is a broad, automated process that identifies and lists potential security weaknesses across an environment without attempting to exploit them. Penetration testing goes further by actively exploiting identified vulnerabilities to demonstrate real-world impact — proving that an attacker could actually access sensitive data or escalate privileges. On the CEH exam, know that VA answers "what are the gaps?" while PT answers "how badly can they be exploited?" and "what would an attacker actually gain?" Both require written authorization, but PT typically requires a more detailed scope document and rules of engagement.</p>
+                    <p itemprop="text">Vulnerability assessment is broad and automated: it identifies and lists security weaknesses across an environment without exploiting them. Penetration testing goes further, actively exploiting findings to demonstrate real-world impact. On the CEH exam, VA answers "what are the gaps?" while PT answers "how badly can they be exploited?" Both require written authorization; PT typically needs a more detailed scope and rules of engagement.</p>
                 </div>
             </div>
             <div itemscope itemtype="https://schema.org/Question">
                 <p><strong itemprop="name">How does CVSS scoring work on the CEH exam?</strong></p>
                 <div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer">
-                    <p itemprop="text">CVSS v3.1 assigns a base score (0.0–10.0) calculated from eight metrics: Attack Vector (Network/Adjacent/Local/Physical), Attack Complexity (Low/High), Privileges Required (None/Low/High), User Interaction (None/Required), Scope (Unchanged/Changed), and impact on Confidentiality, Integrity, and Availability (None/Low/High). The CEH exam typically provides a vulnerability description and asks you to determine the correct CVSS score or severity category. Key exam tip: a vulnerability that requires no user interaction, no privileges, is remotely exploitable over the network with high impact on all three CIA dimensions will always score 9.0 or above (Critical).</p>
+                    <p itemprop="text">CVSS v3.1 assigns a base score (0.0–10.0) calculated from eight metrics: Attack Vector (Network/Adjacent/Local/Physical), Attack Complexity (Low/High), Privileges Required (None/Low/High), User Interaction (None/Required), Scope (Unchanged/Changed), and impact on Confidentiality, Integrity, and Availability (None/Low/High). Exam questions give a vulnerability description and ask for the correct score or severity category. Tip: no user interaction, no privileges, network-exploitable with high impact on all three CIA dimensions scores 9.0 or above (Critical).</p>
                 </div>
             </div>
 
             <h2>Related CEH v13 Modules</h2>
             <ul>
-                <li><a href="/ceh-v13/module-06/" style="color:var(--accent)">Module 6: System Hacking</a> — Vulnerabilities identified through assessment are the primary targets for exploitation in system hacking engagements, including privilege escalation and lateral movement across compromised systems</li>
-                <li><a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7: Malware Threats</a> — Many malware delivery mechanisms exploit specific vulnerabilities identified by scanning; understanding vulnerability landscapes helps predict malware targeting and infection vectors</li>
+                <li><a href="/ceh-v13/module-06/" style="color:var(--accent)">Module 6: System Hacking</a> — where the identified vulnerabilities get exploited</li>
+                <li><a href="/ceh-v13/module-07/" style="color:var(--accent)">Module 7: Malware Threats</a> — many malware delivery mechanisms exploit these same vulnerabilities</li>
             </ul>
         </div>
     </div>
